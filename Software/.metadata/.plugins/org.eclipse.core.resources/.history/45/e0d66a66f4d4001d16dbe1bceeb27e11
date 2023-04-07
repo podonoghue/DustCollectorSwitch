@@ -1,0 +1,72 @@
+/**
+ ============================================================================
+ * @file    main.cpp (180.ARM_Peripherals/Sources/main.cpp)
+ * @brief   Dust extractor control
+ *
+ *  Created on: 10/1/2016
+ *      Author: podonoghue
+ ============================================================================
+ */
+#include "hardware.h"
+#include "mcg.h"
+
+using namespace USBDM;
+
+constexpr AdcResolution ADC_RESOLUTION = AdcResolution_10bit_se; // ADC Resolution - 10-bit unsigned (single-ended mode)
+
+/**
+ * Get Hold Control value as [0..100]
+ */
+unsigned getHoldControl() {
+   return HoldControl::readAnalogue()*100/UserAdc::getSingleEndedMaximum(ADC_RESOLUTION);
+}
+
+/**
+ * Get Delay Control value as [0..100]
+ */
+unsigned getDelayControl() {
+   return DelayControl::readAnalogue()*100/UserAdc::getSingleEndedMaximum(ADC_RESOLUTION);
+}
+
+bool isLoadOn() {
+
+   int THRESHOLD =  UserAdc::getSingleEndedMaximum(ADC_RESOLUTION)/2;
+   int current = CurrentSample::readAnalogue();
+
+   return current > THRESHOLD;
+}
+
+void initialise() {
+
+   static constexpr PcrInit PORT_INIT(PinDriveStrength_High, PinDriveMode_PushPull, PinSlewRate_Slow);
+
+   static constexpr Adc0BasicInfo::Init adcInit {
+      AdcClockSource_Bus ,       // ADC Clock Source - Bus clock
+      AdcClockDivider_4 ,        // Clock Divide Select - Divide by 4
+      ADC_RESOLUTION ,           // ADC Resolution
+   };
+
+   Relay::setOutput(PORT_INIT);
+   HoldLed::setOutput(PORT_INIT);
+   DelayLed::setOutput(PORT_INIT);
+
+   UserAdc::configure(adcInit);
+
+   CurrentSample::setInput();
+   HoldControl::setInput();
+   DelayControl::setInput();
+}
+
+int main() {
+   console.writeln("\nStarting");
+   console.writeln("Clock mode      = ", Mcg::getClockModeName());
+   console.writeln("SystemCoreClock = ", SystemCoreClock, " Hz");
+   console.writeln("SystemBusClock  = ", SystemBusClock, " Hz");
+
+   initialise();
+
+   for(int count = 0;;count++) {
+
+   }
+   return 0;
+}

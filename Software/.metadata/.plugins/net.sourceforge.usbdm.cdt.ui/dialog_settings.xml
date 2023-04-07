@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<item key="interfaceType" value="0"/>
+	<item key="hasCCNature" value="true"/>
+	<item key="outputType" value="false"/>
+	<item key="semiHosting" value="false"/>
+	<item key="useFloatingpointInScanf" value="false"/>
+	<item key="useFloatingpointInPrintf" value="false"/>
+	<item key="T_ARMbuildToolsId" value="ARM Ltd GNU Tools for ARM"/>
+	<item key="T_ARMtargetDevice" value="FRDM_K20D50M"/>
+	<item key="usbdm.project.additionalOptions.projectOptionValue.Kinetis-PE" value="false"/>
+	<item key="usbdm.project.additionalOptions.projectOptionValue.CMSIS-RTOS" value="false"/>
+	<item key="usbdm.project.additionalOptions.projectOptionValue.FRDM-Blinky" value="false"/>
+	<item key="usbdm.project.additionalOptions.projectOptionValue.CPP-abstraction" value="true"/>
+	<item key="usbdm.project.additionalOptions.projectOptionValue.FreeRTOS" value="false"/>
+	<item key="usbdm.project.additionalOptions.projectOptionValue.CPP-abstraction-LCD" value="false"/>
+	<item key="usbdm.project.additionalOptions.projectOptionValue.CPP-abstraction-MAX30100" value="false"/>
+	<item key="usbdm.project.additionalOptions.projectOptionValue.CPP-abstraction-ht16k33-14-segment" value="false"/>
+	<item key="usbdm.project.additionalOptions.projectOptionValue.CPP-abstraction-NRF24L01" value="false"/>
+	<item key="usbdm.project.additionalOptions.projectOptionValue.CPP-abstraction-PN532" value="false"/>
+	<item key="usbdm.project.additionalOptions.projectOptionValue.CPP-abstraction-EPAPER" value="false"/>
+	<item key="usbdm.project.additionalOptions.projectOptionValue.CPP-abstraction-PCA9685" value="false"/>
+	<item key="usbdm.project.additionalOptions.projectOptionValue.CPP-abstraction-sht14-humidity" value="false"/>
+	<item key="usbdm.project.additionalOptions.projectOptionValue.CPP-abstraction-GPS" value="false"/>
+</section>

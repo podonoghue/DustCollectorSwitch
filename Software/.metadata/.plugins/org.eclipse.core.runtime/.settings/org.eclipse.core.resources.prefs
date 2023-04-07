@@ -1,0 +1,5 @@
+description.autobuilding=false
+eclipse.preferences.version=1
+pathvariable.usbdm_application_path=/usr/bin
+pathvariable.usbdm_resource_path=/usr/share/usbdm
+version=1

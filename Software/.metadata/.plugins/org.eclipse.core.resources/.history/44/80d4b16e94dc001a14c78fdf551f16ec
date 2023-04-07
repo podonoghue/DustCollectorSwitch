@@ -1,0 +1,18 @@
+#include "hardware.h"
+
+using namespace USBDM;
+
+using TestPin   = GpioA<2,ActiveLow>;
+
+int main() {
+   console.writeln("Starting\n");
+
+   TestPin::setOutput(PinDriveStrength_High, PinDriveMode_PushPull, PinSlewRate_Fast);
+
+   for(int count = 0;;count++) {
+      TestPin::toggle();
+      waitMS(10);
+      console.write(count).writeln(": Tick...");
+   }
+   return 0;
+}
