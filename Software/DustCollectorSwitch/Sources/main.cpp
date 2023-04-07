@@ -3,7 +3,7 @@
  * @file    main.cpp (180.ARM_Peripherals/Sources/main.cpp)
  * @brief   Dust extractor control
  *
- *  Created on: 10/1/2016
+ *  Created on: 7/4/2023
  *      Author: podonoghue
  ============================================================================
  */
@@ -16,7 +16,7 @@ constexpr AdcResolution ADC_RESOLUTION = AdcResolution_10bit_se; // ADC Resoluti
 constexpr Seconds       TICK_TIME      = 10_ms;
 
 /**
- * Get Delay Control value in seconds
+ * Get Delay Control value in seconds [1..10]
  */
 unsigned getDelayControl() {
    constexpr unsigned MIN_DELAY = 1;
@@ -26,7 +26,7 @@ unsigned getDelayControl() {
 }
 
 /**
- * Get Hold Control value in seconds
+ * Get Hold Control value in seconds [2..20]
  */
 unsigned getHoldControl() {
    constexpr unsigned MIN_HOLD  = 2;
@@ -50,6 +50,9 @@ bool isLoadOn() {
    return current > THRESHOLD;
 }
 
+/**
+ * Initialise I/O
+ */
 void initialise() {
 
    static constexpr PcrInit PORT_INIT(PinDriveStrength_High, PinDriveMode_PushPull, PinSlewRate_Slow);
@@ -58,6 +61,7 @@ void initialise() {
       AdcClockSource_Bus ,       // ADC Clock Source - Bus clock
       AdcClockDivider_4 ,        // Clock Divide Select - Divide by 4
       ADC_RESOLUTION ,           // ADC Resolution
+      AdcMuxsel_B,
    };
 
    DustCollector::setOutput(PORT_INIT);
@@ -71,26 +75,53 @@ void initialise() {
    DelayControl::setInput();
 }
 
+/**
+ * Simple state machine
+ */
 enum State {s_IDLE, s_DELAY, s_OPERATING, s_HOLD, };
 
+static const char *getStateName(State state) {
+
+   static const char *names[] = {
+         "Idle", "Delay", "Operating", "Hold",
+   };
+   if (state > sizeofArray(names)) {
+      return "Illegal";
+   }
+   return names[state];
+}
+
 int main() {
+#ifdef DEBUG_BUILD
    console.writeln("\nStarting");
+#endif
 
    initialise();
 
-   State state = s_IDLE;
+   // Update parameters on startup
+   const unsigned delayTimeInTicks = getDelayControl() / TICK_TIME;
+   const unsigned holdTimeInTicks  = getHoldControl()  / TICK_TIME;
+
+#ifdef DEBUG_BUILD
+   console.writeln("Delay time = ", delayTimeInTicks * TICK_TIME, " s");
+   console.writeln("Hold  time = ", holdTimeInTicks * TICK_TIME, " s");
+#endif
+
+   State state     = s_IDLE;
+   State lastState = s_OPERATING;
+
    unsigned tickCounter = 0;
-   unsigned delayTimeInTicks = 100;
-   unsigned holdTimeInTicks  = 100;
 
    for(;;) {
+#ifdef DEBUG_BUILD
+      if (state != lastState) {
+         console.writeln(getStateName(state));
+         lastState = state;
+      }
+#endif
       switch(state) {
          default:
          case s_IDLE:
-            // Update parameters while idle
-            delayTimeInTicks = getDelayControl() / TICK_TIME;
-            holdTimeInTicks  = getHoldControl()  / TICK_TIME;
-
             // Make sure dust collector is off
             DustCollector::off();
 
@@ -102,13 +133,13 @@ int main() {
             break;
          case s_DELAY:
             DelayLed::on();
-            // Check if load went away while delaying
             if (!isLoadOn()) {
+               // Load went away while delaying
                state = s_IDLE;
                DelayLed::off();
             }
             else if (++tickCounter>delayTimeInTicks) {
-               // Completed delay
+               // Completed delay time
                state = s_OPERATING;
                DelayLed::off();
             }
@@ -117,8 +148,8 @@ int main() {
             // Dust collector on
             DustCollector::on();
 
-            // Check if load gone
             if (!isLoadOn()) {
+               // Load gone
                state = s_HOLD;
                tickCounter = 0;
             }
@@ -126,7 +157,7 @@ int main() {
          case s_HOLD:
             HoldLed::on();
             if (isLoadOn()) {
-               // Check for load back before delay expired
+               // Load back before delay expired
                state = s_OPERATING;
                HoldLed::off();
             }
