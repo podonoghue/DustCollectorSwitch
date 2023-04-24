@@ -29,6 +29,8 @@
 #include "i2c.h"
 #include "adc.h"
 #include "spi.h"
+#include "llwu.h"
+#include "ftm.h"
 
 
 namespace USBDM {
@@ -54,6 +56,11 @@ typedef Adc0::Channel<14>                                    DelayControl;      
 /// A1
 typedef Adc0::Channel<15>                                    HoldControl;                                  // PTC1(A1)
 
+/// FTM, PWM, Input capture and Output compare
+typedef Ftm0                                                 UserTimer;                                    
+
+typedef Ftm0::Channel<0>                                     TimerChannel;                                 // PTC1(A1)
+
 /// D5
 typedef GpioTable_T<GpioAInfo, 1, ActiveHigh>                DelayLed;                                     // PTA1(D5)
 
@@ -61,10 +68,15 @@ typedef GpioTable_T<GpioAInfo, 1, ActiveHigh>                DelayLed;          
 typedef GpioTable_T<GpioCInfo, 8, ActiveHigh>                HoldLed;                                      // PTC8(D4)
 
 /// D13
-typedef GpioTable_T<GpioDInfo, 1, ActiveLow>                 DustCollector;                                // PTD1(D13)
+typedef GpioTable_T<GpioDInfo, 1, ActiveHigh>                DustCollector;                                // PTD1(D13)
+
+/// D0
+typedef GpioTable_T<GpioEInfo, 1, ActiveHigh>                Digital_D0;                                   // PTE1(D0)
 
 /// User I2C
 typedef I2c0                                                 UserI2c;                                      
+
+typedef Llwu::Pin<LlwuPin_Pte1>                              Wakeup_D0;                                    // PTE1(D0)
 
 /// User SPI
 typedef Spi0                                                 UserSpi;                                      

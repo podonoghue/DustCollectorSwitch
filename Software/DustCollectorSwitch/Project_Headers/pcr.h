@@ -48,7 +48,7 @@ namespace USBDM {
 #pragma GCC push_options
 #pragma GCC optimize ("Os")
 
-#if (false)
+#if (true)
 class Ticks {
 
 private:
@@ -302,7 +302,7 @@ union Seconds_Ticks {
    constexpr Seconds toSeconds() const { return bit_cast<float, unsigned>(value); }
    constexpr Ticks   toTicks()   const { return value; }
 
-#if false
+#if true
    constexpr void fromSeconds(Seconds seconds) { value = bit_cast<unsigned, float>(seconds.getValue()); }
    constexpr void fromTicks(Ticks ticks)       { value = ticks.getValue(); }
 #else

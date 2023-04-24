@@ -45,6 +45,7 @@ extern "C" void __attribute__((constructor)) cpp_initialise() {
 void mapAllPins() {
 #if false
 
+#warning "PCR Not initialised for PTC1       : Multiple signals mapped to pin - ADC0_SE15[HoldControl]/TSI0_CH14, FTM0_CH0[TimerChannel]"
 
 #endif
 
@@ -63,10 +64,11 @@ void mapAllPins() {
    PORTA->GPCLR = ForceLockedPins|0x0100UL|PORT_GPCLR_GPWE(0x0002UL);
    PORTA->GPCLR = ForceLockedPins|0x0700UL|PORT_GPCLR_GPWE(0x0009UL);
    PORTB->GPCHR = ForceLockedPins|0x0300UL|PORT_GPCHR_GPWE(0x0003UL);
-   PORTC->GPCLR = ForceLockedPins|0x0000UL|PORT_GPCLR_GPWE(0x0003UL);
+   PORTC->GPCLR = ForceLockedPins|0x0000UL|PORT_GPCLR_GPWE(0x0001UL);
    PORTC->GPCLR = ForceLockedPins|0x0100UL|PORT_GPCLR_GPWE(0x0100UL);
    PORTD->GPCLR = ForceLockedPins|0x0000UL|PORT_GPCLR_GPWE(0x0040UL);
    PORTD->GPCLR = ForceLockedPins|0x0100UL|PORT_GPCLR_GPWE(0x0002UL);
+   PORTE->GPCLR = ForceLockedPins|0x0100UL|PORT_GPCLR_GPWE(0x0002UL);
 
    if constexpr (ForceLockoutUnbondedPins) {
       PORTA->GPCLR = PinLock_Locked |0x0000UL|PORT_GPCLR_GPWE(0xCFC0UL); // Lockout unavailable pins
@@ -105,6 +107,19 @@ void mapAllPins() {
       (void)mask;
       setAndCheckErrorCode(E_NO_HANDLER);
    }
+
+   /**
+    * Callback function for Channel Fault and timer overflow for Ftm0
+    */
+   Ftm0Info::CallbackFunction Ftm0Info::callback = unhandledCallback;
+   
+   /**
+    * Callback table for programmatically set handlers for Ftm0
+    */
+   Ftm0Info::ChannelCallbackFunction Ftm0Info::channelCallbacks[] = {
+
+      timerUnhandledChannelCallback,
+   };
 
 
 

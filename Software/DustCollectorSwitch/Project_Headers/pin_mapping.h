@@ -15,6 +15,7 @@
 
 #include <stdint.h>
 #include <stddef.h>
+#include <array>
 
 #include "derivative.h"
 #include "pcr.h"
@@ -618,7 +619,7 @@ public:
 
          //      Signal                 Pin                                  portInfo    gpioBit                 PCR value
          /*   0: GPIOE_0              = --                             */  { NoPortInfo, UNMAPPED_PCR, (PcrValue)0          },
-         /*   1: GPIOE_1              = --                             */  { NoPortInfo, UNMAPPED_PCR, (PcrValue)0          },
+         /*   1: GPIOE_1              = PTE1(D0)                       */  { PortEInfo,  1,            (PcrValue)0x00100UL  },
    };
 
    /**
@@ -627,6 +628,14 @@ public:
     * @note Only the lower 16-bits of the PCR registers are affected
     */
    static void initPCRs() {
+
+#if defined(PCC_PCCn_CGC_MASK)
+   PCC->PCC_PORTE = PCC_PCCn_CGC_MASK;
+#else
+   enablePortClocks(PORTE_CLOCK_MASK);
+#endif
+
+   PORTE->GPCLR = 0x0100UL|PORT_GPCLR_GPWE(0x0002UL);
    }
 
    /**
@@ -635,6 +644,14 @@ public:
     * @note Only the lower 16-bits of the PCR registers are affected
     */
    static void clearPCRs() {
+
+#if defined(PCC_PCCn_CGC_MASK)
+   PCC->PCC_PORTE = PCC_PCCn_CGC_MASK;
+#else
+   enablePortClocks(PORTE_CLOCK_MASK);
+#endif
+
+   PORTE->GPCLR = PinMux_Disabled|PORT_GPCLR_GPWE(0x0002UL);
    }
 
 };
@@ -6935,8 +6952,17 @@ public:
        */
       constexpr Init() = default;
    
+      /// Shared channel interrupt call-back
+      ChannelCallbackFunction channelCallbackFunction = nullptr;
+
+      /// Shared overflow or fault interrupt call-back
+      CallbackFunction callbackFunction = nullptr;
+
       /// Status And Control Register
       uint8_t sc = 0;
+
+      /// IRQ priority levels
+      NvicPriority irqlevel = NvicPriority_Normal;
 
       /// Start value for counter
       uint16_t cntin = 0_ticks;
@@ -6946,6 +6972,34 @@ public:
 
       /// Period or minimum interval of timer
       Seconds modperiod = 0_s;
+
+      /**
+       * Constructor for shared channel interrupt call-back
+       *
+       * @tparam   Types
+       * @param    rest
+       *
+       * @param callback Shared channel interrupt call-back to set
+       */
+      template <typename... Types>
+      constexpr Init(ChannelCallbackFunction callbackFunction, Types... rest) : Init(rest...) {
+   
+         this->channelCallbackFunction = callbackFunction;
+      }
+
+      /**
+       * Constructor for overflow and fault interrupt call-back
+       *
+       * @tparam   Types
+       * @param    rest
+       *
+       * @param callback Overflow and fault interrupt call-back to set
+       */
+      template <typename... Types>
+      constexpr Init(CallbackFunction callbackFunction, Types... rest) : Init(rest...) {
+   
+         this->callbackFunction = callbackFunction;
+      }
 
       /**
        * Constructor for IRQ priority levels
@@ -6959,7 +7013,7 @@ public:
       template <typename... Types>
       constexpr Init(NvicPriority nvicPriority, Types... rest) : Init(rest...) {
    
-#if false
+#if true
          irqlevel = nvicPriority;
 #else
          (void)nvicPriority;
@@ -7172,6 +7226,9 @@ public:
 
 };
 
+extern void unhandledCallback();
+extern void timerUnhandledChannelCallback(uint8_t);
+   
 class Ftm0Info {
 public:
    /*
@@ -7204,7 +7261,7 @@ public:
    static constexpr uint32_t irqCount  = sizeofArray(irqNums);
 
    //! Class based callback handler has been installed in vector table
-   static constexpr bool irqHandlerInstalled = false;
+   static constexpr bool irqHandlerInstalled = true;
 
    //! Default IRQ level
    static constexpr NvicPriority irqLevel =  NvicPriority_Normal;
@@ -7253,9 +7310,20 @@ public:
    typedef Ftm0BasicInfo::ChannelCallbackFunction ChannelCallbackFunction;
    
    /**
+    * Callback function for Channel Fault and timer overflow
+    */
+   static CallbackFunction callback;
+   
+   /**
     * Indicates if individual call-backs can be set for each channel
     */
    static constexpr bool IndividualCallbacks = false;
+   
+   /**
+    * Callback table for programmatically set channel call-backs
+    * One entry for hardware interrupt vector (all hardware interrupt vectors are mapped to a single channel call-back by software)
+    */
+   static ChannelCallbackFunction channelCallbacks[1];
    
    /**
     * Class used to do initialisation of Ftm0
@@ -7295,13 +7363,13 @@ public:
     * This value is created from Configure.usbdmProject settings
     */
    static constexpr Init DefaultInitValue = {
-      FtmMode_FreeRunning , // Alignment and whether interval or free-running mode - Free-running (count up)
-      FtmOverflowAction_None , // Action on Counter overflow - No action
+      FtmMode_LeftAligned , // Alignment and whether interval or free-running mode - Left-aligned (count up)
+      FtmOverflowAction_Interrupt , // Action on Counter overflow - Overflow Interrupt
       NvicPriority_Normal , // IRQ level for this peripheral - Normal
       FtmClockSource_SystemClock , // Clock Source - System clock
       FtmPrescale_DivBy1 , // Clock prescaler - Divide by 1
       0_ticks , // Start value for counter
-      65535_ticks,  // End value for counter
+      47999_ticks,  // End value for counter
    };
    
    /**
@@ -7397,9 +7465,65 @@ public:
    };
 
    /**
-    * Set callbacks and IRQ priority from Init structure
+    * Set overflow and fault interrupt call-back
+    *
+    * @param[in] newCallback Callback function to execute on interrupt.
+    *                        Use nullptr to remove callback.
+    *
+    * @return E_NO_ERROR            No error
+    * @return E_HANDLER_ALREADY_SET Handler already set
     */
-   static void setCallbacks(const Init &) {
+   static ErrorCode setCallback(CallbackFunction newCallback) {
+      if (newCallback == nullptr) {
+         callback = unhandledCallback;
+         return E_NO_ERROR;
+      }
+      callback = newCallback;
+      return E_NO_ERROR;
+   }
+   
+   /**
+    * Set channel call-back function
+    * Configured for shared channel call-backs i.e. all channels use same call-back
+    *
+    * @param[in] callback Callback function to execute on channel interrupt.
+    *                     Use nullptr to remove callback.
+    *
+    * @return E_NO_ERROR            No error
+    * @return E_HANDLER_ALREADY_SET Handler already set
+    *
+    * @note The channel callback is shared by all channels of the timer.
+    *       It is necessary to identify the originating channel in the callback
+    */
+   static ErrorCode setChannelCallback(ChannelCallbackFunction callback) {
+      if (callback == nullptr) {
+         channelCallbacks[0] = timerUnhandledChannelCallback;
+         return E_NO_ERROR;
+      }
+#ifdef DEBUG_BUILD
+      // Callback is shared across all channels. Check if callback already assigned
+      if ((channelCallbacks[0] != timerUnhandledChannelCallback) &&
+          (channelCallbacks[0] != callback)) {
+         return setErrorCode(ErrorCode::E_HANDLER_ALREADY_SET);
+      }
+#endif
+      channelCallbacks[0] = callback;
+      return E_NO_ERROR;
+   }
+   
+   /**
+    * Set callbacks and IRQ priority from Init structure
+    *
+    * @param init Class containing initialisation values
+    */
+   static void setCallbacks(const Init &init) {
+      if (init.callbackFunction != nullptr) {
+         setCallback(init.callbackFunction);
+      }
+      if (init.channelCallbackFunction != nullptr) {
+         setChannelCallback(init.channelCallbackFunction);
+      }
+      enableNvicInterrupt(irqNums[0], init.irqlevel);
    }
    
    /**
@@ -7437,7 +7561,7 @@ public:
    static constexpr PinInfo  info[] = {
 
          //      Signal                 Pin                                  portInfo    gpioBit                 PCR value
-         /*   0: FTM0_CH0             = --                             */  { NoPortInfo, UNMAPPED_PCR, (PcrValue)0          },
+         /*   0: FTM0_CH0             = PTC1(A1)                       */  { PortCInfo,  1,            (PcrValue)0x00400UL  },
          /*   1: FTM0_CH1             = --                             */  { NoPortInfo, UNMAPPED_PCR, (PcrValue)0          },
          /*   2: FTM0_CH2             = --                             */  { NoPortInfo, UNMAPPED_PCR, (PcrValue)0          },
          /*   3: FTM0_CH3             = --                             */  { NoPortInfo, UNMAPPED_PCR, (PcrValue)0          },
@@ -7455,6 +7579,14 @@ public:
     * @note Only the lower 16-bits of the PCR registers are affected
     */
    static void initPCRs() {
+
+#if defined(PCC_PCCn_CGC_MASK)
+   PCC->PCC_PORTC = PCC_PCCn_CGC_MASK;
+#else
+   enablePortClocks(PORTC_CLOCK_MASK);
+#endif
+
+   PORTC->GPCLR = 0x0400UL|PORT_GPCLR_GPWE(0x0002UL);
    }
 
    /**
@@ -7463,6 +7595,14 @@ public:
     * @note Only the lower 16-bits of the PCR registers are affected
     */
    static void clearPCRs() {
+
+#if defined(PCC_PCCn_CGC_MASK)
+   PCC->PCC_PORTC = PCC_PCCn_CGC_MASK;
+#else
+   enablePortClocks(PORTC_CLOCK_MASK);
+#endif
+
+   PORTC->GPCLR = PinMux_Disabled|PORT_GPCLR_GPWE(0x0002UL);
    }
 
    class InfoFAULT {
@@ -8754,6 +8894,8 @@ public:
       LlwuPin_13 = 13,  //!<  Wake-up pin LLWU_P13
       LlwuPin_14 = 14,  //!<  Wake-up pin LLWU_P14
       LlwuPin_15 = 15,  //!<  Wake-up pin LLWU_P15
+      LlwuPin_Pte1         = LlwuPin_0,    ///< Mapped pin PTE1(D0)
+      LlwuPin_Wakeup_D0    = LlwuPin_0,    ///< Mapped pin PTE1(D0)
 
    };
 
@@ -8941,7 +9083,7 @@ public:
    static constexpr PinInfo  info[] = {
 
          //      Signal                 Pin                                  portInfo    gpioBit                 PCR value
-         /*   0: LLWU_P0              = --                             */  { NoPortInfo, UNMAPPED_PCR, (PcrValue)0          },
+         /*   0: LLWU_P0              = PTE1(D0)                       */  { PortEInfo,  1,            (PcrValue)0x00100UL  },
          /*   1: --                   = --                             */  { NoPortInfo, INVALID_PCR,  (PcrValue)0          },
          /*   2: --                   = --                             */  { NoPortInfo, INVALID_PCR,  (PcrValue)0          },
          /*   3: LLWU_P3              = --                             */  { NoPortInfo, UNMAPPED_PCR, (PcrValue)0          },
@@ -8965,6 +9107,14 @@ public:
     * @note Only the lower 16-bits of the PCR registers are affected
     */
    static void initPCRs() {
+
+#if defined(PCC_PCCn_CGC_MASK)
+   PCC->PCC_PORTE = PCC_PCCn_CGC_MASK;
+#else
+   enablePortClocks(PORTE_CLOCK_MASK);
+#endif
+
+   PORTE->GPCLR = 0x0100UL|PORT_GPCLR_GPWE(0x0002UL);
    }
 
    /**
@@ -8973,6 +9123,14 @@ public:
     * @note Only the lower 16-bits of the PCR registers are affected
     */
    static void clearPCRs() {
+
+#if defined(PCC_PCCn_CGC_MASK)
+   PCC->PCC_PORTE = PCC_PCCn_CGC_MASK;
+#else
+   enablePortClocks(PORTE_CLOCK_MASK);
+#endif
+
+   PORTE->GPCLR = PinMux_Disabled|PORT_GPCLR_GPWE(0x0002UL);
    }
 
 };
@@ -10074,7 +10232,7 @@ public:
    
          constexpr Ticks   toTicks()   const { return value; }
    
-#if (false)
+#if (true)
          constexpr void fromTicks(Ticks ticks)       { value = ticks.getValue(); }
 #else
          constexpr void fromTicks(Ticks ticks)       { value = ticks; }
@@ -14123,9 +14281,12 @@ public:
 ///  PTA1           | DelayLed                      | GPIOA_1                                            | D5                        | D5
 ///  PTC0           | DelayControl                  | ADC0_SE14                                          | A0                        | A0
 ///  PTC1           | HoldControl                   | ADC0_SE15                                          | A1                        | A1
+///  PTC1           | TimerChannel                  | FTM0_CH0                                           | A1                        | -
 ///  PTC8           | HoldLed                       | GPIOC_8                                            | D4                        | D4
 ///  PTD1           | DustCollector                 | GPIOD_1                                            | D13                       | D13
 ///  PTD6           | CurrentSample                 | ADC0_SE7b                                          | A2                        | A2
+///  PTE1           | Digital_D0                    | GPIOE_1                                            | D0                        | D0
+///  PTE1           | Wakeup_D0                     | LLWU_P0                                            | D0                        | -
 ///  RESET_b        |                               | RESET_b                                            | RESET_b                   | Reset button
 ///  TEMP_SENSOR    |                               | ADC0_SE26                                          | Internal                  | Internal temperature sensor
 ///  USB0_DM        | -                             | USB0_DM                                            | USB0_DM                   | Reserved(USB_DM)
@@ -14140,10 +14301,13 @@ public:
 ///  -------------- | ------------------------------|--------------------------------------------------- | ------------------------- | ----------------------------------------------------
 ///  PTC0           | DelayControl                  | ADC0_SE14                                          | A0                        | A0
 ///  PTC1           | HoldControl                   | ADC0_SE15                                          | A1                        | A1
+///  PTC1           | TimerChannel                  | FTM0_CH0                                           | A1                        | -
 ///  PTD6           | CurrentSample                 | ADC0_SE7b                                          | A2                        | A2
 ///  VREF_OUT       | -                             | VREF_OUT                                           | A6                        | Vref output
 ///  ADC0_DM3       |                               | ADC0_SE21                                          | A9                        | External temperature sensor
 ///  ADC0_DM0       |                               | ADC0_SE19                                          | A11                       | Photo-transistor
+///  PTE1           | Digital_D0                    | GPIOE_1                                            | D0                        | D0
+///  PTE1           | Wakeup_D0                     | LLWU_P0                                            | D0                        | -
 ///  PTC8           | HoldLed                       | GPIOC_8                                            | D4                        | D4
 ///  PTA1           | DelayLed                      | GPIOA_1                                            | D5                        | D5
 ///  PTD1           | DustCollector                 | GPIOD_1                                            | D13                       | D13
@@ -14168,9 +14332,12 @@ public:
 ///  BANDGAP        |                               | ADC0_SE27                                          | Internal                  | Internal band-gap reference
 ///  PTD6           | CurrentSample                 | ADC0_SE7b                                          | A2                        | A2
 ///  EXTAL32        | -                             | EXTAL32                                            | EXTAL32                   | Reserved(EXTAL32)
+///  PTC1           | TimerChannel                  | FTM0_CH0                                           | A1                        | -
 ///  PTA1           | DelayLed                      | GPIOA_1                                            | D5                        | D5
 ///  PTC8           | HoldLed                       | GPIOC_8                                            | D4                        | D4
 ///  PTD1           | DustCollector                 | GPIOD_1                                            | D13                       | D13
+///  PTE1           | Digital_D0                    | GPIOE_1                                            | D0                        | D0
+///  PTE1           | Wakeup_D0                     | LLWU_P0                                            | D0                        | -
 ///  RESET_b        |                               | RESET_b                                            | RESET_b                   | Reset button
 ///  USB0_DM        | -                             | USB0_DM                                            | USB0_DM                   | Reserved(USB_DM)
 ///  USB0_DP        | -                             | USB0_DP                                            | USB0_DP                   | Reserved(USB_DP)

@@ -9,7 +9,7 @@
    <item key="$$DeviceInfo_SubFamily"                      value="MK20D5" />
    <item key="$$Hardware_Source_Filename"                  value="MK20D5.usbdmHardware" />
    <item key="$peripheral$ADC0_codeIdentifier"             value="UserAdc" />
-   <item key="$peripheral$GPIOD_polarity"                  value="2" />
+   <item key="$peripheral$FTM0_codeIdentifier"             value="UserTimer" />
    <item key="$peripheral$I2C0_codeIdentifier"             value="UserI2c" />
    <item key="$peripheral$I2C0_userDescription"            value="User I2C" />
    <item key="$peripheral$SPI0_codeIdentifier"             value="UserSpi" />
@@ -23,9 +23,11 @@
    <item key="$pin$PTB17_pcrSetting_3"                     value="300" />
    <item key="$pin$PTC0_pcrSetting_0"                      value="0" />
    <item key="$pin$PTC1_pcrSetting_0"                      value="0" />
+   <item key="$pin$PTC1_pcrSetting_4"                      value="400" />
    <item key="$pin$PTC8_pcrSetting_1"                      value="100" />
    <item key="$pin$PTD1_pcrSetting_1"                      value="100" />
    <item key="$pin$PTD6_pcrSetting_0"                      value="0" />
+   <item key="$pin$PTE1_pcrSetting_1"                      value="100" />
    <item key="$signal$ADC0_SE14_codeIdentifier"            value="DelayControl" />
    <item key="$signal$ADC0_SE14_descriptionSetting"        value="A0" />
    <item key="$signal$ADC0_SE15_codeIdentifier"            value="HoldControl" />
@@ -40,6 +42,7 @@
    <item key="$signal$ADC0_SE8_descriptionSetting"         value="A5" />
    <item key="$signal$ADC0_SE9_descriptionSetting"         value="A4" />
    <item key="$signal$EXTAL32_descriptionSetting"          value="Reserved(EXTAL32)" />
+   <item key="$signal$FTM0_CH0_codeIdentifier"             value="TimerChannel" />
    <item key="$signal$FTM0_CH2_codeIdentifier"             value="RGB_Red_Pwm" />
    <item key="$signal$FTM0_CH4_codeIdentifier"             value="RGB_Green_Pwm" />
    <item key="$signal$FTM0_CH7_codeIdentifier"             value="RGB_Blue_Pwm" />
@@ -125,6 +128,10 @@
    <item key="/ADC0/adc_cfg1_mode"                         value="2" />
    <item key="/CMP0/cmp_fpr_filt_per"                      value="0" />
    <item key="/CMP1/cmp_fpr_filt_per"                      value="0" />
+   <item key="/FTM0/ftm_mod"                               value="47999" />
+   <item key="/FTM0/ftm_sc_action"                         value="true" />
+   <item key="/FTM0/ftm_sc_mode"                           value="0,0" />
+   <item key="/FTM0/irqHandlingMethod"                     value="$ClassMethod" />
    <item key="/HARDWARE/Analogue0"                         value="Analogue_A0" />
    <item key="/HARDWARE/Analogue1"                         value="Analogue_A1" />
    <item key="/HARDWARE/Digital0"                          value="Digital_D0" />
@@ -135,6 +142,7 @@
    <item key="/HARDWARE/Led2"                              value="RGB_Green" />
    <item key="/HARDWARE/Led3"                              value="RGB_Blue" />
    <item key="/HARDWARE/Switch1"                           value="Digital_D0" />
+   <item key="/HARDWARE/useTypeSystemForTimers"            value="true" />
    <item key="/LINKER/heapSize"                            value="4096" />
    <item key="/LINKER/stackSize"                           value="4096" />
    <item key="/LLWU/llwu_filt1_filtsel"                    value="0" />
