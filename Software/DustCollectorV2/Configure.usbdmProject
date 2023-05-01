@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Configure.usbdmProject -->
+<!-- 
+   Settings
+-->
+
+<section name="USBDM">
+   <item key="$$DeviceInfo_Device_Variant"                 value="MK20DN64VLF5" />
+   <item key="$$DeviceInfo_SubFamily"                      value="MK20D5" />
+   <item key="$$Hardware_Source_Filename"                  value="MK20D5.usbdmHardware" />
+   <item key="$peripheral$ADC0_codeIdentifier"             value="UserAdc" />
+   <item key="$peripheral$ADC0_userDescription"            value="General use ADC" />
+   <item key="$peripheral$PIT_codeIdentifier"              value="UserTimer" />
+   <item key="$peripheral$PIT_userDescription"             value="General Timer" />
+   <item key="$pin$PTA1_pcrSetting_2"                      value="200" />
+   <item key="$pin$PTA2_pcrSetting_2"                      value="200" />
+   <item key="$pin$PTB16_pcrSetting_1"                     value="100" />
+   <item key="$pin$PTB3_pcrSetting_0"                      value="0" />
+   <item key="$pin$PTC0_pcrSetting_0"                      value="0" />
+   <item key="$pin$PTC1_pcrSetting_1"                      value="100" />
+   <item key="$pin$PTC2_pcrSetting_0"                      value="0" />
+   <item key="$pin$PTC3_pcrSetting_1"                      value="100" />
+   <item key="$pin$PTC6_pcrSetting_1"                      value="100" />
+   <item key="$pin$PTD1_pcrSetting_0"                      value="0" />
+   <item key="$pin$PTD7_pcrSetting_1"                      value="100" />
+   <item key="$signal$ADC0_SE13_codeIdentifier"            value="HoldControl" />
+   <item key="$signal$ADC0_SE13_descriptionSetting"        value="Analogue input level controlling hold time" />
+   <item key="$signal$ADC0_SE14_codeIdentifier"            value="DelayControl" />
+   <item key="$signal$ADC0_SE14_descriptionSetting"        value="Analogue input level controlling delay time" />
+   <item key="$signal$ADC0_SE4b_codeIdentifier"            value="LevelControl" />
+   <item key="$signal$ADC0_SE4b_descriptionSetting"        value="Analogue input level controlling detection level" />
+   <item key="$signal$ADC0_SE5b_codeIdentifier"            value="CurrentSample" />
+   <item key="$signal$ADC0_SE5b_descriptionSetting"        value="Analogue input measuring instantaneous load current" />
+   <item key="$signal$GPIOB_16_codeIdentifier"             value="HoldLed" />
+   <item key="$signal$GPIOB_16_descriptionSetting"         value="LED indicating in hold state" />
+   <item key="$signal$GPIOC_1_codeIdentifier"              value="DelayLed" />
+   <item key="$signal$GPIOC_1_descriptionSetting"          value="LED indicating in delay state" />
+   <item key="$signal$GPIOC_3_codeIdentifier"              value="DetectLed" />
+   <item key="$signal$GPIOC_3_descriptionSetting"          value="LED indicating load detection" />
+   <item key="$signal$GPIOC_6_codeIdentifier"              value="DustCollector" />
+   <item key="$signal$GPIOC_6_descriptionSetting"          value="Control for dust collector" />
+   <item key="$signal$GPIOD_7_codeIdentifier"              value="Debug" />
+   <item key="$signal$GPIOD_7_descriptionSetting"          value="General Debug pin" />
+   <item key="$signal$PIT_CH0_codeIdentifier"              value="PollingTimerChannel" />
+   <item key="$signal$PIT_CH0_descriptionSetting"          value="Timer channel for polling" />
+   <item key="/CMP0/cmp_fpr_filt_per"                      value="0" />
+   <item key="/CMP1/cmp_fpr_filt_per"                      value="0" />
+   <item key="/LINKER/heapSize"                            value="4096" />
+   <item key="/LINKER/stackSize"                           value="4096" />
+   <item key="/LLWU/llwu_filt1_filtsel"                    value="0" />
+   <item key="/LLWU/llwu_filt2_filtsel"                    value="0" />
+   <item key="/MCG/ClockConfig[0]"                         value="ClockConfig_RUN_FEI_48MHz" />
+   <item key="/MCG/ClockConfig[1]"                         value="ClockConfig_VLPR_BLPE_4MHz" />
+   <item key="/MCG/ClockConfig[2]"                         value="ClockConfig_RUN_FEE_40MHz" />
+   <item key="/MCG/ClockConfig[3]"                         value="ClockConfig_RUN_FEIx_42MHz" />
+   <item key="/MCG/mcgClockMode[1]"                        value="5" />
+   <item key="/MCG/mcgClockMode[2]"                        value="1" />
+   <item key="/MCG/mcg_c1_frdiv[2]"                        value="3" />
+   <item key="/MCG/mcg_c2_range0[1]"                       value="1" />
+   <item key="/MCG/mcg_c2_range0[2]"                       value="1" />
+   <item key="/MCG/oscMode"                                value="0" />
+   <item key="/MCG/pll0OutputFrequency[0]"                 value="96000000" />
+   <item key="/MCG/pll0OutputFrequency[3]"                 value="96000000" />
+   <item key="/MCG/system_mcgfllclk_clock[0]"              value="41943040" />
+   <item key="/OSC0/mapPinsOnEnable"                       value="false" />
+   <item key="/OSC0/osc_cr_erclken"                        value="false" />
+   <item key="/PDB0/pdb_ch0_dly0"                          value="0" />
+   <item key="/PDB0/pdb_ch0_dly1"                          value="0" />
+   <item key="/PIT/irqHandlingMethod"                      value="$ClassMethod" />
+   <item key="/PIT/pit_ldval_tsv[0]"                       value="0" />
+   <item key="/PIT/pit_ldval_tsv[1]"                       value="0" />
+   <item key="/PIT/pit_ldval_tsv[2]"                       value="0" />
+   <item key="/PIT/pit_ldval_tsv[3]"                       value="0" />
+   <item key="/RTC/mapPinsOnEnable"                        value="false" />
+   <item key="/SIM/sim_clkdiv1_outdiv1[0]"                 value="15" />
+   <item key="/SIM/sim_clkdiv1_outdiv2[0]"                 value="15" />
+   <item key="/SIM/sim_clkdiv1_outdiv4[0]"                 value="15" />
+   <item key="/SIM/sim_clkdiv1_outdiv4[1]"                 value="8" />
+   <item key="/SIM/sim_clkdiv1_outdiv4[2]"                 value="2" />
+   <item key="/SIM/sim_clkdiv2_usb[0]"                     value="2" />
+   <item key="/SIM/sim_clkdiv2_usb[1]"                     value="9" />
+   <item key="/SIM/sim_clkdiv2_usb[2]"                     value="9" />
+   <item key="/SIM/sim_clkdiv2_usb[3]"                     value="2" />
+   <item key="/SIM/sim_sopt2_pllfllsel[2]"                 value="1" />
+   <item key="/SMC/smc_pmctrl_runm[1]"                     value="2" />
+</section>

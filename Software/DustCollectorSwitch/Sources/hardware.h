@@ -26,6 +26,7 @@
 #include "console.h"
 
 #include "gpio.h"
+#include "pit.h"
 #include "i2c.h"
 #include "adc.h"
 #include "spi.h"
@@ -56,9 +57,6 @@ typedef Adc0::Channel<14>                                    DelayControl;      
 /// A1
 typedef Adc0::Channel<15>                                    HoldControl;                                  // PTC1(A1)
 
-/// FTM, PWM, Input capture and Output compare
-typedef Ftm0                                                 UserTimer;                                    
-
 typedef Ftm0::Channel<0>                                     TimerChannel;                                 // PTC1(A1)
 
 /// D5
@@ -77,6 +75,9 @@ typedef GpioTable_T<GpioEInfo, 1, ActiveHigh>                Digital_D0;        
 typedef I2c0                                                 UserI2c;                                      
 
 typedef Llwu::Pin<LlwuPin_Pte1>                              Wakeup_D0;                                    // PTE1(D0)
+
+/// PIT, Programmable Interrupt Timer
+typedef Pit                                                  UserTimer;                                    
 
 /// User SPI
 typedef Spi0                                                 UserSpi;                                      

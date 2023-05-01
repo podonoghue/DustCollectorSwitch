@@ -45,7 +45,6 @@ extern "C" void __attribute__((constructor)) cpp_initialise() {
 void mapAllPins() {
 #if false
 
-#warning "PCR Not initialised for PTC1       : Multiple signals mapped to pin - ADC0_SE15[HoldControl]/TSI0_CH14, FTM0_CH0[TimerChannel]"
 
 #endif
 
@@ -60,26 +59,24 @@ void mapAllPins() {
    enablePortClocks(PORTA_CLOCK_MASK|PORTB_CLOCK_MASK|PORTC_CLOCK_MASK|PORTD_CLOCK_MASK|PORTE_CLOCK_MASK);
 #endif
 
-   PORTA->GPCHR = ForceLockedPins|0x0000UL|PORT_GPCHR_GPWE(0x000CUL);
-   PORTA->GPCLR = ForceLockedPins|0x0100UL|PORT_GPCLR_GPWE(0x0002UL);
-   PORTA->GPCLR = ForceLockedPins|0x0700UL|PORT_GPCLR_GPWE(0x0009UL);
-   PORTB->GPCHR = ForceLockedPins|0x0300UL|PORT_GPCHR_GPWE(0x0003UL);
-   PORTC->GPCLR = ForceLockedPins|0x0000UL|PORT_GPCLR_GPWE(0x0001UL);
-   PORTC->GPCLR = ForceLockedPins|0x0100UL|PORT_GPCLR_GPWE(0x0100UL);
-   PORTD->GPCLR = ForceLockedPins|0x0000UL|PORT_GPCLR_GPWE(0x0040UL);
-   PORTD->GPCLR = ForceLockedPins|0x0100UL|PORT_GPCLR_GPWE(0x0002UL);
-   PORTE->GPCLR = ForceLockedPins|0x0100UL|PORT_GPCLR_GPWE(0x0002UL);
+   PORTA->GPCLR = ForceLockedPins|0x0200UL|PORT_GPCLR_GPWE(0x0006UL);
+   PORTB->GPCLR = ForceLockedPins|0x0000UL|PORT_GPCLR_GPWE(0x0008UL);
+   PORTB->GPCHR = ForceLockedPins|0x0100UL|PORT_GPCHR_GPWE(0x0001UL);
+   PORTC->GPCLR = ForceLockedPins|0x0000UL|PORT_GPCLR_GPWE(0x0005UL);
+   PORTC->GPCLR = ForceLockedPins|0x0100UL|PORT_GPCLR_GPWE(0x004AUL);
+   PORTD->GPCLR = ForceLockedPins|0x0000UL|PORT_GPCLR_GPWE(0x0002UL);
+   PORTD->GPCLR = ForceLockedPins|0x0100UL|PORT_GPCLR_GPWE(0x0080UL);
 
    if constexpr (ForceLockoutUnbondedPins) {
-      PORTA->GPCLR = PinLock_Locked |0x0000UL|PORT_GPCLR_GPWE(0xCFC0UL); // Lockout unavailable pins
+      PORTA->GPCLR = PinLock_Locked |0x0000UL|PORT_GPCLR_GPWE(0xFFE0UL); // Lockout unavailable pins
       PORTA->GPCHR = PinLock_Locked |0x0000UL|PORT_GPCHR_GPWE(0xFFF3UL); // Lockout unavailable pins
       PORTB->GPCLR = PinLock_Locked |0x0000UL|PORT_GPCLR_GPWE(0xFFF0UL); // Lockout unavailable pins
-      PORTB->GPCHR = PinLock_Locked |0x0000UL|PORT_GPCHR_GPWE(0xFFF0UL); // Lockout unavailable pins
-      PORTC->GPCLR = PinLock_Locked |0x0000UL|PORT_GPCLR_GPWE(0xF000UL); // Lockout unavailable pins
+      PORTB->GPCHR = PinLock_Locked |0x0000UL|PORT_GPCHR_GPWE(0xFFFCUL); // Lockout unavailable pins
+      PORTC->GPCLR = PinLock_Locked |0x0000UL|PORT_GPCLR_GPWE(0xFF00UL); // Lockout unavailable pins
       PORTC->GPCHR = PinLock_Locked |0x0000UL|PORT_GPCHR_GPWE(0xFFFFUL); // Lockout unavailable pins
       PORTD->GPCLR = PinLock_Locked |0x0000UL|PORT_GPCLR_GPWE(0xFF00UL); // Lockout unavailable pins
       PORTD->GPCHR = PinLock_Locked |0x0000UL|PORT_GPCHR_GPWE(0xFFFFUL); // Lockout unavailable pins
-      PORTE->GPCLR = PinLock_Locked |0x0000UL|PORT_GPCLR_GPWE(0xFFFCUL); // Lockout unavailable pins
+      PORTE->GPCLR = PinLock_Locked |0x0000UL|PORT_GPCLR_GPWE(0xFFFFUL); // Lockout unavailable pins
       PORTE->GPCHR = PinLock_Locked |0x0000UL|PORT_GPCHR_GPWE(0xFFFFUL); // Lockout unavailable pins
    }
 

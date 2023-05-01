@@ -47,6 +47,14 @@ static const char *getStateName(State state) {
 #endif
 
 /**
+ * Get detect threshold as raw ADC value
+ */
+Seconds getDetectThreshold() {
+   return LevelControl::readAnalogue();
+}
+
+
+/**
  * Get Delay value in seconds [500ms..5s]
  */
 Seconds getDelayControl() {
@@ -75,28 +83,39 @@ Seconds getHoldControl() {
  */
 void timerCallback() {
 
-   Digital_D0::toggle();
+   Debug::toggle();
 
+   // Current is averaged over ~20 ms
+
+   // Sample within interval
    static unsigned sampleCount = 0;
-   static unsigned accumulator = 0;
-   static unsigned average     = 0;
 
-   // Threshold used to determine if load is operating
-   constexpr unsigned THRESHOLD =  averagePeriodInTicks * UserAdc::getSingleEndedMaximum(ADC_RESOLUTION)/10;
+   // Accumulated value over interval so far
+   static unsigned accumulator = 0;
+
+   // Accumulated value over entire interval (~20 ms)
+   static unsigned totalOfSamples     = 0;
 
    // Do averaging of current over cycle
    int current = CurrentSample::readAnalogue();
 
    accumulator += current;
    if (++sampleCount > averagePeriodInTicks) {
-      average     = accumulator;
-      accumulator = 0;
-      sampleCount = 0;
+      totalOfSamples = accumulator;
+      accumulator    = 0;
+      sampleCount    = 0;
    }
-   bool isLoadOn = average > THRESHOLD;
 
-   // Used to count intervals
-   static unsigned tickCounter = 0;
+   // Threshold used to determine if load is operating
+   const unsigned threshold = averagePeriodInTicks * getDetectThreshold();
+
+   // Check if load present
+   bool isLoadOn = totalOfSamples > threshold;
+
+   DetectLed::write(isLoadOn);
+
+   // Used to count time intervals
+   static unsigned timeCounter = 0;
 
    switch(state) {
       default:
@@ -107,7 +126,7 @@ void timerCallback() {
          // Check for load
          if (isLoadOn) {
             state = s_DELAY;
-            tickCounter = 0;
+            timeCounter = 0;
          }
          break;
       case s_DELAY:
@@ -119,7 +138,7 @@ void timerCallback() {
             state = s_IDLE;
             DelayLed::off();
          }
-         else if (++tickCounter>delayTimeInTicks) {
+         else if (++timeCounter>delayTimeInTicks) {
             // Completed delay time
             state = s_OPERATING;
             DelayLed::off();
@@ -132,7 +151,7 @@ void timerCallback() {
          if (!isLoadOn) {
             // Load gone
             state = s_HOLD;
-            tickCounter = 0;
+            timeCounter = 0;
          }
          break;
       case s_HOLD:
@@ -142,7 +161,7 @@ void timerCallback() {
             state = s_OPERATING;
             HoldLed::off();
          }
-         else if (++tickCounter>holdTimeInTicks) {
+         else if (++timeCounter>holdTimeInTicks) {
             // Completed hold time
             state = s_IDLE;
             HoldLed::off();
@@ -176,33 +195,35 @@ void initialise() {
    DelayControl::setInput();
 
    static constexpr UserTimer::Init timerInit {
-      PitChannelNum_0,
+      PollingTimerChannel::CHANNEL,
 
       PitChannelEnable_Enabled , // Timer Channel Enabled
       PitChannelIrq_Enabled ,    // Timer Interrupt Enabled
       NvicPriority_Normal ,      // IRQ level
-      TICK_TIME,                 // Reload value for channel (interval)
+      TICK_TIME,                 // Time interval for channel
       timerCallback,             // Call-back
       };
    UserTimer::configure(timerInit);
 
-   Digital_D0::setOutput();
+   Debug::setOutput();
 }
 
 int main() {
+
 #ifdef DEBUG_BUILD
    console.writeln("\nStarting");
 #endif
 
    initialise();
 
-   // Update parameters on startup
+   // Update time parameters on startup
    delayTimeInTicks = round(getDelayControl() / TICK_TIME);
    holdTimeInTicks  = round(getHoldControl()  / TICK_TIME);
 
 #ifdef DEBUG_BUILD
    State lastState = s_OPERATING;
 
+   console.writeln("Detect threshold = ", (getDetectThreshold()*3.3)/UserAdc::getSingleEndedMaximum(ADC_RESOLUTION), " V");
    console.writeln("Delay time       = ", delayTimeInTicks * TICK_TIME, " s");
    console.writeln("Hold  time       = ", holdTimeInTicks * TICK_TIME, " s");
    console.writeln("Average interval = ", averagePeriodInTicks * TICK_TIME, " s");
