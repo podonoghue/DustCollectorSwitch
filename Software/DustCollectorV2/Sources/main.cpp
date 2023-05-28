@@ -58,20 +58,22 @@ Seconds getDetectThreshold() {
  * Get Delay value in seconds [500ms..5s]
  */
 Seconds getDelayControl() {
-   constexpr Seconds MIN_DELAY = 500_ms;
-   constexpr Seconds MAX_DELAY = 5_s;
+//   constexpr Seconds MIN_DELAY = 500_ms;
+//   constexpr Seconds MAX_DELAY = 5_s;
 
-   return MIN_DELAY + (DelayControl::readAnalogue()*(MAX_DELAY-MIN_DELAY))/UserAdc::getSingleEndedMaximum(ADC_RESOLUTION);
+   return 1_s;
+//   return MIN_DELAY + (DelayControl::readAnalogue()*(MAX_DELAY-MIN_DELAY))/UserAdc::getSingleEndedMaximum(ADC_RESOLUTION);
 }
 
 /**
  * Get Hold value in seconds [1s..10s]
  */
 Seconds getHoldControl() {
-   constexpr Seconds MIN_HOLD = 1_s;
-   constexpr Seconds MAX_HOLD = 10_s;
+//   constexpr Seconds MIN_HOLD = 1_s;
+//   constexpr Seconds MAX_HOLD = 10_s;
 
-   return MIN_HOLD + (HoldControl::readAnalogue()*(MAX_HOLD-MIN_HOLD))/UserAdc::getSingleEndedMaximum(ADC_RESOLUTION);
+   return 5_s;
+//   return MIN_HOLD + (HoldControl::readAnalogue()*(MAX_HOLD-MIN_HOLD))/UserAdc::getSingleEndedMaximum(ADC_RESOLUTION);
 }
 
 /**
@@ -180,6 +182,7 @@ void initialise() {
    DustCollector::setOutput(PORT_INIT);
    HoldLed::setOutput(PORT_INIT);
    DelayLed::setOutput(PORT_INIT);
+   DetectLed::setOutput(PORT_INIT);
 
    static constexpr Adc0BasicInfo::Init adcInit {
       AdcClockSource_Bus ,       // ADC Clock Source - Bus clock

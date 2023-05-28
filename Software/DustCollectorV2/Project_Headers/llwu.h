@@ -539,25 +539,25 @@ public:
       LlwuPeripheral_None,  // Peripheral RTC_Alarm - Wake-up disabled  
       LlwuPeripheral_None,  //  - Wake-up disabled  
       LlwuPeripheral_None,  // Peripheral RTC_Seconds - Wake-up disabled  
-      LlwuPin_0, LlwuPinMode_Disabled,  // Pin PTE1 - Wake-up pin disabled, 
+      LlwuPin_0, LlwuPinMode_Disabled,  // Unused input 0 - Wake-up pin disabled, 
       LlwuPin_1, LlwuPinMode_Disabled,  // Unused input 1 - Wake-up pin disabled, 
       LlwuPin_2, LlwuPinMode_Disabled,  // Unused input 2 - Wake-up pin disabled, 
       LlwuPin_3, LlwuPinMode_Disabled,  // Pin PTA4 - Wake-up pin disabled, 
-      LlwuPin_4, LlwuPinMode_Disabled,  // Pin PTA13 - Wake-up pin disabled, 
+      LlwuPin_4, LlwuPinMode_Disabled,  // Unused input 4 - Wake-up pin disabled, 
       LlwuPin_5, LlwuPinMode_Disabled,  // Pin PTB0 - Wake-up pin disabled, 
       LlwuPin_6, LlwuPinMode_Disabled,  // Pin PTC1 - Wake-up pin disabled, 
       LlwuPin_7, LlwuPinMode_Disabled,  // Pin PTC3 - Wake-up pin disabled, 
       LlwuPin_8, LlwuPinMode_Disabled,  // Pin PTC4 - Wake-up pin disabled, 
       LlwuPin_9, LlwuPinMode_Disabled,  // Pin PTC5 - Wake-up pin disabled, 
       LlwuPin_10, LlwuPinMode_Disabled,  // Pin PTC6 - Wake-up pin disabled, 
-      LlwuPin_11, LlwuPinMode_Disabled,  // Pin PTC11 - Wake-up pin disabled, 
+      LlwuPin_11, LlwuPinMode_Disabled,  // Unused input 11 - Wake-up pin disabled, 
       LlwuPin_12, LlwuPinMode_Disabled,  // Pin PTD0 - Wake-up pin disabled, 
       LlwuPin_13, LlwuPinMode_Disabled,  // Pin PTD2 - Wake-up pin disabled, 
       LlwuPin_14, LlwuPinMode_Disabled,  // Pin PTD4 - Wake-up pin disabled, 
       LlwuPin_15, LlwuPinMode_Disabled,  // Pin PTD6 - Wake-up pin disabled, 
-      LlwuFilterNum_1, LlwuPin_0 , // Filter 1 Pin Select - Pin PTE1
+      LlwuFilterNum_1, LlwuPin_3 , // Filter 1 Pin Select - Pin PTA4
       LlwuFilterPinMode_Disabled,  // Wake-up On External Pin with Digital Filter - Wake-up disabled, 
-      LlwuFilterNum_2, LlwuPin_0 , // Filter 2 Pin Select - Pin PTE1
+      LlwuFilterNum_2, LlwuPin_3 , // Filter 2 Pin Select - Pin PTA4
       LlwuFilterPinMode_Disabled,  // Wake-up On External Pin with Digital Filter - Wake-up disabled, 
       LlwuResetWakeup_Enabled, LlwuResetFilter_Disabled,  
    };

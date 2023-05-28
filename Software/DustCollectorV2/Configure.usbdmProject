@@ -56,7 +56,6 @@
    <item key="/MCG/mcgClockMode[1]"                        value="5" />
    <item key="/MCG/mcgClockMode[2]"                        value="1" />
    <item key="/MCG/mcg_c1_frdiv[2]"                        value="3" />
-   <item key="/MCG/mcg_c2_range0[1]"                       value="1" />
    <item key="/MCG/mcg_c2_range0[2]"                       value="1" />
    <item key="/MCG/oscMode"                                value="0" />
    <item key="/MCG/pll0OutputFrequency[0]"                 value="96000000" />
