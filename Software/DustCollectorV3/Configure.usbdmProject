@@ -46,12 +46,6 @@
    <item key="$signal$PIT_CH0_descriptionSetting"          value="Timer channel for polling" />
    <item key="/CMP0/cmp_fpr_filt_per"                      value="0" />
    <item key="/CMP1/cmp_fpr_filt_per"                      value="0" />
-   <item key="/CRC0/crc_data_hl"                           value="0" />
-   <item key="/CRC0/crc_data_hu"                           value="0" />
-   <item key="/CRC0/crc_data_ll"                           value="0" />
-   <item key="/CRC0/crc_data_lu"                           value="0" />
-   <item key="/CRC0/crc_gpoly_high"                        value="0" />
-   <item key="/CRC0/crc_gpoly_low"                         value="0" />
    <item key="/LINKER/heapSize"                            value="4096" />
    <item key="/LINKER/stackSize"                           value="4096" />
    <item key="/LLWU/llwu_filt1_filtsel"                    value="0" />

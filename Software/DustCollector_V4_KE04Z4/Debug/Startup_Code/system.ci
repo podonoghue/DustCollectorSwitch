@@ -1,0 +1,18 @@
+graph: { title: "../Startup_Code/system.cpp"
+node: { title: "../Startup_Code/system.cpp:_ZN5USBDM4Port16defaultConfigureEv" label: "static void USBDM::Port::defaultConfigure()\n../Project_Headers/port.h:39:23\n8 bytes (static)" }
+edge: { sourcename: "../Startup_Code/system.cpp:_ZN5USBDM4Port16defaultConfigureEv" targetname: "../Startup_Code/system.cpp:_ZN5USBDM4Port9configureERKNS_13PortBasicInfo4InitE" label: "../Project_Headers/port.h:42:16" }
+node: { title: "../Startup_Code/system.cpp:_ZN5USBDM4Port9configureERKNS_13PortBasicInfo4InitE" label: "static void USBDM::Port::configure(const USBDM::PortInfo::Init&)\n../Project_Headers/port.h:53:16\n16 bytes (static)" }
+node: { title: "../Startup_Code/system.cpp:_Z21SystemCoreClockUpdatev" label: "void SystemCoreClockUpdate()\n../Startup_Code/system.cpp:18:6\n8 bytes (static)" }
+node: { title: "../Startup_Code/system.cpp:clock_initialise" label: "void clock_initialise()\n../Startup_Code/system.cpp:47:6\n8 bytes (static)" }
+node: { title: "../Startup_Code/system.cpp:console_initialise" label: "void console_initialise()\n../Startup_Code/system.cpp:52:6\n8 bytes (static)" }
+node: { title: "../Startup_Code/system.cpp:rtc_initialise" label: "void rtc_initialise()\n../Startup_Code/system.cpp:57:6\n8 bytes (static)" }
+node: { title: "../Startup_Code/system.cpp:software_init_hook" label: "void software_init_hook()\n../Startup_Code/system.cpp:62:6\n8 bytes (static)" }
+node: { title: "SystemInitLowLevel" label: "void SystemInitLowLevel()\n../Startup_Code/system.cpp:85:6\n8 bytes (static)" }
+edge: { sourcename: "SystemInitLowLevel" targetname: "../Startup_Code/system.cpp:_ZN5USBDM10WdogBase_TINS_8WdogInfoEE11disableWdogEv" label: "../Startup_Code/system.cpp:108:28" }
+node: { title: "SystemInit" label: "void SystemInit()\n../Startup_Code/system.cpp:125:6\n8 bytes (static)" }
+edge: { sourcename: "SystemInit" targetname: "../Startup_Code/system.cpp:clock_initialise" label: "../Startup_Code/system.cpp:136:20" }
+edge: { sourcename: "SystemInit" targetname: "../Startup_Code/system.cpp:console_initialise" label: "../Startup_Code/system.cpp:139:22" }
+edge: { sourcename: "SystemInit" targetname: "../Startup_Code/system.cpp:rtc_initialise" label: "../Startup_Code/system.cpp:142:18" }
+edge: { sourcename: "SystemInit" targetname: "../Startup_Code/system.cpp:_ZN5USBDM4Port16defaultConfigureEv" label: "../Startup_Code/system.cpp:160:33" }
+node: { title: "../Startup_Code/system.cpp:_ZN5USBDM10WdogBase_TINS_8WdogInfoEE11disableWdogEv" label: "static void USBDM::WdogBase_T<Info>::disableWdog() [with Info = USBDM::WdogInfo]\n../Project_Headers/wdog.h:138:23\n8 bytes (static)" }
+}

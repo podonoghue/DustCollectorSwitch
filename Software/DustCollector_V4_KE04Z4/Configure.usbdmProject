@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Configure.usbdmProject -->
+<!-- 
+   Settings
+-->
+
+<section name="USBDM">
+   <item key="$$DeviceInfo_Device_Variant"                 value="MKE04Z8VTG4" />
+   <item key="$$DeviceInfo_SubFamily"                      value="MKE04Z4" />
+   <item key="$$Hardware_Source_Filename"                  value="MKE04Z4.usbdmHardware" />
+   <item key="$peripheral$ADC0_codeIdentifier"             value="UserAdc" />
+   <item key="$peripheral$PIT_codeIdentifier"              value="UserTimer" />
+   <item key="$pin$PTA1_pcrSetting_4"                      value="400" />
+   <item key="$pin$PTA2_pcrSetting_0"                      value="0" />
+   <item key="$pin$PTA3_pcrSetting_2"                      value="200" />
+   <item key="$pin$PTB0_pcrSetting_5"                      value="500" />
+   <item key="$pin$PTB1_pcrSetting_5"                      value="500" />
+   <item key="$pin$PTB2_pcrSetting_5"                      value="500" />
+   <item key="$pin$PTB3_pcrSetting_4"                      value="400" />
+   <item key="$pin$PTB4_pcrSetting_0"                      value="0" />
+   <item key="$pin$PTB5_pcrSetting_0"                      value="0" />
+   <item key="$pin$PTB6_pcrSetting_0"                      value="0" />
+   <item key="$pin$PTB7_pcrSetting_0"                      value="0" />
+   <item key="$signal$ADC0_SE10_codeIdentifier"            value="LevelControl" />
+   <item key="$signal$ADC0_SE11_codeIdentifier"            value="DelayControl" />
+   <item key="$signal$ADC0_SE1_codeIdentifier"             value="Reference" />
+   <item key="$signal$ADC0_SE4_codeIdentifier"             value="I_Sample2" />
+   <item key="$signal$ADC0_SE5_codeIdentifier"             value="I_Sample" />
+   <item key="$signal$ADC0_SE6_codeIdentifier"             value="HoldControl" />
+   <item key="$signal$ADC0_SE7_codeIdentifier"             value="LevelControl" />
+   <item key="$signal$ADC0_SE9_codeIdentifier"             value="HoldControl" />
+   <item key="$signal$GPIOA_12_codeIdentifier"             value="Debug" />
+   <item key="$signal$GPIOA_13_codeIdentifier"             value="DustCollector" />
+   <item key="$signal$GPIOA_14_codeIdentifier"             value="HoldLed" />
+   <item key="$signal$GPIOA_15_codeIdentifier"             value="DelayLed" />
+   <item key="$signal$GPIOA_2_codeIdentifier"              value="DetectLed" />
+   <item key="$signal$RESET_b_codeIdentifier"              value="RESET_b" />
+   <item key="$signal$SWD_CLK_codeIdentifier"              value="SWDCLK" />
+   <item key="$signal$SWD_DIO_codeIdentifier"              value="SWDIO" />
+   <item key="/ADC0/adc_cv_cv"                             value="0" />
+   <item key="/ADC0/enablePeripheralSupport"               value="true" />
+   <item key="/ADC0/irqHandlingMethod"                     value="$ClassMethod" />
+   <item key="/Console/consoleEnable"                      value="false" />
+   <item key="/GPIOA/enablePeripheralSupport"              value="true" />
+   <item key="/ICS/ClockConfig[0]"                         value="ClockConfig_FEI_48MHz" />
+   <item key="/ICS/ClockConfig[1]"                         value="ClockConfig_1" />
+   <item key="/ICS/ClockConfig[2]"                         value="ClockConfig_2" />
+   <item key="/ICS/ClockConfig[3]"                         value="ClockConfig_3" />
+   <item key="/ICS/internalClockTrim"                      value="185" />
+   <item key="/LINKER/bss_ram"                             value="ram_high" />
+   <item key="/LINKER/data_ram"                            value="ram_high" />
+   <item key="/LINKER/heapSize"                            value="0" />
+   <item key="/LINKER/noinit_ram"                          value="ram_high" />
+   <item key="/LINKER/stackSize"                           value="100" />
+   <item key="/LINKER/stack_ram"                           value="ram_low" />
+   <item key="/PIT/enablePeripheralSupport"                value="true" />
+   <item key="/PIT/irqHandlingMethod"                      value="$ClassMethod" />
+   <item key="/PIT/pit_ldval_tsv[0]"                       value="23999" />
+   <item key="/PIT/pit_ldval_tsv[1]"                       value="0" />
+   <item key="/PIT/pit_tctrl_ten[0]"                       value="true" />
+   <item key="/PIT/pit_tctrl_ten[1]"                       value="true" />
+   <item key="/PORT/configurePeripheralInStartUp"          value="true" />
+   <item key="/PORT/enablePeripheralSupport"               value="true" />
+   <item key="/PORT/port_hdrve_ptb5"                       value="true" />
+   <item key="/SIM/configurePeripheralInStartUp"           value="true" />
+   <item key="/SIM/sim_clkdiv_outdiv1[0]"                  value="1" />
+   <item key="/SIM/sim_clkdiv_outdiv3[0]"                  value="true" />
+   <item key="/WDOG/configurePeripheralInStartUp"          value="true" />
+</section>
