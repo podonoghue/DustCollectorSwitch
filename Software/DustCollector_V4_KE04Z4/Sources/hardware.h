@@ -67,6 +67,8 @@ typedef GpioA<2,ActiveHigh>                                  DetectLed;         
 /// PIT, Programmable Interrupt Timer
 typedef Pit                                                  UserTimer;                                    
 
+typedef Pit::Channel<0>                                      PollingTimerChannel;                          // PIT_CH0(Internal)
+
 } // End namespace USBDM
 
 #endif /* INCLUDE_USBDM_HARDWARE_H_ */

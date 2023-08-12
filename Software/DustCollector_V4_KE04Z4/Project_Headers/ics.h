@@ -105,6 +105,8 @@ public:
  */
 class Ics {
 
+   using Info = IcsInfo;
+
 private:
 #if false
    static ClockChangeCallback *clockChangeCallbackQueue;

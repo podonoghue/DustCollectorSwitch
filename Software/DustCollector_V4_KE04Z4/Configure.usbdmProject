@@ -34,14 +34,15 @@
    <item key="$signal$GPIOA_14_codeIdentifier"             value="HoldLed" />
    <item key="$signal$GPIOA_15_codeIdentifier"             value="DelayLed" />
    <item key="$signal$GPIOA_2_codeIdentifier"              value="DetectLed" />
+   <item key="$signal$PIT_CH0_codeIdentifier"              value="PollingTimerChannel" />
    <item key="$signal$RESET_b_codeIdentifier"              value="RESET_b" />
    <item key="$signal$SWD_CLK_codeIdentifier"              value="SWDCLK" />
    <item key="$signal$SWD_DIO_codeIdentifier"              value="SWDIO" />
-   <item key="/ADC0/adc_cv_cv"                             value="0" />
-   <item key="/ADC0/enablePeripheralSupport"               value="true" />
-   <item key="/ADC0/irqHandlingMethod"                     value="$ClassMethod" />
+   <item key="/ACMP0/acmp_c1_dacval"                       value="0" />
+   <item key="/ACMP1/acmp_c1_dacval"                       value="0" />
+   <item key="/ADC/enablePeripheralSupport"                value="true" />
    <item key="/Console/consoleEnable"                      value="false" />
-   <item key="/GPIOA/enablePeripheralSupport"              value="true" />
+   <item key="/GPIO/enablePeripheralSupport"               value="true" />
    <item key="/ICS/ClockConfig[0]"                         value="ClockConfig_FEI_48MHz" />
    <item key="/ICS/ClockConfig[1]"                         value="ClockConfig_1" />
    <item key="/ICS/ClockConfig[2]"                         value="ClockConfig_2" />
@@ -62,6 +63,7 @@
    <item key="/PORT/configurePeripheralInStartUp"          value="true" />
    <item key="/PORT/enablePeripheralSupport"               value="true" />
    <item key="/PORT/port_hdrve_ptb5"                       value="true" />
+   <item key="/PWT/pwt_r1_ppw"                             value="0" />
    <item key="/SIM/configurePeripheralInStartUp"           value="true" />
    <item key="/SIM/sim_clkdiv_outdiv1[0]"                  value="1" />
    <item key="/SIM/sim_clkdiv_outdiv3[0]"                  value="true" />

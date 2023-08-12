@@ -14,7 +14,7 @@
 using namespace USBDM;
 
 // ADC Resolution - 10-bit unsigned (single-ended mode)
-constexpr AdcResolution ADC_RESOLUTION = AdcResolution_12bit_se;
+constexpr AdcResolution ADC_RESOLUTION = AdcResolution_10bit_se;
 
 // How often the load current is sampled (in ms)
 constexpr unsigned       TICK_TIME      = 1;
@@ -25,15 +25,14 @@ constexpr unsigned averagePeriodInTicks = round(20_ms/1_ms);
 /**
  * Simple state machine
  */
-enum State {s_IDLE, s_DELAY, s_OPERATING, s_HOLD, };
+enum State {s_IDLE, s_DELAY, s_OPERATING, s_HOLD};
 
 // State machine state
-static State state     = s_IDLE;
+static State state = s_IDLE;
 
 // Parameters initialised on startup
 static unsigned delayTimeInTicks;
 static unsigned holdTimeInTicks;
-
 
 #undef DEBUG_BUILD
 
@@ -62,11 +61,8 @@ Seconds getDetectThreshold() {
  * Get Delay value in milliseconds [500ms..5s]
  */
 unsigned getDelayControl() {
-//   constexpr unsigned MIN_DELAY = 500;
-//   constexpr unsigned MAX_DELAY = 5000;
 
    return 1000;
-//   return MIN_DELAY + (DelayControl::readAnalogue()*(MAX_DELAY-MIN_DELAY))/UserAdc::getSingleEndedMaximum(ADC_RESOLUTION);
 }
 
 /**
@@ -76,7 +72,6 @@ unsigned getHoldControl() {
    constexpr unsigned MIN_HOLD = 1000;
    constexpr unsigned MAX_HOLD = 10000;
 
-//   return 5000;
    return MIN_HOLD + (HoldControl::readAnalogue()*(MAX_HOLD-MIN_HOLD))/UserAdc::getSingleEndedMaximum(ADC_RESOLUTION);
 }
 
@@ -84,8 +79,6 @@ unsigned getHoldControl() {
  * Timer callback that:
  *  - Checks if the load is operating
  *  - Updates state
- *
- * @return true => Load is operating
  */
 void timerCallback() {
 
@@ -100,7 +93,7 @@ void timerCallback() {
    static unsigned accumulator = 0;
 
    // Accumulated value over entire interval (~20 ms)
-   static unsigned totalOfSamples     = 0;
+   static unsigned totalOfSamples = 0;
 
    // Do averaging of absolute value of current over cycle
    int current = I_Sample::readAnalogue()-Reference::readAnalogue();
@@ -179,7 +172,7 @@ void timerCallback() {
    }
 }
 
-using PollingTimerChannel = Pit::Channel<0>;
+//using PollingTimerChannel = Pit::Channel<0>;
 
 /**
  * Initialise I/O
@@ -187,6 +180,7 @@ using PollingTimerChannel = Pit::Channel<0>;
 void initialise() {
 
    DustCollector::setOutput();
+   DustCollector::setHdrive(HighDrive_on);
    HoldLed::setOutput();
    DelayLed::setOutput();
    DetectLed::setOutput();

@@ -63,7 +63,7 @@ protected:
     * @param bitNo      Bit number within GPIO
     * @param polarity   Polarity of bit (ActiveHigh or ActiveLow)
     */
-   constexpr Gpio(uint32_t gpio, uint8_t bitNo, Polarity polarity) :
+   constexpr Gpio(uint32_t gpio, PinNum bitNo, Polarity polarity) :
       gpio(gpio), bitMask(1<<bitNo), flipMask(isActiveLow(polarity)?bitMask:0) {
    }
    /**
@@ -414,22 +414,18 @@ public:
  * @endcode
  *
  *
- * @tparam bitNum    Index into tables describing individual pins e.g. PTA = 0..7, PTB = 8..25 etc
+ * @tparam pinIndex  Index into tables describing individual pins e.g. PTA = 0..7, PTB = 8..25 etc
  * @tparam polarity  Polarity of pin. Either ActiveHigh or ActiveLow
  */
-template<int bitIndex, Polarity polarity>
-class Gpio_T : public Gpio, public Port_T<bitIndex> {
+template<PinIndex pinIndex, Polarity polarity>
+class Gpio_T : public Gpio, public Port_T<pinIndex> {
 
    // Restrict to available ports
-   static_assert((bitIndex>=0)&&(bitIndex<32),
+   static_assert((pinIndex>=0)&&(pinIndex<32),
       "Illegal bit number for left or right in GpioField");
 
 
 private:
-   constexpr uint32_t getRegAddress(unsigned baseAddress, unsigned bitnum) {
-      return baseAddress + (bitnum % 32);
-   }
-
    /**
     * This class is not intended to be instantiated
     */
@@ -437,29 +433,34 @@ private:
    Gpio_T(Gpio_T&&) = delete;
 
 protected:
-//   constexpr Gpio_T() : Gpio(gpioAddress, bitNum, polarity) {};
+//   constexpr Gpio_T() : Gpio(gpioAddress, PinNum, polarity) {};
 
 public:
 
    /**
     * Get GPIO base register address from bit index
     *
-    * @param bitInd  Index of GPIO bit
+    * @param pinInd Index of GPIO bit
     *
     * @return Base address of GPIO_Type hardware structure
     */
-   static constexpr uint32_t getGpioAddress(unsigned bitInd) {
+   static constexpr uint32_t getGpioAddress(PinIndex pinInd) {
       constexpr uint32_t gpioAddresses[] = {
             GPIOA_BasePtr,
       };
-      return gpioAddresses[bitInd / 32];
+      return gpioAddresses[pinInd / 32];
    }
 
-   static constexpr uint32_t BITNUM  = (bitIndex%32);
+   // Pin index into tables describing individual pins e.g. PTA = 0..7, PTB = 8..25 etc
+   static constexpr PinIndex PININDEX = pinIndex;
 
+   // Bit number for port pin within individual port e.g. GPIOB[31..0]
+   static constexpr PinNum BITNUM   = (pinIndex%32);
+
+   // Bit mask for port pin within individual port e.g. GPIOB[31..0]
    static constexpr uint32_t BITMASK = (1<<BITNUM);
 
-   static constexpr uint32_t gpioAddress = getGpioAddress(bitIndex);
+   static constexpr uint32_t gpioAddress = getGpioAddress(pinIndex);
 
    /** Get base address of GPIO hardware as pointer to struct */
    static constexpr HardwarePtr<GPIO_Type> gpio = gpioAddress;
@@ -776,7 +777,7 @@ public:
     */
    static bool readState() {
 #ifdef RELEASE_BUILD
-      uint32_t t = bmeExtract(gpio->PDOR, BITNUM, 1);
+      uint32_t t = bmeExtract(gpio->PDOR, PinNum, 1);
 #else
       uint32_t t = gpio->PDOR & BITMASK;
 #endif
@@ -806,7 +807,7 @@ public:
    const uint32_t                flipMask;
 
    /// Offset of bit field in GPIO hardware
-   const uint8_t                 right;
+   const PinNum                  right;
 
 protected:
    /**
@@ -817,7 +818,7 @@ protected:
     * @param right      Rightmost bit number in port
     * @param flipMask   Mask to flip bits in port (or use ActiveHigh/ActiveLow)
     */
-   constexpr GpioField(uint32_t gpio, uint32_t bitMask, unsigned right, uint32_t flipMask) :
+   constexpr GpioField(uint32_t gpio, uint32_t bitMask, PinNum right, uint32_t flipMask) :
       gpio(gpio), bitMask(bitMask), flipMask(flipMask), right(right) {
    }
 
@@ -963,16 +964,16 @@ public:
  * int x = Pta6_3::read();
  * @endcode
  *
- * @tparam BitIndexLeft         Bit number of leftmost bit in GPIO (inclusive)
- * @tparam BitIndexRight        Bit number of rightmost bit in GPIO (inclusive)
+ * @tparam bitIndexLeft         Bit number of leftmost bit in GPIO (inclusive)
+ * @tparam bitIndexRight        Bit number of rightmost bit in GPIO (inclusive)
  * @tparam FlipMask             Polarity of all bits in field. Either ActiveHigh, ActiveLow or a bitmask (0=>bit active-high, 1=>bit active-low)
  */
-template<unsigned BitIndexLeft, unsigned BitIndexRight, uint32_t FlipMask=ActiveHigh>
-class GpioField_T : public GpioField {
+template<PinIndex bitIndexLeft, PinIndex bitIndexRight, uint32_t FlipMask=ActiveHigh>
+class GpioField_T : public GpioField, public PortField_T<bitIndexLeft, bitIndexRight> {
 
    // Restrict to same Port i.e. 8 bits wide
    // In practice it could extend across Ports A-B-C-D or E-F-G-H as they are accessed through the same GPIO register
-   static_assert((BitIndexLeft<32)&&((BitIndexLeft&~0b111)==(BitIndexRight&~0b111))&&(BitIndexLeft>=BitIndexRight),
+   static_assert((bitIndexLeft<32)&&((bitIndexLeft&~0b111)==(bitIndexRight&~0b111))&&(bitIndexLeft>=bitIndexRight),
       "Illegal bit number for left or right in GpioField");
 
 private:
@@ -989,25 +990,25 @@ public:
    /**
     * Get GPIO base register address from bit index
     *
-    * @param bitInd  Index of GPIO bit
+    * @param pinInd Index of GPIO bit
     *
     * @return Base address of GPIO_Type hardware structure
     */
-   static constexpr uint32_t getGpioAddress(unsigned bitInd) {
+   static constexpr uint32_t getGpioAddress(PinIndex pinInd) {
       constexpr uint32_t gpioAddresses[] = {
             GPIOA_BasePtr,
       };
-      return gpioAddresses[bitInd / 32];
+      return gpioAddresses[pinInd / 32];
    }
 
    /// Base address of GPIO hardware
-   static constexpr uint32_t gpioAddress = getGpioAddress(BitIndexLeft);
+   static constexpr uint32_t gpioAddress = getGpioAddress(bitIndexLeft);
 
    /// Left bit within used GPIO registers
-   static constexpr unsigned Left  = BitIndexLeft%32;
+   static constexpr PinNum Left  = bitIndexLeft%32;
 
    /// Right bit within used GPIO registers
-   static constexpr unsigned Right = BitIndexRight%32;
+   static constexpr PinNum Right = bitIndexRight%32;
 
    constexpr GpioField_T() : GpioField(gpioAddress, BITMASK, Right, FLIP_MASK) {}
 
@@ -1051,12 +1052,12 @@ public:
    /**
     * Calculate Port bit-mask from field bit number
     *
-    * @param bitNum  Bit number within field (left-right,0]
+    * @param PinNum  Bit number within field (left-right,0]
     *
     * @return Mask for given bit within underlying port hardware
     */
-   static constexpr uint32_t mask(uint32_t bitNum) {
-      return 1<<(bitNum+Right);
+   static constexpr uint32_t mask(uint32_t PinNum) {
+      return 1<<(PinNum+Right);
    }
 
    /**
@@ -1244,69 +1245,69 @@ public:
    /**
     * Class representing a field within Port A
     *
-    * @tparam leftPinIndex  Indicates left pin (inclusive) within the GPIO e.g. GPIOA[5..3] => A<5,...>
-    * @tparam rightPinIndex Indicates right pin (inclusive) within the GPIO e.g. GPIOA[5..3] => A<...,3>
-    * @tparam polarity      Polarity of field. Either ActiveHigh or ActiveLow
+    * @tparam leftPinNum  Indicates left pin (inclusive) within the GPIO e.g. GPIOA[5..3] => A<5,...>
+    * @tparam rightPinNum Indicates right pin (inclusive) within the GPIO e.g. GPIOA[5..3] => A<...,3>
+    * @tparam polarity    Polarity of field. Either ActiveHigh or ActiveLow
     */
-   template <unsigned leftPinIndex, unsigned rightPinIndex, Polarity polarity=ActiveHigh>
-   class WideGpioFieldA : public GpioField_T<leftPinIndex+0, rightPinIndex+0, polarity> {};
+   template <unsigned leftPinNum, unsigned rightPinNum, Polarity polarity=ActiveHigh>
+   class WideGpioFieldA : public GpioField_T<leftPinNum+0, rightPinNum+0, polarity> {};
 
    /**
     * Class representing individual pins in Port A
     *
-    * @tparam pinIndex Indicates pin within the port e.g. A3 = > A<3>
+    * @tparam pinNum Indicates pin within the port e.g. A3 = > A<3>
     * @tparam polarity Polarity of the pin. Either ActiveHigh or ActiveLow
     */
-   template <unsigned pinIndex, Polarity polarity=ActiveHigh>
-      class GpioA : public Gpio_T<pinIndex+0, polarity> {};
+   template <PinNum pinNum, Polarity polarity=ActiveHigh>
+      class GpioA : public Gpio_T<pinNum+0, polarity> {};
    
    /**
     * Class representing a field within Port A
     *
-    * @tparam leftPinIndex  Indicates left pin (inclusive) within the port e.g. PTA[5..3] => A<5,...>
-    * @tparam rightPinIndex Indicates right pin (inclusive) within the port e.g. PTA[5..3] => A<...,3>
-    * @tparam polarity      Polarity of field. Either ActiveHigh or ActiveLow
+    * @tparam leftPinNum  Indicates left pin (inclusive) within the port e.g. PTA[5..3] => A<5,...>
+    * @tparam rightPinNum Indicates right pin (inclusive) within the port e.g. PTA[5..3] => A<...,3>
+    * @tparam polarity    Polarity of field. Either ActiveHigh or ActiveLow
     */
-   template <unsigned leftPinIndex, unsigned rightPinIndex, Polarity polarity=ActiveHigh>
-       class GpioFieldA : public GpioField_T<leftPinIndex+0, rightPinIndex+0, polarity> {};
+   template <PinNum leftPinNum, PinNum rightPinNum, Polarity polarity=ActiveHigh>
+       class GpioAField : public GpioField_T<leftPinNum+0, rightPinNum+0, polarity> {};
 
    /**
     * Class representing individual pins in Port B
     *
-    * @tparam pinIndex Indicates pin within the port e.g. B3 = > B<3>
+    * @tparam pinNum Indicates pin within the port e.g. B3 = > B<3>
     * @tparam polarity Polarity of the pin. Either ActiveHigh or ActiveLow
     */
-   template <unsigned pinIndex, Polarity polarity=ActiveHigh>
-      class GpioB : public Gpio_T<pinIndex+8, polarity> {};
+   template <PinNum pinNum, Polarity polarity=ActiveHigh>
+      class GpioB : public Gpio_T<pinNum+8, polarity> {};
    
    /**
     * Class representing a field within Port B
     *
-    * @tparam leftPinIndex  Indicates left pin (inclusive) within the port e.g. PTB[5..3] => B<5,...>
-    * @tparam rightPinIndex Indicates right pin (inclusive) within the port e.g. PTB[5..3] => B<...,3>
-    * @tparam polarity      Polarity of field. Either ActiveHigh or ActiveLow
+    * @tparam leftPinNum  Indicates left pin (inclusive) within the port e.g. PTB[5..3] => B<5,...>
+    * @tparam rightPinNum Indicates right pin (inclusive) within the port e.g. PTB[5..3] => B<...,3>
+    * @tparam polarity    Polarity of field. Either ActiveHigh or ActiveLow
     */
-   template <unsigned leftPinIndex, unsigned rightPinIndex, Polarity polarity=ActiveHigh>
-       class GpioFieldB : public GpioField_T<leftPinIndex+8, rightPinIndex+8, polarity> {};
+   template <PinNum leftPinNum, PinNum rightPinNum, Polarity polarity=ActiveHigh>
+       class GpioBField : public GpioField_T<leftPinNum+8, rightPinNum+8, polarity> {};
 
    /**
     * Class representing individual pins in Port C
     *
-    * @tparam pinIndex Indicates pin within the port e.g. C3 = > C<3>
+    * @tparam pinNum Indicates pin within the port e.g. C3 = > C<3>
     * @tparam polarity Polarity of the pin. Either ActiveHigh or ActiveLow
     */
-   template <unsigned pinIndex, Polarity polarity=ActiveHigh>
-      class GpioC : public Gpio_T<pinIndex+16, polarity> {};
+   template <PinNum pinNum, Polarity polarity=ActiveHigh>
+      class GpioC : public Gpio_T<pinNum+16, polarity> {};
    
    /**
     * Class representing a field within Port C
     *
-    * @tparam leftPinIndex  Indicates left pin (inclusive) within the port e.g. PTC[5..3] => C<5,...>
-    * @tparam rightPinIndex Indicates right pin (inclusive) within the port e.g. PTC[5..3] => C<...,3>
-    * @tparam polarity      Polarity of field. Either ActiveHigh or ActiveLow
+    * @tparam leftPinNum  Indicates left pin (inclusive) within the port e.g. PTC[5..3] => C<5,...>
+    * @tparam rightPinNum Indicates right pin (inclusive) within the port e.g. PTC[5..3] => C<...,3>
+    * @tparam polarity    Polarity of field. Either ActiveHigh or ActiveLow
     */
-   template <unsigned leftPinIndex, unsigned rightPinIndex, Polarity polarity=ActiveHigh>
-       class GpioFieldC : public GpioField_T<leftPinIndex+16, rightPinIndex+16, polarity> {};
+   template <PinNum leftPinNum, PinNum rightPinNum, Polarity polarity=ActiveHigh>
+       class GpioCField : public GpioField_T<leftPinNum+16, rightPinNum+16, polarity> {};
 
 
 /**

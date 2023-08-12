@@ -14,7 +14,6 @@
 #include "stdbool.h"
 #include "pin_mapping.h"
 #include "osc.h"
-#include "osc.h"
 
 #include "ics.h"
 /*

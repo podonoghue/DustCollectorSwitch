@@ -1,3 +1,10 @@
 graph: { title: "../Sources/hardware.cpp"
-node: { title: "cpp_initialise" label: "void USBDM::cpp_initialise()\n../Sources/hardware.cpp:30:46\n8 bytes (static)" }
+node: { title: "../Sources/hardware.cpp:_ZN5USBDML20setAndCheckErrorCodeENS_9ErrorCodeE" label: "USBDM::ErrorCode USBDM::setAndCheckErrorCode(ErrorCode)\n../Project_Headers/error.h:113:25\n16 bytes (static)" }
+node: { title: "_ZN5USBDM10checkErrorEv" label: "USBDM::ErrorCode USBDM::checkError()\n../Project_Headers/error.h:82:18" shape : ellipse }
+edge: { sourcename: "../Sources/hardware.cpp:_ZN5USBDML20setAndCheckErrorCodeENS_9ErrorCodeE" targetname: "_ZN5USBDM10checkErrorEv" label: "../Project_Headers/error.h:115:21" }
+node: { title: "cpp_initialise" label: "void USBDM::cpp_initialise()\n../Sources/hardware.cpp:31:46\n8 bytes (static)" }
+node: { title: "_ZN5USBDM17unhandledCallbackEv" label: "void USBDM::unhandledCallback()\n../Sources/hardware.cpp:90:9\n8 bytes (static)" }
+edge: { sourcename: "_ZN5USBDM17unhandledCallbackEv" targetname: "../Sources/hardware.cpp:_ZN5USBDML20setAndCheckErrorCodeENS_9ErrorCodeE" label: "../Sources/hardware.cpp:91:27" }
+node: { title: "_ZN5USBDM29timerUnhandledChannelCallbackEh" label: "void USBDM::timerUnhandledChannelCallback(uint8_t)\n../Sources/hardware.cpp:99:9\n16 bytes (static)" }
+edge: { sourcename: "_ZN5USBDM29timerUnhandledChannelCallbackEh" targetname: "../Sources/hardware.cpp:_ZN5USBDML20setAndCheckErrorCodeENS_9ErrorCodeE" label: "../Sources/hardware.cpp:101:27" }
 }

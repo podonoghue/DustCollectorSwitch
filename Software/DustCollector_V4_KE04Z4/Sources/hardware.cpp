@@ -12,6 +12,7 @@
  */
 
 #include "hardware.h"
+// /HARDWARE/Includes not found
 
 /**
  * Namespace enclosing USBDM classes
@@ -34,7 +35,7 @@ extern "C" void __attribute__((constructor)) cpp_initialise() {
 }
 
 #ifdef PORT_PCR_MUX
-// No user object definitions found
+// /HARDWARE_CPP/Definitions not found
 
 /**
  * Map all configured pins to peripheral signals.
@@ -83,7 +84,24 @@ void mapAllPins() {
 /*
  *  Static objects
  */
-// /HARDWARE/StaticObjects not found
+   /**
+    * Callback to catch unhandled interrupt
+    */
+   void unhandledCallback() {
+      setAndCheckErrorCode(E_NO_HANDLER);
+   }
+   
+   /**
+    * Callback to catch unhandled channel interrupt
+    *
+    * @param mask Mask identifying channel
+    */
+   void timerUnhandledChannelCallback(uint8_t mask) {
+      (void)mask;
+      setAndCheckErrorCode(E_NO_HANDLER);
+   }
+
+
 
 } // End namespace USBDM
 

@@ -383,15 +383,9 @@ private:
    AdcBase_T(const AdcBase_T&) = delete;
    AdcBase_T(AdcBase_T&&) = delete;
 
-public:
-   /**
-    * Type definition for ADC interrupt call back.
-    */
-   using CallbackFunction = typename Adc0BasicInfo::CallbackFunction;
 
 protected:
-   /** Callback function for ISR */
-   static CallbackFunction sCallback;
+// No /ADC/protectedMethods found
 
 public:
    /** Hardware instance pointer */
@@ -464,40 +458,8 @@ public:
    /** Allow convenient access to associate AdcInfo */
    using AdcInfo = Info;
 
-   /**
-    * IRQ handler
-    */
-   static void irqHandler() {
-      if (adc->SC1[0] & ADC_SC1_COCO_MASK) {
-         sCallback(adc->R[0], adc->SC1[0]&ADC_SC1_ADCH_MASK);
-      }
-   }
 
-   /**
-    * Set callback for conversion complete interrupts
-    *
-    * @param[in] callback Callback function to execute on interrupt.\n
-    *                     Use nullptr to remove callback.
-    *
-    * @return E_NO_ERROR            No error
-    * @return E_HANDLER_ALREADY_SET Handler already set
-    *
-    * @note There is a single callback function for all channels of the ADC.\n
-    *       It is necessary to identify the originating channel in the callback.
-    * @note To change between handlers first use setCallback(nullptr).
-    */
-   static void setCallback(CallbackFunction callback) {
-      static_assert(Info::irqHandlerInstalled, "ADC not configured for interrupts. Modify Configure.usbdmProject");
-      if (callback == nullptr) {
-         sCallback = unhandledCallback;
-         return;
-      }
-      usbdm_assert(
-            (sCallback == unhandledCallback) || (sCallback == callback),
-            "Handler already set");
-      sCallback = callback;
-   }
-
+// No /ADC/publicMethods found
    /**
     * Configure with default settings.
     * Configuration determined from Configure.usbdmProject
@@ -516,10 +478,12 @@ public:
    static void configure(const typename Info::Init &init) {
    
       // Enable peripheral clock
-      enable();
+      Info::enableClock();
    
-      setCallback(init.callbackFunction);
-      enableNvicInterrupts(init.irqlevel);
+      if constexpr (Info::irqHandlerInstalled) {
+         Info::setCallback(init.callbackFunction);
+         enableNvicInterrupts(init.irqlevel);
+      }
    
       // ..........  Regs to init .......... ;
       adc->SC2    = init.sc2;
@@ -818,9 +782,9 @@ public:
     *
     * @param sc1Value Used to obtain channel number
     */
-   static void setInput(unsigned sc1Value) {
+   static void setInput(unsigned channel) {
       // Map pin to ADC
-      adc->APCTL1 |= (1<<(sc1Value&0b11111));
+      adc->APCTL1 |= (1<<(channel&0b11111));
    }
 
    /**
@@ -829,9 +793,9 @@ public:
     *
     * @param sc1Value Used to obtain channel number
     */
-   static void disablePin(unsigned sc1Value) {
+   static void disablePin(unsigned channel) {
       // Map pin to ADC
-      adc->APCTL1 &= ~(1<<(sc1Value&0b11111));
+      adc->APCTL1 &= ~(1<<(channel&0b11111));
    }
 
    /**
@@ -871,7 +835,7 @@ public:
       using AdcInfo = Info;
 
       /** Channel number */
-      static constexpr int CHANNEL=channel;
+      static constexpr AdcChannelNum CHANNEL=(AdcChannelNum)channel;
 
       /**
        * Initiates a conversion but does not wait for it to complete.
@@ -944,8 +908,6 @@ public:
    }; // class Channel
 
 }; // class AdcBase_T
-
-template<class Info> typename AdcBase_T<Info>::CallbackFunction AdcBase_T<Info>::sCallback = Adc::unhandledCallback;
 
 /**
  * Class representing ADC0

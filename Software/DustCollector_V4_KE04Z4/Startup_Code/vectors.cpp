@@ -14,7 +14,6 @@
 #include "hardware.h"
 
 #include "pit.h"
-#include "adc.h"
 
 
 /*
@@ -185,6 +184,7 @@ void IRQ_IRQHandler(void)                     WEAK_DEFAULT_HANDLER;
 void I2C0_IRQHandler(void)                    WEAK_DEFAULT_HANDLER;
 void SPI0_IRQHandler(void)                    WEAK_DEFAULT_HANDLER;
 void UART0_IRQHandler(void)                   WEAK_DEFAULT_HANDLER;
+void ADC0_IRQHandler(void)                    WEAK_DEFAULT_HANDLER;
 void ACMP0_IRQHandler(void)                   WEAK_DEFAULT_HANDLER;
 void FTM0_IRQHandler(void)                    WEAK_DEFAULT_HANDLER;
 void FTM2_IRQHandler(void)                    WEAK_DEFAULT_HANDLER;
@@ -240,7 +240,7 @@ VectorTable const __vector_table = {
       UART0_IRQHandler,                        /*   28,   12  Serial Communication Interface                                                   */
       Default_Handler,                         /*   29,   13                                                                                   */
       Default_Handler,                         /*   30,   14                                                                                   */
-      USBDM::Adc0::irqHandler,                 /*   31,   15  Analogue to Digital Converter                                                    */
+      ADC0_IRQHandler,                         /*   31,   15  Analogue to Digital Converter                                                    */
       ACMP0_IRQHandler,                        /*   32,   16  Analogue comparator                                                              */
       FTM0_IRQHandler,                         /*   33,   17  FlexTimer Module                                                                 */
       Default_Handler,                         /*   34,   18                                                                                   */

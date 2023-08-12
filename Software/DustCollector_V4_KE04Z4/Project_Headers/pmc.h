@@ -42,14 +42,14 @@ template <class Info>
 class PmcBase_T : public Info {
 
 protected:
-
+// No protected methods found
 
 protected:
    /** Hardware instance */
    static constexpr HardwarePtr<PMC_Type> pmc = Info::baseAddress;
 
 public:
-
+// /PMC/publicMethods not found
 
    /**
     * Enable interrupts in NVIC
@@ -77,7 +77,7 @@ public:
 
 };
 
-
+// No static declarations found
 
 /**
  * End PMC_Group

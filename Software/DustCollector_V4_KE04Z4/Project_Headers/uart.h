@@ -1,5 +1,5 @@
 /**
- * @file     uart.h (180.ARM_Peripherals/Project_Headers/uart.h)
+ * @file     uart.h (180.ARM_Peripherals/Project_Headers/uart-MKE.h)
  * @brief    Universal Asynchronous Receiver/Transmitter interface
  *
  * @version  V4.12.1.210
@@ -396,55 +396,7 @@ protected:
    static UARTCallbackFunction lonCallback;
 
 public:
-   // Template _mapPinsOption_on.xml
-
-   /**
-    * Configures all mapped pins associated with UART
-    *
-    * @note Locked pins will be unaffected
-    */
-   static void configureAllPins() {
-   
-      // Configure pins if selected and not already locked
-      if constexpr (Info::mapPinsOnEnable) {
-      //   Info::initPCRs();
-      }
-   }
-
-   /**
-    * Disabled all mapped pins associated with UART
-    *
-    * @note Only the lower 16-bits of the PCR registers are modified
-    *
-    * @note Locked pins will be unaffected
-    */
-   static void disableAllPins() {
-   
-      // Disable pins if selected and not already locked
-      if constexpr (Info::mapPinsOnEnable) {
-      //   Info::clearPCRs();
-      }
-   }
-      /**
-    * Basic enable of UART
-    * Includes enabling clock and configuring all mapped pins if mapPinsOnEnable is selected in configuration
-    */
-   static void enable() {
-      Info::enableClock();
-      configureAllPins();
-   }
-
-   /**
-    * Disables the clock to UART and all mapped pins
-    */
-   static void disable() {
-      disableNvicInterrupts();
-      
-      disableAllPins();
-      Info::disableClock();
-   }
-// End Template _mapPinsOption_on.xml
-
+   // No class Info found
 
    /**
     * Construct UART interface
@@ -464,9 +416,6 @@ public:
       // Enable clock to UART interface
       Info::enableClock();
 
-      if constexpr (Info::mapPinsOnEnable) {
-         configureAllPins();
-      }
       uart->C2 = UART_C2_TE(1)|UART_C2_RE(1);
    }
 
@@ -528,7 +477,7 @@ public:
     *                        Use nullptr to remove callback.
     */
    static void setRxTxCallback(UARTCallbackFunction callback) {
-      usbdm_assert(Info::irqHandlerInstalled, "UART not configure for interrupts");
+      static_assert(Info::irqHandlerInstalled, "UART not configure for interrupts");
       if (callback == nullptr) {
          callback = unhandledCallback;
       }
@@ -542,7 +491,7 @@ public:
     *                        Use nullptr to remove callback.
     */
    static void setErrorCallback(UARTCallbackFunction callback) {
-      usbdm_assert(Info::irqHandlerInstalled, "UART not configure for interrupts");
+      static_assert(Info::irqHandlerInstalled, "UART not configure for interrupts");
       if (callback == nullptr) {
          callback = unhandledCallback;
       }
@@ -556,7 +505,7 @@ public:
     *                        Use nullptr to remove callback.
     */
    static void setLonCallback(UARTCallbackFunction callback) {
-      usbdm_assert(Info::irqHandlerInstalled, "UART not configure for interrupts");
+      static_assert(Info::irqHandlerInstalled, "UART not configure for interrupts");
       if (callback == nullptr) {
          callback = unhandledCallback;
       }

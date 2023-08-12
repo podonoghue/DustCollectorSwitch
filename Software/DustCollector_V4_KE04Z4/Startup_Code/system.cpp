@@ -156,6 +156,9 @@ void SystemInit(void) {
          "  ISB                        \n"  // Reset pipeline now the FPU is enabled
    );
 #endif
-   // Configure Ports (Filters, PUPs and HDRIVE)
+/* System startup code for peripherals */
+
+   /* Configure Ports (Filters, PUPs and HDRIVE) */
    USBDM::Port::defaultConfigure();
+
 }
