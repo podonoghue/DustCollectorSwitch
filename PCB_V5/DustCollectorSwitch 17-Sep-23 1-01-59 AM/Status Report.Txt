@@ -1,0 +1,10 @@
+Output: Generates pick and place files
+Type  : Pick Place
+From  : Variant [[No Variations]] of PCB Document [DustCollectorSwitch.PcbDoc]
+   Generated File[Pick Place for DustCollectorSwitch.csv]
+
+
+Files Generated   : 1
+Documents Printed : 0
+
+Finished Output Generation At 1:02:13 AM On 17-Sep-23
