@@ -14,16 +14,16 @@
 using namespace USBDM;
 
 // ADC Resolution - 10-bit unsigned (single-ended mode)
-constexpr AdcResolution ADC_RESOLUTION = AdcResolution_10bit_se;
+constexpr AdcResolution ADC_RESOLUTION = AdcResolution_12bit_se;
 
-// How often the load current is sampled (in ms)
-constexpr unsigned       TICK_TIME      = 1;
+// How often the load current is sampled (in us)
+constexpr unsigned       TICK_TIME      = 100;
 
 // Number of samples to average current over
-constexpr unsigned averagePeriodInTicks = round(20_ms/1_ms);
+constexpr unsigned EXPECTED_PERIOD_IN_TICKS = round(20_ms/(TICK_TIME/1000000.0));
 
 /**
- * Simple state machine
+ * State machine states
  */
 enum State {s_IDLE, s_DELAY, s_OPERATING, s_HOLD};
 
@@ -34,9 +34,9 @@ static State state = s_IDLE;
 static unsigned delayTimeInTicks;
 static unsigned holdTimeInTicks;
 
-#undef DEBUG_BUILD
+//#undef DEBUG_BUILD
 
-#ifdef DEBUG_BUILD
+#if defined(DEBUG_BUILD)
 static const char *getStateName(State state) {
 
    static const char *names[] = {
@@ -50,10 +50,10 @@ static const char *getStateName(State state) {
 #endif
 
 /**
- * Get detect threshold as raw ADC value
+ * Get detect level as raw ADC value
  */
-Seconds getDetectThreshold() {
-   return LevelControl::readAnalogue();
+unsigned getDetectLevel() {
+   return LevelControl::readAnalogue()/2;
 }
 
 
@@ -62,7 +62,7 @@ Seconds getDetectThreshold() {
  */
 unsigned getDelayControl() {
 
-   return 1000;
+   return 1000; // 1s
 }
 
 /**
@@ -72,8 +72,26 @@ unsigned getHoldControl() {
    constexpr unsigned MIN_HOLD = 1000;
    constexpr unsigned MAX_HOLD = 10000;
 
-   return MIN_HOLD + (HoldControl::readAnalogue()*(MAX_HOLD-MIN_HOLD))/UserAdc::getSingleEndedMaximum(ADC_RESOLUTION);
+   unsigned value = HoldControl::readAnalogue();
+   value *= (MAX_HOLD-MIN_HOLD);
+   value /= UserAdc::getSingleEndedMaximum(ADC_RESOLUTION);
+   value += MIN_HOLD;
+
+   return value;
 }
+
+// Accumulated value over interval so far
+static unsigned accumulator = 0;
+
+// Accumulated value over entire interval (~20 ms)
+static unsigned totalOfSamples = 0;
+
+static bool isLoadOn = false;
+
+static unsigned samplesThisPeriod = 100;
+
+// detectLevel used to determine if load is operating
+static unsigned detectLevel = 10000;
 
 /**
  * Timer callback that:
@@ -81,42 +99,87 @@ unsigned getHoldControl() {
  *  - Updates state
  */
 void timerCallback() {
+//   Debug::set();
+//   Debug::toggle();
 
-   Debug::toggle();
+   // Hysteresis used for zero crossing
+   static constexpr int HYSTERESIS        = 100;
 
-   // Current is averaged over ~20 ms
+   // Hysteresis used for load detection (percentage)
+   static constexpr int DETECT_HYSTERESIS = 1;
 
-   // Sample within interval
-   static unsigned sampleCount = 0;
+   // Instantaneous current sample
+   int sample    = I_Sample::readAnalogue();
 
-   // Accumulated value over interval so far
-   static unsigned accumulator = 0;
+   // Instantaneous reference sample
+   int reference = Reference::readAnalogue();
 
-   // Accumulated value over entire interval (~20 ms)
-   static unsigned totalOfSamples = 0;
+   // Instantaneous current sample
+   int current   = (sample-reference);
 
-   // Do averaging of absolute value of current over cycle
-   int current = I_Sample::readAnalogue()-Reference::readAnalogue();
+   // Used to check ADC ranges
+//   static int max = 0;
+//   static int min = 10000;
+//
+//   if (sample>max) {
+//      max = sample;
+//   }
+//   if (sample<min) {
+//      min = sample;
+//   }
+
+   static int      zeroCrossingLevel  = +HYSTERESIS;
+   static unsigned sampleCount        = 0;
+
+   sampleCount++;
+
+   static unsigned threshAccumulator;
+
+   threshAccumulator += getDetectLevel();
+
+   if (((current>zeroCrossingLevel)&&(zeroCrossingLevel>0))||(sampleCount>(EXPECTED_PERIOD_IN_TICKS+2))) {
+
+      // New period
+      zeroCrossingLevel = -HYSTERESIS;
+      totalOfSamples    = accumulator/sampleCount;
+      accumulator       = 0;
+
+      samplesThisPeriod = sampleCount;
+      sampleCount       = 0;
+
+      // Calculate detectLevel used to determine if load is operating
+      // This is a mean-squared value
+      unsigned thresh = threshAccumulator/samplesThisPeriod;
+      thresh *= thresh;
+      threshAccumulator = 0;
+
+      // Add hysteresis ~DETECT_HYSTERESIS %
+      if (isLoadOn&&(detectLevel>0)) {
+         thresh = (thresh*(200-DETECT_HYSTERESIS))/200;
+      }
+      else {
+         thresh = (thresh*(200+DETECT_HYSTERESIS))/200;
+      }
+      detectLevel = thresh/2;
+
+      // Check if load present
+      isLoadOn = totalOfSamples > detectLevel;
+   }
+   else if (current<zeroCrossingLevel) {
+      // Do hysteresis
+      zeroCrossingLevel = +HYSTERESIS;
+   }
    if (current<0) {
       current = -current;
    }
 
-   accumulator += current;
-   if (++sampleCount > averagePeriodInTicks) {
-      totalOfSamples = accumulator;
-      accumulator    = 0;
-      sampleCount    = 0;
-   }
+   // Mean-squared
+   accumulator += current*current;
 
-   // Threshold used to determine if load is operating
-   const unsigned threshold = averagePeriodInTicks * getDetectThreshold();
+//   DetectLed::write(isLoadOn);
+//   Debug::write(zeroCrossingLevel>0);
 
-   // Check if load present
-   bool isLoadOn = totalOfSamples > threshold;
-
-   DetectLed::write(isLoadOn);
-
-   // Used to count time intervals
+   // Used to count time intervals in 'ticks'
    static unsigned timeCounter = 0;
 
    switch(state) {
@@ -132,8 +195,11 @@ void timerCallback() {
          }
          break;
       case s_DELAY:
-         // Make sure dust collector is off
+         // Indicate in delay
          DelayLed::on();
+
+         // Make sure Collector off
+         DustCollector::off();
 
          if (!isLoadOn) {
             // Load went away while delaying
@@ -157,9 +223,14 @@ void timerCallback() {
          }
          break;
       case s_HOLD:
+         // Indicate in hold
          HoldLed::on();
+
+         // Dust collector on
+         DustCollector::on();
+
          if (isLoadOn) {
-            // Load back before delay expired
+            // Load returned before delay expired
             state = s_OPERATING;
             HoldLed::off();
          }
@@ -170,6 +241,7 @@ void timerCallback() {
          }
          break;
    }
+//   Debug::clear();
 }
 
 //using PollingTimerChannel = Pit::Channel<0>;
@@ -179,35 +251,41 @@ void timerCallback() {
  */
 void initialise() {
 
-   DustCollector::setOutput();
+   Pins1::setOutput();
+//   Pins2::setOutput();
+//   HoldLed::setOutput();
+//   DelayLed::setOutput();
+//   DetectLed::setOutput();
+//   Debug::setOutput();
+//   DustCollector::setOutput();
    DustCollector::setHdrive(HighDrive_on);
-   HoldLed::setOutput();
-   DelayLed::setOutput();
-   DetectLed::setOutput();
-   Debug::setOutput();
 
    static constexpr UserAdc::Init adcInit {
-      AdcClockSource_BusClock,
-      AdcClockDivider_DivBy2,
-      ADC_RESOLUTION,
-   };
+      AdcResolution_12bit_se ,         // ADC resolution - 12-bit
+      AdcClockSource_BusClock ,        // Input Clock Select - Bus clock
+      AdcClockDivider_DivBy8 ,         // Clock Divide Select - Divide by 8
+      AdcRefSel_VrefhAndVrefl ,        // Voltage Reference Selection - VREFH and VREFL
+      AdcSample_Long ,                 // Sample Time Configuration - Long sample
+      AdcPower_Normal ,                // Low-Power Configuration - Normal
+
+      AdcChannelNum(I_Sample::CHANNEL),      // ADC channels configured (GPIO disabled)
+      AdcChannelNum(Reference::CHANNEL),
+      AdcChannelNum(HoldControl::CHANNEL),
+      AdcChannelNum(LevelControl::CHANNEL),
+      };
 
    UserAdc::configure(adcInit);
-
-   I_Sample::setInput();
-   Reference::setInput();
-   HoldControl::setInput();
-   LevelControl::setInput();
 
    static constexpr UserTimer::ChannelInit timerInit {
       PollingTimerChannel::CHANNEL,
 
-      PitChannelEnable_Enabled ,   // Timer Channel Enabled
-      PitChannelIrq_Enabled ,      // Timer Interrupt Enabled
-      NvicPriority_Normal ,        // IRQ level
-      (TICK_TIME*24000000/1000)-1, // Time interval for channel ((milliseconds*fBus)/1000) - 1
-      timerCallback,               // Call-back
+      PitChannelEnable_Enabled ,                     // Timer Channel Enabled
+      PitChannelIrq_Enabled ,                        // Timer Interrupt Enabled
+      NvicPriority_Normal ,                          // IRQ level
+      Ticks((TICK_TIME*(SystemBusClock/1000000))-1), // Time interval for channel (microseconds*(fBus)/1000000) - 1
+      timerCallback,                                 // Call-back
       };
+
    UserTimer::configure(timerInit);
 
    Debug::setOutput();
@@ -215,31 +293,35 @@ void initialise() {
 
 int main() {
 
-#ifdef DEBUG_BUILD
+#if defined(DEBUG_BUILD)
    console.writeln("\nStarting");
 #endif
 
    initialise();
 
    // Update time parameters on startup
-   delayTimeInTicks = getDelayControl() / TICK_TIME;
-   holdTimeInTicks  = getHoldControl()  / TICK_TIME;
+   delayTimeInTicks = getDelayControl() * (1000/TICK_TIME);
+   holdTimeInTicks  = getHoldControl()  * (1000/TICK_TIME);
 
-#ifdef DEBUG_BUILD
-   State lastState = s_OPERATING;
-
-   console.writeln("Detect threshold = ", (getDetectThreshold()*3.3)/UserAdc::getSingleEndedMaximum(ADC_RESOLUTION), " V");
-   console.writeln("Delay time       = ", delayTimeInTicks * TICK_TIME, " s");
-   console.writeln("Hold  time       = ", holdTimeInTicks * TICK_TIME, " s");
-   console.writeln("Average interval = ", averagePeriodInTicks * TICK_TIME, " s");
+#if defined(DEBUG_BUILD)
+   console.writeln("Delay time = ", delayTimeInTicks * TICK_TIME/1000, " ms");
+   console.writeln("Hold  time = ", holdTimeInTicks * TICK_TIME/1000, " ms");
 #endif
 
-   for(;;) {
-#ifdef DEBUG_BUILD
+   for(int count=0;;count++) {
+#if defined(DEBUG_BUILD)
+      static State lastState = s_OPERATING;
       if (state != lastState) {
          // Report state change
          console.writeln(getStateName(state));
          lastState = state;
+      }
+      if ((count&0xFF)==0) {
+         console.writeln(
+               "samplesThisPeriod = ", samplesThisPeriod,
+               ", detectLevel = ", detectLevel,
+               ", totalOfSamples = ", totalOfSamples,
+               ", isLoadOn = ", isLoadOn);
       }
 #endif
       __asm__("nop");

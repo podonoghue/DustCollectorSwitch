@@ -14,11 +14,11 @@
 				</extensions>
 			</storageModule>
 			<storageModule moduleId="cdtBuildSystem" version="4.0.0">
-				<configuration artifactName="${ProjName}" buildArtefactType="org.eclipse.cdt.build.core.buildArtefactType.exe" buildProperties="org.eclipse.cdt.build.core.buildArtefactType=org.eclipse.cdt.build.core.buildArtefactType.exe,org.eclipse.cdt.build.core.buildType=org.eclipse.cdt.build.core.buildType.debug" cleanCommand="rm -rf" description="" id="net.sourceforge.usbdm.cdt.arm.exe.debug.configuration.793898345" name="Debug" optionalBuildProperties="org.eclipse.cdt.docker.launcher.containerbuild.property.selectedvolumes=,org.eclipse.cdt.docker.launcher.containerbuild.property.volumes=" parent="net.sourceforge.usbdm.cdt.arm.exe.debug.configuration">
+				<configuration artifactName="${ProjName}" buildArtefactType="org.eclipse.cdt.build.core.buildArtefactType.exe" buildProperties="org.eclipse.cdt.build.core.buildArtefactType=org.eclipse.cdt.build.core.buildArtefactType.exe,org.eclipse.cdt.build.core.buildType=org.eclipse.cdt.build.core.buildType.debug" cleanCommand="rm -rf" description="" errorParsers="org.eclipse.cdt.core.GASErrorParser;org.eclipse.cdt.core.GmakeErrorParser;org.eclipse.cdt.core.GLDErrorParser;org.eclipse.cdt.core.CWDLocator;org.eclipse.cdt.core.GCCErrorParser" id="net.sourceforge.usbdm.cdt.arm.exe.debug.configuration.793898345" name="Debug" optionalBuildProperties="org.eclipse.cdt.docker.launcher.containerbuild.property.enablement=null,org.eclipse.cdt.docker.launcher.containerbuild.property.selectedvolumes=,org.eclipse.cdt.docker.launcher.containerbuild.property.volumes=,org.eclipse.cdt.docker.launcher.containerbuild.property.image=null,org.eclipse.cdt.docker.launcher.containerbuild.property.connection=null" parent="net.sourceforge.usbdm.cdt.arm.exe.debug.configuration">
 					<folderInfo id="net.sourceforge.usbdm.cdt.arm.exe.debug.configuration.793898345." name="/" resourcePath="">
 						<toolChain id="net.sourceforge.usbdm.cdt.arm.exe.debug.toolchain.401979093" name="ARM-USBDM ToolChain" superClass="net.sourceforge.usbdm.cdt.arm.exe.debug.toolchain">
 							<option defaultValue="net.sourceforge.usbdm.cdt.toolchain.debug.debugLevel.max" id="net.sourceforge.usbdm.cdt.toolchain.debug.debugLevel.202911982" name="Debug level" superClass="net.sourceforge.usbdm.cdt.toolchain.debug.debugLevel" valueType="enumerated"/>
-							<option defaultValue="net.sourceforge.usbdm.gnu.c.optimization.level.none" id="net.sourceforge.usbdm.cdt.toolchain.optimization.level.1911149579" name="Optimization level" superClass="net.sourceforge.usbdm.cdt.toolchain.optimization.level" valueType="enumerated"/>
+							<option defaultValue="net.sourceforge.usbdm.gnu.c.optimization.level.none" id="net.sourceforge.usbdm.cdt.toolchain.optimization.level.1911149579" name="Optimization level" superClass="net.sourceforge.usbdm.cdt.toolchain.optimization.level" value="net.sourceforge.usbdm.gnu.c.optimization.level.debug" valueType="enumerated"/>
 							<option id="net.sourceforge.usbdm.cdt.arm.toolchain.mcpu.1691932667" name="Cpu (-mcpu=)" superClass="net.sourceforge.usbdm.cdt.arm.toolchain.mcpu" value="net.sourceforge.usbdm.cdt.arm.toolchain.mcpu.cortexM0plus" valueType="enumerated"/>
 							<option id="net.sourceforge.usbdm.cdt.arm.toolchain.mthumb.388134410" name="Thumb Instruction set (-mthumb)" superClass="net.sourceforge.usbdm.cdt.arm.toolchain.mthumb" value="true" valueType="boolean"/>
 							<option id="net.sourceforge.usbdm.cdt.arm.toolchain.mfpu.712153969" name="Floating point hardware type" superClass="net.sourceforge.usbdm.cdt.arm.toolchain.mfpu" value="net.sourceforge.usbdm.cdt.toolchain.processor.option.misc.mfpu.default" valueType="enumerated"/>
@@ -52,6 +52,7 @@
 									<listOptionValue builtIn="false" value="&quot;../Project_Headers&quot;"/>
 								</option>
 								<option id="net.sourceforge.usbdm.gnu.cpp.compiler.option.optimization.other.896348708" name="Other" superClass="net.sourceforge.usbdm.gnu.cpp.compiler.option.optimization.other" value="" valueType="string"/>
+								<option id="net.sourceforge.usbdm.gnu.cpp.compiler.option.optimization.level.1155946586" name="Optimization level" superClass="net.sourceforge.usbdm.gnu.cpp.compiler.option.optimization.level" value="net.sourceforge.usbdm.gnu.cpp.optimization.level.none" valueType="enumerated"/>
 								<inputType id="net.sourceforge.usbdm.cdt.arm.toolchain.cpp.compiler.input.436789548" superClass="net.sourceforge.usbdm.cdt.arm.toolchain.cpp.compiler.input"/>
 							</tool>
 							<tool id="net.sourceforge.usbdm.cdt.arm.toolchain.archiver.1097052137" name="ARM Archiver" superClass="net.sourceforge.usbdm.cdt.arm.toolchain.archiver"/>
@@ -175,4 +176,5 @@
 	</storageModule>
 	<storageModule moduleId="org.eclipse.cdt.core.LanguageSettingsProviders"/>
 	<storageModule moduleId="org.eclipse.cdt.make.core.buildtargets"/>
+	<storageModule moduleId="refreshScope"/>
 </cproject>

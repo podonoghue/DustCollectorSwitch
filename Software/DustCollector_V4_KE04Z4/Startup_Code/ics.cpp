@@ -25,15 +25,6 @@
  * Any manual changes will be lost.
  */
 
-/// Clock for CORE (cpu) and SYSTEM (NVIC, RAM ...)
-uint32_t SystemCoreClock;
-
-/// Clock for Bus (PIT, SPI, UART ...)
-uint32_t SystemBusClock;
-
-/// Clock for Timers (FTM, PWT ...)
-uint32_t SystemTimerClock;
-
 namespace USBDM {
 
 #if false // /ICS/enableClockChangeNotifications
@@ -47,15 +38,6 @@ const ClockInfo Ics::clockInfo[] = {
    // /ICS/IcsClockInfoEntries
 
 };
-
-/** ICSFFCLK - Fixed frequency clock (input to FLL) */
-volatile uint32_t SystemIcsFFClock;
-
-/** ICSOUTCLK - Primary output from ICS, various sources */
-volatile uint32_t SystemIcsOutClock;
-
-/** ICSFLLCLK - Output of FLL */
-volatile uint32_t SystemIcsFllClock;
 
 /** Current clock mode (FEI out of reset) */
 IcsClockMode Ics::currentClockMode = IcsClockMode_FEI;
@@ -243,6 +225,7 @@ ErrorCode Ics::clockTransition(const ClockInfo &clockInfo) {
 
 #endif // /ICS/enablePeripheralSupport
 
+#if false // !/ICS/enablePeripheralSupport
 /**
  * Update SystemCoreClock variable
  *
@@ -302,34 +285,41 @@ void Ics::SystemCoreClockUpdate(void) {
 
    SimInfo::updateSystemClocks(SystemIcsOutClock);
 }
-
+#endif
+ 
 /**
  * Initialise ICS as part of startup sequence
  */
 void Ics::startupConfigure() {
 
-static constexpr uint16_t CLOCK_TRIM = 185; // /ICS/internalClockTrim
-static constexpr uint8_t  SCTRIM  = CLOCK_TRIM>>1U;
-static constexpr uint8_t  SCFTRIM = CLOCK_TRIM&0b1;
+static constexpr uint16_t SLOW_CLOCK_TRIM = 172; // /ICS/slowInternalClockTrim
+static constexpr uint8_t  SCTRIM  = SLOW_CLOCK_TRIM>>1U;
+static constexpr uint8_t  SCFTRIM = SLOW_CLOCK_TRIM&0b1;
 
-if constexpr (CLOCK_TRIM != 0) {
+if constexpr (SLOW_CLOCK_TRIM != 0) {
    ics->C3 = SCTRIM;
    ics->C4 = (ics->C4&~ICS_C4_SCFTRIM_MASK)|SCFTRIM;
+   
+#if !false // !/ICS/enablePeripheralSupport
+   // Minimal configuration: Only set clock dividers if clock is trimmed
+   ics->C2 = IcsInfo::ics_c2;
+   SIM->CLKDIV = SimInfo::sim_clkdiv;
+#endif
 }
 
+#if false // /ICS/configurePeripheralInStartUp
    // Device resets into this clock mode
    currentClockMode = IcsClockMode_FEI;
 
-#if false // /ICS/configurePeripheralInStartUp
    // Transition to desired clock mode
    clockTransition(clockInfo[ClockConfig_default]);
+
+   SystemCoreClockUpdate();
 #endif
 
 #if false // /ICS/irqHandlingMethod
    enableNvicInterrupts();
 #endif
-
-   SystemCoreClockUpdate();
 }
 
 } // end namespace USBDM
@@ -346,6 +336,6 @@ void clock_initialise(void) {
    USBDM::Ics::startupConfigure();
 
    // /ICS/ClockStartupAfter
-
+   USBDM::SimInfo::defaultConfigure();
 }
 

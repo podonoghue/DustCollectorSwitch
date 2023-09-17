@@ -6,19 +6,25 @@
 CPP_SRCS += \
 ../Sources/delay.cpp \
 ../Sources/hardware.cpp \
+../Sources/i2c.cpp \
 ../Sources/main.cpp \
+../Sources/spi.cpp \
 ../Sources/usbdmError.cpp 
 
 CPP_DEPS += \
 ./Sources/delay.d \
 ./Sources/hardware.d \
+./Sources/i2c.d \
 ./Sources/main.d \
+./Sources/spi.d \
 ./Sources/usbdmError.d 
 
 OBJS += \
 ./Sources/delay.o \
 ./Sources/hardware.o \
+./Sources/i2c.o \
 ./Sources/main.o \
+./Sources/spi.o \
 ./Sources/usbdmError.o 
 
 
@@ -26,7 +32,7 @@ OBJS += \
 Sources/%.o: ../Sources/%.cpp Sources/subdir.mk
 	@echo 'Building file: $<'
 	@echo 'Invoking: ARM C++ Compiler'
-	arm-none-eabi-g++ -mcpu=cortex-m0plus -mthumb -g3 -fcallgraph-info=su -O0 -ffunction-sections -fdata-sections -fno-rtti -Wall -Wextra -DDEBUG_BUILD -I"../Sources" -I"../Project_Headers" -fno-exceptions -std=c++17 -c -fmessage-length=0 -MT"$@" -MMD -MP -MF"$(@:%.o=%.d)" -MT"$@"  -o "$@" $<
+	arm-none-eabi-g++ -mcpu=cortex-m0plus -mthumb -g3 -fcallgraph-info=su -Og -ffunction-sections -fdata-sections -fno-rtti -Wall -Wextra -DDEBUG_BUILD -I"../Sources" -I"../Project_Headers" -fno-exceptions -std=c++17 -c -fmessage-length=0 -MT"$@" -MMD -MP -MF"$(@:%.o=%.d)" -MT"$@"  -o "$@" $<
 	@echo 'Finished building: $<'
 	@echo ' '
 
@@ -34,7 +40,7 @@ Sources/%.o: ../Sources/%.cpp Sources/subdir.mk
 clean: clean-Sources
 
 clean-Sources:
-	-$(RM) ./Sources/delay.d ./Sources/delay.o ./Sources/hardware.d ./Sources/hardware.o ./Sources/main.d ./Sources/main.o ./Sources/usbdmError.d ./Sources/usbdmError.o
+	-$(RM) ./Sources/delay.d ./Sources/delay.o ./Sources/hardware.d ./Sources/hardware.o ./Sources/i2c.d ./Sources/i2c.o ./Sources/main.d ./Sources/main.o ./Sources/spi.d ./Sources/spi.o ./Sources/usbdmError.d ./Sources/usbdmError.o
 
 .PHONY: clean-Sources
 

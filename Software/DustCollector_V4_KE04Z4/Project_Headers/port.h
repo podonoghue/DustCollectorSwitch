@@ -93,10 +93,10 @@ protected:
    
 
       };
-      if (highDriveIndex[pinInd]<0) {
+      if (highDriveIndex[unsigned(pinInd)]<0) {
          return 0;
       }
-      return (1<<highDriveIndex[pinInd]);
+      return (1<<highDriveIndex[unsigned(pinInd)]);
    }
    
    static constexpr HardwarePtr<uint32_t> hdrve = PORT_BasePtr+offsetof(PORT_Type, HDRVE);
@@ -109,14 +109,13 @@ protected:
     * @return Mask value for use with the PUE[] registers
     */
    static constexpr auto calculatePueMask(PinIndex pinInd) {
-      constexpr unsigned MAX_BIT = 71; // Pti7
-      if (pinInd > MAX_BIT) {
+      if (pinInd > PinIndex::MAX_PIN_INDEX) {
          return 0;
       }
-      return 1<<(pinInd%32);
+      return 1<<(unsigned(pinInd)%32);
    }
    
-   static constexpr HardwarePtr<uint32_t> pue   = PORT_BasePtr+offsetof(PORT_Type, PUEL)+4*(pinIndex/32);
+   static constexpr HardwarePtr<uint32_t> puel  = PORT_BasePtr+offsetof(PORT_Type, PUEL)+4*(unsigned(pinIndex)/32);
    static constexpr unsigned MASK               = calculatePueMask(pinIndex);
 
 public:
@@ -127,7 +126,7 @@ public:
    */
    static void setPup(PullDirection pullDirection) {
       static_assert(MASK!=0, "Pin not supported on this device");
-      *pue = (*pue|(MASK&pullDirection))&(~MASK|pullDirection);
+      *puel = (*puel|(MASK&pullDirection))&(~MASK|pullDirection);
    }
    
    /**
@@ -153,7 +152,8 @@ class PortField_T : private Port_T<pinIndexLeft> {
 
    // Restrict to same Port i.e. 8 bits wide
    // In practice it could extend across Ports A-B-C-D or E-F-G-H as they are accessed through the same GPIO register
-   static_assert((pinIndexLeft<32)&&((pinIndexLeft&~0b111)==(pinIndexRight&~0b111))&&(pinIndexLeft>=pinIndexRight),
+   static_assert((pinIndexLeft<PinIndex::MAX_PIN_INDEX), "Illegal bit number for left in PortField");
+   static_assert(((unsigned(pinIndexLeft)&~0b111)==(unsigned(pinIndexRight)&~0b111)) && (pinIndexLeft>=pinIndexRight),
       "Illegal bit number for left or right in PortField");
 
 private:
@@ -164,10 +164,10 @@ private:
    PortField_T(PortField_T&&) = delete;
 
    /// Left bit within used GPIO registers
-   static constexpr PinNum Left  = pinIndexLeft%32;
+   static constexpr PinNum Left  = unsigned(pinIndexLeft)%32;
 
    /// Right bit within used GPIO registers
-   static constexpr PinNum Right = pinIndexRight%32;
+   static constexpr PinNum Right = unsigned(pinIndexRight)%32;
 
 
 protected:
@@ -175,21 +175,19 @@ protected:
    using Info = PortInfo;
 
 public:
-
    /** Mask for the bits being manipulated within underlying port hardware */
    static constexpr uint32_t BITMASK = static_cast<uint32_t>((1ULL<<(Left-Right+1))-1)<<Right;
-
+   
    /**
     * Set pull device for port pin
     *
     * @param pullDirection PullDirection_none or PullDirection_up
     */
    static void setPup(PullDirection pullDirection) {
-
+   
       static_assert(BITMASK!=0, "Pin not supported on this device");
-      *Port_T<pinIndexLeft>::pue = (*Port_T<pinIndexLeft>::pue|(BITMASK&pullDirection))&(~BITMASK|pullDirection);
+      *Port_T<pinIndexLeft>::puel = (*Port_T<pinIndexLeft>::puel|(BITMASK&pullDirection))&(~BITMASK|pullDirection);
    }
-
 };
 
    /**
@@ -199,7 +197,7 @@ public:
     * @tparam polarity Polarity of the pin. Either ActiveHigh or ActiveLow
     */
    template <PinNum pinNum>
-      class PortA : public Port_T<pinNum+0> {};
+      class PortA : public Port_T<PinIndex(pinNum+0)> {};
    
    /**
     * Class representing pin options for a field within Port A
@@ -209,7 +207,7 @@ public:
     * @tparam polarity    Polarity of field. Either ActiveHigh or ActiveLow
     */
    template <PinNum leftPinNum, PinNum rightPinNum, Polarity polarity=ActiveHigh>
-       class PortAField : public PortField_T<leftPinNum+0, rightPinNum+0> {};
+       class PortAField : public PortField_T<PinIndex(leftPinNum+0), PinIndex(rightPinNum+0)> {};
 
    /**
     * Class representing individual pin options for pins in Port B
@@ -218,7 +216,7 @@ public:
     * @tparam polarity Polarity of the pin. Either ActiveHigh or ActiveLow
     */
    template <PinNum pinNum>
-      class PortB : public Port_T<pinNum+8> {};
+      class PortB : public Port_T<PinIndex(pinNum+8)> {};
    
    /**
     * Class representing pin options for a field within Port B
@@ -228,7 +226,7 @@ public:
     * @tparam polarity    Polarity of field. Either ActiveHigh or ActiveLow
     */
    template <PinNum leftPinNum, PinNum rightPinNum, Polarity polarity=ActiveHigh>
-       class PortBField : public PortField_T<leftPinNum+8, rightPinNum+8> {};
+       class PortBField : public PortField_T<PinIndex(leftPinNum+8), PinIndex(rightPinNum+8)> {};
 
    /**
     * Class representing individual pin options for pins in Port C
@@ -237,7 +235,7 @@ public:
     * @tparam polarity Polarity of the pin. Either ActiveHigh or ActiveLow
     */
    template <PinNum pinNum>
-      class PortC : public Port_T<pinNum+16> {};
+      class PortC : public Port_T<PinIndex(pinNum+16)> {};
    
    /**
     * Class representing pin options for a field within Port C
@@ -247,7 +245,7 @@ public:
     * @tparam polarity    Polarity of field. Either ActiveHigh or ActiveLow
     */
    template <PinNum leftPinNum, PinNum rightPinNum, Polarity polarity=ActiveHigh>
-       class PortCField : public PortField_T<leftPinNum+16, rightPinNum+16> {};
+       class PortCField : public PortField_T<PinIndex(leftPinNum+16), PinIndex(rightPinNum+16)> {};
 
  
 } // namespace USBDM

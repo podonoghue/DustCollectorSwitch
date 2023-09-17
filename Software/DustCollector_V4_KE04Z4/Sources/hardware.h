@@ -28,6 +28,7 @@
 #include "gpio.h"
 #include "pit.h"
 #include "adc.h"
+#include "control.h"
 
 
 namespace USBDM {
@@ -44,25 +45,46 @@ extern void mapAllPins();
 /// ADC, Analogue Input
 typedef Adc0                                                 UserAdc;                                      
 
+/// Reference level for ISample OPAMPs
 typedef Adc0::Channel<1>                                     Reference;                                    // PTA1(15)
 
+/// Current Sample channel 2
 typedef Adc0::Channel<4>                                     I_Sample2;                                    // PTB0(12)
 
+/// Current Sample channel 1
 typedef Adc0::Channel<5>                                     I_Sample;                                     // PTB1(11)
 
+/// Hold time control
 typedef Adc0::Channel<6>                                     HoldControl;                                  // PTB2(10)
 
+/// Current threshold control
 typedef Adc0::Channel<7>                                     LevelControl;                                 // PTB3(9)
 
-typedef GpioB<4,ActiveHigh>                                  Debug;                                        // PTB4(8)
+/// SWD reserved
+typedef USBDM::GpioA<0,ActiveHigh>                           SWDCLK;                                       // PTA0(16)
 
-typedef GpioB<5,ActiveHigh>                                  DustCollector;                                // PTB5(7)
+/// SWD reserved
+typedef USBDM::GpioA<4,ActiveHigh>                           SWDIO;                                        // PTA4(2)
 
-typedef GpioB<7,ActiveHigh>                                  DelayLed;                                     // PTB7(5)
+/// RESET reserved
+typedef USBDM::GpioA<5,ActiveHigh>                           RESET_b;                                      // PTA5(1)
 
-typedef GpioB<6,ActiveHigh>                                  HoldLed;                                      // PTB6(6)
+/// Debug output
+typedef USBDM::GpioB<4,ActiveHigh>                           Debug;                                        // PTB4(8)
 
-typedef GpioA<2,ActiveHigh>                                  DetectLed;                                    // PTA2(14)
+/// Controls dust collector
+typedef USBDM::GpioB<5,ActiveHigh>                           DustCollector;                                // PTB5(7)
+
+typedef USBDM::GpioA<3,ActiveHigh>                           SWD_Tx;                                       // PTA3(13)
+
+/// Debug, DustCollector, HoldLed, DelayLed (Bit Field)
+typedef USBDM::WideGpioFieldA<15,12,ActiveHigh>              Pins1;                                        // PTB4(8), PTB5(7), PTB6(6), PTB7(5)
+
+/// LED indicating delay
+typedef USBDM::GpioB<7,ActiveHigh>                           DelayLed;                                     // PTB7(5)
+
+/// LED indicating hold
+typedef USBDM::GpioB<6,ActiveHigh>                           HoldLed;                                      // PTB6(6)
 
 /// PIT, Programmable Interrupt Timer
 typedef Pit                                                  UserTimer;                                    

@@ -11,14 +11,23 @@ RM := rm -rf
 -include Startup_Code/subdir.mk
 -include Sources/subdir.mk
 ifneq ($(MAKECMDGOALS),clean)
+ifneq ($(strip $(C++M_DEPS)),)
+-include $(C++M_DEPS)
+endif
 ifneq ($(strip $(C++_DEPS)),)
 -include $(C++_DEPS)
+endif
+ifneq ($(strip $(CCM_DEPS)),)
+-include $(CCM_DEPS)
 endif
 ifneq ($(strip $(CC_DEPS)),)
 -include $(CC_DEPS)
 endif
 ifneq ($(strip $(CPP_DEPS)),)
 -include $(CPP_DEPS)
+endif
+ifneq ($(strip $(CXXM_DEPS)),)
+-include $(CXXM_DEPS)
 endif
 ifneq ($(strip $(CXX_DEPS)),)
 -include $(CXX_DEPS)
@@ -68,7 +77,7 @@ main-build: DustCollector_V4_KE04Z4.elf secondary-outputs
 DustCollector_V4_KE04Z4.elf: $(OBJS) $(USER_OBJS) makefile $(OPTIONAL_TOOL_DEPS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: ARM C++ Linker'
-	arm-none-eabi-g++ -mcpu=cortex-m0plus -mthumb -g3 -O0 -Wl,--gc-sections -L"../Project_Settings/Linker_Files" --specs=nano.specs -Wl,--no-warn-rwx-segments -T "MemoryMap.ld" -Xlinker -Map="DustCollector_V4_KE04Z4.map"  -o "DustCollector_V4_KE04Z4.elf" $(OBJS) $(USER_OBJS) $(LIBS)
+	arm-none-eabi-g++ -mcpu=cortex-m0plus -mthumb -g3 -Og -Wl,--gc-sections -L"../Project_Settings/Linker_Files" --specs=nano.specs -Wl,--no-warn-rwx-segments -T "MemoryMap.ld" -Xlinker -Map="DustCollector_V4_KE04Z4.map"  -o "DustCollector_V4_KE04Z4.elf" $(OBJS) $(USER_OBJS) $(LIBS)
 	@echo 'Finished building target: $@'
 	@echo ' '
 

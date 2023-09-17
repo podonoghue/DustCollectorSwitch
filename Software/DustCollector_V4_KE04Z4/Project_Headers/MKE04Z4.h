@@ -5,7 +5,7 @@
  *           Equivalent: 
  *
  * @version  V1.6
- * @date     2023/07
+ * @date     2023/09
  *
  */
 
@@ -996,6 +996,9 @@ typedef struct FTM_Type {
 /** @} */
 
 /** @name COMBINE - Function for Linked Channels */ /** @{ */
+#define FTM_COMBINE_COMB0_MASK                   (0x7FU)                                             /**< FTM0_COMBINE.COMB0 Mask                 */
+#define FTM_COMBINE_COMB0_SHIFT                  (0U)                                                /**< FTM0_COMBINE.COMB0 Position             */
+#define FTM_COMBINE_COMB0(x)                     (((uint32_t)(((uint32_t)(x))<<FTM_COMBINE_COMB0_SHIFT))&FTM_COMBINE_COMB0_MASK) /**< FTM0_COMBINE.COMB0 Field                */
 #define FTM_COMBINE_COMBINE0_MASK                (0x1U)                                              /**< FTM0_COMBINE.COMBINE0 Mask              */
 #define FTM_COMBINE_COMBINE0_SHIFT               (0U)                                                /**< FTM0_COMBINE.COMBINE0 Position          */
 #define FTM_COMBINE_COMBINE0(x)                  (((uint32_t)(((uint32_t)(x))<<FTM_COMBINE_COMBINE0_SHIFT))&FTM_COMBINE_COMBINE0_MASK) /**< FTM0_COMBINE.COMBINE0 Field             */
@@ -1343,6 +1346,9 @@ typedef struct FTM2_Type {
 /** @} */
 
 /** @name COMBINE - Function for Linked Channels */ /** @{ */
+#define FTM_COMBINE_COMB1_MASK                   (0x7F00U)                                           /**< FTM2_COMBINE.COMB1 Mask                 */
+#define FTM_COMBINE_COMB1_SHIFT                  (8U)                                                /**< FTM2_COMBINE.COMB1 Position             */
+#define FTM_COMBINE_COMB1(x)                     (((uint32_t)(((uint32_t)(x))<<FTM_COMBINE_COMB1_SHIFT))&FTM_COMBINE_COMB1_MASK) /**< FTM2_COMBINE.COMB1 Field                */
 #define FTM_COMBINE_COMBINE1_MASK                (0x100U)                                            /**< FTM2_COMBINE.COMBINE1 Mask              */
 #define FTM_COMBINE_COMBINE1_SHIFT               (8U)                                                /**< FTM2_COMBINE.COMBINE1 Position          */
 #define FTM_COMBINE_COMBINE1(x)                  (((uint32_t)(((uint32_t)(x))<<FTM_COMBINE_COMBINE1_SHIFT))&FTM_COMBINE_COMBINE1_MASK) /**< FTM2_COMBINE.COMBINE1 Field             */
@@ -1364,6 +1370,9 @@ typedef struct FTM2_Type {
 #define FTM_COMBINE_FAULTEN1_MASK                (0x4000U)                                           /**< FTM2_COMBINE.FAULTEN1 Mask              */
 #define FTM_COMBINE_FAULTEN1_SHIFT               (14U)                                               /**< FTM2_COMBINE.FAULTEN1 Position          */
 #define FTM_COMBINE_FAULTEN1(x)                  (((uint32_t)(((uint32_t)(x))<<FTM_COMBINE_FAULTEN1_SHIFT))&FTM_COMBINE_FAULTEN1_MASK) /**< FTM2_COMBINE.FAULTEN1 Field             */
+#define FTM_COMBINE_COMB2_MASK                   (0x7F0000U)                                         /**< FTM2_COMBINE.COMB2 Mask                 */
+#define FTM_COMBINE_COMB2_SHIFT                  (16U)                                               /**< FTM2_COMBINE.COMB2 Position             */
+#define FTM_COMBINE_COMB2(x)                     (((uint32_t)(((uint32_t)(x))<<FTM_COMBINE_COMB2_SHIFT))&FTM_COMBINE_COMB2_MASK) /**< FTM2_COMBINE.COMB2 Field                */
 #define FTM_COMBINE_COMBINE2_MASK                (0x10000U)                                          /**< FTM2_COMBINE.COMBINE2 Mask              */
 #define FTM_COMBINE_COMBINE2_SHIFT               (16U)                                               /**< FTM2_COMBINE.COMBINE2 Position          */
 #define FTM_COMBINE_COMBINE2(x)                  (((uint32_t)(((uint32_t)(x))<<FTM_COMBINE_COMBINE2_SHIFT))&FTM_COMBINE_COMBINE2_MASK) /**< FTM2_COMBINE.COMBINE2 Field             */
@@ -3220,15 +3229,15 @@ typedef struct SPI_Type {
 /** @} */
 
 /** @name D - Data register */ /** @{ */
-#define SPI_D_BITS_MASK                          (0xFFU)                                             /**< SPI0_D.BITS Mask                        */
-#define SPI_D_BITS_SHIFT                         (0U)                                                /**< SPI0_D.BITS Position                    */
-#define SPI_D_BITS(x)                            (((uint8_t)(((uint8_t)(x))<<SPI_D_BITS_SHIFT))&SPI_D_BITS_MASK) /**< SPI0_D.BITS Field                       */
+#define SPI_D_Bits_MASK                          (0xFFU)                                             /**< SPI0_D.Bits Mask                        */
+#define SPI_D_Bits_SHIFT                         (0U)                                                /**< SPI0_D.Bits Position                    */
+#define SPI_D_Bits(x)                            (((uint8_t)(((uint8_t)(x))<<SPI_D_Bits_SHIFT))&SPI_D_Bits_MASK) /**< SPI0_D.Bits Field                       */
 /** @} */
 
 /** @name M - Match register: */ /** @{ */
-#define SPI_M_BITS_MASK                          (0xFFU)                                             /**< SPI0_M.BITS Mask                        */
-#define SPI_M_BITS_SHIFT                         (0U)                                                /**< SPI0_M.BITS Position                    */
-#define SPI_M_BITS(x)                            (((uint8_t)(((uint8_t)(x))<<SPI_M_BITS_SHIFT))&SPI_M_BITS_MASK) /**< SPI0_M.BITS Field                       */
+#define SPI_M_Bits_MASK                          (0xFFU)                                             /**< SPI0_M.Bits Mask                        */
+#define SPI_M_Bits_SHIFT                         (0U)                                                /**< SPI0_M.Bits Position                    */
+#define SPI_M_Bits(x)                            (((uint8_t)(((uint8_t)(x))<<SPI_M_Bits_SHIFT))&SPI_M_Bits_MASK) /**< SPI0_M.Bits Field                       */
 /** @} */
 
 /** @} */ /* End group SPI_Register_Masks_GROUP */

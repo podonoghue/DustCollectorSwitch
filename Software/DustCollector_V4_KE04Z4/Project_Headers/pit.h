@@ -22,6 +22,8 @@
 #include "system.h"
 #include "pin_mapping.h"
 
+#if true // /PIT/enablePeripheralSupport
+
 namespace USBDM {
 
 /**
@@ -70,7 +72,21 @@ protected:
 
    /** Bitmask used to indicate a channel call-back is one-shot */
    static uint8_t clearOnEvent;
-      
+   
+   /**
+    *  Enables and configures the PIT if not already done.
+    *  This also disables all channel interrupts and channel reservations if newly configured.
+    *
+    *  @param[in]  pitDebugMode  Determined whether the PIT halts when suspended during debug
+    */
+   static void configureIfNeeded(PitDebugMode pitDebugMode=PitDebugMode_Freeze) {
+      enable();
+      // Check if disabled and configure if so
+      if ((pit->MCR & PIT_MCR_MDIS_MASK) != 0) {
+         configure(pitDebugMode);
+      }
+   }
+   
    /**
     * Type definition for Pit interrupt call back.
     */
@@ -86,7 +102,6 @@ protected:
       setAndCheckErrorCode(E_NO_HANDLER);
    }
    
-
 
 public:
    /// Defaulted constructor
@@ -212,20 +227,6 @@ public:
       // Enable clock
       Info::enableClock();
       __DMB();
-   }
-
-   /**
-    *  Enables and configures the PIT if not already done.
-    *  This also disables all channel interrupts and channel reservations if newly configured.
-    *
-    *  @param[in]  pitDebugMode  Determined whether the PIT halts when suspended during debug
-    */
-   static void configureIfNeeded(PitDebugMode pitDebugMode=PitDebugMode_Freeze) {
-      enable();
-      // Check if disabled and configure if so
-      if ((pit->MCR & PIT_MCR_MDIS_MASK) != 0) {
-         configure(pitDebugMode);
-      }
    }
 
    /**
@@ -656,10 +657,10 @@ public:
        void configure(
             Ticks             interval,
             PitChannelIrq     pitChannelIrq=PitChannelIrq_Disabled) const {
-      
+   
          PitBase_T<Info>::configureChannel(chan, interval, pitChannelIrq);
       }
-      
+   
 #if false // /PIT/secondsSupport
       /**
        *  Configure the PIT channel
@@ -673,11 +674,11 @@ public:
        void configure(
             Seconds           interval,
             PitChannelIrq     pitChannelIrq=PitChannelIrq_Disabled) const {
-      
+   
          PitBase_T<Info>::configureChannel(chan, interval, pitChannelIrq);
       }
 #endif
-      
+   
       /**
        *  Enables and configures the PIT if not already done.
        *  This also disables all channel interrupts and channel reservations if newly configured.
@@ -687,21 +688,21 @@ public:
        void  configureIfNeeded(PitDebugMode pitDebugMode=PitDebugMode_Freeze) const {
          PitBase_T<Info>::configureIfNeeded(pitDebugMode);
       }
-      
+   
       /**
        *   Enable the PIT channel
        */
        void enable() const {
          PitBase_T<Info>::enableChannel(chan);
       }
-      
+   
       /**
        *   Disable the PIT channel
        */
        void disable() const {
          PitBase_T<Info>::disableChannel(chan);
       }
-      
+   
       /**
        * Enable/disable channel interrupts.
        *
@@ -712,14 +713,14 @@ public:
        void enableInterrupts(bool enable=true) const {
          PitBase_T<Info>::enableInterrupts(chan, enable);
       }
-      
+   
       /**
        * Enable interrupts in NVIC
        */
        void enableNvicInterrupts() const {
          PitBase_T<Info>::enableNvicInterrupts(chan);
       }
-      
+   
       /**
        * Enable and set priority of interrupts in NVIC
        * Any pending NVIC interrupts are first cleared.
@@ -729,14 +730,14 @@ public:
        void enableNvicInterrupts(NvicPriority nvicPriority) const {
          PitBase_T<Info>::enableNvicInterrupts(chan, nvicPriority);
       }
-      
+   
       /**
        * Disable interrupts in NVIC
        */
        void disableNvicInterrupts() const {
          PitBase_T<Info>::disableNvicInterrupts(chan);
       }
-      
+   
 #if false // /PIT/secondsSupport
       /**
        * Set period in seconds
@@ -750,7 +751,7 @@ public:
          PitBase_T<Info>::setPeriod(chan, interval);
       }
 #endif
-      
+   
       /**
        * Set period in ticks
        *
@@ -762,7 +763,7 @@ public:
        void setPeriod(Ticks interval) const {
          PitBase_T<Info>::setPeriod(chan, interval);
       }
-      
+   
       /**
        * Set period in microseconds
        *
@@ -776,7 +777,7 @@ public:
          usbdm_assert(interval<0xFFFFFFFFUL,"Interval too long");
          PitBase_T<Info>::setPeriod(chan, Ticks((unsigned)microseconds));
       }
-      
+   
       /**
        *  Use a PIT channel to implement a busy-wait delay
        *
@@ -787,7 +788,7 @@ public:
        void delay(Ticks interval) const {
          PitBase_T<Info>::delay(chan, interval);
       }
-      
+   
 #if false // /PIT/secondsSupport
       /**
        *  Use a PIT channel to implement a busy-wait delay
@@ -809,7 +810,7 @@ public:
        void setCallback(CallbackFunction callback) const {
          PitBase_T<Info>::setCallback(chan, callback);
       }
-      
+   
 #if false // /PIT/secondsSupport
       /**
        * Set one-shot timer callback.
@@ -823,7 +824,7 @@ public:
          PitBase_T<Info>::oneShot(chan, callback, interval);
       }
 #endif
-      
+   
       /**
        * Set one-shot timer callback in microseconds
        *
@@ -835,7 +836,7 @@ public:
        void oneShotInMicroseconds(CallbackFunction callback, uint32_t microseconds) const {
          PitBase_T<Info>::oneShotInMicroseconds(chan, callback, microseconds);
       }
-      
+   
       /**
        * Set one-shot timer callback in milliseconds
        *
@@ -847,7 +848,7 @@ public:
        void oneShotInMilliseconds(CallbackFunction callback, uint32_t milliseconds) const {
          PitBase_T<Info>::oneShotInMilliseconds(chan, callback, milliseconds);
       }
-      
+   
       /**
        * Set one-shot timer callback
        *
@@ -911,10 +912,10 @@ public:
       static void configure(
             Ticks             interval,
             PitChannelIrq     pitChannelIrq=PitChannelIrq_Disabled)  {
-      
+   
          PitBase_T<Info>::configureChannel(CHANNEL, interval, pitChannelIrq);
       }
-      
+   
 #if false // /PIT/secondsSupport
       /**
        *  Configure the PIT channel
@@ -928,11 +929,11 @@ public:
       static void configure(
             Seconds           interval,
             PitChannelIrq     pitChannelIrq=PitChannelIrq_Disabled)  {
-      
+   
          PitBase_T<Info>::configureChannel(CHANNEL, interval, pitChannelIrq);
       }
 #endif
-      
+   
       /**
        *  Enables and configures the PIT if not already done.
        *  This also disables all channel interrupts and channel reservations if newly configured.
@@ -942,21 +943,21 @@ public:
       static void  configureIfNeeded(PitDebugMode pitDebugMode=PitDebugMode_Freeze)  {
          PitBase_T<Info>::configureIfNeeded(pitDebugMode);
       }
-      
+   
       /**
        *   Enable the PIT channel
        */
       static void enable()  {
          PitBase_T<Info>::enableChannel(CHANNEL);
       }
-      
+   
       /**
        *   Disable the PIT channel
        */
       static void disable()  {
          PitBase_T<Info>::disableChannel(CHANNEL);
       }
-      
+   
       /**
        * Enable/disable channel interrupts.
        *
@@ -967,14 +968,14 @@ public:
       static void enableInterrupts(bool enable=true)  {
          PitBase_T<Info>::enableInterrupts(CHANNEL, enable);
       }
-      
+   
       /**
        * Enable interrupts in NVIC
        */
       static void enableNvicInterrupts()  {
          PitBase_T<Info>::enableNvicInterrupts(CHANNEL);
       }
-      
+   
       /**
        * Enable and set priority of interrupts in NVIC
        * Any pending NVIC interrupts are first cleared.
@@ -984,14 +985,14 @@ public:
       static void enableNvicInterrupts(NvicPriority nvicPriority)  {
          PitBase_T<Info>::enableNvicInterrupts(CHANNEL, nvicPriority);
       }
-      
+   
       /**
        * Disable interrupts in NVIC
        */
       static void disableNvicInterrupts()  {
          PitBase_T<Info>::disableNvicInterrupts(CHANNEL);
       }
-      
+   
 #if false // /PIT/secondsSupport
       /**
        * Set period in seconds
@@ -1005,7 +1006,7 @@ public:
          PitBase_T<Info>::setPeriod(CHANNEL, interval);
       }
 #endif
-      
+   
       /**
        * Set period in ticks
        *
@@ -1017,7 +1018,7 @@ public:
       static void setPeriod(Ticks interval)  {
          PitBase_T<Info>::setPeriod(CHANNEL, interval);
       }
-      
+   
       /**
        * Set period in microseconds
        *
@@ -1031,7 +1032,7 @@ public:
          usbdm_assert(interval<0xFFFFFFFFUL,"Interval too long");
          PitBase_T<Info>::setPeriod(CHANNEL, Ticks((unsigned)microseconds));
       }
-      
+   
       /**
        *  Use a PIT channel to implement a busy-wait delay
        *
@@ -1042,7 +1043,7 @@ public:
       static void delay(Ticks interval)  {
          PitBase_T<Info>::delay(CHANNEL, interval);
       }
-      
+   
 #if false // /PIT/secondsSupport
       /**
        *  Use a PIT channel to implement a busy-wait delay
@@ -1064,7 +1065,7 @@ public:
       static void setCallback(CallbackFunction callback)  {
          PitBase_T<Info>::setCallback(CHANNEL, callback);
       }
-      
+   
 #if false // /PIT/secondsSupport
       /**
        * Set one-shot timer callback.
@@ -1078,7 +1079,7 @@ public:
          PitBase_T<Info>::oneShot(CHANNEL, callback, interval);
       }
 #endif
-      
+   
       /**
        * Set one-shot timer callback in microseconds
        *
@@ -1090,7 +1091,7 @@ public:
       static void oneShotInMicroseconds(CallbackFunction callback, uint32_t microseconds)  {
          PitBase_T<Info>::oneShotInMicroseconds(CHANNEL, callback, microseconds);
       }
-      
+   
       /**
        * Set one-shot timer callback in milliseconds
        *
@@ -1102,7 +1103,7 @@ public:
       static void oneShotInMilliseconds(CallbackFunction callback, uint32_t milliseconds)  {
          PitBase_T<Info>::oneShotInMilliseconds(CHANNEL, callback, milliseconds);
       }
-      
+   
       /**
        * Set one-shot timer callback
        *
@@ -1232,5 +1233,7 @@ class Pit : public PitBase_T<PitInfo> {};
  */
 
 } // End namespace USBDM
+
+#endif // /PIT/enablePeripheralSupport
 
 #endif /* INCLUDE_USBDM_PIT_H_ */

@@ -21,6 +21,8 @@
 #include <cmath>
 #include "pin_mapping.h"
 
+#if false // /FTM/enablePeripheralSupport
+
 /*
  * Default port information
  */
@@ -144,7 +146,7 @@ public:
    }
    
    /**
-    * Set Clock Source and Clock prescaler
+    * Set FTM Clock Source and Clock prescaler
     *
     * @param ftmClockSource Selects the clock source for the module
     * @param ftmPrescale    Selects the prescaler for the module
@@ -204,7 +206,7 @@ public:
    }
 
    /**
-    * Set Clock Source
+    * Set FTM Clock Source
     *
     * @param ftmClockSource Selects the clock source for the module
     *
@@ -227,7 +229,7 @@ public:
    }
    
    /**
-    * Get Clock Source
+    * Get FTM Clock Source
     *
     * @param ftmClockSource Selects the clock source for the module
     */
@@ -499,7 +501,7 @@ public:
          // Attempt to set too long a period
          setErrorCode(E_TOO_LARGE);
       }
-      return (unsigned)rv;
+      return Ticks(uint32_t(rv));
    }
    
    /**
@@ -523,7 +525,7 @@ public:
          // Attempt to set too long a period
          setErrorCode(E_TOO_LARGE);
       }
-      return (unsigned)rv;
+      return Ticks(uint32_t(rv));
    }
    
    /**
@@ -842,7 +844,7 @@ public:
    
       if (ftm->SC&FTM_SC_CPWMS_MASK) {
          // In CPWM the pulse width is doubled
-         highTime = (highTime+1_ticks)/2U;
+         highTime = Ticks((highTime+1_ticks)/2U);
       }
 #ifdef DEBUG_BUILD
       if ((unsigned)highTime > ftm->MOD) {
@@ -861,7 +863,7 @@ public:
     * @return Absolute time of last event in ticks i.e. value from timer event register
     */
    Ticks getEventTime(int channel) const {
-      return (unsigned)(ftm->CONTROLS[channel].CnV);
+      return Ticks(ftm->CONTROLS[channel].CnV);
    }
    
    /**
@@ -1265,7 +1267,7 @@ public:
    virtual ~FtmBase_T() = default;
 
    /** Maximum counter value in ticks */
-   static constexpr Ticks MaximumPeriodInTicks = FTM_MOD_MOD_MASK;
+   static constexpr Ticks MaximumPeriodInTicks = Ticks(FTM_MOD_MOD_MASK);
 
    /** Hardware instance pointer */
    static constexpr HardwarePtr<FTM_Type> ftm = Info::baseAddress;
@@ -1323,12 +1325,12 @@ public:
    static void irqHandler() {
       if ((ftm->MODE&FTM_MODE_FAULTIE_MASK) && (ftm->FMS&FTM_FMS_FAULTF_MASK)) {
          ftm->FMS = ftm->FMS & ~FTM_FMS_FAULTF_MASK;
-         Info::callback();
+         Info::sCallback();
       }
       else if ((ftm->SC&(FTM_SC_TOF_MASK|FTM_SC_TOIE_MASK)) == (FTM_SC_TOF_MASK|FTM_SC_TOIE_MASK)) {
          // Clear TOI flag
          ftm->SC = ftm->SC & ~FTM_SC_TOF_MASK;
-         Info::callback();
+         Info::sCallback();
       }
       else {
          // Get status for channels
@@ -1440,77 +1442,26 @@ public:
    }
 
 public:
-// No class Info found
    /**
-    * Configure FTM from values specified in init
-   
-    * @param init Class containing initialisation values
+    * Basic enable of FTM
+    * Includes enabling clock and configuring all mapped pins if mapPinsOnEnable is selected in configuration
     */
-   static ErrorCode configure(const typename Info::Init &init) {
-   
-      if constexpr (Info::irqHandlerInstalled) {
-         Info::setCallbacks(init);
-      }
-   
-      uint8_t  sc    = init.sc;
-      uint16_t cntin = init.cntin;
-      uint16_t mod   = init.mod;
-   
-      if (init.modperiod != 0) {
-   
-         // Calculate sc.ps, mod (assumes cntin=0)
-         ErrorCode rc = calculateTimingParameters(init.modperiod, sc, mod);
-         if (rc != E_NO_ERROR) {
-            return rc;
-         }
-         // Configure for modulo operation
-         cntin = 0;
-      }
-      if (init.sc&FtmMode_FreeRunning) {
-         // Make free-running
-         cntin = 0;
-         mod   = FTM_MOD_MOD_MASK;
-      }
-      // Disable timer to change clock (unable to switch directly between clock sources)
-      ftm->SC  = 0;
-   
-      // Start value for counter
-      ftm->CNTIN = cntin;
-   
-      // End value for counter
-      ftm->MOD = mod;
-   
-      // Restart counter
-      ftm->CNT = 0;
-   
-      // Configure timer
-      ftm->SC  = sc;
-   
-      return E_NO_ERROR;
+   static void enable() {
+      Info::enableClock();
    }
 
-
    /**
-    * Configure Channel from values specified in channelInit
-   
-    * @param channelInit Class containing initialisation values
+    * Disables the clock to FTM and all mapped pins
     */
-   static ErrorCode configureChannel(const typename Info::ChannelInit &channelInit) {
-   
-      // Enable peripheral clock
-      Info::enableClock();
-   
-      if constexpr (Info::irqHandlerInstalled && Info::IndividualCallbacks) {
-         Info::setChannelCallback(channelInit);
-      }
-   
-      // Configure timer combine mode
-      if ((channelInit.channel&0b1) == 0) {
-         // Even channel value controls paired channels n,n+1
-         const unsigned offset = 4*channelInit.channel;
-         const uint32_t mask = 0xFF<<offset;
-         ftm->COMBINE = (ftm->COMBINE & ~mask) | (((channelInit.cnsc>>8)<<offset)&mask);
-      }
+   static void disable() {
+      disableNvicInterrupts();
+      ftm->SC = FTM_SC_CLKS(0);
+
+      Info::disableClock();
+   }
+// End Template _mapPinsOption_on.xml
+
+
       // Configure timer channel
       ftm->CONTROLS[channelInit.channel].CnSC = channelInit.cnsc;
       ftm->CONTROLS[channelInit.channel].CnV  = channelInit.cnv;
@@ -1561,7 +1512,7 @@ public:
    }
    
    /**
-    * Set Clock Source and Clock prescaler
+    * Set FTM Clock Source and Clock prescaler
     *
     * @param ftmClockSource Selects the clock source for the module
     * @param ftmPrescale    Selects the prescaler for the module
@@ -1621,7 +1572,7 @@ public:
    }
 
    /**
-    * Set Clock Source
+    * Set FTM Clock Source
     *
     * @param ftmClockSource Selects the clock source for the module
     *
@@ -1644,7 +1595,7 @@ public:
    }
    
    /**
-    * Get Clock Source
+    * Get FTM Clock Source
     *
     * @param ftmClockSource Selects the clock source for the module
     */
@@ -1769,10 +1720,12 @@ public:
             modValueF = modValueF - 1;
          }
          unsigned modValue = round(modValueF);
-         if (modValue < Info::minimumResolution) {
-            usbdm_assert(false, "Interval is too short");
-            // Too short a period for minimum resolution
-            return setErrorCode(E_TOO_SMALL);
+         if constexpr (Info::minimumResolution>0) {
+            if (modValue < Info::minimumResolution) {
+               usbdm_assert(false, "Interval is too short");
+               // Too short a period for minimum resolution
+               return setErrorCode(E_TOO_SMALL);
+            }
          }
          if (modValue <= maxModValue) {
             sc   = (sc&~FTM_SC_PS_MASK)|FTM_SC_PS(prescalerValue);
@@ -1921,11 +1874,13 @@ public:
          // Attempt to set too long a period
          setErrorCode(E_TOO_LARGE);
       }
-      if (rv < Info::minimumInterval) {
-         // Attempt to set too short a period
-         setErrorCode(E_TOO_SMALL);
+      if constexpr (Info::minimumInterval>0) {
+         if (rv < Info::minimumInterval) {
+            // Attempt to set too short a period
+            setErrorCode(E_TOO_SMALL);
+         }
       }
-      return (unsigned)rv;
+      return Ticks(uint32_t(rv));
    }
    
    /**
@@ -1953,7 +1908,7 @@ public:
          // Attempt to set too short a period
          setErrorCode(E_TOO_SMALL);
       }
-      return (unsigned)rv;
+      return Ticks(uint32_t(rv));
    }
    
    /**
@@ -2272,7 +2227,7 @@ public:
    
       if (ftm->SC&FTM_SC_CPWMS_MASK) {
          // In CPWM the pulse width is doubled
-         highTime = (highTime+1_ticks)/2U;
+         highTime = Ticks((highTime+1_ticks)/2U);
       }
 #ifdef DEBUG_BUILD
       if ((unsigned)highTime > ftm->MOD) {
@@ -2291,7 +2246,7 @@ public:
     * @return Absolute time of last event in ticks i.e. value from timer event register
     */
    static Ticks getEventTime(int channel) {
-      return (unsigned)(ftm->CONTROLS[channel].CnV);
+      return Ticks(ftm->CONTROLS[channel].CnV);
    }
    
    /**
@@ -3127,6 +3082,8 @@ class Ftm2 : public FtmBase_T<Ftm2Info> {};
  */
 
 } // End namespace USBDM
+
+#endif // /FTM/enablePeripheralSupport
 
 #endif /* HEADER_FTM_H */
 

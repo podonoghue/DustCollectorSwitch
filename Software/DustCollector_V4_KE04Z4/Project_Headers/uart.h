@@ -396,7 +396,25 @@ protected:
    static UARTCallbackFunction lonCallback;
 
 public:
-   // No class Info found
+      /**
+    * Basic enable of UART
+    * Includes enabling clock and configuring all mapped pins if mapPinsOnEnable is selected in configuration
+    */
+   static void enable() {
+      Info::enableClock();
+   }
+
+   /**
+    * Disables the clock to UART and all mapped pins
+    */
+   static void disable() {
+      disableNvicInterrupts();
+      
+
+      Info::disableClock();
+   }
+// End Template _mapPinsOption_on.xml
+
 
    /**
     * Construct UART interface

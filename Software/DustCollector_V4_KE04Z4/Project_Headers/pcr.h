@@ -48,8 +48,44 @@ namespace USBDM {
 #pragma GCC push_options
 #pragma GCC optimize ("Os")
 
-// Used for index for Port pins e.g. PTA = [0..7], PTB = [8..15] etc
-typedef unsigned PinIndex;
+/**
+* Port pin index
+*
+* Global indices for port pins
+*/
+enum class PinIndex : int8_t {
+   INVALID_PCR  = -2,   // Signal does not exist
+   UNMAPPED_PCR = -3,   // Signal is not currently mapped to a pin
+   FIXED_NO_PCR = -4,   // Signal has mapping to fixed pin
+   MIN_PIN_INDEX = 0,   // First available pin (inclusive)
+   Unassigned    = UNMAPPED_PCR,
+   PTA0 = 0+0,
+   PTA1 = 0+1,
+   PTA2 = 0+2,
+   PTA3 = 0+3,
+   PTA4 = 0+4,
+   PTA5 = 0+5,
+   PTA6 = 0+6,
+   PTA7 = 0+7,
+   PTB0 = 8+0,
+   PTB1 = 8+1,
+   PTB2 = 8+2,
+   PTB3 = 8+3,
+   PTB4 = 8+4,
+   PTB5 = 8+5,
+   PTB6 = 8+6,
+   PTB7 = 8+7,
+   PTC0 = 16+0,
+   PTC1 = 16+1,
+   PTC2 = 16+2,
+   PTC3 = 16+3,
+   PTC4 = 16+4,
+   PTC5 = 16+5,
+   PTC6 = 16+6,
+   PTC7 = 16+7,
+   MAX_PIN_INDEX, // Last available pin (exclusive)
+};
+   
 
 // Pin number for port pin within individual port e.g. GPIOB[31..0]
 typedef uint8_t  PinNum;
@@ -109,6 +145,9 @@ public:
    constexpr auto operator ==(const Ticks &other)   const { return value==other.value; }
    constexpr auto operator ==(const unsigned other) const { return value==other; }
 
+   constexpr auto operator !=(const Ticks &other)   const { return value!=other.value; }
+   constexpr auto operator !=(const unsigned other) const { return value!=other; }
+
    constexpr operator unsigned() const { return value; }
    explicit operator unsigned() const volatile { return value; }
 };
@@ -164,6 +203,11 @@ public:
    constexpr auto operator ==(const unsigned other) const { return value==other; }
    constexpr auto operator ==(int other)            const { return value==other; }
 
+   constexpr auto operator !=(const Seconds &other) const { return value!=other.value; }
+   constexpr auto operator !=(const float other)    const { return value!=other; }
+   constexpr auto operator !=(const unsigned other) const { return value!=other; }
+   constexpr auto operator !=(int other)            const { return value!=other; }
+
    constexpr auto operator <(const Seconds &other) const { return value<other.value; }
    constexpr auto operator <(const float other)    const { return value<other; }
    constexpr auto operator <(const unsigned other) const { return value<other; }
@@ -184,8 +228,12 @@ public:
    constexpr auto operator >=(const unsigned other) const { return value>=other; }
    constexpr auto operator >=(int other)            const { return value>=other; }
 
-   constexpr operator float() const { return value; }
-   explicit operator float() const volatile { return value; }
+   constexpr operator float()    const { return value; }
+   explicit  operator float()    const volatile { return value; }
+   constexpr operator unsigned() const { return (unsigned)round(value); }
+   constexpr operator uint32_t() const { return (uint32_t)round(value); }
+   constexpr operator signed()   const { return (signed)round(value); }
+   constexpr operator int32_t()  const { return (int32_t)round(value); }
 };
 
 class Hertz {
@@ -232,6 +280,11 @@ public:
    constexpr auto operator ==(const unsigned other) const { return value==other; }
    constexpr auto operator ==(int other)            const { return value==other; }
 
+   constexpr auto operator !=(const Hertz &other)   const { return value!=other.value; }
+   constexpr auto operator !=(const float other)    const { return value!=other; }
+   constexpr auto operator !=(const unsigned other) const { return value!=other; }
+   constexpr auto operator !=(int other)            const { return value!=other; }
+
    constexpr auto operator <(const Hertz &other)   const { return value<other.value; }
    constexpr auto operator <(const float other)    const { return value<other; }
    constexpr auto operator <(const unsigned other) const { return value<other; }
@@ -253,7 +306,10 @@ public:
    constexpr auto operator >=(int other)            const { return value>=other; }
 
    constexpr operator float()    const { return value; }
-   constexpr operator unsigned() const { return (int)round(value); }
+   constexpr operator unsigned() const { return (unsigned)round(value); }
+   constexpr operator uint32_t() const { return (uint32_t)round(value); }
+   constexpr operator signed()   const { return (signed)round(value); }
+   constexpr operator int32_t()  const { return (int32_t)round(value); }
 };
 
 constexpr auto operator *(float left,     Seconds right)  { return Seconds(left*right.getValue()); }
@@ -276,7 +332,10 @@ constexpr auto operator /(int left,       Hertz right)   { return Seconds(left/r
 constexpr auto operator /(Ticks left,     Hertz right)   { return Seconds(left.getValue()/right.getValue()); }
 
 #else
-   using Ticks    = unsigned;
+enum Ticks : unsigned {
+
+};
+//   using Ticks    = unsigned;
    using Seconds  = float;
    using Hertz    = float;
 #endif
@@ -306,7 +365,7 @@ union Seconds_Ticks {
    constexpr Seconds_Ticks() : value(0) {}
 
    constexpr Seconds toSeconds() const { return bit_cast<float, unsigned>(value); }
-   constexpr Ticks   toTicks()   const { return value; }
+   constexpr Ticks   toTicks()   const { return (Ticks)value; }
 
 #if false
    constexpr void fromSeconds(Seconds seconds) { value = bit_cast<unsigned, float>(seconds.getValue()); }
@@ -465,16 +524,6 @@ enum Polarity : uint32_t {
    ActiveHigh = 0x00000000U,  ///< Signal is active high i.e. Active => High level, Inactive => Low level
 };
 
-#ifdef PORT_PCR_MUX_MASK
-
-/** Pin number indicating the function has a fixed mapping to a pin */
-constexpr   int8_t FIXED_NO_PCR         = 0x00;
-
-/** Pin number indicating the function doesn't exist. Note: -ve value*/
-constexpr   int8_t INVALID_PCR          = static_cast<int8_t>(0xA5);
-
-/** Pin number indicating the function is not currently mapped to a pin. Note: -ve value */
-constexpr   int8_t UNMAPPED_PCR         = static_cast<int8_t>(0xA4);
 
 #ifdef PCC
 /**
@@ -498,6 +547,8 @@ static inline void disablePortClocks(uint32_t pccAddress) {
 };
 
 #endif
+
+#ifdef PORT_PCR_MUX_MASK
 
 #ifndef PORT_PCR_LK
 /**
@@ -615,21 +666,9 @@ private:
    PortInfo(PortInfo&&) = delete;
 
 public:
-   const uint32_t      portAddress;  ///< Port hardware base pointer
-   const uint32_t      clockInfo;    ///< Either clock mask or port clock control register address
-   const uint32_t      gpioAddress;  ///< Associated GPIO Hardware base pointer
-   const IRQn_Type     irqNum;       ///< Port interrupt number
    const NvicPriority  irqLevel;     ///< Interrupt priority level or NvicPriority_NotInstalled if handler not installed
 
-   constexpr PortInfo(const uint32_t      portAddress,
-                      const uint32_t      clockInfo,
-                      const IRQn_Type     irqNum,
-                      const uint32_t      gpioAddress,
-                      const NvicPriority  nvicPriority) :
-               portAddress(portAddress),
-               clockInfo(clockInfo),
-               gpioAddress(gpioAddress),
-               irqNum(irqNum),
+   constexpr PortInfo(const NvicPriority  nvicPriority) :
                irqLevel(nvicPriority) {
    }
 };
@@ -645,42 +684,19 @@ private:
    PinInfo(PinInfo&&) = delete;
 
 public:
-   const uint32_t      portAddress;  ///< Port hardware base pointer
-   const uint32_t      clockInfo;    ///< Either clock mask or port clock control register address
-   const uint32_t      gpioAddress;  ///< GPIO Hardware base pointer
+   const PinIndex      pinIndex;     ///< Pin index for pin e.g. PTC3
    const PcrValue      pcrValue;     ///< Default PCR value for pin - Includes PinMux value which determines pin use in most cases
-   const int8_t        gpioBit;      ///< Bit number for pin - must be signed for special values used for error checks
-   const IRQn_Type     irqNum;       ///< Port interrupt number
-   const NvicPriority  irqLevel;     ///< Interrupt priority level or NvicPriority_NotInstalled if handler not installed
 
    /**
     * Constructor from portInfo etc.
     *
-    * @param portInfo      Describes port
-    * @param gpioBit       Bit number GPIO being modified
+    * @param pinIndex      Pin index to determine associated GPIO
     * @param pcrValue      Default PCR value for pin
     */
    constexpr PinInfo(
-         const PortInfo &portInfo,
-         int             gpioBit,
-         PcrValue        pcrValue) :
-                     portAddress(portInfo.portAddress), clockInfo(portInfo.clockInfo), gpioAddress(portInfo.gpioAddress),
-                     pcrValue(pcrValue), gpioBit(gpioBit), irqNum(portInfo.irqNum), irqLevel(portInfo.irqLevel) {}
-
-   /**
-    * Constructor from pinInfo with override for bit number and PCR value.
-    * This is useful when re-using a PinInfo for another PinMux value i.e. peripheral
-    *
-    * @param pinInfo       Describes pin
-    * @param gpioBit       Bit number GPIO being modified
-    * @param pcrValue      Default PCR value for pin
-    */
-   constexpr PinInfo(
-         const PinInfo &pinInfo,
-         int             gpioBit,
-         PcrValue        pcrValue) :
-                     portAddress(pinInfo.portAddress), clockInfo(pinInfo.clockInfo), gpioAddress(pinInfo.gpioAddress),
-                     pcrValue(pcrValue), gpioBit(gpioBit), irqNum(pinInfo.irqNum), irqLevel(pinInfo.irqLevel) {}
+         PinIndex        pinIndex,
+         PcrValue        pcrValue) : pinIndex(pinIndex), pcrValue(pcrValue) {
+   }
 };
 
 #ifdef PORT_DFCR_CS_MASK
@@ -719,28 +735,32 @@ public:
       if (bitNum<0) {
          return 0;
       }
-      if (bitNum>(int)(sizeof(uint32_t)*CHAR_BIT)) {
-         return (int)(sizeof(uint32_t)*CHAR_BIT);
+      if (bitNum>=(int)(sizeof(uint32_t)*CHAR_BIT)) {
+         return int((sizeof(uint32_t)*CHAR_BIT)-1);
       }
       return bitNum;
    }
 
-   /** Class to static check inputNum input exists and is mapped to an input pin */
-   template<int bitNum> class CheckPinExistsAndIsMapped {
+   /**
+    * Class to static check signal exists and is mapped to a pin
+    *
+    * @tparam pinIndex Pin index to check
+    */
+   template<PinIndex pinIndex> class CheckPinExistsAndIsMapped {
       // Tests are chained so only a single assertion can fail so as to reduce noise
 
       // Function is not currently mapped to a pin
-      static constexpr bool Test1 = (bitNum != UNMAPPED_PCR);
+      static constexpr bool Test1 = (pinIndex != PinIndex::UNMAPPED_PCR);
       // Peripheral signal does not exit
-      static constexpr bool Test2 = !Test1 || (bitNum != INVALID_PCR);
+      static constexpr bool Test2 = !Test1 || (pinIndex != PinIndex::INVALID_PCR);
       // Peripheral signal mapped directly to pin - no PCR (not an error)
-      static constexpr bool Test3 = !Test2 || (bitNum != FIXED_NO_PCR);
+      static constexpr bool Test3 = !Test1 || !Test2 || (pinIndex != PinIndex::FIXED_NO_PCR);
       // Illegal value
-      static constexpr bool Test4 = !Test3 || (bitNum>0) || (bitNum<=31);
+      static constexpr bool Test4 = !Test1 || !Test2 || !Test3 || ((pinIndex>=PinIndex::MIN_PIN_INDEX) && (pinIndex<PinIndex::MAX_PIN_INDEX));
 
       static_assert(Test1, "Peripheral signal is not mapped to a pin - Modify Configure.usbdm");
       static_assert(Test2, "Peripheral signal doesn't exist in this device/package - Check Configure.usbdm for available signals");
-      static_assert(Test4, "Illegal bit number should be [0..31]");
+      static_assert(Test4, "Illegal pin index - should be in range [PinIndex::MIN_PIN_INDEX..PinIndex::MAX_PIN_INDEX)");
 
    public:
       /** Dummy function to allow convenient in-line checking */
@@ -760,17 +780,60 @@ public:
    static void unhandledCallback(uint32_t) {
       setAndCheckErrorCode(E_NO_HANDLER);
    }
+   
+#error /PORT/AccessFunctions not found
+
+   /**
+    * Get PCR from pinIndex
+    *
+    * @param pinIndex Pin index e.g. PTB3. Used to determine return value
+    *
+    * @return Pointer to relevant PORT
+    */
+   static constexpr uint32_t getPcrAddress(PinIndex pinIndex){
+
+      return getPortAddress(pinIndex) + offsetof(PORT_Type, PCR) + sizeof(PORT_Type::PCR[0])*(int(pinIndex)%32);
+   }
+
+   /**
+    * Enable clock to selected port
+    *
+    * @param pinIndex Pin index e.g. PTB3. Used to determine port
+    */
+   static inline void enablePortClock(PinIndex pinIndex) {
+      SIM->SCGC5 = SIM->SCGC5 | getClockMask(pinIndex);
+      __DMB();
+   }
+
+   /**
+    * Disable clock to selected port
+    *
+    * @param pinIndex Pin index e.g. PTB3. Used to determine port
+    */
+   static inline void disablePortClock(PinIndex pinIndex) {
+      SIM->SCGC5 = SIM->SCGC5 & ~getClockMask(pinIndex);
+      __DMB();
+   }
+
+   /**
+    * Translate a bitNum within a PORT/GPIO to a pinIndex
+    *
+    * @param basePinIndex The pinIndex for the first bit of associated PORT/GPIO e.g. PTC0
+    * @param bitNum       Bit number within the PORT/GPIO
+    *
+    * @return  PinIndex of the bit
+    */
+   static constexpr PinIndex pinIndexOf(PinIndex basePinIndex, int bitNum) {
+      return PinIndex(int(basePinIndex)+bitNum);
+   }
 };
 
 /**
  * Common PORT features shared across all port pins
  *
- * @tparam portAddress           Address of port to be used
- * @tparam irqNum                Interrupt number for NVIC entry
- * @tparam defaultNvicPriority   Default interrupt priority.\n
- *                               NvicPriority_NotInstalled indicates PORT not configured for interrupts.
+ * @tparam pinIndex Pin index e.g. PTB3. Used to determine associated port
  */
-template<uint32_t portAddress, IRQn_Type irqNum, NvicPriority defaultNvicPriority>
+template<PinIndex pinIndex>
 class PcrBase_T {
 
 private:
@@ -789,14 +852,18 @@ public:
    constexpr PcrBase_T() = default;
 
 #if defined(PORT_DFCR_CS_MASK)
-   /** PORT hardware as pointer to struct */
-   static constexpr HardwarePtr<PORT_DFER_Type> port = portAddress;
+   /// PORT hardware as pointer to struct
+   static constexpr HardwarePtr<PORT_DFER_Type> port = PcrBase::getPcrAddress(pinIndex);
 #else
-   /** PORT hardware as pointer to struct */
-   static constexpr HardwarePtr<PORT_Type> port = portAddress;
+   /// PORT hardware as pointer to struct
+   static constexpr HardwarePtr<PORT_Type> port = PcrBase::getPcrAddress(pinIndex);
 #endif
 
-   static constexpr bool     HANDLER_INSTALLED  = defaultNvicPriority>=0;  ///< Used to check if USBDM port pin interrupt handler has been installed
+   /// Hardware IRQ number
+   static constexpr IRQn_Type irqNum = PcrBase::getIrqNum(pinIndex);
+
+   /// Indicates if USBDM port pin interrupt handler has been installed in vector table
+   static constexpr bool HANDLER_INSTALLED = PcrBase::isHandlerInstalled(pinIndex);
 
    /**
     * Interrupt handler\n
@@ -955,7 +1022,7 @@ public:
  * Code examples:
  * @code
  * // Create PCR type
- * using PortC_3 = USBDM::Pcr_T<SIM_SCGC5_PORTC_MASK, PORTC_BasePtr, 3, USBDM::DEFAULT_PCR>;
+ * using PortC_3 = USBDM::Pcr_T<USBDM::DEFAULT_PCR, NvicPriority_Normal, PTC3>;
  *
  * // Configure PCR
  * PortC_3::setPCR(PinPull_Up,PinDriveStrength_High,PinDriveMode_PushPull,PinAction_None,PinFilter_None,PinSlewRate_Fast,PinMux_3);
@@ -964,19 +1031,13 @@ public:
  * PortC_3::disableClock();
  * @endcode
  *
- * @tparam clockInfo             PCC register address or mask for SIM clock register associated with this PCR
- * @tparam portAddress           PORT to be manipulated e.g. PORTA (PCR array)
- * @tparam bitNum                Bit number e.g. 3
  * @tparam defPcrValue           Default value for PCR (including MUX value)
- * @tparam irqNum                IRQ number for pin interrupt
- * @tparam defaultNvicPriority   Default interrupt priority.\n
+ * @tparam defaultNvicPriority   Default interrupt priority e.g. NvicPriority_Normal.\n
  *                               NvicPriority_NotInstalled indicates PORT not configured for interrupts.
+ * @tparam pinIndex              Pin index e.g. PTA3
  */
-template<uint32_t clockInfo, uint32_t portAddress, IRQn_Type irqNum, PcrValue defPcrValue, NvicPriority defaultNvicPriority, int bitNum>
-class Pcr_T : public PcrBase_T<portAddress, irqNum, defaultNvicPriority> {
-
-   // This situation is checked for elsewhere with more specific error messages
-//   PcrBase::CheckPinExistsAndIsMapped<bitNum> check;
+template<PcrValue defPcrValue, PinIndex pinIndex>
+class Pcr_T : public PcrBase_T<pinIndex> {
 
 protected:
    /// Default constructor used by derived classes only
@@ -984,13 +1045,16 @@ protected:
 
 public:
    /// Bit number of bit being manipulated within underlying port hardware
-   static constexpr int       BITNUM             = bitNum;
+   static constexpr int BITNUM = int(pinIndex)%32;
 
    /// Mask for the bit being manipulated within underlying port hardware
-   static constexpr uint32_t  BITMASK            = makeBitMask(bitNum);
+   static constexpr uint32_t BITMASK = makeBitMask(BITNUM);
 
    /// Default PCR value including PinMux value for peripheral
-   static constexpr PcrInit  defaultPcrValue = defPcrValue;
+   static constexpr PcrInit defaultPcrValue = defPcrValue;
+
+   /// Default PCR value including PinMux value for peripheral
+   static constexpr uint32_t portAddress = PcrBase::getPortAddress(pinIndex);
 
 private:
    /**
@@ -999,13 +1063,7 @@ private:
    Pcr_T(const Pcr_T&) = delete;
    Pcr_T(Pcr_T&&) = delete;
 
-#ifdef PORT_DFCR_CS_MASK
-   static constexpr HardwarePtr<uint32_t>       PCR    = portAddress+offsetof(PORT_DFER_Type,PCR[bitNum]);
-#else
-   static constexpr HardwarePtr<uint32_t>       PCR    = portAddress+offsetof(PORT_Type,PCR[bitNum]);
-#endif
-
-   using PcrBase = PcrBase_T<portAddress, irqNum, defaultNvicPriority>;
+   static constexpr HardwarePtr<uint32_t> PCR = PcrBase::getPcrAddress(pinIndex);
 
 public:
    /**
@@ -1013,7 +1071,7 @@ public:
     */
    static void enablePortClock() {
       if constexpr (portAddress != 0) {
-         enablePortClocks(clockInfo);
+         PcrBase::enablePortClock(pinIndex);
       }
    }
 
@@ -1022,7 +1080,7 @@ public:
     */
    static void disablePortClock() {
       if constexpr (portAddress != 0) {
-         disablePortClocks(clockInfo);
+         PcrBase::disablePortClock(pinIndex);
       }
    }
 
@@ -1036,7 +1094,7 @@ public:
       if constexpr (portAddress == 0) {
          return 0;
       }
-      enablePortClocks(clockInfo);
+      PcrBase::enablePortClock(pinIndex);
       return *PCR;
    }
    
@@ -1117,8 +1175,8 @@ public:
 
 };
 
-template<uint32_t portAddress, IRQn_Type irqNum, NvicPriority defaultNvicPriority>
-PinCallbackFunction USBDM::PcrBase_T<portAddress, irqNum, defaultNvicPriority>::fCallback = PcrBase::unhandledCallback;
+template<PinIndex pinIndex>
+PinCallbackFunction USBDM::PcrBase_T<pinIndex>::fCallback = PcrBase::unhandledCallback;
 
 /**
  * @brief Template function to set a PCR to the default value
@@ -1191,7 +1249,7 @@ void processPcrs(uint32_t pcrValue) {
  * @tparam index         Index of pin in configuration table within class
  */
 template<class Info, uint8_t index>
-class PcrTable_T : public Pcr_T<Info::info[index].clockInfo, Info::info[index].portAddress, Info::info[index].irqNum, Info::info[index].pcrValue, Info::info[index].irqLevel, Info::info[index].gpioBit> {
+class PcrTable_T : public Pcr_T<Info::info[index].pcrValue, Info::info[index].pinIndex> {
 };
 /**
  * @}

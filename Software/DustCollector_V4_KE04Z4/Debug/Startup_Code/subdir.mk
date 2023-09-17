@@ -43,21 +43,21 @@ OBJS += \
 Startup_Code/%.o: ../Startup_Code/%.cpp Startup_Code/subdir.mk
 	@echo 'Building file: $<'
 	@echo 'Invoking: ARM C++ Compiler'
-	arm-none-eabi-g++ -mcpu=cortex-m0plus -mthumb -g3 -fcallgraph-info=su -O0 -ffunction-sections -fdata-sections -fno-rtti -Wall -Wextra -DDEBUG_BUILD -I"../Sources" -I"../Project_Headers" -fno-exceptions -std=c++17 -c -fmessage-length=0 -MT"$@" -MMD -MP -MF"$(@:%.o=%.d)" -MT"$@"  -o "$@" $<
+	arm-none-eabi-g++ -mcpu=cortex-m0plus -mthumb -g3 -fcallgraph-info=su -Og -ffunction-sections -fdata-sections -fno-rtti -Wall -Wextra -DDEBUG_BUILD -I"../Sources" -I"../Project_Headers" -fno-exceptions -std=c++17 -c -fmessage-length=0 -MT"$@" -MMD -MP -MF"$(@:%.o=%.d)" -MT"$@"  -o "$@" $<
 	@echo 'Finished building: $<'
 	@echo ' '
 
 Startup_Code/%.o: ../Startup_Code/%.c Startup_Code/subdir.mk
 	@echo 'Building file: $<'
 	@echo 'Invoking: ARM C Compiler'
-	arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -g3 -fcallgraph-info=su -O0 -ffunction-sections -fdata-sections -Wall -Wextra -DDEBUG_BUILD -I"../Sources" -I"../Project_Headers" -std=c17 -c -fmessage-length=0 -MT"$@" -MMD -MP -MF"$(@:%.o=%.d)" -MT"$@"  -o "$@" $<
+	arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -g3 -fcallgraph-info=su -Og -ffunction-sections -fdata-sections -Wall -Wextra -DDEBUG_BUILD -I"../Sources" -I"../Project_Headers" -std=c17 -c -fmessage-length=0 -MT"$@" -MMD -MP -MF"$(@:%.o=%.d)" -MT"$@"  -o "$@" $<
 	@echo 'Finished building: $<'
 	@echo ' '
 
 Startup_Code/%.o: ../Startup_Code/%.S Startup_Code/subdir.mk
 	@echo 'Building file: $<'
 	@echo 'Invoking: ARM Assembler'
-	arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -g3 -fcallgraph-info=su -O0 -ffunction-sections -fdata-sections -Wall -Wextra -x assembler-with-cpp -DDEBUG_BUILD -I"../Project_Headers" -Wall -Wextra -c -fmessage-length=0  -o "$@" $<
+	arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -g3 -fcallgraph-info=su -Og -ffunction-sections -fdata-sections -Wall -Wextra -x assembler-with-cpp -DDEBUG_BUILD -I"../Project_Headers" -Wall -Wextra -c -fmessage-length=0  -o "$@" $<
 	@echo 'Finished building: $<'
 	@echo ' '
 

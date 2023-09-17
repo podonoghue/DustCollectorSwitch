@@ -1,29 +1,29 @@
 DustCollector_V4_KE04Z4.elf  :
 section             size        addr
 .interrupts         1040           0
-.text               6712        1040
-.rodata              109        7752
-.ARM.exidx             8        7864
-.flash                 0        7872
+.text               4312        1040
+.rodata             1064        5352
+.ARM.exidx             8        6416
+.flash                 0        6424
 .mtb                   0   536870656
 .interrupts_ram        0   536870656
-.data                 12   536870912
-.noinit                0   536870924
-.bss                  92   536870924
-.heap                  0   536870656
-.stack               256   536870656
+.data                112   536870656
+.noinit                0   536870768
+.bss                 424   536870912
+.heap                  0   536871336
+.stack               344   536871336
 .ARM.attributes       40           0
 .comment              85           0
-.debug_line_str      570           0
-.debug_info       100743           0
-.debug_abbrev      12712           0
-.debug_aranges      1160           0
-.debug_rnglists      797           0
-.debug_macro       15940           0
-.debug_line        24434           0
-.debug_str        201378           0
-.debug_frame        4196           0
-.debug_loclists       99           0
-Total             370383
+.debug_line_str      558           0
+.debug_info       122351           0
+.debug_abbrev      15572           0
+.debug_loclists     5133           0
+.debug_aranges      1176           0
+.debug_rnglists      912           0
+.debug_macro       43254           0
+.debug_line        29194           0
+.debug_str        211531           0
+.debug_frame        3696           0
+Total             440806
 
 

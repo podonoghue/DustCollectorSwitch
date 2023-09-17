@@ -47,7 +47,7 @@ Console console;
     */
    extern "C"
    void console_initialise() {
-      console.initialise(); 
+      console.initialise();
       console.setBaudRate(defaultBaudRate);
       console.setEcho();
    }

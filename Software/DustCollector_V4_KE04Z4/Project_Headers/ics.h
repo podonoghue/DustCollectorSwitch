@@ -6,7 +6,7 @@
  * @version  V4.12.1.80
  * @date     13 April 2016
  */
-
+ 
 #ifndef INCLUDE_USBDM_ICS_H_
 #define INCLUDE_USBDM_ICS_H_
  /*
@@ -21,15 +21,6 @@
 #include "system.h"
 #include "pin_mapping.h"
 
-/// Clock for CORE (cpu) and SYSTEM (NVIC, RAM ...)
-extern "C" uint32_t SystemCoreClock;
-
-/// Clock for Bus (PIT, SPI, UART ...)
-extern "C" uint32_t SystemBusClock;
-
-/// Clock for Timers (FTM, PWT ...)
-extern "C" uint32_t SystemTimerClock;
-
 namespace USBDM {
 
 /**
@@ -37,15 +28,6 @@ namespace USBDM {
  * @brief Abstraction for Multipurpose Clock Generator
  * @{
  */
-
-/** ICSFFCLK - Fixed frequency clock (input to FLL) */
-extern volatile uint32_t SystemIcsFFClock;
-
-/** ICSOUTCLK - Primary output from ICS, various sources */
-extern volatile uint32_t SystemIcsOutClock;
-
-/** ICSFLLCLK - Output of FLL */
-extern volatile uint32_t SystemIcsFllClock;
 
 /**
  * Clock configurations
@@ -71,6 +53,7 @@ enum ClockConfig : uint8_t {
       /// Control Register 4 - DMX32, DRST_DRS, (-FCTRIM, -SCFTRIM)
       const uint8_t c4;
    };
+
 
 
 class ClockChangeCallback {
@@ -142,7 +125,11 @@ private:
    /** Hardware instance */
    static constexpr HardwarePtr<ICS_Type> ics = IcsInfo::baseAddress;
 
+
+
 public:
+
+
 
    /**
     * Table of clock settings
@@ -224,8 +211,8 @@ public:
     *
     *  @param[in]  settingNumber Clock setting number
     */
-   static void configure(ClockConfig settingNumber=ClockConfig_default) {
-      clockTransition(clockInfo[settingNumber]);
+   static void configure(ClockConfig clockConfig=ClockConfig_default) {
+      clockTransition(clockInfo[clockConfig]);
    }
 
    /**

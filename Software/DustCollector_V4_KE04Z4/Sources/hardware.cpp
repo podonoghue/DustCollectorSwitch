@@ -47,6 +47,7 @@ extern "C" void __attribute__((constructor)) cpp_initialise() {
 void mapAllPins() {
 #if false
 
+#warning "PCR Not initialised for PTA3       : Multiple signals mapped to pin - GPIOA_3[SWD_Tx], UART0_TX"
 
 #endif
 
@@ -56,12 +57,13 @@ void mapAllPins() {
    PCC->PCC_PORTB = PCC_PCCn_CGC_MASK;
    PCC->PCC_PORTC = PCC_PCCn_CGC_MASK;
 #else
-   enablePortClocks(PORTA_CLOCK_MASK|PORTB_CLOCK_MASK|PORTC_CLOCK_MASK);
+   enablePortClocks(USBDM::PORTA_CLOCK_MASK|USBDM::PORTB_CLOCK_MASK|USBDM::PORTC_CLOCK_MASK);
 #endif
 
-   PORTA->GPCLR = ForceLockedPins|0x0000UL|PORT_GPCLR_GPWE(0x0004UL);
-   PORTA->GPCLR = ForceLockedPins|0x0200UL|PORT_GPCLR_GPWE(0x0008UL);
+   PORTA->GPCLR = ForceLockedPins|0x0200UL|PORT_GPCLR_GPWE(0x0014UL);
+   PORTA->GPCLR = ForceLockedPins|0x0300UL|PORT_GPCLR_GPWE(0x0020UL);
    PORTA->GPCLR = ForceLockedPins|0x0400UL|PORT_GPCLR_GPWE(0x0002UL);
+   PORTA->GPCLR = ForceLockedPins|0x0600UL|PORT_GPCLR_GPWE(0x0001UL);
    PORTB->GPCLR = ForceLockedPins|0x0000UL|PORT_GPCLR_GPWE(0x00F0UL);
    PORTB->GPCLR = ForceLockedPins|0x0400UL|PORT_GPCLR_GPWE(0x0008UL);
    PORTB->GPCLR = ForceLockedPins|0x0500UL|PORT_GPCLR_GPWE(0x0007UL);
@@ -84,23 +86,6 @@ void mapAllPins() {
 /*
  *  Static objects
  */
-   /**
-    * Callback to catch unhandled interrupt
-    */
-   void unhandledCallback() {
-      setAndCheckErrorCode(E_NO_HANDLER);
-   }
-   
-   /**
-    * Callback to catch unhandled channel interrupt
-    *
-    * @param mask Mask identifying channel
-    */
-   void timerUnhandledChannelCallback(uint8_t mask) {
-      (void)mask;
-      setAndCheckErrorCode(E_NO_HANDLER);
-   }
-
 
 
 } // End namespace USBDM

@@ -1,19 +1,5 @@
 graph: { title: "../Startup_Code/ics.cpp"
-node: { title: "../Startup_Code/ics.cpp:_ZN5USBDM8Osc0Info11getOscClockEv" label: "static uint32_t USBDM::Osc0Info::getOscClock()\n../Project_Headers/pin_mapping.h:528:20\n8 bytes (static)" }
-node: { title: "../Startup_Code/ics.cpp:_ZN5USBDM7SimInfo18updateSystemClocksEj" label: "static void USBDM::SimInfo::updateSystemClocks(unsigned int)\n../Project_Headers/pin_mapping.h:1146:16\n16 bytes (static)" }
-node: { title: "__aeabi_uidiv" label: "__aeabi_uidiv\n<built-in>" shape : ellipse }
-edge: { sourcename: "../Startup_Code/ics.cpp:_ZN5USBDM7SimInfo18updateSystemClocksEj" targetname: "__aeabi_uidiv" }
-edge: { sourcename: "../Startup_Code/ics.cpp:_ZN5USBDM7SimInfo18updateSystemClocksEj" targetname: "__aeabi_uidiv" }
-edge: { sourcename: "../Startup_Code/ics.cpp:_ZN5USBDM7SimInfo18updateSystemClocksEj" targetname: "__aeabi_uidiv" }
-node: { title: "../Startup_Code/ics.cpp:_ZN5USBDM7IcsInfo25getExternalReferenceClockEv" label: "static uint32_t USBDM::IcsInfo::getExternalReferenceClock()\n../Project_Headers/pin_mapping.h:3686:20\n8 bytes (static)" }
-edge: { sourcename: "../Startup_Code/ics.cpp:_ZN5USBDM7IcsInfo25getExternalReferenceClockEv" targetname: "../Startup_Code/ics.cpp:_ZN5USBDM8Osc0Info11getOscClockEv" label: "../Project_Headers/pin_mapping.h:3688:35" }
-node: { title: "../Startup_Code/ics.cpp:_ZN5USBDM7IcsInfo32getUngatedInternalReferenceClockEv" label: "static uint32_t USBDM::IcsInfo::getUngatedInternalReferenceClock()\n../Project_Headers/pin_mapping.h:3708:20\n8 bytes (static)" }
-node: { title: "_ZN5USBDM3Ics21SystemCoreClockUpdateEv" label: "static void USBDM::Ics::SystemCoreClockUpdate()\n../Startup_Code/ics.cpp:251:6\n40 bytes (static)" }
-edge: { sourcename: "_ZN5USBDM3Ics21SystemCoreClockUpdateEv" targetname: "../Startup_Code/ics.cpp:_ZN5USBDM7IcsInfo25getExternalReferenceClockEv" label: "../Startup_Code/ics.cpp:255:63" }
-edge: { sourcename: "_ZN5USBDM3Ics21SystemCoreClockUpdateEv" targetname: "../Startup_Code/ics.cpp:_ZN5USBDM7IcsInfo32getUngatedInternalReferenceClockEv" label: "../Startup_Code/ics.cpp:258:70" }
-edge: { sourcename: "_ZN5USBDM3Ics21SystemCoreClockUpdateEv" targetname: "../Startup_Code/ics.cpp:_ZN5USBDM7SimInfo18updateSystemClocksEj" label: "../Startup_Code/ics.cpp:303:31" }
-node: { title: "_ZN5USBDM3Ics16startupConfigureEv" label: "static void USBDM::Ics::startupConfigure()\n../Startup_Code/ics.cpp:309:6\n8 bytes (static)" }
-edge: { sourcename: "_ZN5USBDM3Ics16startupConfigureEv" targetname: "_ZN5USBDM3Ics21SystemCoreClockUpdateEv" label: "../Startup_Code/ics.cpp:332:25" }
-node: { title: "clock_initialise" label: "void clock_initialise()\n../Startup_Code/ics.cpp:341:6\n8 bytes (static)" }
-edge: { sourcename: "clock_initialise" targetname: "_ZN5USBDM3Ics16startupConfigureEv" label: "../Startup_Code/ics.cpp:346:32" }
+node: { title: "_ZN5USBDM3Ics16startupConfigureEv" label: "static void USBDM::Ics::startupConfigure()\n../Startup_Code/ics.cpp:293:6\n0 bytes (static)" }
+node: { title: "clock_initialise" label: "void clock_initialise()\n../Startup_Code/ics.cpp:331:6\n8 bytes (static)" }
+edge: { sourcename: "clock_initialise" targetname: "_ZN5USBDM3Ics16startupConfigureEv" label: "../Startup_Code/ics.cpp:336:32" }
 }

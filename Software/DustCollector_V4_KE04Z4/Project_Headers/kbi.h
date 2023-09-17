@@ -12,6 +12,8 @@
 
 #include "pin_mapping.h"
 
+#if false // /KBI/enablePeripheralSupport
+
 namespace USBDM {
 
 template <class Info>
@@ -21,37 +23,9 @@ protected:
    /** Hardware instance */
    static constexpr HardwarePtr<KBI_Type> kbi = Info::baseAddress;
 
-
+// No /KBI/protectedMethods found
 public:
-
-   /**
-    * Configure with default settings.
-    * Configuration determined from Configure.usbdmProject
-    */
-   static inline void defaultConfigure() {
-   
-      // Update settings
-      configure(Info::DefaultInitValue);
-   }
-   
-   /**
-    * Configure KBI from values specified in init
-    *
-    * @param init Class containing initialisation values
-    */
-   static void configure(const typename Info::Init &init) {
-      // ..........  Configure stuff ...........
-   
-      // Enable peripheral clock
-      Info::enableClock();
-   
-      // ..........  Regs to init .......... ;
-      kbi->SC    = KBI_SC_KBACK_MASK;
-      kbi->PE    = init.pe;
-      kbi->ES    = init.es;
-      kbi->SC    = init.sc;
-   }
-   
+// No /KBI/publicMethods found
 
    /**
     * Enable interrupts in NVIC
@@ -80,16 +54,10 @@ public:
 };
 
 
-   /**
-    * Class representing KBI0
-    */
-   class Kbi0 : public KbiBase_T<Kbi0Info> {};
-   /**
-    * Class representing KBI1
-    */
-   class Kbi1 : public KbiBase_T<Kbi1Info> {};
 
 
 }; // namespace USBDM
+
+#endif // /KBI/enablePeripheralSupport
 
 #endif /* PROJECT_HEADERS_KBI_H_ */

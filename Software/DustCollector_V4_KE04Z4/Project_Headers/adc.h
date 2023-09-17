@@ -19,6 +19,8 @@
 #include <cstddef>
 #include "pin_mapping.h"
 
+#if true // /ADC/enablePeripheralSupport
+
 namespace USBDM {
 
 /**
@@ -46,12 +48,6 @@ private:
    Adc(Adc&&) = delete;
 
 protected:
-
-   /** Callback to catch unhandled interrupt */
-   static void unhandledCallback(uint32_t, int) {
-      setAndCheckErrorCode(E_NO_HANDLER);
-   }
-
    /**
     * Constructor
     *
@@ -192,10 +188,10 @@ public:
     */
    void enableContinuousConversions(AdcContinuous adcContinuous = AdcContinuous_Enabled) const {
       if (adcContinuous) {
-         adc->SC3 = adc->SC3 | ADC_SC1_ADCO_MASK;
+         adc->SC1[0] = adc->SC1[0] | ADC_SC1_ADCO_MASK;
       }
       else {
-         adc->SC3 = adc->SC3 & ~ADC_SC1_ADCO_MASK;
+         adc->SC1[0] = adc->SC1[0] & ~ADC_SC1_ADCO_MASK;
       }
    }
 
@@ -476,6 +472,7 @@ public:
     * @param init Class containing initialisation values
     */
    static void configure(const typename Info::Init &init) {
+      // ..........  Configure ...........
    
       // Enable peripheral clock
       Info::enableClock();
@@ -782,9 +779,9 @@ public:
     *
     * @param sc1Value Used to obtain channel number
     */
-   static void setInput(unsigned channel) {
+   static void setInput(unsigned sc1Value) {
       // Map pin to ADC
-      adc->APCTL1 |= (1<<(channel&0b11111));
+      adc->APCTL1 |= (1<<(sc1Value&0b11111));
    }
 
    /**
@@ -793,9 +790,9 @@ public:
     *
     * @param sc1Value Used to obtain channel number
     */
-   static void disablePin(unsigned channel) {
+   static void disablePin(unsigned sc1Value) {
       // Map pin to ADC
-      adc->APCTL1 &= ~(1<<(channel&0b11111));
+      adc->APCTL1 &= ~(1<<(sc1Value&0b11111));
    }
 
    /**
@@ -909,10 +906,10 @@ public:
 
 }; // class AdcBase_T
 
-/**
- * Class representing ADC0
- */
-class Adc0 : public AdcBase_T<Adc0Info> {};
+   /**
+    * Class representing ADC0
+    */
+   class Adc0 : public AdcBase_T<Adc0Info> {};
 
 /**
  * End ADC_Group
@@ -920,6 +917,8 @@ class Adc0 : public AdcBase_T<Adc0Info> {};
  */
 
 } // End namespace USBDM
+
+#endif // /ADC/enablePeripheralSupport
 
 #endif /* HEADER_ADC_H */
 

@@ -9,7 +9,7 @@
    <i> In CMSIS this will determine the ISR stack size
    <0x0-0x300:4>  <constant>
 */
-__stack_size = 0x64;
+__stack_size = 0x154;
 
 /* <o> Minimum Heap Size 
    <i> This is the minimum allocated.  
@@ -101,17 +101,17 @@ REGION_ALIAS("data_rom",         "flash");
   <i> These sections cannot cross regions as unaligned half-word and long-word accesses are not supported.
 */
 /*  <s1>  Stack                              <constant> stack_ram      */
-REGION_ALIAS("stack_ram",      "ram_low");
+REGION_ALIAS("stack_ram",      "ram_high");
 /*  <s1>  Heap                               <constant> heap_ram       */
-REGION_ALIAS("heap_ram",       "ram_low");
+REGION_ALIAS("heap_ram",       "ram_high");
 /*  <s1>  Vector table relocated to RAM      <constant> interrupts_ram */
 REGION_ALIAS("interrupts_ram", "ram_low");
 /*  <s1>  Initialised DATA                   <constant>  data_ram      */
-REGION_ALIAS("data_ram",       "ram_high");
+REGION_ALIAS("data_ram",       "ram_low");
 /*  <s1>  Zeroed Data (BSS)                  <constant> bss_ram        */
 REGION_ALIAS("bss_ram",        "ram_high");
 /*  <s1>  Non-initialised DATA               <constant> noinit_ram     */
-REGION_ALIAS("noinit_ram",     "ram_high");
+REGION_ALIAS("noinit_ram",     "ram_low");
 /*  <s1>  Micro Trace Buffer                 <constant> mtb_ram        */
 REGION_ALIAS("mtb_ram",        "ram_low");
 /*  <s1>  USB Endpoint buffers               <constant> bdts_ram       */

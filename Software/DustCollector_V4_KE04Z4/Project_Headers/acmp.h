@@ -12,6 +12,8 @@
 
 #include "pin_mapping.h"
 
+#if false // /ACMP/enablePeripheralSupport
+
 namespace USBDM {
 
 template <class Info>
@@ -55,5 +57,7 @@ public:
 
 
 }; // namespace USBDM
+
+#endif // /ACMP/enablePeripheralSupport
 
 #endif /* PROJECT_HEADERS_ACMP_H_ */
