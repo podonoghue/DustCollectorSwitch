@@ -1,0 +1,21 @@
+DustCollector_V4_KE04Z4.elf  :
+section           size        addr
+.interrupts       1040           0
+.text             4892        1040
+.rodata             70        5932
+.ARM.exidx           8        6004
+.flash               0        6012
+.mtb                 0   536870656
+.interrupts_ram      0   536870656
+.data              104   536870656
+.noinit              0   536870760
+.bss               408   536870912
+.heap                0   536871320
+.stack             360   536871320
+.ARM.attributes     40           0
+.comment            68           0
+.debug_line_str    409           0
+.debug_frame      1160           0
+Total             8559
+
+
