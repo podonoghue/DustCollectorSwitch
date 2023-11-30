@@ -119,6 +119,8 @@ void SystemInit(void) {
 
    /* Use Clock initialisation - if present */
    clock_initialise();
+   
+   /* Early system startup code for peripherals */
 
    /* Use UART initialisation - if present */
    console_initialise();
@@ -142,7 +144,6 @@ void SystemInit(void) {
    );
 #endif
 /* System startup code for peripherals */
-
    /* Configure Ports (Filters, PUPs and HDRIVE) */
    USBDM::Port::defaultConfigure();
 

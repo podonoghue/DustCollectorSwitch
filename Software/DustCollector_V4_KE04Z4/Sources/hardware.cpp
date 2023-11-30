@@ -47,7 +47,6 @@ extern "C" void __attribute__((constructor)) cpp_initialise() {
 void mapAllPins() {
 #if false
 
-#warning "PCR Not initialised for PTA3       : Multiple signals mapped to pin - GPIOA_3[SWD_Tx], UART0_TX"
 
 #endif
 
@@ -60,7 +59,7 @@ void mapAllPins() {
    enablePortClocks(USBDM::PORTA_CLOCK_MASK|USBDM::PORTB_CLOCK_MASK|USBDM::PORTC_CLOCK_MASK);
 #endif
 
-   PORTA->GPCLR = ForceLockedPins|0x0200UL|PORT_GPCLR_GPWE(0x0014UL);
+   PORTA->GPCLR = ForceLockedPins|0x0200UL|PORT_GPCLR_GPWE(0x001CUL);
    PORTA->GPCLR = ForceLockedPins|0x0300UL|PORT_GPCLR_GPWE(0x0020UL);
    PORTA->GPCLR = ForceLockedPins|0x0400UL|PORT_GPCLR_GPWE(0x0002UL);
    PORTA->GPCLR = ForceLockedPins|0x0600UL|PORT_GPCLR_GPWE(0x0001UL);
@@ -86,6 +85,14 @@ void mapAllPins() {
 /*
  *  Static objects
  */
+   /**
+    * Callback table of programmatically set handlers for Pit
+    */
+   PitInfo::CallbackFunction PitInfo::sCallbacks[] = {
+      PitBasicInfo::unhandledCallback,
+      PitBasicInfo::unhandledCallback,
+   };
+
 
 
 } // End namespace USBDM

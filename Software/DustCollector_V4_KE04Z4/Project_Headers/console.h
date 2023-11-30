@@ -87,7 +87,7 @@ namespace USBDM {
  */
 
 //! Default baud rate for console
-constexpr int defaultBaudRate = 115200;
+constexpr int defaultBaudRate = 9600;
 
 //! Maps console to UART used
 using  Console = USBDM::Uart0;

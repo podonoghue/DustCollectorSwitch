@@ -11,8 +11,7 @@ Startup_Code/vectors.o Startup_Code/vectors.o: \
  ../Project_Headers/delay.h ../Project_Headers/console.h \
  ../Project_Headers/uart.h ../Project_Headers/formatted_io.h \
  ../Project_Headers/uart_queue.h ../Project_Headers/gpio.h \
- ../Project_Headers/pit.h ../Project_Headers/adc.h \
- ../Project_Headers/control.h
+ ../Project_Headers/pit.h ../Project_Headers/adc.h
 ../Project_Headers/derivative.h:
 ../Project_Headers/MKE04Z4.h:
 ../Project_Headers/core_cm0plus.h:
@@ -38,4 +37,3 @@ Startup_Code/vectors.o Startup_Code/vectors.o: \
 ../Project_Headers/gpio.h:
 ../Project_Headers/pit.h:
 ../Project_Headers/adc.h:
-../Project_Headers/control.h:

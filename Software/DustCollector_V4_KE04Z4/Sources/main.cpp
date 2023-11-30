@@ -53,16 +53,22 @@ static const char *getStateName(State state) {
  * Get detect level as raw ADC value
  */
 unsigned getDetectLevel() {
-   return LevelControl::readAnalogue()/2;
+   return LevelControl::readAnalogue()/4;
 }
 
-
 /**
- * Get Delay value in milliseconds [500ms..5s]
+ * Get Delay value in milliseconds [100ms..4s]
  */
 unsigned getDelayControl() {
+   constexpr unsigned MIN_DELAY = 100;
+   constexpr unsigned MAX_DELAY = 4000;
 
-   return 1000; // 1s
+   unsigned value = DelayControl::readAnalogue();
+   value *= (MAX_DELAY-MIN_DELAY);
+   value /= UserAdc::getSingleEndedMaximum(ADC_RESOLUTION);
+   value += MIN_DELAY;
+
+   return value;
 }
 
 /**
@@ -100,7 +106,7 @@ static unsigned detectLevel = 10000;
  */
 void timerCallback() {
 //   Debug::set();
-//   Debug::toggle();
+   Debug::toggle();
 
    // Hysteresis used for zero crossing
    static constexpr int HYSTERESIS        = 100;
@@ -138,6 +144,9 @@ void timerCallback() {
    threshAccumulator += getDetectLevel();
 
    if (((current>zeroCrossingLevel)&&(zeroCrossingLevel>0))||(sampleCount>(EXPECTED_PERIOD_IN_TICKS+2))) {
+      // Update controls
+      delayTimeInTicks = getDelayControl() * (1000/TICK_TIME);
+      holdTimeInTicks  = getHoldControl()  * (1000/TICK_TIME);
 
       // New period
       zeroCrossingLevel = -HYSTERESIS;
@@ -251,8 +260,9 @@ void timerCallback() {
  */
 void initialise() {
 
-   Pins1::setOutput();
-//   Pins2::setOutput();
+   Pins::setOutput();
+   DustCollector::setHdrive(HighDrive_on);
+
 //   HoldLed::setOutput();
 //   DelayLed::setOutput();
 //   DetectLed::setOutput();
@@ -265,18 +275,25 @@ void initialise() {
       AdcClockSource_BusClock ,        // Input Clock Select - Bus clock
       AdcClockDivider_DivBy8 ,         // Clock Divide Select - Divide by 8
       AdcRefSel_VrefhAndVrefl ,        // Voltage Reference Selection - VREFH and VREFL
-      AdcSample_Long ,                 // Sample Time Configuration - Long sample
+      AdcSample_Short ,                // Sample Time Configuration - Long sample
       AdcPower_Normal ,                // Low-Power Configuration - Normal
 
-      AdcChannelNum(I_Sample::CHANNEL),      // ADC channels configured (GPIO disabled)
-      AdcChannelNum(Reference::CHANNEL),
-      AdcChannelNum(HoldControl::CHANNEL),
-      AdcChannelNum(LevelControl::CHANNEL),
+      // Configured ADC channels (GPIO disabled)
+      I_Sample::CHANNEL,
+      Reference::CHANNEL,
+      HoldControl::CHANNEL,
+      LevelControl::CHANNEL,
       };
 
    UserAdc::configure(adcInit);
 
-   static constexpr UserTimer::ChannelInit timerInit {
+   static constexpr UserTimer::Init timerInit {
+      PitOperation_Enabled,
+      PitDebugMode_StopInDebug,
+   };
+   UserTimer::configure(timerInit);
+
+   static constexpr UserTimer::ChannelInit timerChannelInit {
       PollingTimerChannel::CHANNEL,
 
       PitChannelEnable_Enabled ,                     // Timer Channel Enabled
@@ -285,8 +302,7 @@ void initialise() {
       Ticks((TICK_TIME*(SystemBusClock/1000000))-1), // Time interval for channel (microseconds*(fBus)/1000000) - 1
       timerCallback,                                 // Call-back
       };
-
-   UserTimer::configure(timerInit);
+   UserTimer::configure(timerChannelInit);
 
    Debug::setOutput();
 }
@@ -299,13 +315,22 @@ int main() {
 
    initialise();
 
+//   for(;;) {
+//      waitMS(100);
+//      DelayLed::toggle();
+//      HoldLed::toggle();
+//      DustCollector::toggle();
+//   }
+
    // Update time parameters on startup
    delayTimeInTicks = getDelayControl() * (1000/TICK_TIME);
    holdTimeInTicks  = getHoldControl()  * (1000/TICK_TIME);
+   detectLevel      = getDetectLevel();
 
 #if defined(DEBUG_BUILD)
-   console.writeln("Delay time = ", delayTimeInTicks * TICK_TIME/1000, " ms");
-   console.writeln("Hold  time = ", holdTimeInTicks * TICK_TIME/1000, " ms");
+   console.writeln("Delay time   = ", (delayTimeInTicks * TICK_TIME)/1000, " ms");
+   console.writeln("Hold  time   = ", (holdTimeInTicks * TICK_TIME)/1000, " ms");
+   console.writeln("Detect level = ", (detectLevel * 4000)/4096, " mV");
 #endif
 
    for(int count=0;;count++) {
@@ -319,8 +344,8 @@ int main() {
       if ((count&0xFF)==0) {
          console.writeln(
                "samplesThisPeriod = ", samplesThisPeriod,
-               ", detectLevel = ", detectLevel,
-               ", totalOfSamples = ", totalOfSamples,
+               ", detectLevel = ", detectLevel/1000,
+               ", totalOfSamples = ", totalOfSamples/1000,
                ", isLoadOn = ", isLoadOn);
       }
 #endif

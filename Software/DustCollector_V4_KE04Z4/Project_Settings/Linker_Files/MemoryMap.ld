@@ -45,7 +45,7 @@ FORCE_BOOT_LOADER = DEFINED(bootloaderInformation) ? 1 : 0;
     <i>  The bootloader is located at the bottom of the flash region
     <i>  This value is used to automatically adjust the available flash area 
  */
-BOOT_LOADER_SIZE  = DEFINED(BOOT_LOADER_SIZE)  ? BOOT_LOADER_SIZE : 16384 * FORCE_BOOT_LOADER;
+BOOT_LOADER_SIZE  = DEFINED(BOOT_LOADER_SIZE)  ? BOOT_LOADER_SIZE : 0x4000 * FORCE_BOOT_LOADER;
 /* </e> */
 
 /*

@@ -16,6 +16,8 @@
 #include "pit.h"
 
 
+using namespace USBDM;
+
 /*
  * Vector table related
  */
@@ -247,8 +249,8 @@ VectorTable const __vector_table = {
       FTM2_IRQHandler,                         /*   35,   19  FlexTimer Module                                                                 */
       RTC_Alarm_IRQHandler,                    /*   36,   20  Real Time Clock                                                                  */
       ACMP1_IRQHandler,                        /*   37,   21  Analogue comparator                                                              */
-      USBDM::Pit::Channel<0>::irqHandler,      /*   38,   22  Periodic Interrupt Timer                                                         */
-      USBDM::Pit::Channel<1>::irqHandler,      /*   39,   23  Periodic Interrupt Timer                                                         */
+      Pit::irqHandler<PitChannelNum_0>,        /*   38,   22  Periodic Interrupt Timer                                                         */
+      Pit::irqHandler<PitChannelNum_1>,        /*   39,   23  Periodic Interrupt Timer                                                         */
       KBI0_IRQHandler,                         /*   40,   24  Keyboard Interrupt                                                               */
       KBI1_IRQHandler,                         /*   41,   25  Keyboard Interrupt                                                               */
       Default_Handler,                         /*   42,   26                                                                                   */

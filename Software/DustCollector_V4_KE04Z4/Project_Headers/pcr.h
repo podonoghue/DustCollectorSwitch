@@ -53,36 +53,36 @@ namespace USBDM {
 *
 * Global indices for port pins
 */
-enum class PinIndex : int8_t {
+enum class PinIndex : int16_t {
    INVALID_PCR  = -2,   // Signal does not exist
    UNMAPPED_PCR = -3,   // Signal is not currently mapped to a pin
    FIXED_NO_PCR = -4,   // Signal has mapping to fixed pin
    MIN_PIN_INDEX = 0,   // First available pin (inclusive)
    Unassigned    = UNMAPPED_PCR,
-   PTA0 = 0+0,
-   PTA1 = 0+1,
-   PTA2 = 0+2,
-   PTA3 = 0+3,
-   PTA4 = 0+4,
-   PTA5 = 0+5,
-   PTA6 = 0+6,
-   PTA7 = 0+7,
-   PTB0 = 8+0,
-   PTB1 = 8+1,
-   PTB2 = 8+2,
-   PTB3 = 8+3,
-   PTB4 = 8+4,
-   PTB5 = 8+5,
-   PTB6 = 8+6,
-   PTB7 = 8+7,
-   PTC0 = 16+0,
-   PTC1 = 16+1,
-   PTC2 = 16+2,
-   PTC3 = 16+3,
-   PTC4 = 16+4,
-   PTC5 = 16+5,
-   PTC6 = 16+6,
-   PTC7 = 16+7,
+   PTA0 = 0,
+   PTA1 = 1,
+   PTA2 = 2,
+   PTA3 = 3,
+   PTA4 = 4,
+   PTA5 = 5,
+   PTA6 = 6,
+   PTA7 = 7,
+   PTB0 = 8,
+   PTB1 = 9,
+   PTB2 = 10,
+   PTB3 = 11,
+   PTB4 = 12,
+   PTB5 = 13,
+   PTB6 = 14,
+   PTB7 = 15,
+   PTC0 = 16,
+   PTC1 = 17,
+   PTC2 = 18,
+   PTC3 = 19,
+   PTC4 = 20,
+   PTC5 = 21,
+   PTC6 = 22,
+   PTC7 = 23,
    MAX_PIN_INDEX, // Last available pin (exclusive)
 };
    
@@ -422,7 +422,6 @@ union Seconds_Ticks {
       NvicPriority_MidHigh      = (NvicPriority_VeryLow*2/6), ///< MidHigh
       NvicPriority_High         = (NvicPriority_VeryLow*1/6), ///< High
       NvicPriority_VeryHigh     = 0,                          ///< VeryHigh
-
    };
 
 
@@ -498,6 +497,11 @@ public:
     * @return uint32
     */
    constexpr __attribute__((always_inline))  operator uint32_t() const { return ptr; }
+
+   /**
+    * Get value as volatile pointer to hardware
+    */
+   constexpr __attribute__((always_inline))  operator volatile T *() const { return reinterpret_cast<volatile T *>(ptr);}
 };
 
 /**
@@ -653,7 +657,7 @@ constexpr PcrValue analoguePcrValue(PcrValue op) {
 
 
 // /GPIO/extra_methods Not found
-
+#if 0
 /**
  * Port information
  * Information required to configure the PCR for a particular function
@@ -672,6 +676,7 @@ public:
                irqLevel(nvicPriority) {
    }
 };
+#endif
 
 /**
  * Pin information
@@ -750,21 +755,91 @@ public:
       // Tests are chained so only a single assertion can fail so as to reduce noise
 
       // Function is not currently mapped to a pin
-      static constexpr bool Test1 = (pinIndex != PinIndex::UNMAPPED_PCR);
+      static constexpr bool check1 = (pinIndex != PinIndex::UNMAPPED_PCR);
       // Peripheral signal does not exit
-      static constexpr bool Test2 = !Test1 || (pinIndex != PinIndex::INVALID_PCR);
+      static constexpr bool check2 = !check1 || (pinIndex != PinIndex::INVALID_PCR);
       // Peripheral signal mapped directly to pin - no PCR (not an error)
-      static constexpr bool Test3 = !Test1 || !Test2 || (pinIndex != PinIndex::FIXED_NO_PCR);
+      static constexpr bool check3 = !check1 || !check2 || (pinIndex != PinIndex::FIXED_NO_PCR);
       // Illegal value
-      static constexpr bool Test4 = !Test1 || !Test2 || !Test3 || ((pinIndex>=PinIndex::MIN_PIN_INDEX) && (pinIndex<PinIndex::MAX_PIN_INDEX));
+      static constexpr bool check4 = !check1 || !check2 || !check3 || ((pinIndex>=PinIndex::MIN_PIN_INDEX) && (pinIndex<PinIndex::MAX_PIN_INDEX));
 
-      static_assert(Test1, "Peripheral signal is not mapped to a pin - Modify Configure.usbdm");
-      static_assert(Test2, "Peripheral signal doesn't exist in this device/package - Check Configure.usbdm for available signals");
-      static_assert(Test4, "Illegal pin index - should be in range [PinIndex::MIN_PIN_INDEX..PinIndex::MAX_PIN_INDEX)");
+      static_assert(check1, "Peripheral signal is not mapped to a pin - Modify Configure.usbdm");
+      static_assert(check2, "Peripheral signal doesn't exist in this device/package - Check Configure.usbdm for available signals");
+      static_assert(check4, "Illegal pin index - should be in range [PinIndex::MIN_PIN_INDEX..PinIndex::MAX_PIN_INDEX)");
 
    public:
       /** Dummy function to allow convenient in-line checking */
       static constexpr void check() {}
+   };
+
+#define CreatePinChecker(periph)                                                                                                                        \
+   template<PinIndex pinIndex> class CheckPinExistsAndIsMapped {                                                                                        \
+      /* Tests are chained so only a single assertion can fail so as to reduce noise */                                                                 \
+                                                                                                                                                        \
+      /* Function is not currently mapped to a pin */                                                                                                   \
+      static constexpr bool check1 = (pinIndex != PinIndex::UNMAPPED_PCR);                                                                              \
+      /* Peripheral signal does not exit */                                                                                                             \
+      static constexpr bool check2 = !check1 || (pinIndex != PinIndex::INVALID_PCR);                                                                    \
+      /* Peripheral signal mapped directly to pin - no PCR (not an error) */                                                                            \
+      static constexpr bool check3 = !check1 || !check2 || (pinIndex != PinIndex::FIXED_NO_PCR);                                                        \
+      /* Illegal value */                                                                                                                               \
+      static constexpr bool check4 = !check1 || !check2 || !check3 || ((pinIndex>=PinIndex::MIN_PIN_INDEX) && (pinIndex<PinIndex::MAX_PIN_INDEX));      \
+                                                                                                                                                        \
+      static_assert(check1, periph " signal is not mapped to a pin - Modify Configure.usbdm");                                                          \
+      static_assert(check2, periph " signal doesn't exist in this device/package - Check Configure.usbdm for available signals");                       \
+      static_assert(check4, periph " illegal pin index - should be in range [PinIndex::MIN_PIN_INDEX..PinIndex::MAX_PIN_INDEX)");                       \
+                                                                                                                                                        \
+   public:                                                                                                                                              \
+      /** Dummy function to allow convenient in-line checking */                                                                                        \
+      static constexpr void check() {}                                                                                                                  \
+   };
+
+#define CreatePeripheralPinChecker(periph)                                                                                                              \
+   template<class Inf, int signalNum> class CheckPinExistsAndIsMapped {                                                                                \
+                                                                                                                                                        \
+      /* Check index is valid for peripheral INFO table */                                                                                              \
+      static_assert(signalNum<Inf::numSignals, periph " illegal signal index");                                                                        \
+                                                                                                                                                        \
+      static constexpr PinIndex pinIndex = Inf::info[signalNum].pinIndex;                                                                              \
+                                                                                                                                                        \
+      /* Tests are chained so only a single assertion can fail so as to reduce noise */                                                                 \
+                                                                                                                                                        \
+      /* Function is not currently mapped to a pin */                                                                                                   \
+      static constexpr bool check1 = (pinIndex != PinIndex::UNMAPPED_PCR);                                                                              \
+      /* Peripheral signal does not exit */                                                                                                             \
+      static constexpr bool check2 = !check1 || (pinIndex != PinIndex::INVALID_PCR);                                                                    \
+      /* Peripheral signal mapped directly to pin - no PCR (not an error) */                                                                            \
+      static constexpr bool check3 = !check1 || !check2 || (pinIndex != PinIndex::FIXED_NO_PCR);                                                        \
+      /* Illegal value */                                                                                                                               \
+      static constexpr bool check4 = !check1 || !check2 || !check3 || ((pinIndex>=PinIndex::MIN_PIN_INDEX) && (pinIndex<PinIndex::MAX_PIN_INDEX));      \
+                                                                                                                                                        \
+      static_assert(check1, periph " signal is not mapped to a pin - Modify Configure.usbdm");                                                          \
+      static_assert(check2, periph " signal doesn't exist in this device/package - Check Configure.usbdm for available signals");                       \
+      static_assert(check4, periph " illegal pin index - should be in range [PinIndex::MIN_PIN_INDEX..PinIndex::MAX_PIN_INDEX)");                       \
+                                                                                                                                                        \
+   public:                                                                                                                                              \
+      /** Dummy function to allow convenient in-line checking */                                                                                        \
+      static constexpr void check() {}                                                                                                                  \
+   };
+
+   /**
+    * Class to static check signal mapping is valid for a peripheral
+    * Conditions are chained so only a single assert is reported
+    *
+    * @tparam Info         Info table used for lookup
+    * @tparam signalNum    Index into table
+    */
+   template<class Info, int signalNum> class CheckSignalMapping {
+
+      static constexpr PinIndex pinIndex = Info::info[signalNum].pinIndex;
+
+      /* Illegal index for table */
+      static_assert(signalNum<Info::numSignals, "Illegal signal index for this peripheral");
+
+   public:
+      static void check() {
+         CheckPinExistsAndIsMapped<pinIndex>::check();
+      }
    };
 
 private:
@@ -1022,7 +1097,7 @@ public:
  * Code examples:
  * @code
  * // Create PCR type
- * using PortC_3 = USBDM::Pcr_T<USBDM::DEFAULT_PCR, NvicPriority_Normal, PTC3>;
+ * using PortC_3 = USBDM::Pcr_T<USBDM::DEFAULT_PCR, PTC3>;
  *
  * // Configure PCR
  * PortC_3::setPCR(PinPull_Up,PinDriveStrength_High,PinDriveMode_PushPull,PinAction_None,PinFilter_None,PinSlewRate_Fast,PinMux_3);
@@ -1032,8 +1107,6 @@ public:
  * @endcode
  *
  * @tparam defPcrValue           Default value for PCR (including MUX value)
- * @tparam defaultNvicPriority   Default interrupt priority e.g. NvicPriority_Normal.\n
- *                               NvicPriority_NotInstalled indicates PORT not configured for interrupts.
  * @tparam pinIndex              Pin index e.g. PTA3
  */
 template<PcrValue defPcrValue, PinIndex pinIndex>

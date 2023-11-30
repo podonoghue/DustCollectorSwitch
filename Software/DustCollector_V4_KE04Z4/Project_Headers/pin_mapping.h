@@ -244,11 +244,20 @@ public:
    /*
     * Template:fgpioa_mke
     */
-   /* Template _enablePeripheral  */
+   /**
+    * Basic enable of GpioA
+    * Includes enabling clock and configuring all mapped pins if mapPinsOnEnable is selected in configuration
+    */
+   static void enable() {
+   }
    
-   //! Configure peripheral in start-up
-   static constexpr bool configurePeripheralInStartUp = false;
-
+   /**
+    * Disables the clock to GpioA and all mapped pins
+    */
+   static void disable() {
+      
+   }
+   
    //! Hardware base address as uint32_t
    static constexpr uint32_t baseAddress = GPIOA_BasePtr;
    
@@ -280,7 +289,6 @@ public:
    enum PmcLowVoltageDetect {
       PmcLowVoltageDetect_Disabled = PMC_SPMSC1_LVDE(0), ///< LVD logic disabled
       PmcLowVoltageDetect_Enabled  = PMC_SPMSC1_LVDE(1), ///< LVD logic enabled
-
    };
 
    /**
@@ -291,7 +299,6 @@ public:
    enum PmcLowVoltageWarningInterrupt {
       PmcLowVoltageWarningInterrupt_Disabled = PMC_SPMSC1_LVWIE(0), ///< Interrupt disabled
       PmcLowVoltageWarningInterrupt_Enabled  = PMC_SPMSC1_LVWIE(1), ///< Interrupt enabled
-
    };
 
    /**
@@ -302,7 +309,6 @@ public:
    enum PmcLowVoltageReset {
       PmcLowVoltageReset_Disabled = PMC_SPMSC1_LVDRE(0), ///< LVD events do not generate hardware resets
       PmcLowVoltageReset_Enabled  = PMC_SPMSC1_LVDRE(1), ///< Force an MCU reset when an enabled low-voltage detect event occurs
-
    };
 
    /**
@@ -313,7 +319,6 @@ public:
    enum PmcLowVoltageDetectInStop {
       PmcLowVoltageDetectInStop_Disabled = PMC_SPMSC1_LVDSE(0), ///< LVD events disabled during stop mode
       PmcLowVoltageDetectInStop_Enabled  = PMC_SPMSC1_LVDSE(1), ///< LVD events enabled during stop mode
-
    };
 
    /**
@@ -325,7 +330,6 @@ public:
    enum PmcBandgapBuffer {
       PmcBandgapBuffer_Disabled = PMC_SPMSC1_BGBE(0), ///< Bandgap buffer is disabled
       PmcBandgapBuffer_Enabled  = PMC_SPMSC1_BGBE(1), ///< Bandgap buffer is enabled
-
    };
 
    /**
@@ -336,7 +340,6 @@ public:
    enum PmcLowVoltageDetectLevel {
       PmcLowVoltageDetectLevel_LowTripPoint  = PMC_SPMSC2_LVDV(0), ///< Low trip point (VLVD = VLVDL)
       PmcLowVoltageDetectLevel_HighTripPoint = PMC_SPMSC2_LVDV(1), ///< High trip point (VLVD = VLVDH)
-
    };
 
    /**
@@ -349,7 +352,6 @@ public:
       PmcLowVoltageWarningLevel_Mid1TripPoint = PMC_SPMSC2_LVWV(1), ///< Mid 1 trip point (VLVW = VLVW2)
       PmcLowVoltageWarningLevel_Mid2TripPoint = PMC_SPMSC2_LVWV(2), ///< Mid 2 trip point (VLVW = VLVW3)
       PmcLowVoltageWarningLevel_HighTripPoint = PMC_SPMSC2_LVWV(3), ///< High trip point (VLVW = VLVW4)
-
    };
 
    /**
@@ -370,20 +372,6 @@ public:
    /*
     * Template:pmc_mke
     */
-   /* Template _enablePeripheral  */
-   
-   //! Configure peripheral in start-up
-   static constexpr bool configurePeripheralInStartUp = false;
-
-   //! IRQ numbers for hardware
-   static constexpr IRQn_Type irqNums[]  = PMC_IRQS;
-   
-   //! Number of IRQs for hardware
-   static constexpr uint32_t irqCount  = sizeofArray(irqNums);
-   
-   //! Default IRQ level
-   static constexpr NvicPriority irqLevel =  NvicPriority_NotInstalled;
-   
    //! Hardware base address as uint32_t
    static constexpr uint32_t baseAddress = PMC_BasePtr;
    
@@ -429,7 +417,6 @@ public:
       OscMode_ExternalClock       = OSC_CR_OSCOS(0)|OSC_CR_HGO(0), ///< External clock
       OscMode_LowPowerOscillator  = OSC_CR_OSCOS(1)|OSC_CR_HGO(0), ///< Low Power Oscillator
       OscMode_HighPowerOscillator = OSC_CR_OSCOS(1)|OSC_CR_HGO(1), ///< High Gain Oscillator
-
    };
 
    /**
@@ -440,7 +427,6 @@ public:
    enum OscEnable {
       OscEnable_Disabled = OSC_CR_OSCEN(0), ///< OSC disabled
       OscEnable_Enabled  = OSC_CR_OSCEN(1), ///< OSC enabled
-
    };
 
    /**
@@ -452,7 +438,6 @@ public:
    enum OscInStopMode {
       OscInStopMode_Disabled = OSC_CR_OSCSTEN(0), ///< Disabled in Stop mode
       OscInStopMode_Enabled  = OSC_CR_OSCSTEN(1), ///< Enabled in Stop mode
-
    };
 
    /**
@@ -463,7 +448,6 @@ public:
    enum OscOutputSelect {
       OscOutputSelect_ExternalClock = OSC_CR_OSCOS(0), ///< External clock source
       OscOutputSelect_Oscillator    = OSC_CR_OSCOS(1), ///< Oscillator clock source
-
    };
 
    /**
@@ -474,7 +458,6 @@ public:
    enum OscFrequencyRange {
       OscFrequencyRange_LowRange  = OSC_CR_RANGE(0), ///< Low range of 32 kHz
       OscFrequencyRange_HighRange = OSC_CR_RANGE(1), ///< High range of 4-20 MHz
-
    };
 
    /**
@@ -485,19 +468,18 @@ public:
    enum OscCrHgo {
       OscCrHgo_LowPowerMode = OSC_CR_HGO(0), ///< Low-power mode
       OscCrHgo_HighGainMode = OSC_CR_HGO(1), ///< High-gain mode
-
    };
 
-class Osc0Info {
+class OscBasicInfo {
+   
+public:
+   }; // OscBasicInfo::Init
+
+class Osc0Info : public OscBasicInfo {
 public:
    /*
     * Template:osc0_mke
     */
-   /* Template _enablePeripheral  */
-   
-   //! Configure peripheral in start-up
-   static constexpr bool configurePeripheralInStartUp = false;
-
    //! Hardware base address as uint32_t
    static constexpr uint32_t baseAddress = OSC0_BasePtr;
    
@@ -558,7 +540,6 @@ public:
    enum RtcInterrupt {
       RtcInterrupt_Disabled = RTC_SC_RTIE(0), ///< Disabled
       RtcInterrupt_Enabled  = RTC_SC_RTIE(1), ///< Enabled
-
    };
 
    /**
@@ -569,7 +550,6 @@ public:
    enum RtcOutput {
       RtcOutput_OutputDisabled = RTC_SC_RTCO(0), ///< Output Disabled
       RtcOutput_OutputEnabled  = RTC_SC_RTCO(1), ///< Output Enabled
-
    };
 
    /**
@@ -584,7 +564,6 @@ public:
       RtcClockSource_Lpoclk   = RTC_SC_RTCLKS(1), ///< Low Power Oscillator (LPOCLK)
       RtcClockSource_Icsirclk = RTC_SC_RTCLKS(2), ///< Internal reference clock (ICSIRCLK)
       RtcClockSource_BusClock = RTC_SC_RTCLKS(3), ///< Bus clock
-
    };
 
    /**
@@ -603,7 +582,6 @@ public:
       RtcPrescaler_DivideBy16or2048 = RTC_SC_RTCPS(1), ///< Divide by 2048
       RtcPrescaler_DivideBy32or100  = RTC_SC_RTCPS(1), ///< Divide by 100
       RtcPrescaler_DivideBy64or1000 = RTC_SC_RTCPS(1), ///< Divide by 1000
-
    };
 
 class RtcBasicInfo {
@@ -616,20 +594,6 @@ public:
    /*
     * Template:rtcntr_mke
     */
-   /* Template _enablePeripheral  */
-   
-   //! Configure peripheral in start-up
-   static constexpr bool configurePeripheralInStartUp = false;
-
-   //! IRQ numbers for hardware
-   static constexpr IRQn_Type irqNums[]  = RTC_IRQS;
-   
-   //! Number of IRQs for hardware
-   static constexpr uint32_t irqCount  = sizeofArray(irqNums);
-   
-   //! Default IRQ level
-   static constexpr NvicPriority irqLevel =  NvicPriority_NotInstalled;
-   
    //! Hardware base address as uint32_t
    static constexpr uint32_t baseAddress = RTC_BasePtr;
    
@@ -656,35 +620,7 @@ public:
    /**
     * ICS Clock Mode
     *
-    * FLL Engaged Internal(FEI)
-    * In FEI mode, ICSOUT is derived from the FLL clock (DCOCLK) that is controlled by the Internal Reference Clock (IRC).
-    * The FLL loop will lock the DCO frequency to the FLL factor (1280) times the internal reference frequency.
-    * 
-    * FLL Engaged External(FEE)
-    * In FEE mode, ICSOUT is derived from the FLL clock (DCOCLK) that is controlled by the external reference clock. The FLL loop
-    * will lock the DCO frequency to the FLL factor (1280) times the external reference frequency, as specified by the C1[RDIV] and
-    * OSC.C2[RANGE].
-    * 
-    * FLL Bypassed Internal(FBI)
-    * In FBI mode, the ICSOUT clock is derived either from the internal reference clock,
-    * as selected by the C2[IRCS] bit. The FLL is operational but its output is not used. This mode is useful to allow the FLL
-    * to acquire its target frequency while the ICSOUT clock is driven from the C2[IRCS] selected internal reference clock. The
-    * FLL clock (DCOCLK) is controlled by the internal reference clock, and the DCO clock frequency locks to a multiplication
-    * factor (1280) times the internal reference frequency.
-    * 
-    * FLL Bypassed External(FBE)
-    * In FBE mode, the ICSOUT clock is derived from the external reference clock. The FLL is operational but its output is not
-    * used. This mode is useful to allow the FLL to acquire its target frequency while the ICSOUT clock is driven from the
-    * external reference clock. The FLL clock (DCOCLK) is controlled by the external reference clock, and the DCO clock frequency
-    * locks to a multiplication factor (1280) times the divided external reference
-    * frequency.
-    * 
-    * FLL bypassed internal low power (FBILP)
-    * In FBILP mode, ICSOUT is derived from the internal reference clock. The FLL is disabled
-    * 
-    * FLL bypassed external low power (FBELP)
-    * In FBELP mode, ICSOUT is derived from the external reference clock. The FLL is disabled
-
+    * Selects the basic clock mode for the Clock generator
     */
    enum IcsClockMode : uint8_t {
       IcsClockMode_FEI   = 0, ///< FLL Engaged Internal (FEI)
@@ -693,7 +629,6 @@ public:
       IcsClockMode_FBE   = 4, ///< FLL bypassed external (FBE)
       IcsClockMode_FBILP = 3, ///< FLL bypassed low power internal (FBILP)
       IcsClockMode_FBELP = 5, ///< FLL bypassed low power external (FBELP)
-
    };
 
    /**
@@ -705,7 +640,6 @@ public:
    enum IcsClockMonitor {
       IcsClockMonitor_Disabled = ICS_C4_CME(0), ///< Clock monitor disabled
       IcsClockMonitor_Enabled  = ICS_C4_CME(1), ///< Clock monitor enabled
-
    };
 
    /**
@@ -717,7 +651,6 @@ public:
    enum IcsLossOfLockInterrupt {
       IcsLossOfLockInterrupt_Disabled = ICS_C4_LOLIE0(0), ///< Interrupt disabled
       IcsLossOfLockInterrupt_Enabled  = ICS_C4_LOLIE0(1), ///< Interrupt enabled
-
    };
 
    /**
@@ -728,7 +661,6 @@ public:
    enum IcsIrClkEn {
       IcsIrClkEn_Disabled = ICS_C1_IRCLKEN(0), ///< Disabled
       IcsIrClkEn_Enabled  = ICS_C1_IRCLKEN(1), ///< Enabled
-
    };
 
    /**
@@ -740,7 +672,6 @@ public:
    enum IcsIrefs {
       IcsIrefs_DisabledInStop = ICS_C1_IREFSTEN(0), ///< IR disabled in STOP
       IcsIrefs_EnabledInStop  = ICS_C1_IREFSTEN(1), ///< IR enabled in STOP
-
    };
 
    /**
@@ -768,7 +699,6 @@ public:
       IcsFllPrescale_HighDivBy1024 = ICS_C1_RDIV(5), ///< /1024 (high)
       IcsFllPrescale_Reserved6     = ICS_C1_RDIV(6), ///< Reserved
       IcsFllPrescale_Reserved7     = ICS_C1_RDIV(7), ///< Reserved
-
    };
 
    /**
@@ -780,7 +710,6 @@ public:
    enum IcsIref {
       IcsIref_External = ICS_C1_IREFS(0), ///< External Reference Clock
       IcsIref_Internal = ICS_C1_IREFS(1), ///< Internal Reference Clock
-
    };
 
    /**
@@ -793,7 +722,6 @@ public:
       IcsClkSrc_Fll  = ICS_C1_CLKS(0), ///< Output of FLL
       IcsClkSrc_Iref = ICS_C1_CLKS(1), ///< Internal reference clock
       IcsClkSrc_Eref = ICS_C1_CLKS(2), ///< External reference clock
-
    };
 
    /**
@@ -812,7 +740,6 @@ public:
       IcsBusDivider_DivideBy32  = ICS_C2_BDIV(5), ///< Divide by 32
       IcsBusDivider_DivideBy64  = ICS_C2_BDIV(6), ///< Divide by 64
       IcsBusDivider_DivideBy128 = ICS_C2_BDIV(7), ///< Divide by 128
-
    };
 
    /**
@@ -824,8 +751,12 @@ public:
    enum IcsFllInLowpower {
       IcsFllInLowpower_Enabled  = ICS_C2_LP(0), ///< FLL is enabled in bypass modes
       IcsFllInLowpower_Disabled = ICS_C2_LP(1), ///< FLL is disabled in bypass modes
-
    };
+
+class IcsBasicInfo {
+   
+public:
+}; // Ics::BasicInfo
 
    /*
     * Global clock constants
@@ -854,30 +785,11 @@ public:
     */
    constexpr uint32_t SystemIcsFllClock = 48000000;
    
-class IcsBasicInfo {
-   
-public:
-}; // Ics::BasicInfo
-
 class IcsInfo {
 public:
    /*
     * Template:ics_mke
     */
-   /* Template _enablePeripheral  */
-   
-   //! Configure peripheral in start-up
-   static constexpr bool configurePeripheralInStartUp = false;
-
-   //! IRQ numbers for hardware
-   static constexpr IRQn_Type irqNums[]  = ICS_IRQS;
-   
-   //! Number of IRQs for hardware
-   static constexpr uint32_t irqCount  = sizeofArray(irqNums);
-   
-   //! Default IRQ level
-   static constexpr NvicPriority irqLevel =  NvicPriority_NotInstalled;
-   
    //! Hardware base address as uint32_t
    static constexpr uint32_t baseAddress = ICS_BasePtr;
    
@@ -1053,7 +965,6 @@ public:
       SimCoreClkDivider_DivBy2 = SIM_CLKDIV_OUTDIV1(1), ///< ICSOUTCLK/2
       SimCoreClkDivider_DivBy3 = SIM_CLKDIV_OUTDIV1(2), ///< ICSOUTCLK/3
       SimCoreClkDivider_DivBy4 = SIM_CLKDIV_OUTDIV1(3), ///< ICSOUTCLK/4
-
    };
 
    /**
@@ -1064,7 +975,6 @@ public:
    enum SimBusClkDivider {
       SimBusClkDivider_Direct = SIM_CLKDIV_OUTDIV2(0), ///< Core clock/1
       SimBusClkDivider_DivBy2 = SIM_CLKDIV_OUTDIV2(1), ///< Core clock/2
-
    };
 
    /**
@@ -1075,7 +985,6 @@ public:
    enum SimTimerClkDivider {
       SimTimerClkDivider_Direct = SIM_CLKDIV_OUTDIV3(0), ///< ICSOUTCLK/1
       SimTimerClkDivider_DivBy2 = SIM_CLKDIV_OUTDIV3(1), ///< ICSOUTCLK/2
-
    };
 
    /**
@@ -1086,7 +995,6 @@ public:
    enum SimScgcSwd {
       SimScgcSwd_ClockDisabled = SIM_SCGC_SWD(0), ///< Clock disabled
       SimScgcSwd_ClockEnabled  = SIM_SCGC_SWD(1), ///< Clock enabled
-
    };
 
    /**
@@ -1099,7 +1007,6 @@ public:
    enum SimSWDEnable {
       SimSWDEnable_Pta4Pta0AsPeripheralPins = SIM_SOPT_SWDE(0), ///< PTA4, PTA0 available for peripherals
       SimSWDEnable_Pta4Pta0AsSwdPins        = SIM_SOPT_SWDE(1), ///< PTA4, PTA0 mapped as SWD pins
-
    };
 
    /**
@@ -1110,7 +1017,6 @@ public:
    enum SimResetEnable {
       SimResetEnable_Pta5AsPeripheralPin = SIM_SOPT_RSTPE(0), ///< PTA5 available for peripherals
       SimResetEnable_Pta5AsReset         = SIM_SOPT_RSTPE(1), ///< PTA5 mapped as RESET
-
    };
 
    /**
@@ -1121,7 +1027,6 @@ public:
    enum SimNmiEnable {
       SimNmiEnable_Ptb4AsPeripheralPins = SIM_SOPT_NMIE(0), ///< PTB4 available for peripherals
       SimNmiEnable_Ptb4AsNmi            = SIM_SOPT_NMIE(1), ///< PTB4 mapped as NMI
-
    };
 
    /**
@@ -1139,7 +1044,6 @@ public:
       SimSoptRefClock_BusClockDividedBy32  = SIM_SOPT_CLKOE(1)|SIM_SOPT_BUSREF(5), ///< Bus clock divided by 32
       SimSoptRefClock_BusClockDividedBy64  = SIM_SOPT_CLKOE(1)|SIM_SOPT_BUSREF(6), ///< Bus clock divided by 64
       SimSoptRefClock_BusClockDividedBy128 = SIM_SOPT_CLKOE(1)|SIM_SOPT_BUSREF(7), ///< Bus clock divided by 128
-
    };
 
    /**
@@ -1156,7 +1060,6 @@ public:
       SimSoptAdhwt_PitChannel1Overflow           = SIM_SOPT_ADHWT(5), ///< PIT channel 1 overflow
       SimSoptAdhwt_Acmp0Out                      = SIM_SOPT_ADHWT(6), ///< ACMP0 OUT
       SimSoptAdhwt_Acmp1Out                      = SIM_SOPT_ADHWT(7), ///< ACMP1 OUT
-
    };
 
    /**
@@ -1167,7 +1070,6 @@ public:
    enum SimScgcAcmp0 {
       SimScgcAcmp0_ClockDisabled = SIM_SCGC_ACMP0(0), ///< Clock disabled
       SimScgcAcmp0_ClockEnabled  = SIM_SCGC_ACMP0(1), ///< Clock enabled
-
    };
 
    /**
@@ -1178,7 +1080,6 @@ public:
    enum SimSoptActrg {
       SimSoptActrg_Acmp0_out = SIM_SOPT_ACTRG(0), ///< ACMP0_OUT
       SimSoptActrg_Acmp1_out = SIM_SOPT_ACTRG(1), ///< ACMP1_OUT
-
    };
 
    /**
@@ -1189,7 +1090,6 @@ public:
    enum SimScgcAcmp1 {
       SimScgcAcmp1_ClockDisabled = SIM_SCGC_ACMP1(0), ///< Clock disabled
       SimScgcAcmp1_ClockEnabled  = SIM_SCGC_ACMP1(1), ///< Clock enabled
-
    };
 
    /**
@@ -1200,7 +1100,6 @@ public:
    enum SimScgcCrc {
       SimScgcCrc_ClockDisabled = SIM_SCGC_CRC(0), ///< Clock disabled
       SimScgcCrc_ClockEnabled  = SIM_SCGC_CRC(1), ///< Clock enabled
-
    };
 
    /**
@@ -1211,7 +1110,6 @@ public:
    enum SimScgcFlash {
       SimScgcFlash_ClockDisabled = SIM_SCGC_FLASH(0), ///< Clock disabled
       SimScgcFlash_ClockEnabled  = SIM_SCGC_FLASH(1), ///< Clock enabled
-
    };
 
    /**
@@ -1221,7 +1119,6 @@ public:
     */
    enum SimSoptFtmsync {
       SimSoptFtmsync_GenerateFtmTrigger = SIM_SOPT_FTMSYNC(1), ///< Generates trigger
-
    };
 
    /**
@@ -1232,7 +1129,6 @@ public:
    enum SimScgcFtm0 {
       SimScgcFtm0_ClockDisabled = SIM_SCGC_FTM0(0), ///< Clock disabled
       SimScgcFtm0_ClockEnabled  = SIM_SCGC_FTM0(1), ///< Clock enabled
-
    };
 
    /**
@@ -1243,7 +1139,6 @@ public:
    enum SimPinselFtm0clkps {
       SimPinselFtm0clkps_SelectsTclk1ForFtm0Module = SIM_PINSEL_FTM0CLKPS(0), ///< Selects TCLK1 for FTM0 module
       SimPinselFtm0clkps_SelectsTclk2ForFtm0Module = SIM_PINSEL_FTM0CLKPS(1), ///< Selects TCLK2 for FTM0 module
-
    };
 
    /**
@@ -1254,7 +1149,6 @@ public:
    enum SimPinselFtm0ps0 {
       SimPinselFtm0ps0_Pta0 = SIM_PINSEL_FTM0PS0(0), ///< PTA0
       SimPinselFtm0ps0_Ptb2 = SIM_PINSEL_FTM0PS0(1), ///< PTB2
-
    };
 
    /**
@@ -1265,7 +1159,6 @@ public:
    enum SimPinselFtm0ps1 {
       SimPinselFtm0ps1_Pta1 = SIM_PINSEL_FTM0PS1(0), ///< PTA1
       SimPinselFtm0ps1_Ptb3 = SIM_PINSEL_FTM0PS1(1), ///< PTB3
-
    };
 
    /**
@@ -1278,7 +1171,6 @@ public:
       SimSoptFtmic_Acmp0_out   = SIM_SOPT_FTMIC(1), ///< ACMP0_OUT
       SimSoptFtmic_Acmp1_out   = SIM_SOPT_FTMIC(2), ///< ACMP1_OUT
       SimSoptFtmic_RtcOverflow = SIM_SOPT_FTMIC(3), ///< RTC overflow
-
    };
 
    /**
@@ -1289,7 +1181,6 @@ public:
    enum SimSoptRxdce {
       SimSoptRxdce_NotConnected                    = SIM_SOPT_RXDCE(0), ///< Not connected
       SimSoptRxdce_Uart0_rxConnectedAsFtm0Channel1 = SIM_SOPT_RXDCE(1), ///< UART0_RX connected as FTM0 channel 1
-
    };
 
    /**
@@ -1300,7 +1191,6 @@ public:
    enum SimScgcFtm2 {
       SimScgcFtm2_ClockDisabled = SIM_SCGC_FTM2(0), ///< Clock disabled
       SimScgcFtm2_ClockEnabled  = SIM_SCGC_FTM2(1), ///< Clock enabled
-
    };
 
    /**
@@ -1311,7 +1201,6 @@ public:
    enum SimPinselFtm2clkps {
       SimPinselFtm2clkps_SelectsTclk1ForFtm2Module = SIM_PINSEL_FTM2CLKPS(0), ///< Selects TCLK1 for FTM2 module
       SimPinselFtm2clkps_SelectsTclk2ForFtm2Module = SIM_PINSEL_FTM2CLKPS(1), ///< Selects TCLK2 for FTM2 module
-
    };
 
    /**
@@ -1322,7 +1211,6 @@ public:
    enum SimPinselFtm2ps2 {
       SimPinselFtm2ps2_Ptc2 = SIM_PINSEL_FTM2PS2(0), ///< PTC2
       SimPinselFtm2ps2_Ptc4 = SIM_PINSEL_FTM2PS2(1), ///< PTC4
-
    };
 
    /**
@@ -1333,7 +1221,6 @@ public:
    enum SimPinselFtm2ps3 {
       SimPinselFtm2ps3_Ptc3 = SIM_PINSEL_FTM2PS3(0), ///< PTC3
       SimPinselFtm2ps3_Ptc5 = SIM_PINSEL_FTM2PS3(1), ///< PTC5
-
    };
 
    /**
@@ -1344,7 +1231,6 @@ public:
    enum SimScgcI2c0 {
       SimScgcI2c0_ClockDisabled = SIM_SCGC_I2C(0), ///< Clock disabled
       SimScgcI2c0_ClockEnabled  = SIM_SCGC_I2C(1), ///< Clock enabled
-
    };
 
    /**
@@ -1355,7 +1241,6 @@ public:
    enum SimPinselI2c0ps {
       SimPinselI2c0ps_Pta3Pta2MappedToI2c0 = SIM_PINSEL_I2C0PS(0), ///< PTA3,PTA2 mapped to SCL,SDA
       SimPinselI2c0ps_Ptb7Ptb6MappedToI2c0 = SIM_PINSEL_I2C0PS(1), ///< PTB7,PTB6 mapped to SCL,SDA
-
    };
 
    /**
@@ -1366,7 +1251,6 @@ public:
    enum SimScgcIrq {
       SimScgcIrq_ClockDisabled = SIM_SCGC_IRQ(0), ///< Clock disabled
       SimScgcIrq_ClockEnabled  = SIM_SCGC_IRQ(1), ///< Clock enabled
-
    };
 
    /**
@@ -1377,7 +1261,6 @@ public:
    enum SimScgcKbi0 {
       SimScgcKbi0_ClockDisabled = SIM_SCGC_KBI0(0), ///< Clock disabled
       SimScgcKbi0_ClockEnabled  = SIM_SCGC_KBI0(1), ///< Clock enabled
-
    };
 
    /**
@@ -1388,7 +1271,6 @@ public:
    enum SimScgcKbi1 {
       SimScgcKbi1_ClockDisabled = SIM_SCGC_KBI1(0), ///< Clock disabled
       SimScgcKbi1_ClockEnabled  = SIM_SCGC_KBI1(1), ///< Clock enabled
-
    };
 
    /**
@@ -1399,7 +1281,6 @@ public:
    enum SimScgcPit {
       SimScgcPit_ClockDisabled = SIM_SCGC_PIT(0), ///< Clock disabled
       SimScgcPit_ClockEnabled  = SIM_SCGC_PIT(1), ///< Clock enabled
-
    };
 
    /**
@@ -1410,7 +1291,6 @@ public:
    enum SimScgcPwt {
       SimScgcPwt_ClockDisabled = SIM_SCGC_PWT(0), ///< Clock disabled
       SimScgcPwt_ClockEnabled  = SIM_SCGC_PWT(1), ///< Clock enabled
-
    };
 
    /**
@@ -1421,7 +1301,6 @@ public:
    enum SimPinselPwtclkps {
       SimPinselPwtclkps_SelectsTclk1ForPwtModule = SIM_PINSEL_PWTCLKPS(0), ///< Selects TCLK1 for PWT module
       SimPinselPwtclkps_SelectsTclk2ForPwtModule = SIM_PINSEL_PWTCLKPS(1), ///< Selects TCLK2 for PWT module
-
    };
 
    /**
@@ -1432,7 +1311,6 @@ public:
    enum SimScgcRtc {
       SimScgcRtc_ClockDisabled = SIM_SCGC_RTC(0), ///< Clock disabled
       SimScgcRtc_ClockEnabled  = SIM_SCGC_RTC(1), ///< Clock enabled
-
    };
 
    /**
@@ -1443,7 +1321,6 @@ public:
    enum SimScgcSpi0 {
       SimScgcSpi0_ClockDisabled = SIM_SCGC_SPI0(0), ///< Clock disabled
       SimScgcSpi0_ClockEnabled  = SIM_SCGC_SPI0(1), ///< Clock enabled
-
    };
 
    /**
@@ -1454,7 +1331,6 @@ public:
    enum SimPinselSpi0ps {
       SimPinselSpi0ps_Ptb2Ptb3Ptb4Ptb5MappedToSpi0 = SIM_PINSEL_SPI0PS(0), ///< PTB2,PTB3,PTB4,PTB5 mapped to SPI0 pins
       SimPinselSpi0ps_Pta6Pta7Ptb1Ptb0MappedToSpi0 = SIM_PINSEL_SPI0PS(1), ///< PTA6,PTA7,PTB1,PTB0 mapped to SPI0 pins
-
    };
 
    /**
@@ -1465,7 +1341,6 @@ public:
    enum SimScgcUart0 {
       SimScgcUart0_ClockDisabled = SIM_SCGC_UART0(0), ///< Clock disabled
       SimScgcUart0_ClockEnabled  = SIM_SCGC_UART0(1), ///< Clock enabled
-
    };
 
    /**
@@ -1476,7 +1351,6 @@ public:
    enum SimPinselUart0ps {
       SimPinselUart0ps_MappedToPtb1Ptb0 = SIM_PINSEL_UART0PS(0), ///< PTB1,PTB0 mapped to Tx,Rx
       SimPinselUart0ps_MappedToPta3Pta2 = SIM_PINSEL_UART0PS(1), ///< PTA3,PTA2 mapped to Tx,Rx
-
    };
 
    /**
@@ -1487,7 +1361,6 @@ public:
    enum SimSoptTxdme {
       SimSoptTxdme_Uart0_txDirectlyConnectedToPin = SIM_SOPT_TXDME(0), ///< UART0_TX directly connected to pin
       SimSoptTxdme_Uart0_txModulatedByFtm0Channel = SIM_SOPT_TXDME(1), ///< UART0_TX modulated by FTM0 channel
-
    };
 
    /**
@@ -1500,7 +1373,6 @@ public:
       SimSoptRxdfe_Uart0ModuleDirectly = SIM_SOPT_RXDFE(0), ///< UART0 module directly
       SimSoptRxdfe_FilteredByAcmp0     = SIM_SOPT_RXDFE(1), ///< Filtered by ACMP0
       SimSoptRxdfe_FilteredByAcmp1     = SIM_SOPT_RXDFE(2), ///< Filtered by ACMP1
-
    };
 
    /*
@@ -2146,20 +2018,29 @@ public:
          sopt = (sopt&~SIM_SOPT_DELAY_MASK) | SIM_SOPT_DELAY(value);
       }
    
-   }; // Sim::BasicInfo::Init
+   }; // class Sim::BasicInfo::Init
 
-}; // Sim::BasicInfo
+}; // class Sim::BasicInfo
 
 class SimInfo : public SimBasicInfo {
 public:
    /*
     * Template:sim_mke04z4
     */
-   /* Template _enablePeripheral  */
+   /**
+    * Basic enable of Sim
+    * Includes enabling clock and configuring all mapped pins if mapPinsOnEnable is selected in configuration
+    */
+   static void enable() {
+   }
    
-   //! Configure peripheral in start-up
-   static constexpr bool configurePeripheralInStartUp = true;
-
+   /**
+    * Disables the clock to Sim and all mapped pins
+    */
+   static void disable() {
+      
+   }
+   
    //! Hardware base address as uint32_t
    static constexpr uint32_t baseAddress = SIM_BasePtr;
    
@@ -2183,7 +2064,7 @@ public:
     *        This is a one-shot counter that starts ticking when the trigger arrives and stops ticking when the counter value reaches the modulo value that is defined
     */
    static void configureFtm2Delay(Ticks ticks) {
-      sim->SOPT = (sim->SOPT&~SIM_SOPT_DELAY_MASK) | ticks;
+      sim->SOPT = (sim->SOPT&~SIM_SOPT_DELAY_MASK) | SIM_SOPT_DELAY(ticks);
    }
 
    /**
@@ -2642,7 +2523,6 @@ public:
    enum AcmpEnable {
       AcmpEnable_Disabled = ACMP_CS_ACE(0), ///< Disabled
       AcmpEnable_Enabled  = ACMP_CS_ACE(1), ///< Enabled
-
    };
 
    /**
@@ -2653,7 +2533,6 @@ public:
    enum AcmpHysterisis {
       AcmpHysterisis_20mV = ACMP_CS_HYST(0), ///< 20 mV
       AcmpHysterisis_30mV = ACMP_CS_HYST(1), ///< 30 mV
-
    };
 
    /**
@@ -2665,7 +2544,6 @@ public:
     */
    enum AcmpFlag {
       AcmpFlag_Write1Clear = ACMP_CS_ACF(1), ///< No request
-
    };
 
    /**
@@ -2676,7 +2554,6 @@ public:
    enum AcmpInterrupt {
       AcmpInterrupt_Disabled = ACMP_CS_ACIE(0), ///< Interrupt disabled
       AcmpInterrupt_Enabled  = ACMP_CS_ACIE(1), ///< Interrupt enabled
-
    };
 
    /**
@@ -2689,7 +2566,6 @@ public:
       AcmpMode_RisingEdge     = ACMP_CS_ACMOD(1), ///< Rising edge
       AcmpMode_FallingEdgeAlt = ACMP_CS_ACMOD(2), ///< Falling edge alt
       AcmpMode_BothEdges      = ACMP_CS_ACMOD(3), ///< Both edges
-
    };
 
    /**
@@ -2702,7 +2578,6 @@ public:
       AcmpPositiveInput_ExternalRef1 = ACMP_C0_ACPSEL(1), ///< External ref 1
       AcmpPositiveInput_ExternalRef2 = ACMP_C0_ACPSEL(2), ///< External ref 2
       AcmpPositiveInput_Dac          = ACMP_C0_ACPSEL(3), ///< DAC
-
    };
 
    /**
@@ -2715,7 +2590,6 @@ public:
       AcmpNegativeInput_ExternalRef1 = ACMP_C0_ACNSEL(1), ///< External ref 1
       AcmpNegativeInput_ExternalRef2 = ACMP_C0_ACNSEL(2), ///< External ref 2
       AcmpNegativeInput_Dac          = ACMP_C0_ACNSEL(3), ///< DAC
-
    };
 
    /**
@@ -2726,7 +2600,6 @@ public:
    enum AcmpDacEnable {
       AcmpDacEnable_Disabled = ACMP_C1_DACEN(0), ///< Disabled
       AcmpDacEnable_Enabled  = ACMP_C1_DACEN(1), ///< Enabled
-
    };
 
    /**
@@ -2737,7 +2610,16 @@ public:
    enum AcmpDacReference {
       AcmpDacReference_Bandgap = ACMP_C1_DACREF(0), ///< Bandgap
       AcmpDacReference_Vdda    = ACMP_C1_DACREF(1), ///< VDDA
+   };
 
+   /**
+    * DAC Output Level Selection
+    *
+    * Selects the DAC output voltage using the formula: 
+    *   Voutput= (Vin/64)x(DACVAL[5:0]+1) 
+    * The Voutput range is from Vin/64 to Vin, the step is Vin/64
+    */
+   enum AcmpDacValue : uint8_t {
    };
 
    /**
@@ -2748,7 +2630,6 @@ public:
    enum AcmpOutputPin {
       AcmpOutputPin_Disabled = ACMP_CS_ACOPE(0), ///< Pin disabled
       AcmpOutputPin_Enabled  = ACMP_CS_ACOPE(1), ///< Pin enabled
-
    };
 
    /**
@@ -2760,7 +2641,6 @@ public:
       AcmpInput_Input0 = ACMP_C2_ACIPE(0b001), ///< Input 0
       AcmpInput_Input1 = ACMP_C2_ACIPE(0b010), ///< Input 1
       AcmpInput_Input2 = ACMP_C2_ACIPE(0b100), ///< Input 2
-
    };
 
 class AcmpBasicInfo {
@@ -2773,25 +2653,14 @@ public:
    /*
     * Template:acmp0_mke
     */
-   /* Template _enablePeripheral  */
-   
-   //! Configure peripheral in start-up
-   static constexpr bool configurePeripheralInStartUp = false;
-
-   //! IRQ numbers for hardware
-   static constexpr IRQn_Type irqNums[]  = ACMP0_IRQS;
-   
-   //! Number of IRQs for hardware
-   static constexpr uint32_t irqCount  = sizeofArray(irqNums);
-   
-   //! Default IRQ level
-   static constexpr NvicPriority irqLevel =  NvicPriority_NotInstalled;
-   
    //! Hardware base address as uint32_t
    static constexpr uint32_t baseAddress = ACMP0_BasePtr;
    
    //! Hardware base pointer
    static constexpr HardwarePtr<ACMP_Type> acmp = baseAddress;
+   
+   //! Peripheral instance number
+   static constexpr unsigned instance = 0;
    
 };
 
@@ -2806,25 +2675,14 @@ public:
    /*
     * Template:acmp0_mke
     */
-   /* Template _enablePeripheral  */
-   
-   //! Configure peripheral in start-up
-   static constexpr bool configurePeripheralInStartUp = false;
-
-   //! IRQ numbers for hardware
-   static constexpr IRQn_Type irqNums[]  = ACMP1_IRQS;
-   
-   //! Number of IRQs for hardware
-   static constexpr uint32_t irqCount  = sizeofArray(irqNums);
-   
-   //! Default IRQ level
-   static constexpr NvicPriority irqLevel =  NvicPriority_NotInstalled;
-   
    //! Hardware base address as uint32_t
    static constexpr uint32_t baseAddress = ACMP1_BasePtr;
    
    //! Hardware base pointer
    static constexpr HardwarePtr<ACMP_Type> acmp = baseAddress;
+   
+   //! Peripheral instance number
+   static constexpr unsigned instance = 1;
    
 };
 
@@ -2851,7 +2709,6 @@ public:
    enum AdcInterrupt {
       AdcInterrupt_Disabled = ADC_SC1_AIEN(0), ///< Disabled
       AdcInterrupt_Enabled  = ADC_SC1_AIEN(1), ///< Enabled
-
    };
 
    /**
@@ -2865,7 +2722,6 @@ public:
    enum AdcContinuous {
       AdcContinuous_Disabled = ADC_SC1_ADCO(0), ///< Single
       AdcContinuous_Enabled  = ADC_SC1_ADCO(1), ///< Continuous
-
    };
 
    /**
@@ -2874,29 +2730,28 @@ public:
     * Channel to modify
     */
    enum AdcChannelNum {
-      AdcChannelNum_Ad0        = ADC_SC1_ADCH(0),  ///< AD0
-      AdcChannelNum_Ad1        = ADC_SC1_ADCH(1),  ///< AD1
-      AdcChannelNum_Ad2        = ADC_SC1_ADCH(2),  ///< AD2
-      AdcChannelNum_Ad3        = ADC_SC1_ADCH(3),  ///< AD3
-      AdcChannelNum_Ad4        = ADC_SC1_ADCH(4),  ///< AD4
-      AdcChannelNum_Ad5        = ADC_SC1_ADCH(5),  ///< AD5
-      AdcChannelNum_Ad6        = ADC_SC1_ADCH(6),  ///< AD6
-      AdcChannelNum_Ad7        = ADC_SC1_ADCH(7),  ///< AD7
-      AdcChannelNum_Ad8        = ADC_SC1_ADCH(8),  ///< AD8
-      AdcChannelNum_Ad9        = ADC_SC1_ADCH(9),  ///< AD9
-      AdcChannelNum_Ad10       = ADC_SC1_ADCH(10), ///< AD10
-      AdcChannelNum_Ad11       = ADC_SC1_ADCH(11), ///< AD11
-      AdcChannelNum_Ad12       = ADC_SC1_ADCH(12), ///< AD12
-      AdcChannelNum_Ad13       = ADC_SC1_ADCH(13), ///< AD13
-      AdcChannelNum_Ad14       = ADC_SC1_ADCH(14), ///< AD14
-      AdcChannelNum_Ad15       = ADC_SC1_ADCH(15), ///< AD15
+      AdcChannelNum_0          = ADC_SC1_ADCH(0),  ///< Channel 0
+      AdcChannelNum_1          = ADC_SC1_ADCH(1),  ///< Channel 1
+      AdcChannelNum_2          = ADC_SC1_ADCH(2),  ///< Channel 2
+      AdcChannelNum_3          = ADC_SC1_ADCH(3),  ///< Channel 3
+      AdcChannelNum_4          = ADC_SC1_ADCH(4),  ///< Channel 4
+      AdcChannelNum_5          = ADC_SC1_ADCH(5),  ///< Channel 5
+      AdcChannelNum_6          = ADC_SC1_ADCH(6),  ///< Channel 6
+      AdcChannelNum_7          = ADC_SC1_ADCH(7),  ///< Channel 7
+      AdcChannelNum_8          = ADC_SC1_ADCH(8),  ///< Channel 8
+      AdcChannelNum_9          = ADC_SC1_ADCH(9),  ///< Channel 9
+      AdcChannelNum_10         = ADC_SC1_ADCH(10), ///< Channel 10
+      AdcChannelNum_11         = ADC_SC1_ADCH(11), ///< Channel 11
+      AdcChannelNum_12         = ADC_SC1_ADCH(12), ///< Channel 12
+      AdcChannelNum_13         = ADC_SC1_ADCH(13), ///< Channel 13
+      AdcChannelNum_14         = ADC_SC1_ADCH(14), ///< Channel 14
+      AdcChannelNum_15         = ADC_SC1_ADCH(15), ///< Channel 15
       AdcChannelNum_Vss        = ADC_SC1_ADCH(16), ///< Vss
       AdcChannelNum_TempSensor = ADC_SC1_ADCH(22), ///< Temperature Sensor
       AdcChannelNum_Bandgap    = ADC_SC1_ADCH(23), ///< Bandgap
       AdcChannelNum_Vrefh      = ADC_SC1_ADCH(29), ///< VRefH
       AdcChannelNum_Vrefl      = ADC_SC1_ADCH(30), ///< VRefL
       AdcChannelNum_Disabled   = ADC_SC1_ADCH(31), ///< Module disabled
-
    };
 
    /**
@@ -2907,7 +2762,6 @@ public:
    enum AdcPretrigger {
       AdcPretrigger_SoftwareTrigger = ADC_SC2_ADTRG(0), ///< Software trigger
       AdcPretrigger_HardwareTrigger = ADC_SC2_ADTRG(1), ///< Hardware trigger
-
    };
 
    /**
@@ -2919,7 +2773,6 @@ public:
       AdcRefSel_VrefhAndVrefl = ADC_SC2_REFSEL(0), ///< VREFH and VREFL
       AdcRefSel_VddaAndVssa   = ADC_SC2_REFSEL(1), ///< VDDA and VSSA
       AdcRefSel_Reserved      = ADC_SC2_REFSEL(2), ///< Reserved
-
    };
 
    /**
@@ -2931,7 +2784,6 @@ public:
       AdcCompare_Disabled           = ADC_SC2_ACFE(0)|ADC_SC2_ACFGT(0), ///< No comparison done
       AdcCompare_LessThan           = ADC_SC2_ACFE(1)|ADC_SC2_ACFGT(0), ///< ADC value < compare value
       AdcCompare_GreaterThanOrEqual = ADC_SC2_ACFE(1)|ADC_SC2_ACFGT(1), ///< ADC value >= compare value
-
    };
 
    /**
@@ -2942,7 +2794,6 @@ public:
    enum AdcPower {
       AdcPower_Normal = ADC_SC3_ADLPC(0), ///< Normal
       AdcPower_Low    = ADC_SC3_ADLPC(1), ///< Low power
-
    };
 
    /**
@@ -2955,7 +2806,6 @@ public:
       AdcClockDivider_DivBy2 = ADC_SC3_ADIV(1), ///< Divide by 2
       AdcClockDivider_DivBy4 = ADC_SC3_ADIV(2), ///< Divide by 4
       AdcClockDivider_DivBy8 = ADC_SC3_ADIV(3), ///< Divide by 8
-
    };
 
    /**
@@ -2966,7 +2816,6 @@ public:
    enum AdcSample {
       AdcSample_Short = ADC_SC3_ADLSMP(0), ///< Short sample
       AdcSample_Long  = ADC_SC3_ADLSMP(1), ///< Long sample
-
    };
 
    /**
@@ -2978,7 +2827,6 @@ public:
       AdcResolution_8bit_se  = ADC_SC3_MODE(0), ///< 8-bit
       AdcResolution_10bit_se = ADC_SC3_MODE(1), ///< 10-bit
       AdcResolution_12bit_se = ADC_SC3_MODE(2), ///< 12-bit
-
    };
 
    /**
@@ -2991,7 +2839,6 @@ public:
       AdcClockSource_BusClockDiv2 = ADC_SC3_ADICLK(1), ///< (Bus clock)/2
       AdcClockSource_Altclk       = ADC_SC3_ADICLK(2), ///< Alternate clock (ALTCLK)
       AdcClockSource_Asynch       = ADC_SC3_ADICLK(3), ///< Asynchronous clock (ADICK)
-
    };
 
    /**
@@ -3002,7 +2849,6 @@ public:
    enum AdcSc4Htrgme {
       AdcSc4Htrgme_Single   = ADC_SC4_HTRGME(0), ///< Single
       AdcSc4Htrgme_Multiple = ADC_SC4_HTRGME(1), ///< Multiple
-
    };
 
    /**
@@ -3013,7 +2859,6 @@ public:
    enum AdcSc4Ascane {
       AdcSc4Ascane_Disabled = ADC_SC4_ASCANE(0), ///< Disabled
       AdcSc4Ascane_Enabled  = ADC_SC4_ASCANE(1), ///< Enabled
-
    };
 
    /**
@@ -3025,7 +2870,6 @@ public:
    enum AdcSc4Acfsel {
       AdcSc4Acfsel_OredTriggers  = ADC_SC4_ACFSEL(0), ///< ORed triggers
       AdcSc4Acfsel_AndedTriggers = ADC_SC4_ACFSEL(1), ///< ANDed triggers
-
    };
 
    /**
@@ -3042,7 +2886,6 @@ public:
       AdcSc4Afdep_6LevelFifo   = ADC_SC4_AFDEP(5), ///< 6-level FIFO
       AdcSc4Afdep_7LevelFifo   = ADC_SC4_AFDEP(6), ///< 7-level FIFO
       AdcSc4Afdep_8LevelFifo   = ADC_SC4_AFDEP(7), ///< 8-level FIFO
-
    };
 
    /**
@@ -3054,7 +2897,6 @@ public:
       AdcHardwareTriggerMask_Unmasked     = ADC_SC5_HTRGMASKE(0)|ADC_SC5_HTRGMASKSEL(0), ///< Unmasked
       AdcHardwareTriggerMask_Masked       = ADC_SC5_HTRGMASKE(1)|ADC_SC5_HTRGMASKSEL(0), ///< Masked
       AdcHardwareTriggerMask_MaskedByFifo = ADC_SC5_HTRGMASKE(0)|ADC_SC5_HTRGMASKSEL(1), ///< Masked when FIFO is not empty
-
    };
 
    /**
@@ -3065,7 +2907,6 @@ public:
     * 0:pin is GPIO, 1:pin is Analogue
     */
    enum AdcChannelMask : uint16_t {
-
    };
 
 class AdcBasicInfo {
@@ -3104,8 +2945,8 @@ public:
     *   AdcRefSel_VrefhAndVrefl ,       // Voltage Reference Selection - VREFH and VREFL
     *   AdcSample_Short ,               // Sample Time Configuration - Short sample
     *   AdcPower_Normal ,               // Low-Power Configuration - Normal
-    *   AdcChannelNum_Ad10 ,            // GPIO pin disables (available for analogue function)
-    *   AdcChannelNum_Ad11 ,
+    *   AdcChannelNum_10 ,              // GPIO pin disables (available for analogue function)
+    *   AdcChannelNum_11 ,
     *   AdcCompare_LessThan, 200,       // Compare Function Control - ADC value < 100
     *   AdcPretrigger_SoftwareTrigger , // Conversion Trigger Select - Software trigger
     *   AdcSc4Htrgme_Single ,           // Hardware Trigger Multiple Conversion Enable - Single
@@ -3382,20 +3223,6 @@ public:
    /*
     * Template:adc0_mke04
     */
-   /* Template _enablePeripheral  */
-   
-   //! Configure peripheral in start-up
-   static constexpr bool configurePeripheralInStartUp = false;
-
-   //! IRQ numbers for hardware
-   static constexpr IRQn_Type irqNums[]  = ADC0_IRQS;
-   
-   //! Number of IRQs for hardware
-   static constexpr uint32_t irqCount  = sizeofArray(irqNums);
-   
-   //! Default IRQ level
-   static constexpr NvicPriority irqLevel =  NvicPriority_NotInstalled;
-   
    //! Class based callback handler has been installed in vector table for this instance
    static constexpr bool irqHandlerInstalled = false;
    
@@ -3413,11 +3240,30 @@ public:
       SIM->SCGC = SIM->SCGC & ~SIM_SCGC_ADC0_MASK;
    }
    
+   /**
+    * Basic enable of Adc0
+    * Includes enabling clock and configuring all mapped pins if mapPinsOnEnable is selected in configuration
+    */
+   static void enable() {
+      enableClock();
+   }
+   
+   /**
+    * Disables the clock to Adc0 and all mapped pins
+    */
+   static void disable() {
+      adc->SC1[0] = ADC_SC1_ADCH(-1);
+      disableClock();
+   }
+   
    //! Hardware base address as uint32_t
    static constexpr uint32_t baseAddress = ADC0_BasePtr;
    
    //! Hardware base pointer
    static constexpr HardwarePtr<ADC_Type> adc = baseAddress;
+   
+   //! Peripheral instance number
+   static constexpr unsigned instance = 0;
    
    /**
     * Allocate Input Channel
@@ -3538,7 +3384,85 @@ public:
  * This may include pin information, constants, register addresses, and default register values,
  * along with simple accessor functions.
  */
-class Crc0Info {
+   /**
+    * CRC Polynomial
+    *
+    * Polynomial used for the CRC calculation
+    */
+   enum CrcPolynomial : uint32_t {
+   };
+
+   /**
+    * CRC Seed
+    *
+    * Seed value used for the CRC calculation
+    */
+   enum CrcSeed : uint32_t {
+   };
+
+   /**
+    * Type of Transpose For Writes
+    *
+    * Define the transpose configuration for values written to the CRC data register
+    * Controls transposition of bits within the bytes and bytes within the whole value
+    */
+   enum CrcWriteTranspose {
+      CrcWriteTranspose_NoTransposition        = CRC_CTRL_TOT(0), ///< No transposition
+      CrcWriteTranspose_BitsTransposed         = CRC_CTRL_TOT(1), ///< Bits transposed
+      CrcWriteTranspose_BitsAndBytesTransposed = CRC_CTRL_TOT(2), ///< Bits and bytes transposed
+      CrcWriteTranspose_BytesTransposed        = CRC_CTRL_TOT(3), ///< Bytes transposed
+   };
+
+   /**
+    * Type of Transpose For Read
+    *
+    * Identify the transpose configuration of values read from the CRC Data register.
+    * Controls transposition of bits within the bytes and bytes within the whole value
+    */
+   enum CrcReadTranspose {
+      CrcReadTranspose_NoTransposition        = CRC_CTRL_TOTR(0), ///< No transposition
+      CrcReadTranspose_BitsTransposed         = CRC_CTRL_TOTR(1), ///< Bits transposed
+      CrcReadTranspose_BitsAndBytesTransposed = CRC_CTRL_TOTR(2), ///< Bits and bytes transposed
+      CrcReadTranspose_BytesTransposed        = CRC_CTRL_TOTR(3), ///< Bytes transposed
+   };
+
+   /**
+    * Complement Read Of CRC Data Register
+    *
+    * Some CRC protocols require the final checksum to be XORed with 0xFFFFFFFF or 0xFFFF.
+    * Asserting this bit enables on the fly complementing of read data
+    */
+   enum CrcReadComplement {
+      CrcReadComplement_Normal   = CRC_CTRL_FXOR(0), ///< No inversion
+      CrcReadComplement_Inverted = CRC_CTRL_FXOR(1), ///< Invert read of data register
+   };
+
+   /**
+    * Write CRC Data Register As Seed
+    *
+    * Selects between seed or data value when a value is written to the CRC data register
+    */
+   enum CrcWriteMode {
+      CrcWriteMode_WritesData = CRC_CTRL_WAS(0), ///< Writes are data values
+      CrcWriteMode_WritesSeed = CRC_CTRL_WAS(1), ///< Writes are seed values
+   };
+
+   /**
+    * Width of CRC protocol
+    *
+    * Width used in CC calculation
+    */
+   enum CrcWidth {
+      CrcWidth_16BitCrc = CRC_CTRL_TCRC(0), ///< 16-bit CRC
+      CrcWidth_32BitCrc = CRC_CTRL_TCRC(1), ///< 32-bit CRC
+   };
+
+class CrcBasicInfo {
+
+public:
+}; // class CrcBasicInfo
+   
+class Crc0Info : public CrcBasicInfo {
 public:
    /*
     * Template:crc0_0x40032000
@@ -3552,30 +3476,6 @@ public:
    //! Peripheral instance number
    static constexpr unsigned instance = 0;
    
-   static constexpr uint32_t gpoly =  0;
-
-   /**
-    *  Enable clock to Crc0
-    */
-   static void enableClock() {
-#ifdef PCC
-      PccInfo::enableCrc0Clock();
-#else
-      SIM->SCGC = SIM->SCGC | SIM_SCGC_CRC_MASK;
-#endif
-   }
-
-   /**
-    *  Disable clock to Crc0
-    */
-   static void disableClock() {
-#ifdef PCC
-      PccInfo::disableCrc0Clock();
-#else
-      SIM->SCGC = SIM->SCGC & ~SIM_SCGC_CRC_MASK;
-#endif
-   }
-
 };
 
 /** 
@@ -3625,7 +3525,17 @@ public:
       FtmClockSource_SystemTimerClock    = FTM_SC_CLKS(1), ///< System timer clock
       FtmClockSource_FixedFrequencyClock = FTM_SC_CLKS(2), ///< Fixed frequency clock
       FtmClockSource_ExternalClock       = FTM_SC_CLKS(3), ///< External clock
+   };
 
+   /**
+    * Alignment (Count mode)
+    *
+    * Left-aligned   (0...mod) or
+    * Centre-aligned (0...mod...0)
+    */
+   enum FtmCountMode {
+      FtmCountMode_LeftAligned   = FTM_SC_CPWMS(0), ///< Left-aligned (count up)
+      FtmCountMode_CentreAligned = FTM_SC_CPWMS(1), ///< Centre-aligned (count up-down)
    };
 
    /**
@@ -3642,21 +3552,6 @@ public:
       FtmPrescale_DivBy32  = FTM_SC_PS(5), ///< Divide by 32
       FtmPrescale_DivBy64  = FTM_SC_PS(6), ///< Divide by 64
       FtmPrescale_DivBy128 = FTM_SC_PS(7), ///< Divide by 128
-
-   };
-
-   /**
-    * Alignment and whether interval or free-running mode
-    *
-    * Left-aligned   (cntin...mod) or
-    * Centre-aligned (cntin...mod...cntin) or
-    * Free-running   (0...maximum_value)
-    */
-   enum FtmMode {
-      FtmMode_LeftAligned   = FTM_SC_TOF(0)|FTM_SC_CPWMS(0), ///< Left-aligned (count up)
-      FtmMode_CentreAligned = FTM_SC_TOF(0)|FTM_SC_CPWMS(1), ///< Centre-aligned (count up-down)
-      FtmMode_FreeRunning   = FTM_SC_TOF(1)|FTM_SC_CPWMS(0), ///< Free-running (count up)
-
    };
 
    /**
@@ -3667,179 +3562,6 @@ public:
    enum FtmOverflowAction : uint8_t {
       FtmOverflowAction_None      = FTM_SC_TOIE(0), ///< No action
       FtmOverflowAction_Interrupt = FTM_SC_TOIE(1), ///< Overflow Interrupt
-
-   };
-
-   /**
-    * Fault Interrupt Enable
-    *
-    * 
-    */
-   enum FtmFaultInterrupt {
-      FtmFaultInterrupt_Disabled = FTM_MODE_FAULTIE(0), ///< Disabled
-      FtmFaultInterrupt_Enabled  = FTM_MODE_FAULTIE(1), ///< Enabled
-
-   };
-
-   /**
-    * Fault Control Mode
-    *
-    * This is a write-once after reset setting
-    */
-   enum FtmFaultMode {
-      FtmFaultMode_Disabled                          = FTM_MODE_FAULTM(0), ///< Disabled
-      FtmFaultMode_EvenChannelsManualFaultClearing   = FTM_MODE_FAULTM(1), ///< Even channels with manual fault clearing
-      FtmFaultMode_AllChannelsManualFaultClearing    = FTM_MODE_FAULTM(2), ///< All channels with manual fault clearing
-      FtmFaultMode_AllChannelsAutomaticFaultClearing = FTM_MODE_FAULTM(3), ///< All channels with automatic fault clearing
-
-   };
-
-   /**
-    * Capture Test Mode Enable
-    *
-    * 
-    */
-   enum FtmCaptestMode {
-      FtmCaptestMode_Disabled = FTM_MODE_CAPTEST(0), ///< Disabled
-      FtmCaptestMode_Enabled  = FTM_MODE_CAPTEST(1), ///< Enabled
-
-   };
-
-   /**
-    * PWM Synchronization Mode
-    *
-    * 
-    */
-   enum FtmModePwmsync {
-      FtmModePwmsync_NoRestrictions = FTM_MODE_PWMSYNC(0), ///< No restrictions.
-      FtmModePwmsync_Restricted     = FTM_MODE_PWMSYNC(1), ///< Restricted
-
-   };
-
-   /**
-    * Write Protection Disable
-    *
-    * 
-    */
-   enum FtmModeWpdis {
-      FtmModeWpdis_Enabled  = FTM_MODE_WPDIS(0), ///< Enabled
-      FtmModeWpdis_Disabled = FTM_MODE_WPDIS(1), ///< Disabled
-
-   };
-
-   /**
-    * Initialize the Channel Outputs
-    *
-    * When written to &amp;apos;1&amp;apos; the channels outputs are initialized according to the state of
-    * their corresponding bit in the OUTINIT register
-    */
-   enum FtmInitialiseOutputs {
-      FtmInitialiseOutputs_Write1ToInitialise = FTM_MODE_INIT(0), ///< Write 1 to initialise
-
-   };
-
-   /**
-    * FTM Mode Enable
-    *
-    * This field is write protected. It can be written only when MODE[WPDIS] = 1
-    */
-   enum FtmModeFtmen {
-      FtmModeFtmen_TpmRegistersOnly = FTM_MODE_FTMEN(0), ///< TPM registers only
-      FtmModeFtmen_AllRegisters     = FTM_MODE_FTMEN(1), ///< All registers
-
-   };
-
-   /**
-    * PWM Synchronization Software Trigger
-    *
-    * 
-    */
-   enum FtmSyncSwsync {
-      FtmSyncSwsync_NotSelected = FTM_SYNC_SWSYNC(0), ///< Not selected
-      FtmSyncSwsync_Selected    = FTM_SYNC_SWSYNC(1), ///< Selected
-
-   };
-
-   /**
-    * Output Mask Synchronization with buffer
-    *
-    * Selects when the OUTMASK register is updated with the value of its buffer
-    */
-   enum FtmSyncSynchom {
-      FtmSyncSynchom_RisingEdgesOfSystemClock = FTM_SYNC_SYNCHOM(0), ///< Rising edges of the system clock
-      FtmSyncSynchom_PwmSynchronization       = FTM_SYNC_SYNCHOM(1), ///< PWM synchronization
-
-   };
-
-   /**
-    * FTM Counter Reinitialization by Synchronization (FTM Counter Synchronization)
-    *
-    * Determines if the FTM counter is reinitialized when the selected trigger for
-    * the synchronization is detected.
-    * The REINIT bit configures the synchronization when SYNCMODE is zero.
-    */
-   enum FtmSyncReinit {
-      FtmSyncReinit_CountsNormally                    = FTM_SYNC_REINIT(0), ///< Counts normally
-      FtmSyncReinit_UpdatedWithInitialValueOnTriggerd = FTM_SYNC_REINIT(1), ///< Updated with initial value on triggerd
-
-   };
-
-   /**
-    * Maximum Loading Point Enable
-    *
-    * Selects the maximum loading point to PWM synchronization. 
-    * See Boundary cycle and loading points. 
-    * If CNTMAX is 1, the selected loading point is when the FTM counter 
-    * reaches its maximum value (MOD register).
-    */
-   enum FtmSyncCntmax {
-      FtmSyncCntmax_Disabled = FTM_SYNC_CNTMAX(0), ///< Disabled
-      FtmSyncCntmax_Enabled  = FTM_SYNC_CNTMAX(1), ///< Enabled
-
-   };
-
-   /**
-    * Minimum Loading Point Enable
-    *
-    * Selects the minimum loading point to PWM synchronization. 
-    * See Boundary cycle and loading points. 
-    * If CNTMIN is one, the selected loading point is when the FTM counter 
-    * reaches its minimum value (CNTIN register).
-    */
-   enum FtmSyncCntmin {
-      FtmSyncCntmin_Disabled = FTM_SYNC_CNTMIN(0), ///< Disabled
-      FtmSyncCntmin_Enabled  = FTM_SYNC_CNTMIN(1), ///< Enabled
-
-   };
-
-   /**
-    * Paired Channels 0&amp;amp;1
-    *
-    * Options controlling paired operation of channels
-    */
-   enum FtmCombine0 : uint8_t {
-
-   };
-
-   /**
-    * Deadtime Prescaler Value
-    *
-    * 
-    */
-   enum FtmDeadtimeDtps {
-      FtmDeadtimeDtps_DivideBy1  = FTM_DEADTIME_DTPS(0), ///< Divide by 1
-      FtmDeadtimeDtps_DivideBy4  = FTM_DEADTIME_DTPS(2), ///< Divide by 4
-      FtmDeadtimeDtps_DivideBy16 = FTM_DEADTIME_DTPS(3), ///< Divide by 16
-
-   };
-
-   /**
-    * Dead-time Value
-    *
-    * This tick value is scaled by ftm_deadtime_dtps
-    */
-   enum FtmDeadtime : uint8_t {
-
    };
 
    /**
@@ -3857,7 +3579,72 @@ public:
       FtmChannelNum_6    = 6,             ///< Channel 6
       FtmChannelNum_7    = 7,             ///< Channel 7
       FtmChannelNum_None = (uint8_t(-1)), ///< No Channel
+   };
 
+   /**
+    * Channel 0 Output Control
+    *
+    * Enables and selects value to force to channel output
+    */
+   enum FtmForceOutput0 {
+      FtmForceOutput0_NotForced = FTM_SWOCTRL_CH0OC(0)|FTM_SWOCTRL_CH0OCV(0), ///< Output not forced
+      FtmForceOutput0_Forces0   = FTM_SWOCTRL_CH0OC(1)|FTM_SWOCTRL_CH0OCV(0), ///< Forces output 0
+      FtmForceOutput0_Forces1   = FTM_SWOCTRL_CH0OC(1)|FTM_SWOCTRL_CH0OCV(1), ///< Forces output 1
+   };
+
+   /**
+    * Channel 1 Output Control
+    *
+    * Enables and selects value to force to channel output
+    */
+   enum FtmForceOutput1 {
+      FtmForceOutput1_NotForced = FTM_SWOCTRL_CH1OC(0)|FTM_SWOCTRL_CH1OCV(0), ///< Output not forced
+      FtmForceOutput1_Forces0   = FTM_SWOCTRL_CH1OC(1)|FTM_SWOCTRL_CH1OCV(0), ///< Forces output 0
+      FtmForceOutput1_Forces1   = FTM_SWOCTRL_CH1OC(1)|FTM_SWOCTRL_CH1OCV(1), ///< Forces output 1
+   };
+
+   /**
+    * Channel 2 Output Control
+    *
+    * Enables and selects value to force to channel output
+    */
+   enum FtmForceOutput2 {
+      FtmForceOutput2_NotForced = FTM_SWOCTRL_CH2OC(0)|FTM_SWOCTRL_CH2OCV(0), ///< Output not forced
+      FtmForceOutput2_Forces0   = FTM_SWOCTRL_CH2OC(1)|FTM_SWOCTRL_CH2OCV(0), ///< Forces output 0
+      FtmForceOutput2_Forces1   = FTM_SWOCTRL_CH2OC(1)|FTM_SWOCTRL_CH2OCV(1), ///< Forces output 1
+   };
+
+   /**
+    * Channel 3 Output Control
+    *
+    * Enables and selects value to force to channel output
+    */
+   enum FtmForceOutput3 {
+      FtmForceOutput3_NotForced = FTM_SWOCTRL_CH3OC(0)|FTM_SWOCTRL_CH3OCV(0), ///< Output not forced
+      FtmForceOutput3_Forces0   = FTM_SWOCTRL_CH3OC(1)|FTM_SWOCTRL_CH3OCV(0), ///< Forces output 0
+      FtmForceOutput3_Forces1   = FTM_SWOCTRL_CH3OC(1)|FTM_SWOCTRL_CH3OCV(1), ///< Forces output 1
+   };
+
+   /**
+    * Channel 4 Output Control
+    *
+    * Enables and selects value to force to channel output
+    */
+   enum FtmForceOutput4 {
+      FtmForceOutput4_NotForced = FTM_SWOCTRL_CH4OC(0)|FTM_SWOCTRL_CH4OCV(0), ///< Output not forced
+      FtmForceOutput4_Forces0   = FTM_SWOCTRL_CH4OC(1)|FTM_SWOCTRL_CH4OCV(0), ///< Forces output 0
+      FtmForceOutput4_Forces1   = FTM_SWOCTRL_CH4OC(1)|FTM_SWOCTRL_CH4OCV(1), ///< Forces output 1
+   };
+
+   /**
+    * Channel 5 Output Control
+    *
+    * Enables and selects value to force to channel output
+    */
+   enum FtmForceOutput5 {
+      FtmForceOutput5_NotForced = FTM_SWOCTRL_CH5OC(0)|FTM_SWOCTRL_CH5OCV(0), ///< Output not forced
+      FtmForceOutput5_Forces0   = FTM_SWOCTRL_CH5OC(1)|FTM_SWOCTRL_CH5OCV(0), ///< Forces output 0
+      FtmForceOutput5_Forces1   = FTM_SWOCTRL_CH5OC(1)|FTM_SWOCTRL_CH5OCV(1), ///< Forces output 1
    };
 
    /**
@@ -3866,77 +3653,84 @@ public:
     * Determines channel operation (PWM/Input capture/Output compare)
     */
    enum FtmChannelMode : uint16_t {
-      FtmChannelMode_Disabled                             = (FTM_COMBINE_DECAPEN0(0)<<8)|(FTM_COMBINE_COMBINE0(0)<<8)|FTM_CnSC_MS(0)|FTM_CnSC_ELS(0), ///< Disabled
-      FtmChannelMode_InputCaptureRisingEdge               = (FTM_COMBINE_DECAPEN0(0)<<8)|(FTM_COMBINE_COMBINE0(0)<<8)|FTM_CnSC_MS(0)|FTM_CnSC_ELS(1), ///< Input Capture Rising-edge
-      FtmChannelMode_InputCaptureFallingEdge              = (FTM_COMBINE_DECAPEN0(0)<<8)|(FTM_COMBINE_COMBINE0(0)<<8)|FTM_CnSC_MS(0)|FTM_CnSC_ELS(2), ///< Input Capture Falling-edge
-      FtmChannelMode_InputCaptureEitherEdge               = (FTM_COMBINE_DECAPEN0(0)<<8)|(FTM_COMBINE_COMBINE0(0)<<8)|FTM_CnSC_MS(0)|FTM_CnSC_ELS(3), ///< Input Capture Either-edge
-      FtmChannelMode_OutputCompare                        = (FTM_COMBINE_DECAPEN0(0)<<8)|(FTM_COMBINE_COMBINE0(0)<<8)|FTM_CnSC_MS(1)|FTM_CnSC_ELS(0), ///< Output Compare No action
-      FtmChannelMode_OutputCompareToggle                  = (FTM_COMBINE_DECAPEN0(0)<<8)|(FTM_COMBINE_COMBINE0(0)<<8)|FTM_CnSC_MS(1)|FTM_CnSC_ELS(1), ///< Output Compare Toggle
-      FtmChannelMode_OutputCompareClear                   = (FTM_COMBINE_DECAPEN0(0)<<8)|(FTM_COMBINE_COMBINE0(0)<<8)|FTM_CnSC_MS(1)|FTM_CnSC_ELS(2), ///< Output Compare Clear
-      FtmChannelMode_OutputCompareSet                     = (FTM_COMBINE_DECAPEN0(0)<<8)|(FTM_COMBINE_COMBINE0(0)<<8)|FTM_CnSC_MS(1)|FTM_CnSC_ELS(3), ///< Output Compare Set
-      FtmChannelMode_PwmHighTruePulses                    = (FTM_COMBINE_DECAPEN0(0)<<8)|(FTM_COMBINE_COMBINE0(0)<<8)|FTM_CnSC_MS(2)|FTM_CnSC_ELS(2), ///< Pwm High-true Pulses
-      FtmChannelMode_PwmLowTruePulses                     = (FTM_COMBINE_DECAPEN0(0)<<8)|(FTM_COMBINE_COMBINE0(0)<<8)|FTM_CnSC_MS(2)|FTM_CnSC_ELS(1), ///< Pwm Low-true Pulses
-      FtmChannelMode_DualEdgeCaptureOneShotRisingEdge     = (FTM_COMBINE_DECAPEN0(1)<<8)|(FTM_COMBINE_COMBINE0(0)<<8)|FTM_CnSC_MS(0)|FTM_CnSC_ELS(1), ///< Dual-edge Capture One-Shot Rising-edge
-      FtmChannelMode_DualEdgeCaptureContinuousRisingEdge  = (FTM_COMBINE_DECAPEN0(1)<<8)|(FTM_COMBINE_COMBINE0(0)<<8)|FTM_CnSC_MS(1)|FTM_CnSC_ELS(1), ///< Dual-edge Capture Continuous Rising-edge
-      FtmChannelMode_DualEdgeCaptureOneShotFallingEdge    = (FTM_COMBINE_DECAPEN0(1)<<8)|(FTM_COMBINE_COMBINE0(0)<<8)|FTM_CnSC_MS(0)|FTM_CnSC_ELS(2), ///< Dual-edge Capture One-Shot Falling-edge
-      FtmChannelMode_DualEdgeCaptureContinuousFallingEdge = (FTM_COMBINE_DECAPEN0(1)<<8)|(FTM_COMBINE_COMBINE0(0)<<8)|FTM_CnSC_MS(1)|FTM_CnSC_ELS(2), ///< Dual-edge Capture Continuous Falling-edge
-      FtmChannelMode_CombinePositivePulse                 = (FTM_COMBINE_DECAPEN0(0)<<8)|(FTM_COMBINE_COMBINE0(1)<<8)|FTM_CnSC_MS(0)|FTM_CnSC_ELS(2), ///< Combined Positive-pulse
-      FtmChannelMode_CombineNegativePulse                 = (FTM_COMBINE_DECAPEN0(0)<<8)|(FTM_COMBINE_COMBINE0(1)<<8)|FTM_CnSC_MS(0)|FTM_CnSC_ELS(1), ///< Combine Negative-pulse
-
+      FtmChannelMode_Disabled                = FTM_CnSC_MS(0b00)|FTM_CnSC_ELS(0b00), ///< Channel Disabled
+      FtmChannelMode_InputCaptureRisingEdge  = FTM_CnSC_MS(0b00)|FTM_CnSC_ELS(0b01), ///< Input Capture Rising-edge
+      FtmChannelMode_InputCaptureFallingEdge = FTM_CnSC_MS(0b00)|FTM_CnSC_ELS(0b10), ///< Input Capture Falling-edge
+      FtmChannelMode_InputCaptureEitherEdge  = FTM_CnSC_MS(0b00)|FTM_CnSC_ELS(0b11), ///< Input Capture Either-edge
+      FtmChannelMode_OutputCompare           = FTM_CnSC_MS(0b01)|FTM_CnSC_ELS(0b00), ///< Output Compare No action
+      FtmChannelMode_OutputCompareToggle     = FTM_CnSC_MS(0b01)|FTM_CnSC_ELS(0b01), ///< Output Compare Toggle
+      FtmChannelMode_OutputCompareClear      = FTM_CnSC_MS(0b01)|FTM_CnSC_ELS(0b10), ///< Output Compare Clear
+      FtmChannelMode_OutputCompareSet        = FTM_CnSC_MS(0b01)|FTM_CnSC_ELS(0b11), ///< Output Compare Set
+      FtmChannelMode_PwmHighTruePulses       = FTM_CnSC_MS(0b10)|FTM_CnSC_ELS(0b10), ///< Pwm High-true Pulses (Edge/Centre)
+      FtmChannelMode_PwmLowTruePulses        = FTM_CnSC_MS(0b10)|FTM_CnSC_ELS(0b01), ///< Pwm Low-true Pulses (Edge/Centre)
    };
 
+#if defined(FTM_COMBINE_DECAPEN0)&&defined(FTM_COMBINE_COMBINE0)
    /**
-    * Action on Channel Event
+    * Channel Mode
+    *
+    * Determines channel operation (Combined PWM or Dual-edge capture)
+    */
+   enum FtmCombinedChannelMode : uint16_t {
+      FtmCombinedChannelMode_Disabled                             = (FTM_COMBINE_DECAPEN0(0)<<8)|(FTM_COMBINE_COMBINE0(0)<<8)|FTM_CnSC_MS(0b00)|FTM_CnSC_ELS(0b00), ///< Channel Pair Disabled
+      FtmCombinedChannelMode_CombinePositivePulse                 = (FTM_COMBINE_DECAPEN0(0)<<8)|(FTM_COMBINE_COMBINE0(1)<<8)|FTM_CnSC_MS(0b00)|FTM_CnSC_ELS(0b10), ///< Combined PWM Positive-pulse
+      FtmCombinedChannelMode_CombineNegativePulse                 = (FTM_COMBINE_DECAPEN0(0)<<8)|(FTM_COMBINE_COMBINE0(1)<<8)|FTM_CnSC_MS(0b00)|FTM_CnSC_ELS(0b01), ///< Combine PWM Negative-pulse
+      FtmCombinedChannelMode_DualEdgeCaptureOneShotRisingEdge     = (FTM_COMBINE_DECAPEN0(1)<<8)|(FTM_COMBINE_COMBINE0(0)<<8)|FTM_CnSC_MS(0b00)|FTM_CnSC_ELS(0b01), ///< Dual-edge Capture One-Shot Rising-edge
+      FtmCombinedChannelMode_DualEdgeCaptureContinuousRisingEdge  = (FTM_COMBINE_DECAPEN0(1)<<8)|(FTM_COMBINE_COMBINE0(0)<<8)|FTM_CnSC_MS(0b01)|FTM_CnSC_ELS(0b01), ///< Dual-edge Capture Continuous Rising-edge
+      FtmCombinedChannelMode_DualEdgeCaptureOneShotFallingEdge    = (FTM_COMBINE_DECAPEN0(1)<<8)|(FTM_COMBINE_COMBINE0(0)<<8)|FTM_CnSC_MS(0b00)|FTM_CnSC_ELS(0b10), ///< Dual-edge Capture One-Shot Falling-edge
+      FtmCombinedChannelMode_DualEdgeCaptureContinuousFallingEdge = (FTM_COMBINE_DECAPEN0(1)<<8)|(FTM_COMBINE_COMBINE0(0)<<8)|FTM_CnSC_MS(0b01)|FTM_CnSC_ELS(0b10), ///< Dual-edge Capture Continuous Falling-edge
+      FtmCombinedChannelMode_DualEdgeCaptureOneShotEitherEdge     = (FTM_COMBINE_DECAPEN0(1)<<8)|(FTM_COMBINE_COMBINE0(0)<<8)|FTM_CnSC_MS(0b00)|FTM_CnSC_ELS(0b11), ///< Dual-edge Capture One-Shot Either-edge
+      FtmCombinedChannelMode_DualEdgeCaptureContinuousEitherEdge  = (FTM_COMBINE_DECAPEN0(1)<<8)|(FTM_COMBINE_COMBINE0(0)<<8)|FTM_CnSC_MS(0b01)|FTM_CnSC_ELS(0b11), ///< Dual-edge Capture Continuous Either-edge
+   };
+#endif
+
+   /**
+    * Action on Channel 0 Event
     *
     * Enable interrupt on channel event
     */
    enum FtmChannelAction : uint8_t {
       FtmChannelAction_None      = FTM_CnSC_CHIE(0), ///< No action
       FtmChannelAction_Interrupt = FTM_CnSC_CHIE(1), ///< Interrupt request
-
    };
 
    /**
-    * Initialisation Trigger Enable
+    * Seconds channel Capture Polarity
     *
-    * Enables the generation of the trigger when the FTM counter 
-    * is equal to the CNTIN register
+    * Polarity for capturing the second edge in Dual-edge capture mode (2nd event/channel)
     */
-   enum FtmInitTrig {
-      FtmInitTrig_Disabled = FTM_EXTTRIG_INITTRIGEN(0), ///< Disabled
-      FtmInitTrig_Enabled  = FTM_EXTTRIG_INITTRIGEN(1), ///< Enabled
-
+   enum FtmSecondEdge {
+      FtmSecondEdge_Disabled    = FTM_CnSC_ELS(0b00), ///< Not used
+      FtmSecondEdge_RisingEdge  = FTM_CnSC_ELS(0b01), ///< Capture Rising-edge
+      FtmSecondEdge_FallingEdge = FTM_CnSC_ELS(0b10), ///< Capture Falling-edge
+      FtmSecondEdge_EitherEdge  = FTM_CnSC_ELS(0b11), ///< Capture Either-edge
    };
 
-class FtmBasicInfo {
+class FtmCommonInfo {
    
 public:
-}; // class  FtmBasicInfo
+   
+}; // FtmCommonInfo
+   
+class Ftm0BasicInfo : public FtmCommonInfo {
+   
+public:
+   
+}; // class  Ftm0BasicInfo
 
-class Ftm0Info : public FtmBasicInfo {
+class Ftm0Info : public Ftm0BasicInfo {
 public:
    /*
     * Template:ftm0_2ch_mke
     */
-   /* Template _enablePeripheral  */
-   
-   //! Configure peripheral in start-up
-   static constexpr bool configurePeripheralInStartUp = false;
-
-   //! IRQ numbers for hardware
-   static constexpr IRQn_Type irqNums[]  = FTM0_IRQS;
-   
-   //! Number of IRQs for hardware
-   static constexpr uint32_t irqCount  = sizeofArray(irqNums);
-   
-   //! Default IRQ level
-   static constexpr NvicPriority irqLevel =  NvicPriority_NotInstalled;
-   
    //! Hardware base address as uint32_t
    static constexpr uint32_t baseAddress = FTM0_BasePtr;
    
    //! Hardware base pointer
-   static constexpr HardwarePtr<FTM_Type> ftm = baseAddress;
+   static constexpr HardwarePtr<FTM0_Type> ftm = baseAddress;
+   
+   //! Peripheral instance number
+   static constexpr unsigned instance = 0;
    
    //! Number of channels implemented
    static constexpr unsigned NumChannels = 2;
@@ -3944,19 +3738,14 @@ public:
    //! Number of channel event vectors implemented
    static constexpr unsigned NumChannelVectors = 1;
 
-   /// Minimum resolution for PWM interval
+   // Minimum resolution for PWM interval
    static constexpr uint32_t minimumResolution  = 0;
 
-   /// Minimum usable interval in ticks
+   // Minimum usable interval in ticks
    static constexpr uint32_t minimumInterval  = 0;
 
-   /// FTM External clock
+   // FTM External clock
    static constexpr uint32_t ftmExternalClock  = 0;
-
-   /// Default value for EXTTRIG) register
-   static constexpr uint32_t exttrig  =
-       0x0|                  // External Trigger Enable
-       FtmInitTrig_Disabled; // Initialisation Trigger Enable 
 
    /**
     * Get FTM Clock Source
@@ -3986,12 +3775,82 @@ public:
  * along with simple accessor functions.
  */
    /**
+    * PWM Synchronization Mode
+    *
+    * Selects which triggers can be used by MOD, CnV, OUTMASK, and FTM counter synchronization.
+    * It only configures the synchronization when SYNCMODE is 0.
+    */
+   enum FtmModePwmsync {
+      FtmModePwmsync_NoRestrictions = FTM_MODE_PWMSYNC(0), ///< Unrestricted
+      FtmModePwmsync_Restricted     = FTM_MODE_PWMSYNC(1), ///< Restricted
+   };
+
+   /**
+    * Write Protection Disable
+    *
+    * This value is applied after main FTM configuration
+    */
+   enum FtmModeWpdis {
+      FtmModeWpdis_Enabled  = FTM_MODE_WPDIS(0), ///< Enabled
+      FtmModeWpdis_Disabled = FTM_MODE_WPDIS(1), ///< Disabled
+   };
+
+   /**
+    * FTM Mode Enable
+    *
+    * This field is write protected. It can be written only when MODE[WPDIS] = 1
+    */
+   enum FtmModeFtmen {
+      FtmModeFtmen_TpmRegistersOnly = FTM_MODE_FTMEN(0), ///< TPM registers only
+      FtmModeFtmen_AllRegisters     = FTM_MODE_FTMEN(1), ///< All registers
+   };
+
+   /**
+    * Controls operation in BDM Mode
+    *
+    * Selects the FTM behavior in Debug mode.
+    */
+   enum FtmConfBdmmode {
+      FtmConfBdmmode_Stopped_OutputsFunctional        = FTM_CONF_BDMMODE(0), ///< Stopped, outputs functional
+      FtmConfBdmmode_Stopped_OutputsForcedToSafeValue = FTM_CONF_BDMMODE(1), ///< Stopped, outputs forced to safe value
+      FtmConfBdmmode_Stopped_OutputsFrozen            = FTM_CONF_BDMMODE(2), ///< Stopped, outputs frozen
+      FtmConfBdmmode_Functioning                      = FTM_CONF_BDMMODE(3), ///< Functioning
+   };
+
+   /**
+    * TOF Frequency
+    *
+    * Selects the ratio between counter overflows and the number of times the TOF bit is set.
+    * The TOF is set for the 1st overflow and then ignored for N further overflows.
+    */
+   enum Ftm_OverflowDivider : uint8_t {
+   };
+
+   /**
+    * Dead-time Prescaler Value
+    *
+    * Scale value for dead-time
+    */
+   enum FtmDeadtimePrescale {
+      FtmDeadtimePrescale_DivideBy1  = FTM_DEADTIME_DTPS(0), ///< Divide by 1
+      FtmDeadtimePrescale_DivideBy4  = FTM_DEADTIME_DTPS(2), ///< Divide by 4
+      FtmDeadtimePrescale_DivideBy16 = FTM_DEADTIME_DTPS(3), ///< Divide by 16
+   };
+
+   /**
+    * Paired Channels 0&amp;amp;1
+    *
+    * Options controlling paired operation of channels
+    */
+   enum FtmCombine0 : uint8_t {
+   };
+
+   /**
     * Paired Channels 2&amp;amp;3
     *
     * Options controlling paired operation of channels
     */
    enum FtmCombine1 : uint8_t {
-
    };
 
    /**
@@ -4000,42 +3859,485 @@ public:
     * Options controlling paired operation of channels
     */
    enum FtmCombine2 : uint8_t {
-
    };
 
    /**
-    * Fault inputs
+    * Software Trigger for PWM Synchronization
     *
-    * Enables fault enable inputs
+    * Selects the software trigger as the PWM synchronization trigger.
+    * The software trigger happens when a 1 is written to SWSYNC bit.
     */
-   enum FtmFaultEnableMask : uint32_t {
-
+   enum FtmSyncSwsync {
+      FtmSyncSwsync_NotSelected = FTM_SYNC_SWSYNC(0), ///< Not selected
+      FtmSyncSwsync_Selected    = FTM_SYNC_SWSYNC(1), ///< Selected
    };
 
-class Ftm2Info : public FtmBasicInfo {
+   /**
+    * Output Mask Synchronization with buffer
+    *
+    * Selects when the OUTMASK register is updated with the value of its buffer
+    */
+   enum FtmSyncSynchom {
+      FtmSyncSynchom_RisingEdgesOfSystemClock = FTM_SYNC_SYNCHOM(0), ///< Rising edges of the system clock
+      FtmSyncSynchom_PwmSynchronization       = FTM_SYNC_SYNCHOM(1), ///< PWM synchronization
+   };
+
+   /**
+    * Counter Reinitialization
+    *
+    * Determines if the FTM counter is reinitialized when 
+    * the selected synchronization trigger is detected. 
+    * It only configures the synchronization when SYNCMODE is zero.
+    */
+   enum FtmReinitOnSync {
+      FtmReinitOnSync_Disabled = FTM_SYNC_REINIT(0), ///< Counts normally
+      FtmReinitOnSync_Enabled  = FTM_SYNC_REINIT(1), ///< Updated with initial value on trigger
+   };
+
+   /**
+    * Load Enable
+    *
+    * Enables loading of MOD/CNTIN/CnV from buffers when Counter=MOD
+    */
+   enum FtmPwmload {
+      FtmPwmload_Disabled = FTM_PWMLOAD_LDOK(0), ///< Loading disabled
+      FtmPwmload_Enabled  = FTM_PWMLOAD_LDOK(1), ///< Loading enabled
+   };
+
+   /**
+    * Minimum Loading Point Enable
+    *
+    * Selects the minimum loading point for loading of MOD/CNTIN/CnV from buffers. 
+    * If enabled, the loading occurs when the FTM counter reaches CNTIN.
+    */
+   enum FtmSyncCntmin {
+      FtmSyncCntmin_Disabled = FTM_SYNC_CNTMIN(0), ///< Disabled
+      FtmSyncCntmin_Enabled  = FTM_SYNC_CNTMIN(1), ///< Enabled
+   };
+
+   /**
+    * Maximum Loading Point Enable
+    *
+    * Selects the maximum loading point for loading of MOD/CNTIN/CnV from buffers.
+    * If enabled, the loading occurs when the FTM counter reaches MOD.
+    */
+   enum FtmSyncCntmax {
+      FtmSyncCntmax_Disabled = FTM_SYNC_CNTMAX(0), ///< Disabled
+      FtmSyncCntmax_Enabled  = FTM_SYNC_CNTMAX(1), ///< Enabled
+   };
+
+   /**
+    * External Trigger Enable
+    *
+    * Bitmask enabling generation of the external trigger when the FTM
+    * counter is equal to a channel CnV register or CNTIN
+    */
+   enum FtmExternalTrigger : uint8_t {
+      FtmExternalTrigger_ch2   = FTM_EXTTRIG_CH2TRIG_MASK,
+      FtmExternalTrigger_ch3   = FTM_EXTTRIG_CH3TRIG_MASK,
+      FtmExternalTrigger_ch4   = FTM_EXTTRIG_CH4TRIG_MASK,
+      FtmExternalTrigger_ch5   = FTM_EXTTRIG_CH5TRIG_MASK,
+      FtmExternalTrigger_ch0   = FTM_EXTTRIG_CH0TRIG_MASK,
+      FtmExternalTrigger_ch1   = FTM_EXTTRIG_CH1TRIG_MASK,
+      FtmExternalTrigger_cntin = FTM_EXTTRIG_INITTRIGEN_MASK,
+         };
+
+   /**
+    * Initialisation of Channel Outputs
+    *
+    * When written to 1 the channels outputs are initialized according to the state of
+    * their corresponding bit in the OUTINIT register
+    * This is applied after the main FTM configuration
+    */
+   enum FtmInitialiseOutputs {
+      FtmInitialiseOutputs_Unchanged   = FTM_MODE_INIT(0), ///< No initialisation
+      FtmInitialiseOutputs_Initialised = FTM_MODE_INIT(1), ///< Initialised
+   };
+
+   /**
+    * Channel Output Initialization Value
+    *
+    * Bitmask defining the value that is forced
+    * into the channel output when initialization occurs.
+    */
+   enum FtmInitialValue : uint8_t {
+      FtmInitialValue_AllLow  = 0x00,
+      FtmInitialValue_AllHigh = 0xFF         };
+
+   /**
+    * Channel Output Polarity
+    *
+    * Bitmask defining the active-low channel outputs (1=ActiveLow).
+    * This field is write protected. It can be written only when MODE[WPDIS] = 1.
+    */
+   enum FtmPolarity : uint16_t {
+      FtmPolarity_Ch0_ActiveLow   = (uint8_t(~FTM_POL_POL0(0))<<8)|FTM_POL_POL0(1),
+      FtmPolarity_Ch0_ActiveHigh  = (uint8_t(~FTM_POL_POL0(1))<<8)|FTM_POL_POL0(0),
+      FtmPolarity_Ch1_ActiveLow   = (uint8_t(~FTM_POL_POL1(0))<<8)|FTM_POL_POL1(1),
+      FtmPolarity_Ch1_ActiveHigh  = (uint8_t(~FTM_POL_POL1(1))<<8)|FTM_POL_POL1(0),
+      FtmPolarity_Ch2_ActiveLow   = (uint8_t(~FTM_POL_POL2(0))<<8)|FTM_POL_POL2(1),
+      FtmPolarity_Ch2_ActiveHigh  = (uint8_t(~FTM_POL_POL2(1))<<8)|FTM_POL_POL2(0),
+      FtmPolarity_Ch3_ActiveLow   = (uint8_t(~FTM_POL_POL3(0))<<8)|FTM_POL_POL3(1),
+      FtmPolarity_Ch3_ActiveHigh  = (uint8_t(~FTM_POL_POL3(1))<<8)|FTM_POL_POL3(0),
+      FtmPolarity_Ch4_ActiveLow   = (uint8_t(~FTM_POL_POL4(0))<<8)|FTM_POL_POL4(1),
+      FtmPolarity_Ch4_ActiveHigh  = (uint8_t(~FTM_POL_POL4(1))<<8)|FTM_POL_POL4(0),
+      FtmPolarity_Ch5_ActiveLow   = (uint8_t(~FTM_POL_POL5(0))<<8)|FTM_POL_POL5(1),
+      FtmPolarity_Ch5_ActiveHigh  = (uint8_t(~FTM_POL_POL5(1))<<8)|FTM_POL_POL5(0),
+      FtmPolarity_All_ActiveLow   = (uint8_t(~FTM_POL_POL(0x00))<<8)|FTM_POL_POL(0xFF),
+      FtmPolarity_All_ActiveHigh  = (uint8_t(~FTM_POL_POL(0xFF))<<8)|FTM_POL_POL(0x00),
+         };
+
+   /**
+    * Global Time Base Output
+    *
+    * Enables the global time base signal generation to other FTMs
+    */
+   enum FtmConfGtbeout {
+      FtmConfGtbeout_Disabled = FTM_CONF_GTBEOUT(0), ///< Disabled
+      FtmConfGtbeout_Enabled  = FTM_CONF_GTBEOUT(1), ///< Enabled
+   };
+
+   /**
+    * External Global Time Base Enable
+    *
+    * Configures the FTM to use an external global time base signal that is generated by another FTM.
+    */
+   enum FtmConfGtbeen {
+      FtmConfGtbeen_Disabled = FTM_CONF_GTBEEN(0), ///< Disabled
+      FtmConfGtbeen_Enabled  = FTM_CONF_GTBEEN(1), ///< Enabled
+   };
+
+   /**
+    * SWOCTRL sync by hardware
+    *
+    * Controls SWOCTRL synchronization by hardware trigger
+    */
+   enum FtmHwSyncSwoctrl {
+      FtmHwSyncSwoctrl_Unaffected        = FTM_SYNCONF_HWSOC(0), ///< Unaffected
+      FtmHwSyncSwoctrl_OnHardwareTrigger = FTM_SYNCONF_HWSOC(1), ///< SWOCTRL register synched
+   };
+
+   /**
+    * INVCTRL sync by hardware
+    *
+    * Controls INVCTRL synchronization by hardware trigger
+    */
+   enum FtmHwSyncInvctrl {
+      FtmHwSyncInvctrl_Unaffected        = FTM_SYNCONF_HWINVC(0), ///< Unaffected
+      FtmHwSyncInvctrl_OnHardwareTrigger = FTM_SYNCONF_HWINVC(1), ///< INVCTRL register synched
+   };
+
+   /**
+    * OUTMASK sync by hardware
+    *
+    * Controls OUTMASK synchronization by hardware trigger
+    */
+   enum FtmHwSyncOutmask {
+      FtmHwSyncOutmask_Unaffected        = FTM_SYNCONF_HWOM(0), ///< Unaffected
+      FtmHwSyncOutmask_OnHardwareTrigger = FTM_SYNCONF_HWOM(1), ///< OUTMASK register synched
+   };
+
+   /**
+    * MOD/CNTIN/CV sync by hardware
+    *
+    * Controls MOD/CNTIN/CV synchronization by hardware trigger
+    */
+   enum FtmHwSyncRegs {
+      FtmHwSyncRegs_Unaffected        = FTM_SYNCONF_HWWRBUF(0), ///< Unaffected
+      FtmHwSyncRegs_OnHardwareTrigger = FTM_SYNCONF_HWWRBUF(1), ///< MOD/CNTIN/CV registers synched
+   };
+
+   /**
+    * Counter sync by hardware
+    *
+    * Controls Counter synchronization by hardware trigger
+    */
+   enum FtmHwSyncCounter {
+      FtmHwSyncCounter_Unaffected        = FTM_SYNCONF_HWRSTCNT(0), ///< Unaffected
+      FtmHwSyncCounter_OnHardwareTrigger = FTM_SYNCONF_HWRSTCNT(1), ///< Counter register synched
+   };
+
+   /**
+    * SWOCTRL sync by software
+    *
+    * Controls SWOCTRL synchronization by software trigger
+    */
+   enum FtmSwSyncSwoctrl {
+      FtmSwSyncSwoctrl_Unaffected        = FTM_SYNCONF_SWSOC(0), ///< Unaffected
+      FtmSwSyncSwoctrl_OnSoftwareTrigger = FTM_SYNCONF_SWSOC(1), ///< SWOCTRL register synched
+   };
+
+   /**
+    * INVCTRL synch by software
+    *
+    * Controls INVCTRL synchronization by software trigger
+    */
+   enum FtmSwSyncInvCtrl {
+      FtmSwSyncInvCtrl_Unaffected        = FTM_SYNCONF_SWINVC(0), ///< Unaffected
+      FtmSwSyncInvCtrl_OnSoftwareTrigger = FTM_SYNCONF_SWINVC(1), ///< INVCTRL register synched
+   };
+
+   /**
+    * OUTMASK sync by software
+    *
+    * Controls OUTMASK synchronization by software trigger
+    */
+   enum FtmSwSyncOutmask {
+      FtmSwSyncOutmask_Unaffected        = FTM_SYNCONF_SWOM(0), ///< Unaffected
+      FtmSwSyncOutmask_OnSoftwareTrigger = FTM_SYNCONF_SWOM(1), ///< OUTMASK register synched
+   };
+
+   /**
+    * MOD/CNTIN/CV synch by software
+    *
+    * Controls MOD/CNTIN/CV synchronization by software trigger
+    */
+   enum FtmSwSyncRegs {
+      FtmSwSyncRegs_Unaffected        = FTM_SYNCONF_SWWRBUF(0), ///< Unaffected
+      FtmSwSyncRegs_OnSoftwareTrigger = FTM_SYNCONF_SWWRBUF(1), ///< MOD/CNTIN/CV register synched
+   };
+
+   /**
+    * Counter synch by software
+    *
+    * Controls counter synchronization by software trigger
+    */
+   enum FtmSwSyncCounter {
+      FtmSwSyncCounter_Unaffected        = FTM_SYNCONF_SWRSTCNT(0), ///< Unaffected
+      FtmSwSyncCounter_OnSoftwareTrigger = FTM_SYNCONF_SWRSTCNT(1), ///< Counter register synched
+   };
+
+   /**
+    * Synchronization Mode
+    *
+    * Selects the PWM Synchronization mode
+    */
+   enum FtmSyncPwm {
+      FtmSyncPwm_LegacyPwmSynch   = FTM_SYNCONF_SYNCMODE(0), ///< Legacy PWM synch
+      FtmSyncPwm_EnhancedPwmSynch = FTM_SYNCONF_SYNCMODE(1), ///< Enhanced PWM synch
+   };
+
+   /**
+    * SWOCTRL Register Synch
+    *
+    * Controls SWOCTRL Register Synchronization with buffer
+    */
+   enum FtmBufferSyncSwoctrl {
+      FtmBufferSyncSwoctrl_OnRisingClockEdge = FTM_SYNCONF_SWOC(0), ///< On rising edges of system clock
+      FtmBufferSyncSwoctrl_OnPwmSynch        = FTM_SYNCONF_SWOC(1), ///< By PWM synchronization
+   };
+
+   /**
+    * INVCTRL Register Synch
+    *
+    * Controls INVCTRL Register Synchronization with buffer
+    */
+   enum FtmBufferSyncInvctrl {
+      FtmBufferSyncInvctrl_OnRisingClockEdge = FTM_SYNCONF_INVC(0), ///< On rising edges of system clock
+      FtmBufferSyncInvctrl_OnPwmSynch        = FTM_SYNCONF_INVC(1), ///< By PWM synchronization
+   };
+
+   /**
+    * CNTIN Register Synch
+    *
+    * CNTIN Register Synchronization with buffer
+    */
+   enum FtmBufferSyncCounter {
+      FtmBufferSyncCounter_OnRisingClockEdge = FTM_SYNCONF_CNTINC(0), ///< Updated on rising edges of system clock
+      FtmBufferSyncCounter_OnPwmSynch        = FTM_SYNCONF_CNTINC(1), ///< Updated by PWM synchronization
+   };
+
+   /**
+    * Hardware Trigger Mode
+    *
+    * Controls how hardware triggers are cleared
+    */
+   enum FtmTriggerSyncr {
+      FtmTriggerSyncr_OnTrigger  = FTM_SYNCONF_HWTRIGMODE(0), ///< TRIGj cleared on trigger detect
+      FtmTriggerSyncr_Unaffected = FTM_SYNCONF_HWTRIGMODE(1), ///< TRIGj unaffected
+   };
+
+   /**
+    * Fault Control Mode
+    *
+    * This is a write-once after reset setting
+    */
+   enum FtmFaultMode {
+      FtmFaultMode_Disabled                          = FTM_MODE_FAULTM(0), ///< Disabled
+      FtmFaultMode_EvenChannelsManualFaultClearing   = FTM_MODE_FAULTM(1), ///< Even channels with manual fault clearing
+      FtmFaultMode_AllChannelsManualFaultClearing    = FTM_MODE_FAULTM(2), ///< All channels with manual fault clearing
+      FtmFaultMode_AllChannelsAutomaticFaultClearing = FTM_MODE_FAULTM(3), ///< All channels with automatic fault clearing
+   };
+
+   /**
+    * Action on Fault event
+    *
+    * 
+    */
+   enum FtmFaultAction {
+      FtmFaultAction_Ignored   = FTM_MODE_FAULTIE(0), ///< No action
+      FtmFaultAction_Interrupt = FTM_MODE_FAULTIE(1), ///< Interrupt
+   };
+
+   /**
+    * Fault Input Filter
+    *
+    * Selects the filter value for the fault inputs..
+    */
+   enum FtmFaultFilter {
+      FtmFaultFilter_Disabled  = FTM_FLTCTRL_FFVAL(0),  ///< Filter Disabled
+      FtmFaultFilter_1_clock   = FTM_FLTCTRL_FFVAL(1),  ///< 1 Clock cycle
+      FtmFaultFilter_2_clocks  = FTM_FLTCTRL_FFVAL(2),  ///< 2 Clock cycles
+      FtmFaultFilter_3_clocks  = FTM_FLTCTRL_FFVAL(3),  ///< 3 Clock cycles
+      FtmFaultFilter_4_clocks  = FTM_FLTCTRL_FFVAL(4),  ///< 4 Clock cycles
+      FtmFaultFilter_5_clocks  = FTM_FLTCTRL_FFVAL(5),  ///< 5 Clock cycles
+      FtmFaultFilter_6_clocks  = FTM_FLTCTRL_FFVAL(6),  ///< 6 Clock cycles
+      FtmFaultFilter_7_clocks  = FTM_FLTCTRL_FFVAL(7),  ///< 7 Clock cycles
+      FtmFaultFilter_8_clocks  = FTM_FLTCTRL_FFVAL(8),  ///< 8 Clock cycles
+      FtmFaultFilter_9_clocks  = FTM_FLTCTRL_FFVAL(9),  ///< 9 Clock cycles
+      FtmFaultFilter_10_clocks = FTM_FLTCTRL_FFVAL(10), ///< 10 Clock cycles
+      FtmFaultFilter_11_clocks = FTM_FLTCTRL_FFVAL(11), ///< 11 Clock cycles
+      FtmFaultFilter_12_clocks = FTM_FLTCTRL_FFVAL(12), ///< 12 Clock cycles
+      FtmFaultFilter_13_clocks = FTM_FLTCTRL_FFVAL(13), ///< 13 Clock cycles
+      FtmFaultFilter_14_clocks = FTM_FLTCTRL_FFVAL(14), ///< 14 Clock cycles
+      FtmFaultFilter_15_clocks = FTM_FLTCTRL_FFVAL(15), ///< 15 Clock cycles
+   };
+
+   /**
+    * Fault Input 0 Enable and Filter
+    *
+    * Enables the fault input.
+    * This field is write protected. It can be written only when MODE[WPDIS] = 1.
+    */
+   enum FtmFault0Mode {
+      FtmFault0Mode_Disabled = FTM_FLTCTRL_FAULT0EN(0)|FTM_FLTCTRL_FFLTR0EN(0), ///< Fault input disabled
+      FtmFault0Mode_Direct   = FTM_FLTCTRL_FAULT0EN(1)|FTM_FLTCTRL_FFLTR0EN(0), ///< Fault input enabled
+      FtmFault0Mode_Filtered = FTM_FLTCTRL_FAULT0EN(1)|FTM_FLTCTRL_FFLTR0EN(1), ///< Fault input enabled with filter
+   };
+
+   /**
+    * Fault Input 0 Polarity
+    *
+    * Defines the polarity of the fault input.
+    * This field is write protected. It can be written only when MODE[WPDIS] = 1.
+    */
+   enum FtmFault0Polarity {
+      FtmFault0Polarity_ActiveHigh = FTM_FLTPOL_FLT0POL(0), ///< Active High
+      FtmFault0Polarity_ActiveLow  = FTM_FLTPOL_FLT0POL(1), ///< Active Low
+   };
+
+   /**
+    * Fault Input 1 Enable and Filter
+    *
+    * Enables the fault input.
+    * This field is write protected. It can be written only when MODE[WPDIS] = 1.
+    */
+   enum FtmFault1Mode {
+      FtmFault1Mode_Disabled = FTM_FLTCTRL_FAULT1EN(0)|FTM_FLTCTRL_FFLTR1EN(0), ///< Fault input disabled
+      FtmFault1Mode_Direct   = FTM_FLTCTRL_FAULT1EN(1)|FTM_FLTCTRL_FFLTR1EN(0), ///< Fault input enabled
+      FtmFault1Mode_Filtered = FTM_FLTCTRL_FAULT1EN(1)|FTM_FLTCTRL_FFLTR1EN(1), ///< Fault input enabled with filter
+   };
+
+   /**
+    * Fault Input 1 Polarity
+    *
+    * Defines the polarity of the fault input.
+    * This field is write protected. It can be written only when MODE[WPDIS] = 1.
+    */
+   enum FtmFault1Polarity {
+      FtmFault1Polarity_ActiveHigh = FTM_FLTPOL_FLT1POL(0), ///< Active High
+      FtmFault1Polarity_ActiveLow  = FTM_FLTPOL_FLT1POL(1), ///< Active Low
+   };
+
+   /**
+    * Fault Input 2 Enable and Filter
+    *
+    * Enables the fault input.
+    * This field is write protected. It can be written only when MODE[WPDIS] = 1.
+    */
+   enum FtmFault2Mode {
+      FtmFault2Mode_Disabled = FTM_FLTCTRL_FAULT2EN(0)|FTM_FLTCTRL_FFLTR2EN(0), ///< Fault input disabled
+      FtmFault2Mode_Direct   = FTM_FLTCTRL_FAULT2EN(1)|FTM_FLTCTRL_FFLTR2EN(0), ///< Fault input enabled
+      FtmFault2Mode_Filtered = FTM_FLTCTRL_FAULT2EN(1)|FTM_FLTCTRL_FFLTR2EN(1), ///< Fault input enabled with filter
+   };
+
+   /**
+    * Fault Input 2 Polarity
+    *
+    * Defines the polarity of the fault input.
+    * This field is write protected. It can be written only when MODE[WPDIS] = 1.
+    */
+   enum FtmFault2Polarity {
+      FtmFault2Polarity_ActiveHigh = FTM_FLTPOL_FLT2POL(0), ///< Active High
+      FtmFault2Polarity_ActiveLow  = FTM_FLTPOL_FLT2POL(1), ///< Active Low
+   };
+
+   /**
+    * Fault Input 3 Enable and Filter
+    *
+    * Enables the fault input.
+    * This field is write protected. It can be written only when MODE[WPDIS] = 1.
+    */
+   enum FtmFault3Mode {
+      FtmFault3Mode_Disabled = FTM_FLTCTRL_FAULT3EN(0)|FTM_FLTCTRL_FFLTR3EN(0), ///< Fault input disabled
+      FtmFault3Mode_Direct   = FTM_FLTCTRL_FAULT3EN(1)|FTM_FLTCTRL_FFLTR3EN(0), ///< Fault input enabled
+      FtmFault3Mode_Filtered = FTM_FLTCTRL_FAULT3EN(1)|FTM_FLTCTRL_FFLTR3EN(1), ///< Fault input enabled with filter
+   };
+
+   /**
+    * Fault Input 3 Polarity
+    *
+    * Defines the polarity of the fault input.
+    * This field is write protected. It can be written only when MODE[WPDIS] = 1.
+    */
+   enum FtmFault3Polarity {
+      FtmFault3Polarity_ActiveHigh = FTM_FLTPOL_FLT3POL(0), ///< Active High
+      FtmFault3Polarity_ActiveLow  = FTM_FLTPOL_FLT3POL(1), ///< Active Low
+   };
+
+   /**
+    * Channel Input Filter
+    *
+    * Selects the filter value for the channel input
+    */
+   enum FtmInputFilter : uint8_t {
+      FtmInputFilter_Disabled  = (0),  ///< Filter Disabled
+      FtmInputFilter_1_clock   = (1),  ///< 1 Clock cycle
+      FtmInputFilter_2_clocks  = (2),  ///< 2 Clock cycles
+      FtmInputFilter_3_clocks  = (3),  ///< 3 Clock cycles
+      FtmInputFilter_4_clocks  = (4),  ///< 4 Clock cycles
+      FtmInputFilter_5_clocks  = (5),  ///< 5 Clock cycles
+      FtmInputFilter_6_clocks  = (6),  ///< 6 Clock cycles
+      FtmInputFilter_7_clocks  = (7),  ///< 7 Clock cycles
+      FtmInputFilter_8_clocks  = (8),  ///< 8 Clock cycles
+      FtmInputFilter_9_clocks  = (9),  ///< 9 Clock cycles
+      FtmInputFilter_10_clocks = (10), ///< 10 Clock cycles
+      FtmInputFilter_11_clocks = (11), ///< 11 Clock cycles
+      FtmInputFilter_12_clocks = (12), ///< 12 Clock cycles
+      FtmInputFilter_13_clocks = (13), ///< 13 Clock cycles
+      FtmInputFilter_14_clocks = (14), ///< 14 Clock cycles
+      FtmInputFilter_15_clocks = (15), ///< 15 Clock cycles
+   };
+
+class Ftm2BasicInfo : public FtmCommonInfo {
+   
+public:
+   
+}; // class  Ftm2BasicInfo
+
+class Ftm2Info : public Ftm2BasicInfo {
 public:
    /*
     * Template:ftm2_6ch_mke
     */
-   /* Template _enablePeripheral  */
-   
-   //! Configure peripheral in start-up
-   static constexpr bool configurePeripheralInStartUp = false;
-
-   //! IRQ numbers for hardware
-   static constexpr IRQn_Type irqNums[]  = FTM2_IRQS;
-   
-   //! Number of IRQs for hardware
-   static constexpr uint32_t irqCount  = sizeofArray(irqNums);
-   
-   //! Default IRQ level
-   static constexpr NvicPriority irqLevel =  NvicPriority_NotInstalled;
-   
    //! Hardware base address as uint32_t
    static constexpr uint32_t baseAddress = FTM2_BasePtr;
    
    //! Hardware base pointer
    static constexpr HardwarePtr<FTM_Type> ftm = baseAddress;
+   
+   //! Peripheral instance number
+   static constexpr unsigned instance = 2;
    
    //! Number of channels implemented
    static constexpr unsigned NumChannels = 6;
@@ -4043,19 +4345,129 @@ public:
    //! Number of channel event vectors implemented
    static constexpr unsigned NumChannelVectors = 1;
 
-   /// Minimum resolution for PWM interval
+   // Minimum resolution for PWM interval
    static constexpr uint32_t minimumResolution  = 0;
 
-   /// Minimum usable interval in ticks
+   // Minimum usable interval in ticks
    static constexpr uint32_t minimumInterval  = 0;
 
-   /// FTM External clock
+   // FTM External clock
    static constexpr uint32_t ftmExternalClock  = 0;
 
-   /// Default value for EXTTRIG) register
-   static constexpr uint32_t exttrig  =
-       0x0|                  // External Trigger Enable
-       FtmInitTrig_Disabled; // Initialisation Trigger Enable 
+   /**
+    * Enables/disable external trigger generation by a channel comparison or initialisation event
+    *
+    * @param[in] ftmExternalTrigger Indicates the event to cause the external trigger
+    * @param[in] enable             Whether to enable/disable the specified trigger
+    */
+   static void enableExternalTrigger(FtmExternalTrigger ftmExternalTrigger, bool enable=true) {
+      if (enable) {
+         ftm->EXTTRIG = ftm->EXTTRIG | ftmExternalTrigger;
+      }
+      else {
+         ftm->EXTTRIG = ftm->EXTTRIG & ~ftmExternalTrigger;
+      }
+   }
+   
+   /**
+    * Enables multiple external trigger generation on a channel comparison or initialisation event
+    *
+    * @param[in] externalTriggers Indicates the events to cause the external trigger. 
+
+    *                             Construct from ORed FtmExternalTrigger flags e.g. FtmExternalTrigger_ch0|FtmExternalTrigger_ch3
+    * @param[in] enable           Whether to enable/disable the specified triggers
+    */
+   static void enableExternalTriggers(int externalTriggers, bool enable=true) {
+      enableExternalTrigger(FtmExternalTrigger(externalTriggers), enable);
+   }
+   
+   /**
+    * Enable fault interrupts
+    */
+   static void enableFaultInterrupt() {
+      ftm->MODE = ftm->MODE | FTM_MODE_FAULTIE_MASK;
+   }
+   
+   /**
+    * Disable fault interrupts
+    */
+   static void disableFaultInterrupt() {
+      ftm->MODE = ftm->MODE & ~FTM_MODE_FAULTIE_MASK;
+   }
+   
+   /**
+    *  Disables fault detection input
+    *
+    *  @tparam inputNum        Number of fault input to enable (0..3)
+    */
+   template<int inputNum>
+   static void disableFault() {
+      static_assert(inputNum<=4, "Illegal fault channel");
+   
+      // Enable fault on channel
+      ftm->FLTCTRL = ftm->FLTCTRL & ~(1<<inputNum);
+   }
+   
+   /**
+    *  Enables fault detection input
+    *
+    *  @tparam inputNum           Number of fault input to enable (0..3)
+    *
+    *  @param[in]  polarity       Polarity of fault input
+    *  @param[in]  filterEnable   Whether to enable filtering on the fault input
+    *  @param[in]  filterDelay    Delay used by the filter (1..15) - Applies to all channels
+    *
+    *  NOTE - the filter delay is shared by all inputs
+    */
+public:
+   template<uint8_t inputNum>
+   static void enableFault(
+         Polarity polarity     = ActiveHigh,
+         bool     filterEnable = false,
+         uint32_t filterDelay  = FTM_FLTCTRL_FFVAL_MASK>>(FTM_FLTCTRL_FFVAL_SHIFT+1)) {
+   
+      if (polarity) {
+         // Set active high
+         ftm->FLTPOL = ftm->FLTPOL & ~(1<<inputNum);
+      }
+      else {
+         // Set active low
+         ftm->FLTPOL = ftm->FLTPOL | (1<<inputNum);
+      }
+      if (filterEnable) {
+         // Enable filter & set filter delay
+         ftm->FLTCTRL = ((ftm->FLTCTRL) & ~(FTM_FLTCTRL_FFVAL_MASK)) | (1<<(inputNum+FTM_FLTCTRL_FFLTR0EN_SHIFT)) | FTM_FLTCTRL_FFVAL(filterDelay);
+      }
+      else {
+         // Disable filter
+         ftm->FLTCTRL = ftm->FLTCTRL & ~(1<<(inputNum+FTM_FLTCTRL_FFLTR0EN_SHIFT));
+      }
+      // Enable fault input
+      ftm->FLTCTRL = ftm->FLTCTRL | (1<<inputNum);
+      // Enable fault mode (All channels, manual)
+      ftm->MODE    = ftm->MODE | FTM_MODE_FAULTM(2);
+   }
+
+   /**
+    * Set polarity of all channels
+    *
+    * @param channelMask   Bit mask 0 => active-high, 1 => active-low
+    */
+   static  void setPolarity(uint32_t channelMask) {
+      ftm->POL = channelMask;
+   }
+   
+   /**
+    * Set polarity of selected channel
+    *
+    * @param ftmPolarity  Channel polarity to set
+    */
+   static void setPolarity(FtmPolarity ftmPolarity) {
+         uint8_t temp = ftm->POL;
+         temp |= ftmPolarity;
+         temp &= ftmPolarity>>8;
+         ftm->POL = temp;
+   }
 
    /**
     * Get FTM Clock Source
@@ -4098,12 +4510,11 @@ public:
     *
     * Prescale divider to generate the I2C baud rate
     */
-   enum I2cFMult {
-      I2cFMult_Mul1     = I2C_F_MULT(0), ///< mul = 1
-      I2cFMult_Mul2     = I2C_F_MULT(1), ///< mul = 2
-      I2cFMult_Mul4     = I2C_F_MULT(2), ///< mul = 4
-      I2cFMult_Reserved = I2C_F_MULT(3), ///< Reserved
-
+   enum I2cPrescale {
+      I2cPrescale_Mul1     = I2C_F_MULT(0), ///< mul = 1
+      I2cPrescale_Mul2     = I2C_F_MULT(1), ///< mul = 2
+      I2cPrescale_Mul4     = I2C_F_MULT(2), ///< mul = 4
+      I2cPrescale_Reserved = I2C_F_MULT(3), ///< Reserved
    };
 
    /**
@@ -4114,7 +4525,6 @@ public:
    enum I2cInterrupt {
       I2cInterrupt_Disabled = I2C_C1_IICIE(0), ///< Disabled
       I2cInterrupt_Enabled  = I2C_C1_IICIE(1), ///< Enabled
-
    };
 
    /**
@@ -4125,7 +4535,6 @@ public:
    enum I2cBusRole {
       I2cBusRole_Peripheral = I2C_C1_MST(0), ///< Peripheral mode
       I2cBusRole_Controller = I2C_C1_MST(1), ///< Controller mode
-
    };
 
    /**
@@ -4137,7 +4546,6 @@ public:
    enum I2cWakeup {
       I2cWakeup_Disabled = I2C_C1_WUEN(0), ///< Disabled
       I2cWakeup_Enabled  = I2C_C1_WUEN(1), ///< Enabled
-
    };
 
    /**
@@ -4148,18 +4556,6 @@ public:
    enum I2cCallAddress {
       I2cCallAddress_Disabled = I2C_C2_GCAEN(0), ///< Disabled
       I2cCallAddress_Enabled  = I2C_C2_GCAEN(1), ///< Enabled
-
-   };
-
-   /**
-    * Slave Baud Rate Control
-    *
-    * Allows the slave baud rate to follows the master baud rate with clock stretching occurring
-    */
-   enum I2cClockStretching {
-      I2cClockStretching_Disabled = I2C_C2_SBRC(0), ///< Slave rate follows master
-      I2cClockStretching_Enabled  = I2C_C2_SBRC(1), ///< Slave rate independent
-
    };
 
    /**
@@ -4170,7 +4566,16 @@ public:
    enum I2cAddressLength {
       I2cAddressLength_7Bit  = I2C_C2_ADEXT(0), ///< 7-bit address
       I2cAddressLength_10Bit = I2C_C2_ADEXT(1), ///< 10-bit address
+   };
 
+   /**
+    * Slave Baud Rate Control
+    *
+    * Allows the slave baud rate to follows the master baud rate with clock stretching occurring
+    */
+   enum I2cClockStretching {
+      I2cClockStretching_Disabled = I2C_C2_SBRC(0), ///< Slave rate follows master
+      I2cClockStretching_Enabled  = I2C_C2_SBRC(1), ///< Slave rate independent
    };
 
    /**
@@ -4181,18 +4586,28 @@ public:
    enum I2cAddressRange {
       I2cAddressRange_Disabled = I2C_C2_RMEN(0), ///< Range mode disabled
       I2cAddressRange_Enabled  = I2C_C2_RMEN(1), ///< Range mode enabled
-
    };
 
    /**
     * Stop Hold-off
     *
-    * Set this bit to hold off entry to stop mode when any data transmission or reception is occurring
+    * Set this bit to hold off entry to stop mode when any data transmission
+    * or reception is occurring
     */
    enum I2cStopHoldOff {
       I2cStopHoldOff_Disabled = I2C_FLT_SHEN(0), ///< Stop hold-off is disabled
       I2cStopHoldOff_Enabled  = I2C_FLT_SHEN(1), ///< Stop hold-off is enabled
+   };
 
+   /**
+    * Bus Stop Detect Flag
+    *
+    * Hardware sets this bit when the I2C bus stop status is detected.
+    * The STOPF bit must be cleared by writing 1 to it
+    */
+   enum I2cFltStopf {
+      I2cFltStopf_NoStopHappensOnI2cBus = I2C_FLT_STOPF(0), ///< No stop happens on I2C bus
+      I2cFltStopf_StopDetectedOnI2cBus  = I2C_FLT_STOPF(1), ///< Stop detected on I2C bus
    };
 
    /**
@@ -4207,7 +4622,6 @@ public:
    enum I2cStartStopInterrupt {
       I2cStartStopInterrupt_Disabled = I2C_FLT_SSIE(0), ///< Interrupt disabled
       I2cStartStopInterrupt_Enabled  = I2C_FLT_SSIE(1), ///< Interrupt enabled
-
    };
 
    /**
@@ -4233,7 +4647,6 @@ public:
       I2cFilter_13_ClockCycles = I2C_FLT_FLT(13), ///< 13 clock cycles
       I2cFilter_14_ClockCycles = I2C_FLT_FLT(14), ///< 14 clock cycles
       I2cFilter_15_ClockCycles = I2C_FLT_FLT(15), ///< 15 clock cycles
-
    };
 
    /**
@@ -4244,7 +4657,6 @@ public:
    enum I2cSmbFastAck {
       I2cSmbFastAck_Disabled = I2C_SMB_FACK(0), ///< ACK/NAK on data byte
       I2cSmbFastAck_Enabled  = I2C_SMB_FACK(1), ///< ACK/NAK on TXAK write
-
    };
 
    /**
@@ -4255,7 +4667,6 @@ public:
    enum I2cSmbAlert {
       I2cSmbAlert_Disabled = I2C_SMB_ALERTEN(0), ///< Matching disabled
       I2cSmbAlert_Enabled  = I2C_SMB_ALERTEN(1), ///< Matching enabled
-
    };
 
    /**
@@ -4266,7 +4677,26 @@ public:
    enum I2cSmbTimwoutClock {
       I2cSmbTimwoutClock_BusClockDiv64 = I2C_SMB_TCKSEL(0), ///< Bus clock / 64
       I2cSmbTimwoutClock_BusClock      = I2C_SMB_TCKSEL(1), ///< Bus clock
+   };
 
+   /**
+    * SCL Low Timeout Flag
+    *
+    * This flag sets when an SCL low timeout occurs
+    */
+   enum I2cSclLowTimeout {
+      I2cSclLowTimeout_NoTimeoutOccurs = I2C_SMB_SLTF(0), ///< No timeout occurs
+      I2cSclLowTimeout_TimeoutOccurs   = I2C_SMB_SLTF(1), ///< Timeout occurs
+   };
+
+   /**
+    * SCL High Timeout Flag 2
+    *
+    * This flag sets when SCL is held high and SDA is held low more than LoValue/512 clock cycles.
+    */
+   enum I2cSclHighTimeout {
+      I2cSclHighTimeout_NoTimeoutOccurs = I2C_SMB_SHTF2(0), ///< No timeout occurs
+      I2cSclHighTimeout_TimeoutOccurs   = I2C_SMB_SHTF2(1), ///< Timeout occurs
    };
 
    /**
@@ -4277,7 +4707,6 @@ public:
    enum I2cSmbTimoutInterrupt {
       I2cSmbTimoutInterrupt_Disabled = I2C_SMB_SHTF2IE(0), ///< Interrupt disabled
       I2cSmbTimoutInterrupt_Enabled  = I2C_SMB_SHTF2IE(1), ///< Interrupt enabled
-
    };
 
    /**
@@ -4288,38 +4717,26 @@ public:
    enum I2cSmbAddress {
       I2cSmbAddress_Disabled = I2C_SMB_SIICAEN(0), ///< Address 2 (SMB) disabled
       I2cSmbAddress_Enabled  = I2C_SMB_SIICAEN(1), ///< Address 2 (SMB) enabled
-
    };
 
 class I2cBasicInfo {
    
 public:
-   }; // I2cBasicInfo::Init
+   }; // class I2cBasicInfo::Init
    
 class I2c0Info : public I2cBasicInfo {
 public:
    /*
     * Template:i2c0_mke
     */
-   /* Template _enablePeripheral  */
-   
-   //! Configure peripheral in start-up
-   static constexpr bool configurePeripheralInStartUp = false;
-
-   //! IRQ numbers for hardware
-   static constexpr IRQn_Type irqNums[]  = I2C0_IRQS;
-   
-   //! Number of IRQs for hardware
-   static constexpr uint32_t irqCount  = sizeofArray(irqNums);
-   
-   //! Default IRQ level
-   static constexpr NvicPriority irqLevel =  NvicPriority_NotInstalled;
-   
    //! Hardware base address as uint32_t
    static constexpr uint32_t baseAddress = I2C0_BasePtr;
    
    //! Hardware base pointer
    static constexpr HardwarePtr<I2C_Type> i2c = baseAddress;
+   
+   //! Peripheral instance number
+   static constexpr unsigned instance = 0;
    
    // I2C SCL (clock) Pin
    static constexpr PinIndex sclPinIndex = PinIndex::Unassigned;
@@ -4352,7 +4769,6 @@ public:
    enum IrqPinEnable {
       IrqPinEnable_Disabled = IRQ_SC_IRQPE(0), ///< Disabled
       IrqPinEnable_Enabled  = IRQ_SC_IRQPE(1), ///< Enabled
-
    };
 
    /**
@@ -4363,7 +4779,6 @@ public:
    enum IrqPullUp {
       IrqPullUp_Enabled  = IRQ_SC_IRQPDD(0), ///< Pull-up Enabled
       IrqPullUp_Disabled = IRQ_SC_IRQPDD(1), ///< Pull-up Disabled
-
    };
 
    /**
@@ -4376,7 +4791,6 @@ public:
       IrqMode_FallingEdgeOrLowLevel = IRQ_SC_IRQMOD(1)|IRQ_SC_IRQEDG(0), ///< Falling Edge or Low level
       IrqMode_RisingEdgeOnly        = IRQ_SC_IRQMOD(0)|IRQ_SC_IRQEDG(1), ///< Rising Edge only
       IrqMode_RisingEdgeOrHighLevel = IRQ_SC_IRQMOD(1)|IRQ_SC_IRQEDG(1), ///< Rising Edge or High level
-
    };
 
    /**
@@ -4389,7 +4803,6 @@ public:
     */
    enum IrqAcknowledge {
       IrqAcknowledge_Write1ToClear = IRQ_SC_IRQACK(1), ///< Write 1 to clear
-
    };
 
    /**
@@ -4400,7 +4813,6 @@ public:
    enum IrqInterrupt {
       IrqInterrupt_Disabled = IRQ_SC_IRQIE(0), ///< Interrupts Disabled
       IrqInterrupt_Enabled  = IRQ_SC_IRQIE(1), ///< Interrupts Enabled
-
    };
 
 class IrqBasicInfo {
@@ -4413,20 +4825,6 @@ public:
    /*
     * Template:irq_mke
     */
-   /* Template _enablePeripheral  */
-   
-   //! Configure peripheral in start-up
-   static constexpr bool configurePeripheralInStartUp = false;
-
-   //! IRQ numbers for hardware
-   static constexpr IRQn_Type irqNums[]  = IRQ_IRQS;
-   
-   //! Number of IRQs for hardware
-   static constexpr uint32_t irqCount  = sizeofArray(irqNums);
-   
-   //! Default IRQ level
-   static constexpr NvicPriority irqLevel =  NvicPriority_NotInstalled;
-   
    //! Hardware base address as uint32_t
    static constexpr uint32_t baseAddress = IRQ_BasePtr;
    
@@ -4456,7 +4854,6 @@ public:
     * Bitmask selecting enabled pins
     */
    enum KbiEnableMask : uint32_t {
-
    };
 
    /**
@@ -4465,7 +4862,6 @@ public:
     * Bitmask selecting polarity : 0=Falling edge/low level; 1=Rising edge/high level
     */
    enum KbiPolarityMask : uint32_t {
-
    };
 
    /**
@@ -4475,7 +4871,6 @@ public:
     */
    enum KbiAck {
       KbiAck_Write1ToClear = KBI_SC_KBACK(1), ///< Clear
-
    };
 
    /**
@@ -4486,7 +4881,6 @@ public:
    enum KbiInterrupt {
       KbiInterrupt_Disabled = KBI_SC_KBIE(0), ///< Interrupt disabled
       KbiInterrupt_Enabled  = KBI_SC_KBIE(1), ///< Interrupt enabled
-
    };
 
    /**
@@ -4497,7 +4891,6 @@ public:
    enum KbiDetectionMode {
       KbiDetectionMode_EdgesOnly     = KBI_SC_KBMOD(0), ///< Edges only
       KbiDetectionMode_EdgesOrLevels = KBI_SC_KBMOD(1), ///< Edges or levels
-
    };
 
    /**
@@ -4517,25 +4910,14 @@ public:
    /*
     * Template:kbi0_mke02
     */
-   /* Template _enablePeripheral  */
-   
-   //! Configure peripheral in start-up
-   static constexpr bool configurePeripheralInStartUp = false;
-
-   //! IRQ numbers for hardware
-   static constexpr IRQn_Type irqNums[]  = KBI0_IRQS;
-   
-   //! Number of IRQs for hardware
-   static constexpr uint32_t irqCount  = sizeofArray(irqNums);
-   
-   //! Default IRQ level
-   static constexpr NvicPriority irqLevel =  NvicPriority_NotInstalled;
-   
    //! Hardware base address as uint32_t
    static constexpr uint32_t baseAddress = KBI0_BasePtr;
    
    //! Hardware base pointer
    static constexpr HardwarePtr<KBI_Type> kbi = baseAddress;
+   
+   //! Peripheral instance number
+   static constexpr unsigned instance = 0;
    
 };
 
@@ -4562,25 +4944,14 @@ public:
    /*
     * Template:kbi0_mke02
     */
-   /* Template _enablePeripheral  */
-   
-   //! Configure peripheral in start-up
-   static constexpr bool configurePeripheralInStartUp = false;
-
-   //! IRQ numbers for hardware
-   static constexpr IRQn_Type irqNums[]  = KBI1_IRQS;
-   
-   //! Number of IRQs for hardware
-   static constexpr uint32_t irqCount  = sizeofArray(irqNums);
-   
-   //! Default IRQ level
-   static constexpr NvicPriority irqLevel =  NvicPriority_NotInstalled;
-   
    //! Hardware base address as uint32_t
    static constexpr uint32_t baseAddress = KBI1_BasePtr;
    
    //! Hardware base pointer
    static constexpr HardwarePtr<KBI_Type> kbi = baseAddress;
+   
+   //! Peripheral instance number
+   static constexpr unsigned instance = 1;
    
 };
 
@@ -4607,10 +4978,7 @@ public:
    enum PitChannelNum : uint8_t {
       PitChannelNum_0    = 0,          ///< Channel 0
       PitChannelNum_1    = 1,          ///< Channel 1
-      PitChannelNum_2    = 2,          ///< Channel 2
-      PitChannelNum_3    = 3,          ///< Channel 3
       PitChannelNum_None = 0b10000000, ///< Channel Not Allocated
-
    };
 
    /**
@@ -4618,10 +4986,9 @@ public:
     *
     * Disabled PIT module clock
     */
-   enum PitMcrMdis {
-      PitMcrMdis_ClockEnabled  = PIT_MCR_MDIS(0), ///< Clock enabled
-      PitMcrMdis_ClockDisabled = PIT_MCR_MDIS(1), ///< Clock disabled
-
+   enum PitOperation {
+      PitOperation_Enabled  = PIT_MCR_MDIS(0), ///< PIT enabled
+      PitOperation_Disabled = PIT_MCR_MDIS(1), ///< PIT disabled
    };
 
    /**
@@ -4630,9 +4997,8 @@ public:
     * Determines if timers are stopped in Debug mode
     */
    enum PitDebugMode {
-      PitDebugMode_Run    = PIT_MCR_FRZ(0), ///< Timers run in Debug
-      PitDebugMode_Freeze = PIT_MCR_FRZ(1), ///< Timers stop in Debug
-
+      PitDebugMode_RunInDebug  = PIT_MCR_FRZ(0), ///< Timers run in Debug
+      PitDebugMode_StopInDebug = PIT_MCR_FRZ(1), ///< Timers stop in Debug
    };
 
    /**
@@ -4643,7 +5009,6 @@ public:
    enum PitChannelEnable {
       PitChannelEnable_Disabled = PIT_TCTRL_TEN(0), ///< Channel disabled
       PitChannelEnable_Enabled  = PIT_TCTRL_TEN(1), ///< Channel enabled
-
    };
 
    /**
@@ -4654,7 +5019,6 @@ public:
    enum PitChannelIrq {
       PitChannelIrq_Disabled = PIT_TCTRL_TIE(0), ///< Interrupts are disabled
       PitChannelIrq_Enabled  = PIT_TCTRL_TIE(1), ///< Interrupts are enabled
-
    };
 
    /**
@@ -4665,16 +5029,92 @@ public:
    enum PitChannelChain {
       PitChannelChain_Disabled = PIT_TCTRL_CHN(0), ///< Timers are not chained
       PitChannelChain_Enabled  = PIT_TCTRL_CHN(1), ///< Timers are chained
-
    };
 
 class PitBasicInfo {
    
 public:
+   //! Common class based callback code has been generated for this class of peripheral
+   static constexpr bool irqHandlerInstalled = true;
+   
    /**
     * Type definition for Pit interrupt call back.
     */
    typedef void (*CallbackFunction)();
+   
+   /**
+    * Callback to catch unhandled interrupt
+    */
+   static void unhandledCallback() {
+      setAndCheckErrorCode(E_NO_HANDLER);
+   }
+   
+   /**
+    * Class used to do initialisation of the Pit
+    *
+    * This class has a templated constructor that accepts various values.
+    *
+    * @note This constructor may be used to create a const instance in Flash
+    *
+    * Example:
+    * @code
+    * static const Pit::Init pitInit {
+    *
+    *   // Setup values
+    *   PitMcrMdis_ClockEnabled                   // Module Disable,
+    *   PitMcrFrz_TimersRunInDebug                // Freeze,
+    *
+    * };
+    *
+    * // Initialise Pit from values specified above
+    * Pit::configure(pitInit)
+    * @endcode
+    */
+   class Init {
+   
+   public:
+      /**
+       * Copy Constructor
+       */
+      constexpr Init(const Init &other) = default;
+   
+      /**
+       * Default Constructor
+       */
+      constexpr Init() = default;
+   
+      /// Module Control Register
+      uint32_t mcr = 0;
+
+      /**
+       * Constructor for Module Disable
+       *
+       * @tparam   Types
+       * @param    rest
+       *
+       * @param pitOperation Disabled PIT module clock
+       */
+      template <typename... Types>
+      constexpr Init(PitOperation pitOperation, Types... rest) : Init(rest...) {
+   
+         this->mcr = (this->mcr&~PIT_MCR_MDIS_MASK) | pitOperation;
+      }
+
+      /**
+       * Constructor for Freeze in Debug
+       *
+       * @tparam   Types
+       * @param    rest
+       *
+       * @param pitDebugMode Determines if timers are stopped in Debug mode
+       */
+      template <typename... Types>
+      constexpr Init(PitDebugMode pitDebugMode, Types... rest) : Init(rest...) {
+   
+         this->mcr = (this->mcr&~PIT_MCR_FRZ_MASK) | pitDebugMode;
+      }
+
+   };// class PitBasicInfo::Init
    
    /**
     * Class used to do initialisation of a Pit channel
@@ -4687,7 +5127,7 @@ public:
     * @code
     * // Initialisation values for Pit channel
     * // Parameters available may vary with device - see Pit::DefaultChannelInitValues[] for relevant example
-    * static const Pit::ChannelInit pitInit {
+    * static const Pit::ChannelInit channelInit {
     *       PitChannelNum_0,
     *
     *       PitChannelEnable_Enabled , // Timer Channel Enable - Channel enabled
@@ -4698,11 +5138,11 @@ public:
     *       3999_ticks,                // Reload value for channel (in ticks or seconds)
     *
     *       Pit::DefaultChannelInitValues[1], // An existing declaration may be referenced as the last item
-    *                                            This becomes a base value modified by earlier values.
+    *                                            This becomes a base value modified by above values.
     * };
     *
     * // Initialise PIT channel from values specified above
-    * Pit::configure(pitInit)
+    * Pit::configure(channelInit)
     * @endcode
     */
    class ChannelInit {
@@ -4738,6 +5178,7 @@ public:
        *
        * @tparam   Types
        * @param    rest
+       *
        * @param callbackFunction If enabled, the handler may be set using the setCallback() function or
        *        by overriding the interrupt handler method in the peripheral class
        *        If not enabled, then interrupt handlers may be installed by naming them 
@@ -4754,6 +5195,7 @@ public:
        *
        * @tparam   Types
        * @param    rest
+       *
        * @param nvicPriority Priority level used to configure the NVIC
        *        Subset of available levels
        */
@@ -4768,6 +5210,7 @@ public:
        *
        * @tparam   Types
        * @param    rest
+       *
        * @param pitChannelNum Selected PIT channel
        */
       template <typename... Types>
@@ -4775,20 +5218,21 @@ public:
    
          channelnumber = pitChannelNum;
       }
-
+   
       /**
        * Constructor for Reload value channel 0
        *
        * @tparam   Types
        * @param    rest
+       *
        * @param ticks   Value loaded in timer register on roll-over
        */
       template <typename... Types>
-      constexpr ChannelInit(Ticks&  ticks, Types... rest) : ChannelInit(rest...) {
+      constexpr ChannelInit(Ticks   ticks, Types... rest) : ChannelInit(rest...) {
    
          ldval = ticks;
       }
-
+   
       /**
        * Constructor for Timer Channel Enable
        *
@@ -4831,20 +5275,18 @@ public:
          tctrl = (tctrl&~PIT_TCTRL_CHN_MASK) | pitChannelChain;
       }
    
-   };// PitBasicInfo::ChannelInit
-
-}; // PitBasicInfo
+   };// class PitBasicInfo::ChannelInit
+   
+}; // class PitBasicInfo
 
 class PitInfo : public PitBasicInfo {
 public:
    /*
     * Template:pit_2ch_chain_0x40037000
     */
-   /* Template _enablePeripheral  */
+   //! Class based callback handler has been installed in vector table for this instance
+   static constexpr bool irqHandlerInstalled = true;
    
-   //! Configure peripheral in start-up
-   static constexpr bool configurePeripheralInStartUp = false;
-
    //! IRQ numbers for hardware
    static constexpr IRQn_Type irqNums[]  = PIT_IRQS;
    
@@ -4854,8 +5296,29 @@ public:
    //! Default IRQ level
    static constexpr NvicPriority irqLevel =  NvicPriority_Normal;
    
-   //! Class based callback handler has been installed in vector table for this instance
-   static constexpr bool irqHandlerInstalled = true;
+   /**
+    * Enable interrupts in NVIC
+    */
+   static void enableNvicInterrupts() {
+      NVIC_EnableIRQ(irqNums[0]);
+   }
+   
+   /**
+    * Enable and set priority of interrupts in NVIC
+    * Any pending NVIC interrupts are first cleared.
+    *
+    * @param[in]  nvicPriority  Interrupt priority
+    */
+   static void enableNvicInterrupts(NvicPriority nvicPriority) {
+      enableNvicInterrupt(irqNums[0], nvicPriority);
+   }
+   
+   /**
+    * Disable interrupts in NVIC
+    */
+   static void disableNvicInterrupts() {
+      NVIC_DisableIRQ(irqNums[0]);
+   }
    
    /**
     *  Enable clock to Pit
@@ -4871,6 +5334,23 @@ public:
       SIM->SCGC = SIM->SCGC & ~SIM_SCGC_PIT_MASK;
    }
    
+   /**
+    * Basic enable of Pit
+    * Includes enabling clock and configuring all mapped pins if mapPinsOnEnable is selected in configuration
+    */
+   static void enable() {
+      enableClock();
+   }
+   
+   /**
+    * Disables the clock to Pit and all mapped pins
+    */
+   static void disable() {
+      
+      NVIC_DisableIRQ(irqNums[0]);
+      disableClock();
+   }
+   
    //! Hardware base address as uint32_t
    static constexpr uint32_t baseAddress = PIT_BasePtr;
    
@@ -4881,32 +5361,31 @@ public:
    static constexpr uint32_t NumChannels  = 2;
 
    /**
-    * Set Module Disable
+    * Map channel number to corresponding IRQ number
+    * This is needed as multiple channels may be handled by a single IRQ vector
     *
-    * @param pitMcrMdis Disabled PIT module clock
+    * @param pitChannelNum Channel number to map
+    *
+    * @return Interrupt number
     */
-   static void configureMcrMdis(PitMcrMdis pitMcrMdis) {
-      pit->MCR = (pit->MCR&~PIT_MCR_MDIS_MASK) | pitMcrMdis;
+   static constexpr IRQn_Type mapChannelToIrq(PitChannelNum pitChannelNum) {
+      // 1:1 mapping
+      return irqNums[pitChannelNum];
    }
+   
+   /** Callback functions for channel ISRs */
+   static CallbackFunction sCallbacks[NumChannels];
+   
+   /**
+    * Default initialisation value for Pit
+    * This value is created from Configure.usbdmProject settings
+    */
+   static constexpr Init DefaultInitValue = {
+      PitOperation_Enabled , // Module Disable - PIT enabled
+      PitDebugMode_StopInDebug,  // Freeze in Debug - Timers stop in Debug
+   };
 
    /**
-    * Set Freeze in Debug
-    *
-    * @param pitDebugMode Determines if timers are stopped in Debug mode
-    */
-   static void configureMcrFrz(PitDebugMode pitDebugMode) {
-      pit->MCR = (pit->MCR&~PIT_MCR_FRZ_MASK) | pitDebugMode;
-   }
-
-   /// Freeze in Debug
-   static constexpr uint32_t mcr = 
-      PitDebugMode_Freeze;  // Freeze in Debug - Timers stop in Debug; 
-
-   /**
-    * Pit interrupt call back
-    */
-   typedef PitBasicInfo::CallbackFunction CallbackFunction;
-      /**
     * Default initialisation values for PIT channels
     * This value is created from Configure.usbdmProject settings
     */
@@ -4964,7 +5443,6 @@ public:
       PortFilterClock1_Busclk4  = PORT_IOFLT_FLTDIV1(1), ///< BUSCLK/4
       PortFilterClock1_Busclk8  = PORT_IOFLT_FLTDIV1(2), ///< BUSCLK/8
       PortFilterClock1_Busclk16 = PORT_IOFLT_FLTDIV1(3), ///< BUSCLK/16
-
    };
 
    /**
@@ -4981,7 +5459,6 @@ public:
       PortFilterClock2_Busclk1024 = PORT_IOFLT_FLTDIV2(5), ///< BUSCLK/1024
       PortFilterClock2_Busclk2048 = PORT_IOFLT_FLTDIV2(6), ///< BUSCLK/2048
       PortFilterClock2_Busclk4096 = PORT_IOFLT_FLTDIV2(7), ///< BUSCLK/4096
-
    };
 
    /**
@@ -4998,7 +5475,6 @@ public:
       PortFilterClock3_Lpoclk32  = PORT_IOFLT_FLTDIV3(5), ///< LPOCLK/32
       PortFilterClock3_Lpoclk64  = PORT_IOFLT_FLTDIV3(6), ///< LPOCLK/64
       PortFilterClock3_Lpoclk128 = PORT_IOFLT_FLTDIV3(7), ///< LPOCLK/128
-
    };
 
    /**
@@ -5011,7 +5487,6 @@ public:
       PortNmiFilterSel_SelectsFltdiv1_AndWillSwitchToFltdiv3InStopModeAutomatically = PORT_IOFLT_FLTNMI(1), ///< Selects FLTDIV1, and will switch to FLTDIV3 in Stop mode automatically
       PortNmiFilterSel_SelectsFltdiv2_AndWillSwitchToFltdiv3InStopModeAutomatically = PORT_IOFLT_FLTNMI(2), ///< Selects FLTDIV2, and will switch to FLTDIV3 in Stop mode automatically
       PortNmiFilterSel_Fltdiv3                                                      = PORT_IOFLT_FLTNMI(3), ///< FLTDIV3
-
    };
 
    /**
@@ -5024,7 +5499,6 @@ public:
       PortResetFilterSel_SelectsFltdiv1_AndWillSwitchToFltdiv3InStopModeAutomatically = PORT_IOFLT_FLTRST(1), ///< Selects FLTDIV1, and will switch to FLTDIV3 in Stop mode automatically
       PortResetFilterSel_SelectsFltdiv2_AndWillSwitchToFltdiv3InStopModeAutomatically = PORT_IOFLT_FLTRST(2), ///< Selects FLTDIV2, and will switch to FLTDIV3 in Stop mode automatically
       PortResetFilterSel_Fltdiv3                                                      = PORT_IOFLT_FLTRST(3), ///< FLTDIV3
-
    };
 
    /**
@@ -5037,7 +5511,6 @@ public:
       PortKbi0FilterSel_SelectsFltdiv1_AndWillSwitchToFltdiv3InStopModeAutomatically = PORT_IOFLT_FLTKBI0(1), ///< Selects FLTDIV1, and will switch to FLTDIV3 in Stop mode automatically
       PortKbi0FilterSel_SelectsFltdiv2_AndWillSwitchToFltdiv3InStopModeAutomatically = PORT_IOFLT_FLTKBI0(2), ///< Selects FLTDIV2, and will switch to FLTDIV3 in Stop mode automatically
       PortKbi0FilterSel_Fltdiv3                                                      = PORT_IOFLT_FLTKBI0(3), ///< FLTDIV3
-
    };
 
    /**
@@ -5050,7 +5523,6 @@ public:
       PortKbi1FilterSel_SelectsFltdiv1_AndWillSwitchToFltdiv3InStopModeAutomatically = PORT_IOFLT_FLTKBI1(1), ///< Selects FLTDIV1, and will switch to FLTDIV3 in Stop mode automatically
       PortKbi1FilterSel_SelectsFltdiv2_AndWillSwitchToFltdiv3InStopModeAutomatically = PORT_IOFLT_FLTKBI1(2), ///< Selects FLTDIV2, and will switch to FLTDIV3 in Stop mode automatically
       PortKbi1FilterSel_Fltdiv3                                                      = PORT_IOFLT_FLTKBI1(3), ///< FLTDIV3
-
    };
 
    /**
@@ -5063,7 +5535,6 @@ public:
       PortI2c0FilterSel_Fltdiv1  = PORT_IOFLT_FLTIIC(1), ///< FLTDIV1
       PortI2c0FilterSel_Fltdiv2  = PORT_IOFLT_FLTIIC(2), ///< FLTDIV2
       PortI2c0FilterSel_Busclk   = PORT_IOFLT_FLTIIC(3), ///< BUSCLK
-
    };
 
    /**
@@ -5076,7 +5547,6 @@ public:
       PortPwtFilterSel_Fltdiv1  = PORT_IOFLT_FLTPWT(1), ///< FLTDIV1
       PortPwtFilterSel_Fltdiv2  = PORT_IOFLT_FLTPWT(2), ///< FLTDIV2
       PortPwtFilterSel_Fltdiv3  = PORT_IOFLT_FLTPWT(3), ///< FLTDIV3
-
    };
 
    /**
@@ -5089,7 +5559,6 @@ public:
       PortFtm0FilterSel_Fltdiv1  = PORT_IOFLT_FLTFTM0(1), ///< FLTDIV1
       PortFtm0FilterSel_Fltdiv2  = PORT_IOFLT_FLTFTM0(2), ///< FLTDIV2
       PortFtm0FilterSel_Fltdiv3  = PORT_IOFLT_FLTFTM0(3), ///< FLTDIV3
-
    };
 
    /**
@@ -5102,7 +5571,6 @@ public:
       PortPtaFilterSel_Fltdiv1 = PORT_IOFLT_FLTA(1), ///< FLTDIV1
       PortPtaFilterSel_Fltdiv2 = PORT_IOFLT_FLTA(2), ///< FLTDIV2
       PortPtaFilterSel_Fltdiv3 = PORT_IOFLT_FLTA(3), ///< FLTDIV3
-
    };
 
    /**
@@ -5115,7 +5583,6 @@ public:
       PortPtbFilterSel_Fltdiv1 = PORT_IOFLT_FLTB(1), ///< FLTDIV1
       PortPtbFilterSel_Fltdiv2 = PORT_IOFLT_FLTB(2), ///< FLTDIV2
       PortPtbFilterSel_Fltdiv3 = PORT_IOFLT_FLTB(3), ///< FLTDIV3
-
    };
 
    /**
@@ -5128,7 +5595,6 @@ public:
       PortPtcFilterSel_Fltdiv1 = PORT_IOFLT_FLTC(1), ///< FLTDIV1
       PortPtcFilterSel_Fltdiv2 = PORT_IOFLT_FLTC(2), ///< FLTDIV2
       PortPtcFilterSel_Fltdiv3 = PORT_IOFLT_FLTC(3), ///< FLTDIV3
-
    };
 
    /**
@@ -5139,7 +5605,6 @@ public:
    enum PortHdrvePtb5 {
       PortHdrvePtb5_LowDriveStrength  = PORT_HDRVE_PTB5(0), ///< Low drive strength
       PortHdrvePtb5_HighDriveStrength = PORT_HDRVE_PTB5(1), ///< High drive strength
-
    };
 
    /**
@@ -5150,7 +5615,6 @@ public:
    enum PortHdrvePtc1 {
       PortHdrvePtc1_LowDriveStrength  = PORT_HDRVE_PTC1(0), ///< Low drive strength
       PortHdrvePtc1_HighDriveStrength = PORT_HDRVE_PTC1(1), ///< High drive strength
-
    };
 
    /**
@@ -5161,7 +5625,6 @@ public:
    enum PortHdrvePtc5 {
       PortHdrvePtc5_LowDriveStrength  = PORT_HDRVE_PTC5(0), ///< Low drive strength
       PortHdrvePtc5_HighDriveStrength = PORT_HDRVE_PTC5(1), ///< High drive strength
-
    };
 
 class PortBasicInfo {
@@ -5405,11 +5868,20 @@ public:
    /*
     * Template:port_mke04
     */
-   /* Template _enablePeripheral  */
+   /**
+    * Basic enable of Port
+    * Includes enabling clock and configuring all mapped pins if mapPinsOnEnable is selected in configuration
+    */
+   static void enable() {
+   }
    
-   //! Configure peripheral in start-up
-   static constexpr bool configurePeripheralInStartUp = true;
-
+   /**
+    * Disables the clock to Port and all mapped pins
+    */
+   static void disable() {
+      
+   }
+   
    //! Hardware base address as uint32_t
    static constexpr uint32_t baseAddress = PORT_BasePtr;
    
@@ -5537,7 +6009,7 @@ public:
       static constexpr uint32_t puel = 
          PORT_PUEL_PTCPE(0x0) | // Pull-up control for Port C
          PORT_PUEL_PTBPE(0x0) | // Pull-up control for Port B
-         PORT_PUEL_PTAPE(0x1);  // Pull-up control for Port A;
+         PORT_PUEL_PTAPE(0x0);  // Pull-up control for Port A;
    
       /** Default value for High drive enable for Port C bit 5 */
       static constexpr uint32_t hdrve = 
@@ -5646,7 +6118,6 @@ public:
    enum PwtEnable {
       PwtEnable_Disabled = PWT_R1_PWTEN(0), ///< Disabled
       PwtEnable_Enabled  = PWT_R1_PWTEN(1), ///< Enabled
-
    };
 
    /**
@@ -5656,8 +6127,7 @@ public:
     */
    enum PwtClockSource {
       PwtClockSource_TimerClock       = PWT_R1_PCLKS(0), ///< Timer clock
-      PwtClockSource_AlternativeClock = PWT_R1_PCLKS(1), ///< Alternative clock
-
+      PwtClockSource_AlternativeClock = PWT_R1_PCLKS(1), ///< Alternative clock(TCLK)
    };
 
    /**
@@ -5670,7 +6140,6 @@ public:
       PwtInput_PTB0    = PWT_R1_PINSEL(1), ///< PTB0
       PwtInput_ACMP0_O = PWT_R1_PINSEL(2), ///< ACMP0_O
       PwtInput_ACMP1_O = PWT_R1_PINSEL(3), ///< ACMP1_O
-
    };
 
    /**
@@ -5686,7 +6155,6 @@ public:
       PwtEdges_RisingStart_BothCaptured     = PWT_R1_EDGE(0b01), ///< Rising edge start, both edges captured
       PwtEdges_FallingStart_BothCaptured    = PWT_R1_EDGE(0b10), ///< Falling edge start, both edges captured
       PwtEdges_RisingStart_RisingCaptured   = PWT_R1_EDGE(0b11), ///< Rising edge start, rising edges captured
-
    };
 
    /**
@@ -5703,7 +6171,6 @@ public:
       PwtClockDivider_ClockDiv32  = PWT_R1_PRE(5), ///< Clock div 32
       PwtClockDivider_ClockDiv64  = PWT_R1_PRE(6), ///< Clock div 64
       PwtClockDivider_ClockDiv128 = PWT_R1_PRE(7), ///< Clock div 128
-
    };
 
    /**
@@ -5714,7 +6181,6 @@ public:
    enum PwtInterrupt {
       PwtInterrupt_Disable = PWT_R1_PWTIE(0), ///< Disable
       PwtInterrupt_Enable  = PWT_R1_PWTIE(1), ///< Enable
-
    };
 
    /**
@@ -5725,7 +6191,6 @@ public:
    enum PwtReadyInterrupt {
       PwtReadyInterrupt_Disable = PWT_R1_PRDYIE(0), ///< Disable
       PwtReadyInterrupt_Enable  = PWT_R1_PRDYIE(1), ///< Enable
-
    };
 
    /**
@@ -5736,7 +6201,6 @@ public:
    enum PwtOverflowInterrupt {
       PwtOverflowInterrupt_Disable = PWT_R1_POVIE(0), ///< Disable
       PwtOverflowInterrupt_Enable  = PWT_R1_POVIE(1), ///< Enable
-
    };
 
    /**
@@ -5747,7 +6211,6 @@ public:
    enum PwtSoftReset {
       PwtSoftReset_NoAction  = PWT_R1_PWTSR(0), ///< No action
       PwtSoftReset_SoftReset = PWT_R1_PWTSR(1), ///< Soft reset
-
    };
 
    /**
@@ -5760,7 +6223,6 @@ public:
    enum PwtReady {
       PwtReady_NotUpdated = PWT_R1_PWTRDY(0), ///< Not Updated
       PwtReady_Updated    = PWT_R1_PWTRDY(1), ///< Updated
-
    };
 
    /**
@@ -5774,7 +6236,6 @@ public:
    enum PwtOverflow {
       PwtOverflow_NoOverflow = PWT_R1_PWTOV(0), ///< No overflow
       PwtOverflow_Overflow   = PWT_R1_PWTOV(1), ///< Overflow
-
    };
 
 class PwtBasicInfo {
@@ -5787,20 +6248,6 @@ public:
    /*
     * Template:pwt_mke
     */
-   /* Template _enablePeripheral  */
-   
-   //! Configure peripheral in start-up
-   static constexpr bool configurePeripheralInStartUp = false;
-
-   //! IRQ numbers for hardware
-   static constexpr IRQn_Type irqNums[]  = PWT_IRQS;
-   
-   //! Number of IRQs for hardware
-   static constexpr uint32_t irqCount  = sizeofArray(irqNums);
-   
-   //! Default IRQ level
-   static constexpr NvicPriority irqLevel =  NvicPriority_NotInstalled;
-   
    //! Hardware base address as uint32_t
    static constexpr uint32_t baseAddress = PWT_BasePtr;
    
@@ -5832,7 +6279,6 @@ public:
    enum SpiEnable {
       SpiEnable_Disabled = SPI_C1_SPE(0), ///< Disabled
       SpiEnable_Enabled  = SPI_C1_SPE(1), ///< Enabled
-
    };
 
    /**
@@ -5849,7 +6295,6 @@ public:
       SpiMode_1 = SPI_C1_CPOL(0)|SPI_C1_CPHA(1), ///< Mode 1
       SpiMode_2 = SPI_C1_CPOL(1)|SPI_C1_CPHA(0), ///< Mode 2
       SpiMode_3 = SPI_C1_CPOL(1)|SPI_C1_CPHA(1), ///< Mode 3
-
    };
 
    /**
@@ -5860,7 +6305,6 @@ public:
    enum SpiRole {
       SpiRole_Peripheral = SPI_C1_MSTR(0), ///< Peripheral role
       SpiRole_Controller = SPI_C1_MSTR(1), ///< Controller role
-
    };
 
    /**
@@ -5872,7 +6316,6 @@ public:
       SpiPinUse_Gpio                   = SPI_C2_MODFEN(0)|SPI_C1_SSOE(0), ///< GPIO (non-SPI)
       SpiPinUse_FaultInput             = SPI_C2_MODFEN(1)|SPI_C1_SSOE(0), ///< Fault input
       SpiPinUse_PeripheralSelectOutput = SPI_C2_MODFEN(1)|SPI_C1_SSOE(1), ///< Peripheral select output
-
    };
 
    /**
@@ -5883,7 +6326,6 @@ public:
    enum SpiBitOrder {
       SpiBitOrder_MsbFirst = SPI_C1_LSBFE(0), ///< MSB first
       SpiBitOrder_LsbFirst = SPI_C1_LSBFE(1), ///< LSB first
-
    };
 
    /**
@@ -5894,7 +6336,6 @@ public:
    enum SpiReceiveInterrupt {
       SpiReceiveInterrupt_InterruptsDisabled = SPI_C1_SPIE(0), ///< Interrupts disabled
       SpiReceiveInterrupt_InterruptsEnabled  = SPI_C1_SPIE(1), ///< Interrupts enabled
-
    };
 
    /**
@@ -5905,7 +6346,6 @@ public:
    enum SpiTransmitInterrupt {
       SpiTransmitInterrupt_InterruptsDisabled = SPI_C1_SPTIE(0), ///< Interrupts disabled
       SpiTransmitInterrupt_InterruptsEnabled  = SPI_C1_SPTIE(1), ///< Interrupts enabled
-
    };
 
    /**
@@ -5916,7 +6356,6 @@ public:
    enum SpiMatchInterrupt {
       SpiMatchInterrupt_Disabled = SPI_C2_SPMIE(0), ///< Interrupts disabled
       SpiMatchInterrupt_Enabled  = SPI_C2_SPMIE(1), ///< Interrupts enabled
-
    };
 
    /**
@@ -5927,7 +6366,6 @@ public:
    enum SpiWaitMode {
       SpiWaitMode_Operate = SPI_C2_SPISWAI(0), ///< Operate normally
       SpiWaitMode_Stopped = SPI_C2_SPISWAI(1), ///< Clocks stopped
-
    };
 
    /**
@@ -5939,7 +6377,6 @@ public:
       SpiBidirectional_Normal = SPI_C2_SPC0(0)|SPI_C2_BIDIROE(0), ///< Normal (non-bidirectional)
       SpiBidirectional_Input  = SPI_C2_SPC0(1)|SPI_C2_BIDIROE(0), ///< Input
       SpiBidirectional_Output = SPI_C2_SPC0(1)|SPI_C2_BIDIROE(1), ///< Output
-
    };
 
    /**
@@ -5957,7 +6394,6 @@ public:
       SpiBrSppr_DivideBy6 = SPI_BR_SPPR(5), ///< Divide by 6
       SpiBrSppr_DivideBy7 = SPI_BR_SPPR(6), ///< Divide by 7
       SpiBrSppr_DivideBy8 = SPI_BR_SPPR(7), ///< Divide by 8
-
    };
 
    /**
@@ -5976,7 +6412,6 @@ public:
       SpiBrSpr_DivideBy128 = SPI_BR_SPR(6), ///< Divide by 128
       SpiBrSpr_DivideBy256 = SPI_BR_SPR(7), ///< Divide by 256
       SpiBrSpr_DivideBy512 = SPI_BR_SPR(8), ///< Divide by 512
-
    };
 
 class SpiBasicInfo {
@@ -5989,25 +6424,14 @@ public:
    /*
     * Template:spi0_mke_8bit
     */
-   /* Template _enablePeripheral  */
-   
-   //! Configure peripheral in start-up
-   static constexpr bool configurePeripheralInStartUp = false;
-
-   //! IRQ numbers for hardware
-   static constexpr IRQn_Type irqNums[]  = SPI0_IRQS;
-   
-   //! Number of IRQs for hardware
-   static constexpr uint32_t irqCount  = sizeofArray(irqNums);
-   
-   //! Default IRQ level
-   static constexpr NvicPriority irqLevel =  NvicPriority_NotInstalled;
-   
    //! Hardware base address as uint32_t
    static constexpr uint32_t baseAddress = SPI0_BasePtr;
    
    //! Hardware base pointer
    static constexpr HardwarePtr<SPI_Type> spi = baseAddress;
+   
+   //! Peripheral instance number
+   static constexpr unsigned instance = 0;
    
    //! Pin number in Info table for SCK if mapped to a pin
    static constexpr int sckPin  = 0;
@@ -6059,7 +6483,6 @@ public:
       UartBaudRate_56000  = 56000,  ///< 56000
       UartBaudRate_57600  = 57600,  ///< 57600
       UartBaudRate_115200 = 115200, ///< 115200
-
    };
 
    /**
@@ -6070,7 +6493,6 @@ public:
    enum UartTxCompleteAction {
       UartTxCompleteAction_None      = UART_C2_TCIE(0), ///< None
       UartTxCompleteAction_Interrupt = UART_C2_TCIE(1), ///< Interrupt
-
    };
 
    /**
@@ -6081,7 +6503,6 @@ public:
    enum UartIdleLineDetectAction {
       UartIdleLineDetectAction_None      = UART_C2_ILIE(0), ///< None
       UartIdleLineDetectAction_Interrupt = UART_C2_ILIE(1), ///< Interrupt
-
    };
 
    /**
@@ -6092,7 +6513,6 @@ public:
    enum UartTxEmptyAction {
       UartTxEmptyAction_None      = UART_C2_TIE(0), ///< None
       UartTxEmptyAction_Interrupt = UART_C2_TIE(1), ///< Interrupt
-
    };
 
    /**
@@ -6103,7 +6523,6 @@ public:
    enum UartRxFullAction {
       UartRxFullAction_None      = UART_C2_RIE(0), ///< None
       UartRxFullAction_Interrupt = UART_C2_RIE(1), ///< Interrupt
-
    };
 
 class Uart0Info {
@@ -6111,20 +6530,6 @@ public:
    /*
     * Template:uart0_mke
     */
-   /* Template _enablePeripheral  */
-   
-   //! Configure peripheral in start-up
-   static constexpr bool configurePeripheralInStartUp = false;
-
-   //! IRQ numbers for hardware
-   static constexpr IRQn_Type irqNums[]  = UART0_IRQS;
-   
-   //! Number of IRQs for hardware
-   static constexpr uint32_t irqCount  = sizeofArray(irqNums);
-   
-   //! Default IRQ level
-   static constexpr NvicPriority irqLevel =  NvicPriority_NotInstalled;
-   
    //! Class based callback handler has been installed in vector table for this instance
    static constexpr bool irqHandlerInstalled = false;
    
@@ -6142,11 +6547,30 @@ public:
       SIM->SCGC = SIM->SCGC & ~SIM_SCGC_UART0_MASK;
    }
    
+   /**
+    * Basic enable of Uart0
+    * Includes enabling clock and configuring all mapped pins if mapPinsOnEnable is selected in configuration
+    */
+   static void enable() {
+      enableClock();
+   }
+   
+   /**
+    * Disables the clock to Uart0 and all mapped pins
+    */
+   static void disable() {
+      
+      disableClock();
+   }
+   
    //! Hardware base address as uint32_t
    static constexpr uint32_t baseAddress = UART0_BasePtr;
    
    //! Hardware base pointer
    static constexpr HardwarePtr<UART_Type> uart = baseAddress;
+   
+   //! Peripheral instance number
+   static constexpr unsigned instance = 0;
    
    //! Indicates whether the UART needs a write to clear status errors
    static constexpr bool statusNeedsWrite = false;
@@ -6194,7 +6618,6 @@ public:
    enum WdogEnable : uint16_t {
       WdogEnable_Disabled = WDOG_CS1_EN(0), ///< Watchdog disabled
       WdogEnable_Enabled  = WDOG_CS1_EN(1), ///< Watchdog enabled
-
    };
 
    /**
@@ -6208,7 +6631,6 @@ public:
       WdogTestMode_UserMode         = WDOG_CS1_TST(1), ///< DIsabled - User mode
       WdogTestMode_TestModeLowByte  = WDOG_CS1_TST(2), ///< Enabled, Only CNTL, TOVALL used
       WdogTestMode_TestModeHighByte = WDOG_CS1_TST(3), ///< Enabled, Only CNTH, TOVALH used
-
    };
 
    /**
@@ -6219,7 +6641,6 @@ public:
    enum WdogEnableInWait : uint16_t {
       WdogEnableInWait_Disabled = WDOG_CS1_WAIT(0), ///< Disabled in WAIT mode
       WdogEnableInWait_Enabled  = WDOG_CS1_WAIT(1), ///< Enabled in WAIT mode
-
    };
 
    /**
@@ -6230,7 +6651,6 @@ public:
    enum WdogEnableInStop : uint16_t {
       WdogEnableInStop_Disabled = WDOG_CS1_STOP(0), ///< Disabled in STOP mode
       WdogEnableInStop_Enabled  = WDOG_CS1_STOP(1), ///< Enabled in STOP mode
-
    };
 
    /**
@@ -6241,7 +6661,6 @@ public:
    enum WdogEnableInDebug : uint16_t {
       WdogEnableInDebug_Disabled = WDOG_CS1_DBG(0), ///< Disabled in DEBUG mode
       WdogEnableInDebug_Enabled  = WDOG_CS1_DBG(1), ///< Enabled in DEBUG mode
-
    };
 
    /**
@@ -6254,7 +6673,6 @@ public:
    enum WdogAllowUpdate : uint16_t {
       WdogAllowUpdate_Disabled = WDOG_CS1_UPDATE(0), ///< Update Disabled
       WdogAllowUpdate_Enabled  = WDOG_CS1_UPDATE(1), ///< Update Enabled
-
    };
 
    /**
@@ -6265,7 +6683,6 @@ public:
    enum WdogWindow : uint16_t {
       WdogWindow_Disabled = WDOG_CS2_WIN(0), ///< Windowing mode disabled
       WdogWindow_Enabled  = WDOG_CS2_WIN(1), ///< Windowing mode enabled
-
    };
 
    /**
@@ -6277,7 +6694,6 @@ public:
    enum WdogAction : uint16_t {
       WdogAction_ImmediateReset      = WDOG_CS1_INT(0), ///< Immediate Reset
       WdogAction_ResetAfterInterrupt = WDOG_CS1_INT(1), ///< Interrupt followed by reset
-
    };
 
    /**
@@ -6290,7 +6706,6 @@ public:
       WdogClock_LpoClk       = WDOG_CS2_CLK(1), ///< 1 kHz low-power oscillator (LPOCLK)
       WdogClock_Icsirclk     = WDOG_CS2_CLK(2), ///< ICS internal reference clock (ICSIRCLK)
       WdogClock_ExternalClk  = WDOG_CS2_CLK(3), ///< External clock source (OSCERCLK)
-
    };
 
    /**
@@ -6301,7 +6716,6 @@ public:
    enum WdogPrescale : uint16_t {
       WdogPrescale_Direct   = WDOG_CS2_PRES(0), ///< Prescale /1
       WdogPrescale_DivBy256 = WDOG_CS2_PRES(1), ///< Prescale /256
-
    };
 
    /**
@@ -6312,7 +6726,6 @@ public:
    enum WdogRefresh {
       WdogRefresh_1 = 0x02A6, ///< 1st refresh value
       WdogRefresh_2 = 0x80B4, ///< 2nd refresh value
-
    };
 
    /**
@@ -6323,7 +6736,6 @@ public:
    enum WdogUnlock {
       WdogUnlock_1 = 0x20C5, ///< 1st unlock value
       WdogUnlock_2 = 0x28D9, ///< 2nd unlock value
-
    };
 
 class WdogBasicInfo {
@@ -6336,22 +6748,22 @@ public:
    /*
     * Template:wdog_mke
     */
-   /* Template _enablePeripheral  */
-   
-   //! Configure peripheral in start-up
-   static constexpr bool configurePeripheralInStartUp = true;
-
-   //! IRQ numbers for hardware
-   static constexpr IRQn_Type irqNums[]  = WDOG_IRQS;
-   
-   //! Number of IRQs for hardware
-   static constexpr uint32_t irqCount  = sizeofArray(irqNums);
-   
-   //! Default IRQ level
-   static constexpr NvicPriority irqLevel =  NvicPriority_NotInstalled;
-   
    //! Class based callback handler has been installed in vector table for this instance
    static constexpr bool irqHandlerInstalled = false;
+   
+   /**
+    * Basic enable of Wdog
+    * Includes enabling clock and configuring all mapped pins if mapPinsOnEnable is selected in configuration
+    */
+   static void enable() {
+   }
+   
+   /**
+    * Disables the clock to Wdog and all mapped pins
+    */
+   static void disable() {
+      
+   }
    
    //! Hardware base address as uint32_t
    static constexpr uint32_t baseAddress = WDOG_BasePtr;
@@ -6384,19 +6796,20 @@ public:
 ///   Pin Name      | C Identifier                  |  Functions                                         |  Location                 |  Description
 ///  -------------- | ------------------------------|--------------------------------------------------- | ------------------------- | ----------------------------------------------------
 ///  PIT_CH0        | PollingTimerChannel           | PIT_CH0                                            | Internal                  | -
-///  PTA0           | SWDCLK                        | SWD_CLK                                            | 16                        | SWD reserved
+///  PTA0           | SWDCLK                        | SWD_CLK                                            | 16                        | SWD CLK
 ///  PTA1           | Reference                     | ADC0_SE1                                           | 15                        | Reference level for ISample OPAMPs
-///  PTA3           | SWD_Tx                        | GPIOA_3                                            | 13                        | -
-///  PTA4           | SWDIO                         | SWD_DIO                                            | 2                         | SWD reserved
+///  PTA2           | -                             | UART0_RX                                           | 14                        | Debug Rx
+///  PTA3           | -                             | UART0_TX                                           | 13                        | Debug Tx
+///  PTA4           | SWDIO                         | SWD_DIO                                            | 2                         | SWD DIO
 ///  PTA5           | RESET_b                       | RESET_b                                            | 1                         | RESET reserved
-///  PTB0           | I_Sample2                     | ADC0_SE4                                           | 12                        | Current Sample channel 2
-///  PTB1           | I_Sample                      | ADC0_SE5                                           | 11                        | Current Sample channel 1
+///  PTB0           | I_Sample                      | ADC0_SE4                                           | 12                        | Current Sample
+///  PTB1           | DelayControl                  | ADC0_SE5                                           | 11                        | Delay Control
 ///  PTB2           | HoldControl                   | ADC0_SE6                                           | 10                        | Hold time control
 ///  PTB3           | LevelControl                  | ADC0_SE7                                           | 9                         | Current threshold control
-///  PTB4           | Debug/Pins1                   | GPIOA_12                                           | 8                         | Debug output/Debug, DustCollector, HoldLed, DelayLed
-///  PTB5           | DustCollector/Pins1           | GPIOA_13                                           | 7                         | Controls dust collector
-///  PTB6           | HoldLed/Pins1                 | GPIOA_14                                           | 6                         | LED indicating hold
-///  PTB7           | DelayLed/Pins1                | GPIOA_15                                           | 5                         | LED indicating delay
+///  PTB4           | Debug/Pins                    | GPIOA_12                                           | 8                         | Debug output/Debug, DustCollector, HoldLed, DelayLed
+///  PTB5           | DustCollector/Pins            | GPIOA_13                                           | 7                         | Controls dust collector
+///  PTB6           | HoldLed/Pins                  | GPIOA_14                                           | 6                         | LED indicating hold
+///  PTB7           | DelayLed/Pins                 | GPIOA_15                                           | 5                         | LED indicating delay
 ///
 ///
 /// @section PinsByLocation Pins by Location
@@ -6405,16 +6818,17 @@ public:
 ///  -------------- | ------------------------------|--------------------------------------------------- | ------------------------- | ----------------------------------------------------
 ///  PTA5           | RESET_b                       | RESET_b                                            | 1                         | RESET reserved
 ///  PTB2           | HoldControl                   | ADC0_SE6                                           | 10                        | Hold time control
-///  PTB1           | I_Sample                      | ADC0_SE5                                           | 11                        | Current Sample channel 1
-///  PTB0           | I_Sample2                     | ADC0_SE4                                           | 12                        | Current Sample channel 2
-///  PTA3           | SWD_Tx                        | GPIOA_3                                            | 13                        | -
+///  PTB1           | DelayControl                  | ADC0_SE5                                           | 11                        | Delay Control
+///  PTB0           | I_Sample                      | ADC0_SE4                                           | 12                        | Current Sample
+///  PTA3           | -                             | UART0_TX                                           | 13                        | Debug Tx
+///  PTA2           | -                             | UART0_RX                                           | 14                        | Debug Rx
 ///  PTA1           | Reference                     | ADC0_SE1                                           | 15                        | Reference level for ISample OPAMPs
-///  PTA0           | SWDCLK                        | SWD_CLK                                            | 16                        | SWD reserved
-///  PTA4           | SWDIO                         | SWD_DIO                                            | 2                         | SWD reserved
-///  PTB7           | DelayLed/Pins1                | GPIOA_15                                           | 5                         | LED indicating delay
-///  PTB6           | HoldLed/Pins1                 | GPIOA_14                                           | 6                         | LED indicating hold
-///  PTB5           | DustCollector/Pins1           | GPIOA_13                                           | 7                         | Controls dust collector
-///  PTB4           | Debug/Pins1                   | GPIOA_12                                           | 8                         | Debug output/Debug, DustCollector, HoldLed, DelayLed
+///  PTA0           | SWDCLK                        | SWD_CLK                                            | 16                        | SWD CLK
+///  PTA4           | SWDIO                         | SWD_DIO                                            | 2                         | SWD DIO
+///  PTB7           | DelayLed/Pins                 | GPIOA_15                                           | 5                         | LED indicating delay
+///  PTB6           | HoldLed/Pins                  | GPIOA_14                                           | 6                         | LED indicating hold
+///  PTB5           | DustCollector/Pins            | GPIOA_13                                           | 7                         | Controls dust collector
+///  PTB4           | Debug/Pins                    | GPIOA_12                                           | 8                         | Debug output/Debug, DustCollector, HoldLed, DelayLed
 ///  PTB3           | LevelControl                  | ADC0_SE7                                           | 9                         | Current threshold control
 ///  PIT_CH0        | PollingTimerChannel           | PIT_CH0                                            | Internal                  | -
 ///
@@ -6424,19 +6838,20 @@ public:
 ///   Pin Name      | C Identifier                  |  Functions                                         |  Location                 |  Description
 ///  -------------- | ------------------------------|--------------------------------------------------- | ------------------------- | ----------------------------------------------------
 ///  PTA1           | Reference                     | ADC0_SE1                                           | 15                        | Reference level for ISample OPAMPs
-///  PTB0           | I_Sample2                     | ADC0_SE4                                           | 12                        | Current Sample channel 2
-///  PTB1           | I_Sample                      | ADC0_SE5                                           | 11                        | Current Sample channel 1
+///  PTB0           | I_Sample                      | ADC0_SE4                                           | 12                        | Current Sample
+///  PTB1           | DelayControl                  | ADC0_SE5                                           | 11                        | Delay Control
 ///  PTB2           | HoldControl                   | ADC0_SE6                                           | 10                        | Hold time control
 ///  PTB3           | LevelControl                  | ADC0_SE7                                           | 9                         | Current threshold control
-///  PTA3           | SWD_Tx                        | GPIOA_3                                            | 13                        | -
-///  PTB4           | Debug/Pins1                   | GPIOA_12                                           | 8                         | Debug output/Debug, DustCollector, HoldLed, DelayLed
-///  PTB5           | DustCollector/Pins1           | GPIOA_13                                           | 7                         | Controls dust collector
-///  PTB6           | HoldLed/Pins1                 | GPIOA_14                                           | 6                         | LED indicating hold
-///  PTB7           | DelayLed/Pins1                | GPIOA_15                                           | 5                         | LED indicating delay
+///  PTB4           | Debug/Pins                    | GPIOA_12                                           | 8                         | Debug output/Debug, DustCollector, HoldLed, DelayLed
+///  PTB5           | DustCollector/Pins            | GPIOA_13                                           | 7                         | Controls dust collector
+///  PTB6           | HoldLed/Pins                  | GPIOA_14                                           | 6                         | LED indicating hold
+///  PTB7           | DelayLed/Pins                 | GPIOA_15                                           | 5                         | LED indicating delay
 ///  PIT_CH0        | PollingTimerChannel           | PIT_CH0                                            | Internal                  | -
 ///  PTA5           | RESET_b                       | RESET_b                                            | 1                         | RESET reserved
-///  PTA0           | SWDCLK                        | SWD_CLK                                            | 16                        | SWD reserved
-///  PTA4           | SWDIO                         | SWD_DIO                                            | 2                         | SWD reserved
+///  PTA0           | SWDCLK                        | SWD_CLK                                            | 16                        | SWD CLK
+///  PTA4           | SWDIO                         | SWD_DIO                                            | 2                         | SWD DIO
+///  PTA2           | -                             | UART0_RX                                           | 14                        | Debug Rx
+///  PTA3           | -                             | UART0_TX                                           | 13                        | Debug Tx
 ///
 ///
 

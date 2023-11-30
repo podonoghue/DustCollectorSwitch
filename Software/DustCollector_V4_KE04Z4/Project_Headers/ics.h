@@ -86,9 +86,7 @@ public:
  *    Ics::initialise();
  * @endcode
  */
-class Ics {
-
-   using Info = IcsInfo;
+class Ics : public IcsInfo {
 
 private:
 #if false
@@ -136,29 +134,6 @@ public:
     */
    static const ClockInfo clockInfo[];
 
-   /**
-    * Enable interrupts in NVIC
-    */
-   static void enableNvicInterrupts() {
-      NVIC_EnableIRQ(IcsInfo::irqNums[0]);
-   }
-
-   /**
-    * Enable and set priority of interrupts in NVIC
-    * Any pending NVIC interrupts are first cleared.
-    *
-    * @param[in]  nvicPriority  Interrupt priority
-    */
-   static void enableNvicInterrupts(NvicPriority nvicPriority) {
-      enableNvicInterrupt(IcsInfo::irqNums[0], nvicPriority);
-   }
-
-   /**
-    * Disable interrupts in NVIC
-    */
-   static void disableNvicInterrupts() {
-      NVIC_DisableIRQ(IcsInfo::irqNums[0]);
-   }
    /** Current clock mode (FEI out of reset) */
    static IcsClockMode currentClockMode;
 
@@ -211,17 +186,17 @@ public:
     *
     *  @param[in]  settingNumber Clock setting number
     */
-   static void configure(ClockConfig clockConfig=ClockConfig_default) {
-      clockTransition(clockInfo[clockConfig]);
+   static void configure(ClockConfig settingNumber=ClockConfig_default) {
+      clockTransition(clockInfo[settingNumber]);
    }
 
    /**
-    *   Finalise the ICS
+    *   Finalise the ICS 
     */
    static void finalise() {
       clockTransition(clockInfo[ClockConfig_default]);
    }
-   
+
 #endif
 
    /**

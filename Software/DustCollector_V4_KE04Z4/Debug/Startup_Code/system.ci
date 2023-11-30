@@ -7,6 +7,6 @@ node: { title: "../Startup_Code/system.cpp:software_init_hook" label: "void soft
 node: { title: "SystemInitLowLevel" label: "void SystemInitLowLevel()\n../Startup_Code/system.cpp:70:6\n0 bytes (static)" }
 node: { title: "SystemInit" label: "void SystemInit()\n../Startup_Code/system.cpp:110:6\n8 bytes (static)" }
 edge: { sourcename: "SystemInit" targetname: "../Startup_Code/system.cpp:clock_initialise" label: "../Startup_Code/system.cpp:121:20" }
-edge: { sourcename: "SystemInit" targetname: "../Startup_Code/system.cpp:console_initialise" label: "../Startup_Code/system.cpp:124:22" }
-edge: { sourcename: "SystemInit" targetname: "../Startup_Code/system.cpp:rtc_initialise" label: "../Startup_Code/system.cpp:127:18" }
+edge: { sourcename: "SystemInit" targetname: "../Startup_Code/system.cpp:console_initialise" label: "../Startup_Code/system.cpp:126:22" }
+edge: { sourcename: "SystemInit" targetname: "../Startup_Code/system.cpp:rtc_initialise" label: "../Startup_Code/system.cpp:129:18" }
 }

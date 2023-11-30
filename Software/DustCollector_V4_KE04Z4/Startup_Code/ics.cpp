@@ -225,7 +225,7 @@ ErrorCode Ics::clockTransition(const ClockInfo &clockInfo) {
 
 #endif // /ICS/enablePeripheralSupport
 
-#if false // !/ICS/enablePeripheralSupport
+#if false // /ICS/enablePeripheralSupport
 /**
  * Update SystemCoreClock variable
  *
@@ -285,29 +285,32 @@ void Ics::SystemCoreClockUpdate(void) {
 
    SimInfo::updateSystemClocks(SystemIcsOutClock);
 }
-#endif
+#endif // /ICS/enablePeripheralSupport
  
 /**
  * Initialise ICS as part of startup sequence
  */
 void Ics::startupConfigure() {
 
-static constexpr uint16_t SLOW_CLOCK_TRIM = 172; // /ICS/slowInternalClockTrim
-static constexpr uint8_t  SCTRIM  = SLOW_CLOCK_TRIM>>1U;
-static constexpr uint8_t  SCFTRIM = SLOW_CLOCK_TRIM&0b1;
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Warray-bounds"
 
-if constexpr (SLOW_CLOCK_TRIM != 0) {
+#define SCFTRIM (*(uint8_t *)0x03FE)
+#define SCTRIM  (*(uint8_t *)0x03FF)
+
+if (SCTRIM != 0xFF) {
+   // Trim clock
    ics->C3 = SCTRIM;
    ics->C4 = (ics->C4&~ICS_C4_SCFTRIM_MASK)|SCFTRIM;
+
+#pragma GCC diagnostic pop
    
-#if !false // !/ICS/enablePeripheralSupport
-   // Minimal configuration: Only set clock dividers if clock is trimmed
-   ics->C2 = IcsInfo::ics_c2;
-   SIM->CLKDIV = SimInfo::sim_clkdiv;
-#endif
 }
 
-#if false // /ICS/configurePeripheralInStartUp
+#if false // /ICS/enablePeripheralSupport
+
+   // Do full configuration
+   
    // Device resets into this clock mode
    currentClockMode = IcsClockMode_FEI;
 
@@ -315,6 +318,13 @@ if constexpr (SLOW_CLOCK_TRIM != 0) {
    clockTransition(clockInfo[ClockConfig_default]);
 
    SystemCoreClockUpdate();
+   
+#elif true // /ICS/assumeSlowIrcTrimmed
+
+   // Do minimal configuration if clock trimming done
+   
+   ics->C2 = IcsInfo::ics_c2;
+   SIM->CLKDIV = SimInfo::sim_clkdiv;
 #endif
 
 #if false // /ICS/irqHandlingMethod

@@ -53,6 +53,7 @@
 								</option>
 								<option id="net.sourceforge.usbdm.gnu.cpp.compiler.option.optimization.other.896348708" name="Other" superClass="net.sourceforge.usbdm.gnu.cpp.compiler.option.optimization.other" value="" valueType="string"/>
 								<option id="net.sourceforge.usbdm.gnu.cpp.compiler.option.optimization.level.1155946586" name="Optimization level" superClass="net.sourceforge.usbdm.gnu.cpp.compiler.option.optimization.level" value="net.sourceforge.usbdm.gnu.cpp.optimization.level.none" valueType="enumerated"/>
+								<option id="net.sourceforge.usbdm.gnu.cpp.compiler.option.misc.language.580774887" superClass="net.sourceforge.usbdm.gnu.cpp.compiler.option.misc.language" value="net.sourceforge.usbdm.gnu.cpp.compiler.option.misc.language.cpp20" valueType="enumerated"/>
 								<inputType id="net.sourceforge.usbdm.cdt.arm.toolchain.cpp.compiler.input.436789548" superClass="net.sourceforge.usbdm.cdt.arm.toolchain.cpp.compiler.input"/>
 							</tool>
 							<tool id="net.sourceforge.usbdm.cdt.arm.toolchain.archiver.1097052137" name="ARM Archiver" superClass="net.sourceforge.usbdm.cdt.arm.toolchain.archiver"/>
@@ -136,6 +137,7 @@
 									<listOptionValue builtIn="false" value="&quot;../Sources&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;../Project_Headers&quot;"/>
 								</option>
+								<option id="net.sourceforge.usbdm.gnu.cpp.compiler.option.misc.language.622453192" name="Language standard:" superClass="net.sourceforge.usbdm.gnu.cpp.compiler.option.misc.language" value="net.sourceforge.usbdm.gnu.cpp.compiler.option.misc.language.cpp20" valueType="enumerated"/>
 								<inputType id="net.sourceforge.usbdm.cdt.arm.toolchain.cpp.compiler.input.2036411295" superClass="net.sourceforge.usbdm.cdt.arm.toolchain.cpp.compiler.input"/>
 							</tool>
 							<tool id="net.sourceforge.usbdm.cdt.arm.toolchain.archiver.1346784796" name="ARM Archiver" superClass="net.sourceforge.usbdm.cdt.arm.toolchain.archiver"/>
@@ -171,10 +173,16 @@
 	<storageModule moduleId="cdtBuildSystem" version="4.0.0">
 		<project id="DustCollector_KE04Z4.net.sourceforge.usbdm.cdt.newProjectType.exe.333499776" name="Executable" projectType="net.sourceforge.usbdm.cdt.newProjectType.exe"/>
 	</storageModule>
-	<storageModule moduleId="scannerConfiguration">
-		<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
-	</storageModule>
 	<storageModule moduleId="org.eclipse.cdt.core.LanguageSettingsProviders"/>
 	<storageModule moduleId="org.eclipse.cdt.make.core.buildtargets"/>
 	<storageModule moduleId="refreshScope"/>
+	<storageModule moduleId="scannerConfiguration">
+		<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+		<scannerConfigBuildInfo instanceId="net.sourceforge.usbdm.cdt.arm.exe.release.configuration.1189352544;net.sourceforge.usbdm.cdt.arm.exe.release.configuration.1189352544.;net.sourceforge.usbdm.cdt.arm.toolchain.cpp.compiler.1716291579;net.sourceforge.usbdm.cdt.arm.toolchain.cpp.compiler.input.2036411295">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+		</scannerConfigBuildInfo>
+		<scannerConfigBuildInfo instanceId="net.sourceforge.usbdm.cdt.arm.exe.release.configuration.1189352544;net.sourceforge.usbdm.cdt.arm.exe.release.configuration.1189352544.;net.sourceforge.usbdm.cdt.arm.toolchain.c.compiler.1574696860;net.sourceforge.usbdm.cdt.arm.toolchain.c.compiler.input.1386828893">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+		</scannerConfigBuildInfo>
+	</storageModule>
 </cproject>

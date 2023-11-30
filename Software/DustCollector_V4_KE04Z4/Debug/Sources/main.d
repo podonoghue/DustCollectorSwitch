@@ -11,7 +11,7 @@ Sources/main.o Sources/main.o: ../Sources/main.cpp ../Sources/hardware.h \
  ../Project_Headers/uart.h ../Project_Headers/formatted_io.h \
  ../Project_Headers/uart_queue.h ../Project_Headers/gpio.h \
  ../Project_Headers/pit.h ../Project_Headers/adc.h \
- ../Project_Headers/control.h ../Project_Headers/ics.h
+ ../Project_Headers/ics.h
 ../Sources/hardware.h:
 ../Project_Headers/error.h:
 ../Project_Headers/pin_mapping.h:
@@ -37,5 +37,4 @@ Sources/main.o Sources/main.o: ../Sources/main.cpp ../Sources/hardware.h \
 ../Project_Headers/gpio.h:
 ../Project_Headers/pit.h:
 ../Project_Headers/adc.h:
-../Project_Headers/control.h:
 ../Project_Headers/ics.h:
