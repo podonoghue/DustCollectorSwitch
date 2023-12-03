@@ -1,0 +1,12 @@
+graph: { title: "../Startup_Code/system.cpp"
+node: { title: "../Startup_Code/system.cpp:_Z21SystemCoreClockUpdatev" label: "void SystemCoreClockUpdate()\n../Startup_Code/system.cpp:18:6\n0 bytes (static)" }
+node: { title: "../Startup_Code/system.cpp:clock_initialise" label: "void clock_initialise()\n../Startup_Code/system.cpp:32:6\n0 bytes (static)" }
+node: { title: "../Startup_Code/system.cpp:console_initialise" label: "void console_initialise()\n../Startup_Code/system.cpp:37:6\n0 bytes (static)" }
+node: { title: "../Startup_Code/system.cpp:rtc_initialise" label: "void rtc_initialise()\n../Startup_Code/system.cpp:42:6\n0 bytes (static)" }
+node: { title: "../Startup_Code/system.cpp:software_init_hook" label: "void software_init_hook()\n../Startup_Code/system.cpp:47:6\n0 bytes (static)" }
+node: { title: "SystemInitLowLevel" label: "void SystemInitLowLevel()\n../Startup_Code/system.cpp:70:6\n0 bytes (static)" }
+node: { title: "SystemInit" label: "void SystemInit()\n../Startup_Code/system.cpp:110:6\n8 bytes (static)" }
+edge: { sourcename: "SystemInit" targetname: "../Startup_Code/system.cpp:clock_initialise" label: "../Startup_Code/system.cpp:121:20" }
+edge: { sourcename: "SystemInit" targetname: "../Startup_Code/system.cpp:console_initialise" label: "../Startup_Code/system.cpp:126:22" }
+edge: { sourcename: "SystemInit" targetname: "../Startup_Code/system.cpp:rtc_initialise" label: "../Startup_Code/system.cpp:129:18" }
+}

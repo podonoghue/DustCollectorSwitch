@@ -1,0 +1,1676 @@
+Archive member included to satisfy reference by file (symbol)
+
+/opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++_nano.a(atexit_arm.o)
+                              ./Startup_Code/console.o (__aeabi_atexit)
+/opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++_nano.a(del_ops.o)
+                              ./Startup_Code/console.o (operator delete(void*, unsigned int))
+/opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++_nano.a(del_op.o)
+                              /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++_nano.a(del_ops.o) (operator delete(void*))
+/opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libm.a(libm_a-sf_round.o)
+                              ./Sources/delay.o (roundf)
+/opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v6-m/nofp/libgcc.a(_udivsi3.o)
+                              ./Startup_Code/console.o (__aeabi_uidiv)
+/opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v6-m/nofp/libgcc.a(_divsi3.o)
+                              ./Sources/Sampler.o (__aeabi_idiv)
+/opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v6-m/nofp/libgcc.a(_dvmd_tls.o)
+                              /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v6-m/nofp/libgcc.a(_udivsi3.o) (__aeabi_idiv0)
+/opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v6-m/nofp/libgcc.a(_aeabi_ldivmod.o)
+                              ./Sources/delay.o (__aeabi_ldivmod)
+/opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v6-m/nofp/libgcc.a(_aeabi_uldivmod.o)
+                              ./Sources/delay.o (__aeabi_uldivmod)
+/opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v6-m/nofp/libgcc.a(_muldi3.o)
+                              ./Sources/delay.o (__aeabi_lmul)
+/opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v6-m/nofp/libgcc.a(_udivmoddi4.o)
+                              /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v6-m/nofp/libgcc.a(_aeabi_uldivmod.o) (__udivmoddi4)
+/opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v6-m/nofp/libgcc.a(bpabi.o)
+                              /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v6-m/nofp/libgcc.a(_aeabi_ldivmod.o) (__gnu_ldivmod_helper)
+/opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v6-m/nofp/libgcc.a(addsf3.o)
+                              /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libm.a(libm_a-sf_round.o) (__aeabi_fadd)
+/opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v6-m/nofp/libgcc.a(mulsf3.o)
+                              ./Sources/delay.o (__aeabi_fmul)
+/opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v6-m/nofp/libgcc.a(fixsfsi.o)
+                              ./Sources/delay.o (__aeabi_f2iz)
+/opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v6-m/nofp/libgcc.a(_clzsi2.o)
+                              /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v6-m/nofp/libgcc.a(addsf3.o) (__clzsi2)
+/opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v6-m/nofp/libgcc.a(_clzdi2.o)
+                              /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v6-m/nofp/libgcc.a(_udivmoddi4.o) (__clzdi2)
+/opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v6-m/nofp/libgcc.a(_divdi3.o)
+                              /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v6-m/nofp/libgcc.a(bpabi.o) (__divdi3)
+/opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-exit.o)
+                              /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/crt0.o (exit)
+/opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-init.o)
+                              /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/crt0.o (__libc_init_array)
+/opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-reent.o)
+                              ./Startup_Code/newlib_stubs.o (errno)
+/opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-impure.o)
+                              /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-reent.o) (_impure_ptr)
+/opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-malloc.o)
+                              /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++_nano.a(del_op.o) (free)
+/opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-mallocr.o)
+                              /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-malloc.o) (_malloc_r)
+/opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-cxa_atexit.o)
+                              /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++_nano.a(atexit_arm.o) (__cxa_atexit)
+/opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-findfp.o)
+                              /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-exit.o) (__stdio_exit_handler)
+/opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-stdio.o)
+                              /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-findfp.o) (__sread)
+/opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-mlock.o)
+                              /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-mallocr.o) (__malloc_lock)
+/opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-on_exit_args.o)
+                              /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-cxa_atexit.o) (__on_exit_args)
+/opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-readr.o)
+                              /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-stdio.o) (_read_r)
+/opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-sbrkr.o)
+                              /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-mallocr.o) (_sbrk_r)
+/opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-writer.o)
+                              /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-stdio.o) (_write_r)
+/opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-fwalk.o)
+                              /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-findfp.o) (_fwalk_sglue)
+/opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-memset.o)
+                              /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/crt0.o (memset)
+/opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-freer.o)
+                              /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-reent.o) (_free_r)
+/opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-lock.o)
+                              /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-findfp.o) (__retarget_lock_init_recursive)
+/opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-closer.o)
+                              /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-stdio.o) (_close_r)
+/opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-fflush.o)
+                              /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-findfp.o) (_fflush_r)
+/opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-lseekr.o)
+                              /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-stdio.o) (_lseek_r)
+
+Discarded input sections
+
+ .text          0x00000000        0x0 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v6-m/nofp/crti.o
+ .data          0x00000000        0x0 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v6-m/nofp/crti.o
+ .bss           0x00000000        0x0 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v6-m/nofp/crti.o
+ .text          0x00000000        0x0 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v6-m/nofp/crtbegin.o
+ .data          0x00000000        0x0 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v6-m/nofp/crtbegin.o
+ .bss           0x00000000        0x0 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v6-m/nofp/crtbegin.o
+ .rodata.all_implied_fbits
+                0x00000000       0x24 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v6-m/nofp/crtbegin.o
+ .data          0x00000000        0x0 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/crt0.o
+ .bss           0x00000000        0x0 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/crt0.o
+ .ARM.extab     0x00000000        0x0 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/crt0.o
+ .text          0x00000000        0x0 ./qv/qv.o
+ .data          0x00000000        0x0 ./qv/qv.o
+ .bss           0x00000000        0x0 ./qv/qv.o
+ .text._ZN2QP2QF4stopEv
+                0x00000000        0x8 ./qv/qv.o
+ .group         0x00000000        0x8 ./qf/qep_hsm.o
+ .group         0x00000000        0x8 ./qf/qep_hsm.o
+ .text          0x00000000        0x0 ./qf/qep_hsm.o
+ .data          0x00000000        0x0 ./qf/qep_hsm.o
+ .bss           0x00000000        0x0 ./qf/qep_hsm.o
+ .text._ZN2QP4QHsm4initEj
+                0x00000000       0x10 ./qf/qep_hsm.o
+ .text._ZN2QP4QHsmC2EPFjPvPKNS_4QEvtEE
+                0x00000000       0x14 ./qf/qep_hsm.o
+ .text._ZN2QP4QHsm4isInEPFjPvPKNS_4QEvtEE
+                0x00000000       0x50 ./qf/qep_hsm.o
+ .text._ZN2QP4QHsm10childStateEPFjPvPKNS_4QEvtEE
+                0x00000000       0x58 ./qf/qep_hsm.o
+ .rodata._ZTVN2QP4QHsmE
+                0x00000000       0x14 ./qf/qep_hsm.o
+ .group         0x00000000        0x8 ./qf/qep_msm.o
+ .text          0x00000000        0x0 ./qf/qep_msm.o
+ .data          0x00000000        0x0 ./qf/qep_msm.o
+ .bss           0x00000000        0x0 ./qf/qep_msm.o
+ .text._ZN2QP4QMsm4initEj
+                0x00000000       0x10 ./qf/qep_msm.o
+ .text._ZN2QP4QMsm4initEPKvj
+                0x00000000       0x88 ./qf/qep_msm.o
+ .text._ZN2QP4QMsmC2EPFjPvPKNS_4QEvtEE
+                0x00000000       0x14 ./qf/qep_msm.o
+ .text._ZNK2QP4QMsm9isInStateEPKNS_7QMStateE
+                0x00000000       0x1c ./qf/qep_msm.o
+ .text._ZNK2QP4QMsm13childStateObjEPKNS_7QMStateE
+                0x00000000       0x70 ./qf/qep_msm.o
+ .text._ZN2QP4QMsm10execTatbl_EPKNS_14QMTranActTableEj
+                0x00000000       0x48 ./qf/qep_msm.o
+ .text._ZN2QP4QMsm17exitToTranSource_EPKNS_7QMStateES3_j
+                0x00000000       0x48 ./qf/qep_msm.o
+ .text._ZN2QP4QMsm13enterHistory_EPKNS_7QMStateEj
+                0x00000000       0x7c ./qf/qep_msm.o
+ .text._ZN2QP4QMsm8dispatchEPKNS_4QEvtEj
+                0x00000000      0x2c0 ./qf/qep_msm.o
+ .text._ZNK2QP4QMsm10topQMStateEv
+                0x00000000        0x8 ./qf/qep_msm.o
+ .rodata._ZTVN2QP4QMsmE
+                0x00000000       0x14 ./qf/qep_msm.o
+ .rodata._ZN12_GLOBAL__N_1L11l_msm_top_sE
+                0x00000000       0x14 ./qf/qep_msm.o
+ .rodata._ZN12_GLOBAL__N_1L14Q_this_module_E
+                0x00000000        0x8 ./qf/qep_msm.o
+ .comment       0x00000000       0x45 ./qf/qep_msm.o
+ .ARM.attributes
+                0x00000000       0x2c ./qf/qep_msm.o
+ .text          0x00000000        0x0 ./qf/qf_act.o
+ .data          0x00000000        0x0 ./qf/qf_act.o
+ .bss           0x00000000        0x0 ./qf/qf_act.o
+ .group         0x00000000        0xc ./qf/qf_actq.o
+ .text          0x00000000        0x0 ./qf/qf_actq.o
+ .data          0x00000000        0x0 ./qf/qf_actq.o
+ .bss           0x00000000        0x0 ./qf/qf_actq.o
+ .text._ZN2QP7QTicker4initEPKvj
+                0x00000000       0x10 ./qf/qf_actq.o
+ .text._ZN2QP7QTicker8dispatchEPKNS_4QEvtEj
+                0x00000000       0x30 ./qf/qf_actq.o
+ .text._ZN2QP7QTicker4initEj
+                0x00000000       0x28 ./qf/qf_actq.o
+ .text._ZN2QP7QActive8postLIFOEPKNS_4QEvtE
+                0x00000000       0x94 ./qf/qf_actq.o
+ .text._ZN2QP7QTickerC2Ej
+                0x00000000       0x1c ./qf/qf_actq.o
+ .text._ZN2QP7QTicker5trig_EPKv
+                0x00000000       0x48 ./qf/qf_actq.o
+ .rodata._ZTVN2QP7QTickerE
+                0x00000000       0x14 ./qf/qf_actq.o
+ .rodata._ZZN2QP7QTicker5trig_EPKvE7tickEvt
+                0x00000000        0x4 ./qf/qf_actq.o
+ .text          0x00000000        0x0 ./qf/qf_defer.o
+ .data          0x00000000        0x0 ./qf/qf_defer.o
+ .bss           0x00000000        0x0 ./qf/qf_defer.o
+ .text._ZNK2QP7QActive5deferEPNS_7QEQueueEPKNS_4QEvtE
+                0x00000000       0x14 ./qf/qf_defer.o
+ .text._ZN2QP7QActive6recallEPNS_7QEQueueE
+                0x00000000       0x4c ./qf/qf_defer.o
+ .text._ZNK2QP7QActive13flushDeferredEPNS_7QEQueueE
+                0x00000000       0x30 ./qf/qf_defer.o
+ .rodata._ZN12_GLOBAL__N_1L14Q_this_module_E
+                0x00000000        0x9 ./qf/qf_defer.o
+ .comment       0x00000000       0x45 ./qf/qf_defer.o
+ .ARM.attributes
+                0x00000000       0x2c ./qf/qf_defer.o
+ .text          0x00000000        0x0 ./qf/qf_dyn.o
+ .data          0x00000000        0x0 ./qf/qf_dyn.o
+ .bss           0x00000000        0x0 ./qf/qf_dyn.o
+ .text._ZN2QP2QF8poolInitEPvjj
+                0x00000000       0x6c ./qf/qf_dyn.o
+ .text._ZN2QP2QF19poolGetMaxBlockSizeEv
+                0x00000000       0x1c ./qf/qf_dyn.o
+ .text._ZN2QP2QF10getPoolMinEj
+                0x00000000       0x38 ./qf/qf_dyn.o
+ .text._ZN2QP2QF5newX_Ejji
+                0x00000000       0xb4 ./qf/qf_dyn.o
+ .text._ZN2QP2QF7newRef_EPKNS_4QEvtES3_
+                0x00000000       0x48 ./qf/qf_dyn.o
+ .text._ZN2QP2QF10deleteRef_EPKNS_4QEvtE
+                0x00000000       0x30 ./qf/qf_dyn.o
+ .text          0x00000000        0x0 ./qf/qf_mem.o
+ .data          0x00000000        0x0 ./qf/qf_mem.o
+ .bss           0x00000000        0x0 ./qf/qf_mem.o
+ .text._ZN2QP6QMPool4initEPvjj
+                0x00000000       0xec ./qf/qf_mem.o
+ .text._ZN2QP6QMPool3getEjj
+                0x00000000       0x8c ./qf/qf_mem.o
+ .text._ZNK2QP6QMPool12getBlockSizeEv
+                0x00000000        0x4 ./qf/qf_mem.o
+ .text          0x00000000        0x0 ./qf/qf_ps.o
+ .data          0x00000000        0x0 ./qf/qf_ps.o
+ .bss           0x00000000        0x0 ./qf/qf_ps.o
+ .text._ZN2QP7QActive6psInitEPNS_11QSubscrListEi
+                0x00000000       0x44 ./qf/qf_ps.o
+ .text._ZN2QP7QActive8publish_EPKNS_4QEvtEPKvj
+                0x00000000       0xd8 ./qf/qf_ps.o
+ .text._ZNK2QP7QActive9subscribeEi
+                0x00000000       0x74 ./qf/qf_ps.o
+ .text._ZNK2QP7QActive11unsubscribeEi
+                0x00000000       0x74 ./qf/qf_ps.o
+ .text._ZNK2QP7QActive14unsubscribeAllEv
+                0x00000000       0xa8 ./qf/qf_ps.o
+ .bss._ZN2QP7QActive13maxPubSignal_E
+                0x00000000        0x4 ./qf/qf_ps.o
+ .bss._ZN2QP7QActive11subscrList_E
+                0x00000000        0x4 ./qf/qf_ps.o
+ .rodata._ZN12_GLOBAL__N_1L14Q_this_module_E
+                0x00000000        0x6 ./qf/qf_ps.o
+ .comment       0x00000000       0x45 ./qf/qf_ps.o
+ .ARM.attributes
+                0x00000000       0x2c ./qf/qf_ps.o
+ .group         0x00000000        0x8 ./qf/qf_qact.o
+ .group         0x00000000        0x8 ./qf/qf_qact.o
+ .group         0x00000000        0xc ./qf/qf_qact.o
+ .group         0x00000000        0xc ./qf/qf_qact.o
+ .group         0x00000000        0xc ./qf/qf_qact.o
+ .text          0x00000000        0x0 ./qf/qf_qact.o
+ .data          0x00000000        0x0 ./qf/qf_qact.o
+ .bss           0x00000000        0x0 ./qf/qf_qact.o
+ .text._ZN2QP4QAsm3topEPvPKNS_4QEvtE
+                0x00000000        0x4 ./qf/qf_qact.o
+ .text._ZN2QP7QActive11unregister_Ev
+                0x00000000       0x38 ./qf/qf_qact.o
+ .text          0x00000000        0x0 ./qf/qf_qeq.o
+ .data          0x00000000        0x0 ./qf/qf_qeq.o
+ .bss           0x00000000        0x0 ./qf/qf_qeq.o
+ .text._ZN2QP7QEQueue4postEPKNS_4QEvtEjj
+                0x00000000       0x88 ./qf/qf_qeq.o
+ .text._ZN2QP7QEQueue8postLIFOEPKNS_4QEvtEj
+                0x00000000       0x68 ./qf/qf_qeq.o
+ .text._ZN2QP7QEQueue3getEj
+                0x00000000       0x58 ./qf/qf_qeq.o
+ .rodata._ZN12_GLOBAL__N_1L14Q_this_module_E
+                0x00000000        0x7 ./qf/qf_qeq.o
+ .group         0x00000000        0xc ./qf/qf_qmact.o
+ .group         0x00000000        0xc ./qf/qf_qmact.o
+ .group         0x00000000        0xc ./qf/qf_qmact.o
+ .group         0x00000000        0xc ./qf/qf_qmact.o
+ .text          0x00000000        0x0 ./qf/qf_qmact.o
+ .data          0x00000000        0x0 ./qf/qf_qmact.o
+ .bss           0x00000000        0x0 ./qf/qf_qmact.o
+ .text._ZN2QP8QMActiveC2EPFjPvPKNS_4QEvtEE
+                0x00000000       0x20 ./qf/qf_qmact.o
+ .text._ZN2QP8QMActive8dispatchEPKNS_4QEvtEj
+                0x00000000        0x8 ./qf/qf_qmact.o
+ .text._ZN2QP8QMActive4initEPKvj
+                0x00000000        0x8 ./qf/qf_qmact.o
+ .text._ZN2QP8QMActive4initEj
+                0x00000000       0x20 ./qf/qf_qmact.o
+ .rodata._ZTVN2QP8QMActiveE
+                0x00000000       0x14 ./qf/qf_qmact.o
+ .comment       0x00000000       0x45 ./qf/qf_qmact.o
+ .ARM.attributes
+                0x00000000       0x2c ./qf/qf_qmact.o
+ .text          0x00000000        0x0 ./qf/qf_time.o
+ .data          0x00000000        0x0 ./qf/qf_time.o
+ .bss           0x00000000        0x0 ./qf/qf_time.o
+ .text._ZN2QP8QTimeEvt5rearmEm
+                0x00000000       0x60 ./qf/qf_time.o
+ .text._ZN2QP8QTimeEvt11wasDisarmedEv
+                0x00000000       0x20 ./qf/qf_time.o
+ .text._ZN2QP8QTimeEvt8noActiveEj
+                0x00000000       0x38 ./qf/qf_time.o
+ .text._ZN2QP8QTimeEvtC2Ev
+                0x00000000       0x18 ./qf/qf_time.o
+ .text          0x00000000        0x0 ./gnu/qv_port.o
+ .data          0x00000000        0x0 ./gnu/qv_port.o
+ .bss           0x00000000        0x0 ./gnu/qv_port.o
+ .group         0x00000000        0x8 ./Startup_Code/console.o
+ .group         0x00000000        0x8 ./Startup_Code/console.o
+ .group         0x00000000        0x8 ./Startup_Code/console.o
+ .group         0x00000000       0x10 ./Startup_Code/console.o
+ .group         0x00000000        0x8 ./Startup_Code/console.o
+ .group         0x00000000        0xc ./Startup_Code/console.o
+ .group         0x00000000        0xc ./Startup_Code/console.o
+ .group         0x00000000        0xc ./Startup_Code/console.o
+ .group         0x00000000        0xc ./Startup_Code/console.o
+ .group         0x00000000        0xc ./Startup_Code/console.o
+ .text          0x00000000        0x0 ./Startup_Code/console.o
+ .data          0x00000000        0x0 ./Startup_Code/console.o
+ .bss           0x00000000        0x0 ./Startup_Code/console.o
+ .text._ZN5USBDM11FormattedIO4peekEv.constprop.0
+                0x00000000       0x7c ./Startup_Code/console.o
+ .text._ZN5USBDM9log_errorEPKc
+                0x00000000        0x4 ./Startup_Code/console.o
+ .text.console_setBaudRate
+                0x00000000       0x1c ./Startup_Code/console.o
+ .text.console_txChar
+                0x00000000       0x38 ./Startup_Code/console.o
+ .text.console_rxChar
+                0x00000000       0x18 ./Startup_Code/console.o
+ .text          0x00000000        0x0 ./Startup_Code/ics.o
+ .data          0x00000000        0x0 ./Startup_Code/ics.o
+ .bss           0x00000000        0x0 ./Startup_Code/ics.o
+ .text._ZN5USBDM3Ics16startupConfigureEv
+                0x00000000       0x38 ./Startup_Code/ics.o
+ .bss._ZN5USBDM3Ics16currentClockModeE
+                0x00000000        0x1 ./Startup_Code/ics.o
+ .rodata._ZN5USBDM3Ics9clockInfoE
+                0x00000000        0x0 ./Startup_Code/ics.o
+ .text          0x00000000        0x0 ./Startup_Code/newlib_stubs.o
+ .data          0x00000000        0x0 ./Startup_Code/newlib_stubs.o
+ .bss           0x00000000        0x0 ./Startup_Code/newlib_stubs.o
+ .text.console_txChar
+                0x00000000        0x4 ./Startup_Code/newlib_stubs.o
+ .text.console_rxChar
+                0x00000000        0x4 ./Startup_Code/newlib_stubs.o
+ .text._close   0x00000000        0x8 ./Startup_Code/newlib_stubs.o
+ .text._execve  0x00000000       0x10 ./Startup_Code/newlib_stubs.o
+ .text._fork    0x00000000       0x10 ./Startup_Code/newlib_stubs.o
+ .text._fstat   0x00000000        0xc ./Startup_Code/newlib_stubs.o
+ .text._getpid  0x00000000        0x4 ./Startup_Code/newlib_stubs.o
+ .text._isatty  0x00000000       0x18 ./Startup_Code/newlib_stubs.o
+ .text._kill    0x00000000       0x10 ./Startup_Code/newlib_stubs.o
+ .text._link    0x00000000       0x10 ./Startup_Code/newlib_stubs.o
+ .text._lseek   0x00000000        0x4 ./Startup_Code/newlib_stubs.o
+ .text._sbrk    0x00000000       0x40 ./Startup_Code/newlib_stubs.o
+ .text._stat    0x00000000        0xc ./Startup_Code/newlib_stubs.o
+ .text._times   0x00000000        0x4 ./Startup_Code/newlib_stubs.o
+ .text._unlink  0x00000000       0x10 ./Startup_Code/newlib_stubs.o
+ .text._wait    0x00000000       0x10 ./Startup_Code/newlib_stubs.o
+ .text.os_tmr_call
+                0x00000000        0x4 ./Startup_Code/newlib_stubs.o
+ .text._usbdm_read
+                0x00000000       0x34 ./Startup_Code/newlib_stubs.o
+ .text._usbdm_write
+                0x00000000       0x4c ./Startup_Code/newlib_stubs.o
+ .bss.heap_end  0x00000000        0x4 ./Startup_Code/newlib_stubs.o
+ .data.environ  0x00000000        0x4 ./Startup_Code/newlib_stubs.o
+ .bss.__env     0x00000000        0x4 ./Startup_Code/newlib_stubs.o
+ .text          0x00000000        0x0 ./Startup_Code/security.o
+ .data          0x00000000        0x0 ./Startup_Code/security.o
+ .bss           0x00000000        0x0 ./Startup_Code/security.o
+ .data          0x00000000        0x0 ./Startup_Code/startup_ARMLtdGCC.o
+ .bss           0x00000000        0x0 ./Startup_Code/startup_ARMLtdGCC.o
+ .text          0x00000000        0x0 ./Startup_Code/system-gcc.o
+ .data          0x00000000        0x0 ./Startup_Code/system-gcc.o
+ .bss           0x00000000        0x0 ./Startup_Code/system-gcc.o
+ .text._ZN9__gnu_cxx27__verbose_terminate_handlerEv
+                0x00000000       0x14 ./Startup_Code/system-gcc.o
+ .text.__cxa_pure_virtual
+                0x00000000        0x8 ./Startup_Code/system-gcc.o
+ .comment       0x00000000       0x45 ./Startup_Code/system-gcc.o
+ .ARM.attributes
+                0x00000000       0x2c ./Startup_Code/system-gcc.o
+ .text          0x00000000        0x0 ./Startup_Code/system.o
+ .data          0x00000000        0x0 ./Startup_Code/system.o
+ .bss           0x00000000        0x0 ./Startup_Code/system.o
+ .text._Z21SystemCoreClockUpdatev
+                0x00000000        0x4 ./Startup_Code/system.o
+ .text.clock_initialise
+                0x00000000        0x4 ./Startup_Code/system.o
+ .text.console_initialise
+                0x00000000        0x4 ./Startup_Code/system.o
+ .group         0x00000000        0xc ./Startup_Code/vectors.o
+ .group         0x00000000        0xc ./Startup_Code/vectors.o
+ .group         0x00000000        0x8 ./Startup_Code/vectors.o
+ .text          0x00000000        0x0 ./Startup_Code/vectors.o
+ .data          0x00000000        0x0 ./Startup_Code/vectors.o
+ .bss           0x00000000        0x0 ./Startup_Code/vectors.o
+ .group         0x00000000        0x8 ./Sources/DustCollector.o
+ .group         0x00000000        0x8 ./Sources/DustCollector.o
+ .group         0x00000000       0x10 ./Sources/DustCollector.o
+ .group         0x00000000        0x8 ./Sources/DustCollector.o
+ .group         0x00000000        0x8 ./Sources/DustCollector.o
+ .group         0x00000000        0x8 ./Sources/DustCollector.o
+ .group         0x00000000        0x8 ./Sources/DustCollector.o
+ .group         0x00000000        0x8 ./Sources/DustCollector.o
+ .group         0x00000000        0x8 ./Sources/DustCollector.o
+ .group         0x00000000        0xc ./Sources/DustCollector.o
+ .group         0x00000000        0xc ./Sources/DustCollector.o
+ .group         0x00000000        0xc ./Sources/DustCollector.o
+ .text          0x00000000        0x0 ./Sources/DustCollector.o
+ .data          0x00000000        0x0 ./Sources/DustCollector.o
+ .bss           0x00000000        0x0 ./Sources/DustCollector.o
+ .text._ZN2QP4QAsm3topEPvPKNS_4QEvtE
+                0x00000000        0x4 ./Sources/DustCollector.o
+ .text._ZN2QP7QActive4initEj
+                0x00000000       0x10 ./Sources/DustCollector.o
+ .text._ZN25DustCollectorStateMachine9initial_hEPKN2QP4QEvtE
+                0x00000000       0x54 ./Sources/DustCollector.o
+ .text._ZN25DustCollectorStateMachine5off_hEPKN2QP4QEvtE
+                0x00000000       0x70 ./Sources/DustCollector.o
+ .text._ZN25DustCollectorStateMachine4on_hEPKN2QP4QEvtE
+                0x00000000       0x70 ./Sources/DustCollector.o
+ .text._ZN25DustCollectorStateMachine6Hold_hEPKN2QP4QEvtE
+                0x00000000       0xa8 ./Sources/DustCollector.o
+ .text._ZN25DustCollectorStateMachine7Delay_hEPKN2QP4QEvtE
+                0x00000000       0xa4 ./Sources/DustCollector.o
+ .text._ZN2QP7QActive8dispatchEPKNS_4QEvtEj
+                0x00000000        0x8 ./Sources/DustCollector.o
+ .text._ZN2QP7QActive4initEPKvj
+                0x00000000        0x8 ./Sources/DustCollector.o
+ .group         0x00000000        0xc ./Sources/Sampler.o
+ .group         0x00000000        0x8 ./Sources/Sampler.o
+ .group         0x00000000        0x8 ./Sources/Sampler.o
+ .group         0x00000000        0x8 ./Sources/Sampler.o
+ .group         0x00000000        0xc ./Sources/Sampler.o
+ .group         0x00000000        0x8 ./Sources/Sampler.o
+ .group         0x00000000        0x8 ./Sources/Sampler.o
+ .group         0x00000000        0x8 ./Sources/Sampler.o
+ .text          0x00000000        0x0 ./Sources/Sampler.o
+ .data          0x00000000        0x0 ./Sources/Sampler.o
+ .bss           0x00000000        0x0 ./Sources/Sampler.o
+ .text._ZN7SamplerD2Ev
+                0x00000000       0x18 ./Sources/Sampler.o
+ .text._ZN7SamplerD0Ev
+                0x00000000       0x24 ./Sources/Sampler.o
+ .text._ZN7SamplerC2Ev
+                0x00000000        0xc ./Sources/Sampler.o
+ .text._ZN7Sampler14getDetectLevelEv
+                0x00000000       0x28 ./Sources/Sampler.o
+ .rodata._ZTV7Sampler
+                0x00000000       0x10 ./Sources/Sampler.o
+ .group         0x00000000        0xc ./Sources/bsp.o
+ .text          0x00000000        0x0 ./Sources/bsp.o
+ .data          0x00000000        0x0 ./Sources/bsp.o
+ .bss           0x00000000        0x0 ./Sources/bsp.o
+ .text._ZN5USBDM4Uart10_writeCharEc
+                0x00000000       0x48 ./Sources/bsp.o
+ .text._ZN2QP2QF9onCleanupEv
+                0x00000000        0x4 ./Sources/bsp.o
+ .text          0x00000000        0x0 ./Sources/delay.o
+ .data          0x00000000        0x0 ./Sources/delay.o
+ .bss           0x00000000        0x0 ./Sources/delay.o
+ .text._ZN5USBDM6waitUSEm
+                0x00000000       0x54 ./Sources/delay.o
+ .text._ZN5USBDM6waitMSEm
+                0x00000000       0x54 ./Sources/delay.o
+ .text._ZN5USBDM4waitEf
+                0x00000000       0x48 ./Sources/delay.o
+ .text._ZN5USBDM6waitUSEmPFbvE
+                0x00000000       0x84 ./Sources/delay.o
+ .text._ZN5USBDM6waitMSEmPFbvE
+                0x00000000       0x80 ./Sources/delay.o
+ .text._ZN5USBDM4waitEfPFbvE
+                0x00000000       0x74 ./Sources/delay.o
+ .comment       0x00000000       0x45 ./Sources/delay.o
+ .ARM.attributes
+                0x00000000       0x2c ./Sources/delay.o
+ .group         0x00000000        0xc ./Sources/hardware.o
+ .text          0x00000000        0x0 ./Sources/hardware.o
+ .data          0x00000000        0x0 ./Sources/hardware.o
+ .bss           0x00000000        0x0 ./Sources/hardware.o
+ .text._ZN5USBDM12PitBasicInfo17unhandledCallbackEv
+                0x00000000       0x14 ./Sources/hardware.o
+ .text.startup.cpp_initialise
+                0x00000000        0x4 ./Sources/hardware.o
+ .text          0x00000000        0x0 ./Sources/i2c.o
+ .data          0x00000000        0x0 ./Sources/i2c.o
+ .bss           0x00000000        0x0 ./Sources/i2c.o
+ .comment       0x00000000       0x45 ./Sources/i2c.o
+ .ARM.attributes
+                0x00000000       0x2c ./Sources/i2c.o
+ .text          0x00000000        0x0 ./Sources/main.o
+ .data          0x00000000        0x0 ./Sources/main.o
+ .bss           0x00000000        0x0 ./Sources/main.o
+ .text          0x00000000        0x0 ./Sources/spi.o
+ .data          0x00000000        0x0 ./Sources/spi.o
+ .bss           0x00000000        0x0 ./Sources/spi.o
+ .comment       0x00000000       0x45 ./Sources/spi.o
+ .ARM.attributes
+                0x00000000       0x2c ./Sources/spi.o
+ .text          0x00000000        0x0 ./Sources/usbdmError.o
+ .data          0x00000000        0x0 ./Sources/usbdmError.o
+ .bss           0x00000000        0x0 ./Sources/usbdmError.o
+ .rodata._ZN5USBDM15getErrorMessageENS_9ErrorCodeE.str1.4
+                0x00000000        0xe ./Sources/usbdmError.o
+ .text._ZN5USBDM15getErrorMessageENS_9ErrorCodeE
+                0x00000000       0x18 ./Sources/usbdmError.o
+ .rodata.str1.4
+                0x00000000      0x1e0 ./Sources/usbdmError.o
+ .rodata._ZN5USBDML8messagesE
+                0x00000000       0x50 ./Sources/usbdmError.o
+ .text          0x00000000        0x0 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++_nano.a(atexit_arm.o)
+ .data          0x00000000        0x0 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++_nano.a(atexit_arm.o)
+ .bss           0x00000000        0x0 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++_nano.a(atexit_arm.o)
+ .text          0x00000000        0x0 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++_nano.a(del_ops.o)
+ .data          0x00000000        0x0 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++_nano.a(del_ops.o)
+ .bss           0x00000000        0x0 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++_nano.a(del_ops.o)
+ .text          0x00000000        0x0 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++_nano.a(del_op.o)
+ .data          0x00000000        0x0 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++_nano.a(del_op.o)
+ .bss           0x00000000        0x0 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++_nano.a(del_op.o)
+ .text          0x00000000        0x0 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libm.a(libm_a-sf_round.o)
+ .data          0x00000000        0x0 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libm.a(libm_a-sf_round.o)
+ .bss           0x00000000        0x0 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libm.a(libm_a-sf_round.o)
+ .text.roundf   0x00000000       0x48 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libm.a(libm_a-sf_round.o)
+ .debug_frame   0x00000000       0x28 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libm.a(libm_a-sf_round.o)
+ .ARM.attributes
+                0x00000000       0x2c /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libm.a(libm_a-sf_round.o)
+ .data          0x00000000        0x0 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v6-m/nofp/libgcc.a(_udivsi3.o)
+ .bss           0x00000000        0x0 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v6-m/nofp/libgcc.a(_udivsi3.o)
+ .text          0x00000000      0x1d4 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v6-m/nofp/libgcc.a(_divsi3.o)
+ .data          0x00000000        0x0 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v6-m/nofp/libgcc.a(_divsi3.o)
+ .bss           0x00000000        0x0 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v6-m/nofp/libgcc.a(_divsi3.o)
+ .debug_frame   0x00000000       0x20 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v6-m/nofp/libgcc.a(_divsi3.o)
+ .debug_line_str
+                0x00000000       0xc2 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v6-m/nofp/libgcc.a(_divsi3.o)
+ .ARM.attributes
+                0x00000000       0x1e /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v6-m/nofp/libgcc.a(_divsi3.o)
+ .data          0x00000000        0x0 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v6-m/nofp/libgcc.a(_dvmd_tls.o)
+ .bss           0x00000000        0x0 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v6-m/nofp/libgcc.a(_dvmd_tls.o)
+ .text          0x00000000       0x48 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v6-m/nofp/libgcc.a(_aeabi_ldivmod.o)
+ .data          0x00000000        0x0 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v6-m/nofp/libgcc.a(_aeabi_ldivmod.o)
+ .bss           0x00000000        0x0 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v6-m/nofp/libgcc.a(_aeabi_ldivmod.o)
+ .debug_line_str
+                0x00000000       0xc2 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v6-m/nofp/libgcc.a(_aeabi_ldivmod.o)
+ .ARM.attributes
+                0x00000000       0x1e /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v6-m/nofp/libgcc.a(_aeabi_ldivmod.o)
+ .text          0x00000000       0x40 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v6-m/nofp/libgcc.a(_aeabi_uldivmod.o)
+ .data          0x00000000        0x0 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v6-m/nofp/libgcc.a(_aeabi_uldivmod.o)
+ .bss           0x00000000        0x0 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v6-m/nofp/libgcc.a(_aeabi_uldivmod.o)
+ .debug_line_str
+                0x00000000       0xc2 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v6-m/nofp/libgcc.a(_aeabi_uldivmod.o)
+ .ARM.attributes
+                0x00000000       0x1e /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v6-m/nofp/libgcc.a(_aeabi_uldivmod.o)
+ .text          0x00000000        0x0 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v6-m/nofp/libgcc.a(_muldi3.o)
+ .data          0x00000000        0x0 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v6-m/nofp/libgcc.a(_muldi3.o)
+ .bss           0x00000000        0x0 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v6-m/nofp/libgcc.a(_muldi3.o)
+ .text.__muldi3
+                0x00000000       0x5c /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v6-m/nofp/libgcc.a(_muldi3.o)
+ .debug_frame   0x00000000       0x34 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v6-m/nofp/libgcc.a(_muldi3.o)
+ .ARM.attributes
+                0x00000000       0x2c /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v6-m/nofp/libgcc.a(_muldi3.o)
+ .text          0x00000000        0x0 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v6-m/nofp/libgcc.a(_udivmoddi4.o)
+ .data          0x00000000        0x0 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v6-m/nofp/libgcc.a(_udivmoddi4.o)
+ .bss           0x00000000        0x0 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v6-m/nofp/libgcc.a(_udivmoddi4.o)
+ .text.__udivmoddi4
+                0x00000000      0x198 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v6-m/nofp/libgcc.a(_udivmoddi4.o)
+ .ARM.extab.text.__udivmoddi4
+                0x00000000        0x0 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v6-m/nofp/libgcc.a(_udivmoddi4.o)
+ .ARM.exidx.text.__udivmoddi4
+                0x00000000        0x8 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v6-m/nofp/libgcc.a(_udivmoddi4.o)
+ .debug_frame   0x00000000       0x3c /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v6-m/nofp/libgcc.a(_udivmoddi4.o)
+ .ARM.attributes
+                0x00000000       0x2c /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v6-m/nofp/libgcc.a(_udivmoddi4.o)
+ .text          0x00000000        0x0 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v6-m/nofp/libgcc.a(bpabi.o)
+ .data          0x00000000        0x0 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v6-m/nofp/libgcc.a(bpabi.o)
+ .bss           0x00000000        0x0 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v6-m/nofp/libgcc.a(bpabi.o)
+ .text.__gnu_ldivmod_helper
+                0x00000000       0x3c /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v6-m/nofp/libgcc.a(bpabi.o)
+ .debug_frame   0x00000000       0x38 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v6-m/nofp/libgcc.a(bpabi.o)
+ .ARM.attributes
+                0x00000000       0x2c /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v6-m/nofp/libgcc.a(bpabi.o)
+ .text          0x00000000        0x0 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v6-m/nofp/libgcc.a(addsf3.o)
+ .data          0x00000000        0x0 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v6-m/nofp/libgcc.a(addsf3.o)
+ .bss           0x00000000        0x0 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v6-m/nofp/libgcc.a(addsf3.o)
+ .text.__aeabi_fadd
+                0x00000000      0x340 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v6-m/nofp/libgcc.a(addsf3.o)
+ .debug_frame   0x00000000       0x34 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v6-m/nofp/libgcc.a(addsf3.o)
+ .ARM.attributes
+                0x00000000       0x2c /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v6-m/nofp/libgcc.a(addsf3.o)
+ .text          0x00000000        0x0 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v6-m/nofp/libgcc.a(mulsf3.o)
+ .data          0x00000000        0x0 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v6-m/nofp/libgcc.a(mulsf3.o)
+ .bss           0x00000000        0x0 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v6-m/nofp/libgcc.a(mulsf3.o)
+ .text.__aeabi_fmul
+                0x00000000      0x280 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v6-m/nofp/libgcc.a(mulsf3.o)
+ .debug_frame   0x00000000       0x38 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v6-m/nofp/libgcc.a(mulsf3.o)
+ .ARM.attributes
+                0x00000000       0x2c /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v6-m/nofp/libgcc.a(mulsf3.o)
+ .text          0x00000000        0x0 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v6-m/nofp/libgcc.a(fixsfsi.o)
+ .data          0x00000000        0x0 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v6-m/nofp/libgcc.a(fixsfsi.o)
+ .bss           0x00000000        0x0 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v6-m/nofp/libgcc.a(fixsfsi.o)
+ .text.__aeabi_f2iz
+                0x00000000       0x40 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v6-m/nofp/libgcc.a(fixsfsi.o)
+ .debug_frame   0x00000000       0x20 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v6-m/nofp/libgcc.a(fixsfsi.o)
+ .ARM.attributes
+                0x00000000       0x2c /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v6-m/nofp/libgcc.a(fixsfsi.o)
+ .text          0x00000000       0x3c /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v6-m/nofp/libgcc.a(_clzsi2.o)
+ .data          0x00000000        0x0 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v6-m/nofp/libgcc.a(_clzsi2.o)
+ .bss           0x00000000        0x0 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v6-m/nofp/libgcc.a(_clzsi2.o)
+ .debug_line_str
+                0x00000000       0xc2 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v6-m/nofp/libgcc.a(_clzsi2.o)
+ .ARM.attributes
+                0x00000000       0x1e /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v6-m/nofp/libgcc.a(_clzsi2.o)
+ .text          0x00000000       0x18 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v6-m/nofp/libgcc.a(_clzdi2.o)
+ .data          0x00000000        0x0 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v6-m/nofp/libgcc.a(_clzdi2.o)
+ .bss           0x00000000        0x0 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v6-m/nofp/libgcc.a(_clzdi2.o)
+ .debug_line_str
+                0x00000000       0xc2 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v6-m/nofp/libgcc.a(_clzdi2.o)
+ .ARM.attributes
+                0x00000000       0x1e /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v6-m/nofp/libgcc.a(_clzdi2.o)
+ .text          0x00000000        0x0 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v6-m/nofp/libgcc.a(_divdi3.o)
+ .data          0x00000000        0x0 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v6-m/nofp/libgcc.a(_divdi3.o)
+ .bss           0x00000000        0x0 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v6-m/nofp/libgcc.a(_divdi3.o)
+ .text.__divdi3
+                0x00000000      0x1e4 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v6-m/nofp/libgcc.a(_divdi3.o)
+ .ARM.extab.text.__divdi3
+                0x00000000        0x0 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v6-m/nofp/libgcc.a(_divdi3.o)
+ .ARM.exidx.text.__divdi3
+                0x00000000        0x8 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v6-m/nofp/libgcc.a(_divdi3.o)
+ .debug_frame   0x00000000       0x3c /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v6-m/nofp/libgcc.a(_divdi3.o)
+ .ARM.attributes
+                0x00000000       0x2c /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v6-m/nofp/libgcc.a(_divdi3.o)
+ .text          0x00000000        0x0 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-exit.o)
+ .data          0x00000000        0x0 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-exit.o)
+ .bss           0x00000000        0x0 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-exit.o)
+ .text          0x00000000        0x0 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-init.o)
+ .data          0x00000000        0x0 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-init.o)
+ .bss           0x00000000        0x0 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-init.o)
+ .text          0x00000000        0x0 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-reent.o)
+ .data          0x00000000        0x0 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-reent.o)
+ .bss           0x00000000        0x0 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-reent.o)
+ .text._reclaim_reent
+                0x00000000       0xc0 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-reent.o)
+ .bss.errno     0x00000000        0x4 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-reent.o)
+ .debug_frame   0x00000000       0x2c /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-reent.o)
+ .ARM.attributes
+                0x00000000       0x2c /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-reent.o)
+ .text          0x00000000        0x0 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-impure.o)
+ .data          0x00000000        0x0 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-impure.o)
+ .bss           0x00000000        0x0 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-impure.o)
+ .text          0x00000000        0x0 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-malloc.o)
+ .data          0x00000000        0x0 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-malloc.o)
+ .bss           0x00000000        0x0 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-malloc.o)
+ .text.malloc   0x00000000       0x14 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-malloc.o)
+ .text          0x00000000        0x0 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-mallocr.o)
+ .data          0x00000000        0x0 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-mallocr.o)
+ .bss           0x00000000        0x0 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-mallocr.o)
+ .text.sbrk_aligned
+                0x00000000       0x44 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-mallocr.o)
+ .text._malloc_r
+                0x00000000      0x100 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-mallocr.o)
+ .bss.__malloc_sbrk_start
+                0x00000000        0x4 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-mallocr.o)
+ .text          0x00000000        0x0 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-cxa_atexit.o)
+ .data          0x00000000        0x0 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-cxa_atexit.o)
+ .bss           0x00000000        0x0 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-cxa_atexit.o)
+ .rodata.__cxa_atexit_dummy
+                0x00000000        0x4 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-cxa_atexit.o)
+ .text          0x00000000        0x0 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-findfp.o)
+ .data          0x00000000        0x0 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-findfp.o)
+ .bss           0x00000000        0x0 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-findfp.o)
+ .text.std      0x00000000       0x6c /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-findfp.o)
+ .text.stdio_exit_handler
+                0x00000000       0x1c /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-findfp.o)
+ .text.cleanup_stdio
+                0x00000000       0x3c /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-findfp.o)
+ .text.__fp_lock
+                0x00000000       0x18 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-findfp.o)
+ .text.__fp_unlock
+                0x00000000       0x18 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-findfp.o)
+ .text.global_stdio_init.part.0
+                0x00000000       0x3c /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-findfp.o)
+ .text.__sfp_lock_acquire
+                0x00000000       0x10 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-findfp.o)
+ .text.__sfp_lock_release
+                0x00000000       0x10 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-findfp.o)
+ .text.__sfp    0x00000000       0xa8 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-findfp.o)
+ .text.__sinit  0x00000000       0x30 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-findfp.o)
+ .text.__fp_lock_all
+                0x00000000       0x1c /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-findfp.o)
+ .text.__fp_unlock_all
+                0x00000000       0x1c /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-findfp.o)
+ .data.__sglue  0x00000000        0xc /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-findfp.o)
+ .text          0x00000000        0x0 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-stdio.o)
+ .data          0x00000000        0x0 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-stdio.o)
+ .bss           0x00000000        0x0 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-stdio.o)
+ .text.__sread  0x00000000       0x28 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-stdio.o)
+ .text.__seofread
+                0x00000000        0x4 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-stdio.o)
+ .text.__swrite
+                0x00000000       0x38 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-stdio.o)
+ .text.__sseek  0x00000000       0x2c /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-stdio.o)
+ .text.__sclose
+                0x00000000        0xc /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-stdio.o)
+ .debug_frame   0x00000000       0x90 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-stdio.o)
+ .ARM.attributes
+                0x00000000       0x2c /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-stdio.o)
+ .text          0x00000000        0x0 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-mlock.o)
+ .data          0x00000000        0x0 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-mlock.o)
+ .bss           0x00000000        0x0 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-mlock.o)
+ .text          0x00000000        0x0 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-on_exit_args.o)
+ .data          0x00000000        0x0 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-on_exit_args.o)
+ .bss           0x00000000        0x0 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-on_exit_args.o)
+ .rodata.__on_exit_args
+                0x00000000        0x4 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-on_exit_args.o)
+ .bss._on_exit_args_instance
+                0x00000000      0x108 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-on_exit_args.o)
+ .ARM.attributes
+                0x00000000       0x2c /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-on_exit_args.o)
+ .text          0x00000000        0x0 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-readr.o)
+ .data          0x00000000        0x0 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-readr.o)
+ .bss           0x00000000        0x0 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-readr.o)
+ .text._read_r  0x00000000       0x28 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-readr.o)
+ .debug_frame   0x00000000       0x2c /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-readr.o)
+ .ARM.attributes
+                0x00000000       0x2c /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-readr.o)
+ .text          0x00000000        0x0 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-sbrkr.o)
+ .data          0x00000000        0x0 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-sbrkr.o)
+ .bss           0x00000000        0x0 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-sbrkr.o)
+ .text._sbrk_r  0x00000000       0x24 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-sbrkr.o)
+ .debug_frame   0x00000000       0x2c /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-sbrkr.o)
+ .ARM.attributes
+                0x00000000       0x2c /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-sbrkr.o)
+ .text          0x00000000        0x0 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-writer.o)
+ .data          0x00000000        0x0 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-writer.o)
+ .bss           0x00000000        0x0 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-writer.o)
+ .text._write_r
+                0x00000000       0x28 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-writer.o)
+ .debug_frame   0x00000000       0x2c /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-writer.o)
+ .ARM.attributes
+                0x00000000       0x2c /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-writer.o)
+ .text          0x00000000        0x0 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-fwalk.o)
+ .data          0x00000000        0x0 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-fwalk.o)
+ .bss           0x00000000        0x0 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-fwalk.o)
+ .text._fwalk_sglue
+                0x00000000       0x38 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-fwalk.o)
+ .debug_frame   0x00000000       0x34 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-fwalk.o)
+ .ARM.attributes
+                0x00000000       0x2c /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-fwalk.o)
+ .text          0x00000000        0x0 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-memset.o)
+ .data          0x00000000        0x0 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-memset.o)
+ .bss           0x00000000        0x0 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-memset.o)
+ .text          0x00000000        0x0 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-freer.o)
+ .data          0x00000000        0x0 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-freer.o)
+ .bss           0x00000000        0x0 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-freer.o)
+ .text          0x00000000        0x0 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-lock.o)
+ .data          0x00000000        0x0 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-lock.o)
+ .bss           0x00000000        0x0 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-lock.o)
+ .text.__retarget_lock_init
+                0x00000000        0x2 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-lock.o)
+ .text.__retarget_lock_init_recursive
+                0x00000000        0x2 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-lock.o)
+ .text.__retarget_lock_close
+                0x00000000        0x2 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-lock.o)
+ .text.__retarget_lock_close_recursive
+                0x00000000        0x2 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-lock.o)
+ .text.__retarget_lock_acquire
+                0x00000000        0x2 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-lock.o)
+ .text.__retarget_lock_try_acquire
+                0x00000000        0x4 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-lock.o)
+ .text.__retarget_lock_try_acquire_recursive
+                0x00000000        0x4 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-lock.o)
+ .text.__retarget_lock_release
+                0x00000000        0x2 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-lock.o)
+ .bss.__lock___arc4random_mutex
+                0x00000000        0x1 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-lock.o)
+ .bss.__lock___dd_hash_mutex
+                0x00000000        0x1 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-lock.o)
+ .bss.__lock___tz_mutex
+                0x00000000        0x1 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-lock.o)
+ .bss.__lock___env_recursive_mutex
+                0x00000000        0x1 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-lock.o)
+ .bss.__lock___at_quick_exit_mutex
+                0x00000000        0x1 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-lock.o)
+ .bss.__lock___atexit_recursive_mutex
+                0x00000000        0x1 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-lock.o)
+ .bss.__lock___sfp_recursive_mutex
+                0x00000000        0x1 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-lock.o)
+ .text          0x00000000        0x0 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-closer.o)
+ .data          0x00000000        0x0 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-closer.o)
+ .bss           0x00000000        0x0 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-closer.o)
+ .text._close_r
+                0x00000000       0x24 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-closer.o)
+ .debug_frame   0x00000000       0x2c /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-closer.o)
+ .ARM.attributes
+                0x00000000       0x2c /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-closer.o)
+ .text          0x00000000        0x0 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-fflush.o)
+ .data          0x00000000        0x0 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-fflush.o)
+ .bss           0x00000000        0x0 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-fflush.o)
+ .text.__sflush_r
+                0x00000000      0x10c /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-fflush.o)
+ .text._fflush_r
+                0x00000000       0x56 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-fflush.o)
+ .text.fflush   0x00000000       0x30 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-fflush.o)
+ .debug_frame   0x00000000       0x68 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-fflush.o)
+ .ARM.attributes
+                0x00000000       0x2c /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-fflush.o)
+ .text          0x00000000        0x0 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-lseekr.o)
+ .data          0x00000000        0x0 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-lseekr.o)
+ .bss           0x00000000        0x0 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-lseekr.o)
+ .text._lseek_r
+                0x00000000       0x28 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-lseekr.o)
+ .debug_frame   0x00000000       0x2c /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-lseekr.o)
+ .ARM.attributes
+                0x00000000       0x2c /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-lseekr.o)
+ .text          0x00000000        0x0 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v6-m/nofp/crtend.o
+ .data          0x00000000        0x0 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v6-m/nofp/crtend.o
+ .bss           0x00000000        0x0 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v6-m/nofp/crtend.o
+ .rodata.all_implied_fbits
+                0x00000000       0x24 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v6-m/nofp/crtend.o
+ .text          0x00000000        0x0 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v6-m/nofp/crtn.o
+ .data          0x00000000        0x0 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v6-m/nofp/crtn.o
+ .bss           0x00000000        0x0 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v6-m/nofp/crtn.o
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+aips             0x40000000         0x00080000         rw
+gpio             0x400ff000         0x00001000         rw
+bme              0x44000000         0x1c000000         rw
+peripherals      0xe0000000         0x00100000         rw
+romTable         0xf0002000         0x00001000         rw
+mcm              0xf0003000         0x00001000         rw
+fgpio            0xf8000000         0x08000000         rw
+flash            0x00000000         0x00002000         xr
+ram_high         0x20000000         0x00000300         xrw
+ram_low          0x1fffff00         0x00000100         xrw
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+LOAD /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v6-m/nofp/crti.o
+LOAD /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v6-m/nofp/crtbegin.o
+LOAD /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/crt0.o
+LOAD ./qv/qv.o
+LOAD ./qf/qep_hsm.o
+LOAD ./qf/qep_msm.o
+LOAD ./qf/qf_act.o
+LOAD ./qf/qf_actq.o
+LOAD ./qf/qf_defer.o
+LOAD ./qf/qf_dyn.o
+LOAD ./qf/qf_mem.o
+LOAD ./qf/qf_ps.o
+LOAD ./qf/qf_qact.o
+LOAD ./qf/qf_qeq.o
+LOAD ./qf/qf_qmact.o
+LOAD ./qf/qf_time.o
+LOAD ./gnu/qv_port.o
+LOAD ./Startup_Code/console.o
+LOAD ./Startup_Code/ics.o
+LOAD ./Startup_Code/newlib_stubs.o
+LOAD ./Startup_Code/security.o
+LOAD ./Startup_Code/startup_ARMLtdGCC.o
+LOAD ./Startup_Code/system-gcc.o
+LOAD ./Startup_Code/system.o
+LOAD ./Startup_Code/vectors.o
+LOAD ./Sources/DustCollector.o
+LOAD ./Sources/Sampler.o
+LOAD ./Sources/bsp.o
+LOAD ./Sources/delay.o
+LOAD ./Sources/hardware.o
+LOAD ./Sources/i2c.o
+LOAD ./Sources/main.o
+LOAD ./Sources/spi.o
+LOAD ./Sources/usbdmError.o
+LOAD /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++_nano.a
+LOAD /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libm.a
+START GROUP
+LOAD /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v6-m/nofp/libgcc.a
+LOAD /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a
+END GROUP
+START GROUP
+LOAD /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v6-m/nofp/libgcc.a
+LOAD /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a
+END GROUP
+LOAD /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v6-m/nofp/crtend.o
+LOAD /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v6-m/nofp/crtn.o
+                0x00000090                        __stack_size = 0x90
+                0x00000000                        __heap_size = 0x0
+                0x00000000                        __sram_u_size = 0x0
+                0x00000000                        FORCE_BOOT_LOADER = DEFINED (bootloaderInformation)?0x1:0x0
+                0x00000000                        BOOT_LOADER_SIZE = DEFINED (BOOT_LOADER_SIZE)?BOOT_LOADER_SIZE:(0x4000 * FORCE_BOOT_LOADER)
+                0x00000090                        PROVIDE (__stack_size__ = __stack_size)
+                0x00000000                        PROVIDE (__heap_size__ = __heap_size)
+                [!provide]                        PROVIDE (__HardReset = Reset_Handler)
+                [!provide]                        PROVIDE (_start = main)
+
+.interrupts     0x00000000      0x410
+ FILL mask 0xff
+                0x00000000                        __flash_start = .
+                0x00000000                        __VECTOR_TABLE = .
+ *(.interrupt_vectors)
+ .interrupt_vectors
+                0x00000000       0xb8 ./Startup_Code/vectors.o
+                0x00000000                __vector_table
+ *(.isr_vector)
+                0x00000001                        ASSERT ((. != __flash_start), No reset vector found)
+                0x000000b8                        __VECTOR_TABLE_END = .
+                0x000003c0                        . = (__flash_start + 0x3c0)
+ *fill*         0x000000b8      0x308 ff
+ *(.bootloader_configuration)
+                0x000003c0                        __bootloaderInformation = .
+ *(.bootloaderInformation)
+                0x00000001                        ASSERT (((BOOT_LOADER_SIZE == 0x0) || (. != __bootloaderInformation)), No bootloader information)
+                0x00000400                        . = (__flash_start + 0x400)
+ *fill*         0x000003c0       0x40 ff
+ *(.security_information)
+ .security_information
+                0x00000400       0x10 ./Startup_Code/security.o
+                0x00000400                securityInfo
+                0x00000001                        ASSERT ((. == (__flash_start + 0x410)), No Freescale security information)
+ *(.FlashConfig)
+ *(.freertos_information)
+                0x00000000                        M_VECTOR_RAM_SIZE = DEFINED (__ram_vector_table__)?(__VECTOR_TABLE_END - __VECTOR_TABLE):0x0
+
+.text           0x00000410     0x1ff8
+ *(.text)
+ .text          0x00000410       0x80 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/crt0.o
+                0x00000410                _stack_init
+                0x0000041c                _mainCRTStartup
+                0x0000041c                _start
+ .text          0x00000490       0x44 ./Startup_Code/startup_ARMLtdGCC.o
+                0x00000490                Reset_Handler
+ .text          0x000004d4      0x114 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v6-m/nofp/libgcc.a(_udivsi3.o)
+                0x000004d4                __udivsi3
+                0x000004d4                __aeabi_uidiv
+                0x000005e0                __aeabi_uidivmod
+ .text          0x000005e8        0x4 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v6-m/nofp/libgcc.a(_dvmd_tls.o)
+                0x000005e8                __aeabi_ldiv0
+                0x000005e8                __aeabi_idiv0
+ *(.text*)
+ .text.deregister_tm_clones
+                0x000005ec       0x20 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v6-m/nofp/crtbegin.o
+ .text.register_tm_clones
+                0x0000060c       0x28 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v6-m/nofp/crtbegin.o
+ .text.__do_global_dtors_aux
+                0x00000634       0x2c /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v6-m/nofp/crtbegin.o
+ .text.frame_dummy
+                0x00000660       0x24 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v6-m/nofp/crtbegin.o
+ .text._ZN2QP2QF4initEv
+                0x00000684       0x40 ./qv/qv.o
+                0x00000684                QP::QF::init()
+ .text._ZN2QP2QF3runEv
+                0x000006c4       0x98 ./qv/qv.o
+                0x000006c4                QP::QF::run()
+ .text._ZN2QP7QActive5startEtPPKNS_4QEvtEjPvjPKv
+                0x0000075c       0x48 ./qv/qv.o
+                0x0000075c                QP::QActive::start(unsigned short, QP::QEvt const**, unsigned int, void*, unsigned int, void const*)
+ .text._ZN2QP4QAsm3topEPvPKNS_4QEvtE
+                0x000007a4        0x4 ./qf/qep_hsm.o
+                0x000007a4                QP::QAsm::top(void*, QP::QEvt const*)
+ .text._ZN2QP4QHsm4initEPKvj
+                0x000007a8       0xe8 ./qf/qep_hsm.o
+                0x000007a8                QP::QHsm::init(void const*, unsigned int)
+ .text._ZN2QP4QHsm8hsm_tranERA6_PFjPvPKNS_4QEvtEEj
+                0x00000890      0x2a8 ./qf/qep_hsm.o
+                0x00000890                QP::QHsm::hsm_tran(unsigned int (* (&) [6])(void*, QP::QEvt const*), unsigned int)
+ .text._ZN2QP4QHsm8dispatchEPKNS_4QEvtEj
+                0x00000b38      0x18c ./qf/qep_hsm.o
+                0x00000b38                QP::QHsm::dispatch(QP::QEvt const*, unsigned int)
+ .text._ZN2QP2QF6bzero_EPvj
+                0x00000cc4       0x10 ./qf/qf_act.o
+                0x00000cc4                QP::QF::bzero_(void*, unsigned int)
+ .text.startup._GLOBAL__sub_I__ZN2QP7QActive9registry_E
+                0x00000cd4       0x30 ./qf/qf_act.o
+ .text._ZN2QP7QActive5post_EPKNS_4QEvtEjPKv
+                0x00000d04       0xc0 ./qf/qf_actq.o
+                0x00000d04                QP::QActive::post_(QP::QEvt const*, unsigned int, void const*)
+ .text._ZN2QP7QActive4get_Ev
+                0x00000dc4       0x5c ./qf/qf_actq.o
+                0x00000dc4                QP::QActive::get_()
+ .text._ZN2QP2QF2gcEPKNS_4QEvtE
+                0x00000e20       0x80 ./qf/qf_dyn.o
+                0x00000e20                QP::QF::gc(QP::QEvt const*)
+ .text._ZN2QP6QMPool3putEPvj
+                0x00000ea0       0x40 ./qf/qf_mem.o
+                0x00000ea0                QP::QMPool::put(void*, unsigned int)
+ .text._ZN2QP7QActive4initEj
+                0x00000ee0       0x10 ./qf/qf_qact.o
+                0x00000ee0                QP::QActive::init(unsigned int)
+ .text._ZN2QP7QActiveC2EPFjPvPKNS_4QEvtEE
+                0x00000ef0       0x28 ./qf/qf_qact.o
+                0x00000ef0                QP::QActive::QActive(unsigned int (*)(void*, QP::QEvt const*))
+                0x00000ef0                QP::QActive::QActive(unsigned int (*)(void*, QP::QEvt const*))
+ .text._ZN2QP7QActive9register_Ev
+                0x00000f18       0xb8 ./qf/qf_qact.o
+                0x00000f18                QP::QActive::register_()
+ .text._ZN2QP7QActive8dispatchEPKNS_4QEvtEj
+                0x00000fd0        0x8 ./qf/qf_qact.o
+                0x00000fd0                QP::QActive::dispatch(QP::QEvt const*, unsigned int)
+ .text._ZN2QP7QActive4initEPKvj
+                0x00000fd8        0x8 ./qf/qf_qact.o
+                0x00000fd8                QP::QActive::init(void const*, unsigned int)
+ .text._ZN2QP7QEQueue4initEPPKNS_4QEvtEj
+                0x00000fe0       0x20 ./qf/qf_qeq.o
+                0x00000fe0                QP::QEQueue::init(QP::QEvt const**, unsigned int)
+ .text._ZN2QP8QTimeEvtC2EPNS_7QActiveEtj
+                0x00001000       0x38 ./qf/qf_time.o
+                0x00001000                QP::QTimeEvt::QTimeEvt(QP::QActive*, unsigned short, unsigned int)
+                0x00001000                QP::QTimeEvt::QTimeEvt(QP::QActive*, unsigned short, unsigned int)
+ .text._ZN2QP8QTimeEvt4armXEmm
+                0x00001038       0x5c ./qf/qf_time.o
+                0x00001038                QP::QTimeEvt::armX(unsigned long, unsigned long)
+ .text._ZN2QP8QTimeEvt6disarmEv
+                0x00001094       0x2c ./qf/qf_time.o
+                0x00001094                QP::QTimeEvt::disarm()
+ .text._ZN2QP8QTimeEvt4tickEjPKv
+                0x000010c0       0x98 ./qf/qf_time.o
+                0x000010c0                QP::QTimeEvt::tick(unsigned int, void const*)
+ .text.startup._GLOBAL__sub_I__ZN2QP8QTimeEvt12timeEvtHead_E
+                0x00001158       0x20 ./qf/qf_time.o
+ .text.QV_init  0x00001178        0x4 ./gnu/qv_port.o
+                0x00001178                QV_init
+ .text.QF_qlog2
+                0x0000117c       0x38 ./gnu/qv_port.o
+                0x0000117c                QF_qlog2
+ .text._ZN5USBDM4Uart16_isCharAvailableEv
+                0x000011b4        0xc ./Startup_Code/console.o
+                0x000011b4                USBDM::Uart::_isCharAvailable()
+ .text._ZN5USBDM4Uart11flushOutputEv
+                0x000011c0        0xc ./Startup_Code/console.o
+                0x000011c0                USBDM::Uart::flushOutput()
+ .text._ZN5USBDM4Uart10flushInputEv
+                0x000011cc        0xc ./Startup_Code/console.o
+                0x000011cc                USBDM::Uart::flushInput()
+ .text._ZN5USBDM12Uart_basic_TINS_9Uart0InfoEED2Ev
+                0x000011d8        0x4 ./Startup_Code/console.o
+                0x000011d8                USBDM::Uart_basic_T<USBDM::Uart0Info>::~Uart_basic_T()
+                0x000011d8                USBDM::Uart_basic_T<USBDM::Uart0Info>::~Uart_basic_T()
+ .text._ZN5USBDM6Uart_TINS_9Uart0InfoEE10clearErrorEv
+                0x000011dc        0x8 ./Startup_Code/console.o
+                0x000011dc                USBDM::Uart_T<USBDM::Uart0Info>::clearError()
+ .text._ZN5USBDM12Uart_basic_TINS_9Uart0InfoEED0Ev
+                0x000011e4       0x10 ./Startup_Code/console.o
+                0x000011e4                USBDM::Uart_basic_T<USBDM::Uart0Info>::~Uart_basic_T()
+ .text._ZN5USBDM4Uart9_readCharEv
+                0x000011f4       0x40 ./Startup_Code/console.o
+                0x000011f4                USBDM::Uart::_readChar()
+ .text._ZN5USBDM4Uart10_writeCharEc
+                0x00001234       0x48 ./Startup_Code/console.o
+                0x00001234                USBDM::Uart::_writeChar(char)
+ .text._ZN5USBDM4Uart17setBaudRate_basicEmmm
+                0x0000127c       0x34 ./Startup_Code/console.o
+                0x0000127c                USBDM::Uart::setBaudRate_basic(unsigned long, unsigned long, unsigned long)
+ .text._ZN5USBDM12Uart_basic_TINS_9Uart0InfoEE11setBaudRateEj
+                0x000012b0       0x10 ./Startup_Code/console.o
+                0x000012b0                USBDM::Uart_basic_T<USBDM::Uart0Info>::setBaudRate(unsigned int)
+ .text.console_initialise
+                0x000012c0       0x38 ./Startup_Code/console.o
+                0x000012c0                console_initialise
+ .text.startup._GLOBAL__sub_I__ZN5USBDM9log_errorEPKc
+                0x000012f8       0x6c ./Startup_Code/console.o
+ .text.clock_initialise
+                0x00001364       0x44 ./Startup_Code/ics.o
+                0x00001364                clock_initialise
+ .text._exit    0x000013a8        0x4 ./Startup_Code/newlib_stubs.o
+                0x000013a8                _exit
+ .text.rtc_initialise
+                0x000013ac        0x4 ./Startup_Code/system.o
+                0x000013ac                rtc_initialise
+ .text.software_init_hook
+                0x000013b0        0x4 ./Startup_Code/system.o
+                0x000013b0                software_init_hook
+ .text.SystemInitLowLevel
+                0x000013b4       0x38 ./Startup_Code/system.o
+                0x000013b4                SystemInitLowLevel
+ .text.startup.SystemInit
+                0x000013ec       0x24 ./Startup_Code/system.o
+                0x000013ec                SystemInit
+ .text.Default_Handler
+                0x00001410       0x14 ./Startup_Code/vectors.o
+                0x00001410                RTC_Alarm_IRQHandler
+                0x00001410                I2C0_IRQHandler
+                0x00001410                PendSV_Handler
+                0x00001410                NMI_Handler
+                0x00001410                UART0_IRQHandler
+                0x00001410                ADC0_IRQHandler
+                0x00001410                FTMRE_IRQHandler
+                0x00001410                IRQ_IRQHandler
+                0x00001410                Default_Handler
+                0x00001410                ACMP0_IRQHandler
+                0x00001410                PWT_IRQHandler
+                0x00001410                SVC_Handler
+                0x00001410                ICS_IRQHandler
+                0x00001410                KBI0_IRQHandler
+                0x00001410                PMC_IRQHandler
+                0x00001410                SPI0_IRQHandler
+                0x00001410                FTM0_IRQHandler
+                0x00001410                WDOG_IRQHandler
+                0x00001410                FTM2_IRQHandler
+                0x00001410                ACMP1_IRQHandler
+                0x00001410                KBI1_IRQHandler
+ .text.HardFault_Handler
+                0x00001424        0x4 ./Startup_Code/vectors.o
+                0x00001424                HardFault_Handler
+ .text._ZN5USBDM9PitBase_TINS_7PitInfoEE10irqHandlerILNS_13PitChannelNumE0EEEvv
+                0x00001428       0x38 ./Startup_Code/vectors.o
+                0x00001428                void USBDM::PitBase_T<USBDM::PitInfo>::irqHandler<(USBDM::PitChannelNum)0>()
+ .text._ZN5USBDM9PitBase_TINS_7PitInfoEE10irqHandlerILNS_13PitChannelNumE1EEEvv
+                0x00001460       0x38 ./Startup_Code/vectors.o
+                0x00001460                void USBDM::PitBase_T<USBDM::PitInfo>::irqHandler<(USBDM::PitChannelNum)1>()
+ .text._ZN25DustCollectorStateMachineD2Ev
+                0x00001498        0x4 ./Sources/DustCollector.o
+                0x00001498                DustCollectorStateMachine::~DustCollectorStateMachine()
+                0x00001498                DustCollectorStateMachine::~DustCollectorStateMachine()
+ .text._ZN25DustCollectorStateMachineD0Ev
+                0x0000149c       0x10 ./Sources/DustCollector.o
+                0x0000149c                DustCollectorStateMachine::~DustCollectorStateMachine()
+ .text._ZN5USBDM11FormattedIO13private_writeEPKc.constprop.0.isra.0
+                0x000014ac       0x48 ./Sources/DustCollector.o
+ .text._ZN25DustCollectorStateMachine7initialEPvPKN2QP4QEvtE
+                0x000014f4       0x54 ./Sources/DustCollector.o
+                0x000014f4                DustCollectorStateMachine::initial(void*, QP::QEvt const*)
+ .text._ZN5USBDM6Gpio_TILNS_8PinIndexE13ELNS_8PolarityE0EE11setInactiveEv
+                0x00001548       0x10 ./Sources/DustCollector.o
+                0x00001548                USBDM::Gpio_T<(USBDM::PinIndex)13, (USBDM::Polarity)0>::setInactive()
+ .text._ZN25DustCollectorStateMachine3offEPvPKN2QP4QEvtE
+                0x00001558       0x70 ./Sources/DustCollector.o
+                0x00001558                DustCollectorStateMachine::off(void*, QP::QEvt const*)
+ .text._ZN5USBDM6Gpio_TILNS_8PinIndexE13ELNS_8PolarityE0EE9setActiveEv
+                0x000015c8       0x10 ./Sources/DustCollector.o
+                0x000015c8                USBDM::Gpio_T<(USBDM::PinIndex)13, (USBDM::Polarity)0>::setActive()
+ .text._ZN25DustCollectorStateMachine2onEPvPKN2QP4QEvtE
+                0x000015d8       0x70 ./Sources/DustCollector.o
+                0x000015d8                DustCollectorStateMachine::on(void*, QP::QEvt const*)
+ .text._ZN5USBDM6Gpio_TILNS_8PinIndexE14ELNS_8PolarityE4294967295EE9setActiveEv
+                0x00001648       0x10 ./Sources/DustCollector.o
+                0x00001648                USBDM::Gpio_T<(USBDM::PinIndex)14, (USBDM::Polarity)4294967295>::setActive()
+ .text._ZN5USBDM6Gpio_TILNS_8PinIndexE14ELNS_8PolarityE4294967295EE11setInactiveEv
+                0x00001658       0x10 ./Sources/DustCollector.o
+                0x00001658                USBDM::Gpio_T<(USBDM::PinIndex)14, (USBDM::Polarity)4294967295>::setInactive()
+ .text._ZN25DustCollectorStateMachine4HoldEPvPKN2QP4QEvtE
+                0x00001668       0xa8 ./Sources/DustCollector.o
+                0x00001668                DustCollectorStateMachine::Hold(void*, QP::QEvt const*)
+ .text._ZN5USBDM6Gpio_TILNS_8PinIndexE15ELNS_8PolarityE4294967295EE9setActiveEv
+                0x00001710       0x10 ./Sources/DustCollector.o
+                0x00001710                USBDM::Gpio_T<(USBDM::PinIndex)15, (USBDM::Polarity)4294967295>::setActive()
+ .text._ZN5USBDM6Gpio_TILNS_8PinIndexE15ELNS_8PolarityE4294967295EE11setInactiveEv
+                0x00001720       0x10 ./Sources/DustCollector.o
+                0x00001720                USBDM::Gpio_T<(USBDM::PinIndex)15, (USBDM::Polarity)4294967295>::setInactive()
+ .text._ZN25DustCollectorStateMachine5DelayEPvPKN2QP4QEvtE
+                0x00001730       0xa4 ./Sources/DustCollector.o
+                0x00001730                DustCollectorStateMachine::Delay(void*, QP::QEvt const*)
+ .text.startup._GLOBAL__sub_I_AO_DustCollectorStateMachine
+                0x000017d4       0x40 ./Sources/DustCollector.o
+ .text._ZN5USBDM12PitBasicInfo17unhandledCallbackEv
+                0x00001814       0x14 ./Sources/Sampler.o
+                0x00001814                USBDM::PitBasicInfo::unhandledCallback()
+ .text._ZN7Sampler12getDelayTimeEv
+                0x00001828       0x40 ./Sources/Sampler.o
+                0x00001828                Sampler::getDelayTime()
+ .text._ZN7Sampler11getHoldTimeEv
+                0x00001868       0x44 ./Sources/Sampler.o
+                0x00001868                Sampler::getHoldTime()
+ .text._ZN5USBDM11GpioField_TILNS_8PinIndexE15ELS1_12ELm12EE9setOutputEv
+                0x000018ac       0x24 ./Sources/Sampler.o
+                0x000018ac                USBDM::GpioField_T<(USBDM::PinIndex)15, (USBDM::PinIndex)12, 12ul>::setOutput()
+ .text._ZN5USBDM6Gpio_TILNS_8PinIndexE12ELNS_8PolarityE0EE9setOutputEv
+                0x000018d0       0x1c ./Sources/Sampler.o
+                0x000018d0                USBDM::Gpio_T<(USBDM::PinIndex)12, (USBDM::Polarity)0>::setOutput()
+ .text._ZN5USBDM6Gpio_TILNS_8PinIndexE12ELNS_8PolarityE0EE6toggleEv
+                0x000018ec       0x10 ./Sources/Sampler.o
+                0x000018ec                USBDM::Gpio_T<(USBDM::PinIndex)12, (USBDM::Polarity)0>::toggle()
+ .text._ZN7Sampler13timerCallbackEv
+                0x000018fc      0x150 ./Sources/Sampler.o
+                0x000018fc                Sampler::timerCallback()
+ .text._ZN5USBDM9PitBase_TINS_7PitInfoEE9configureENS_13PitChannelNumERKNS_12PitBasicInfo11ChannelInitE
+                0x00001a4c      0x1e8 ./Sources/Sampler.o
+                0x00001a4c                USBDM::PitBase_T<USBDM::PitInfo>::configure(USBDM::PitChannelNum, USBDM::PitBasicInfo::ChannelInit const&)
+ .text._ZN7Sampler4initEv
+                0x00001c34      0x320 ./Sources/Sampler.o
+                0x00001c34                Sampler::init()
+ .text._ZN5USBDM11FormattedIO13private_writeEPKc.isra.0
+                0x00001f54       0x20 ./Sources/bsp.o
+ .text._ZN5USBDM11FormattedIO5ultoaEPcmNS_5RadixENS_7PaddingEib.isra.0
+                0x00001f74      0x12c ./Sources/bsp.o
+ .text._ZN5USBDM11FormattedIO13private_writeElNS_5RadixE.isra.0
+                0x000020a0       0x2c ./Sources/bsp.o
+ .text._ZN3BSP4initEv
+                0x000020cc        0x8 ./Sources/bsp.o
+                0x000020cc                BSP::init()
+ .text._ZN2QP2QF9onStartupEv
+                0x000020d4       0x3c ./Sources/bsp.o
+                0x000020d4                QP::QF::onStartup()
+ .text._ZN2QP2QV6onIdleEv
+                0x00002110        0x4 ./Sources/bsp.o
+                0x00002110                QP::QV::onIdle()
+ .text.SysTick_Handler
+                0x00002114       0x50 ./Sources/bsp.o
+                0x00002114                SysTick_Handler
+ .text.Q_onError
+                0x00002164       0x48 ./Sources/bsp.o
+                0x00002164                Q_onError
+ .text.startup.main
+                0x000021ac       0x34 ./Sources/main.o
+                0x000021ac                main
+ .text._ZN5USBDM19enableNvicInterruptE9IRQn_Typem
+                0x000021e0       0x68 ./Sources/usbdmError.o
+                0x000021e0                USBDM::enableNvicInterrupt(IRQn_Type, unsigned long)
+ .text.__aeabi_atexit
+                0x00002248        0xe /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++_nano.a(atexit_arm.o)
+                0x00002248                __aeabi_atexit
+ .text._ZdlPvj  0x00002256        0x8 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++_nano.a(del_ops.o)
+                0x00002256                operator delete(void*, unsigned int)
+ .text._ZdlPv   0x0000225e        0x8 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++_nano.a(del_op.o)
+                0x0000225e                operator delete(void*)
+ *fill*         0x00002266        0x2 
+ .text.exit     0x00002268       0x28 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-exit.o)
+                0x00002268                exit
+ .text.__libc_init_array
+                0x00002290       0x48 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-init.o)
+                0x00002290                __libc_init_array
+ .text.free     0x000022d8       0x14 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-malloc.o)
+                0x000022d8                free
+ .text.__cxa_atexit
+                0x000022ec       0x1c /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-cxa_atexit.o)
+                0x000022ec                __cxa_atexit
+ .text.__malloc_lock
+                0x00002308       0x10 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-mlock.o)
+                0x00002308                __malloc_lock
+ .text.__malloc_unlock
+                0x00002318       0x10 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-mlock.o)
+                0x00002318                __malloc_unlock
+ .text.memset   0x00002328       0x10 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-memset.o)
+                0x00002328                memset
+ .text._free_r  0x00002338       0x94 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-freer.o)
+                0x00002338                _free_r
+ .text.__retarget_lock_acquire_recursive
+                0x000023cc        0x2 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-lock.o)
+                0x000023cc                __retarget_lock_acquire_recursive
+ .text.__retarget_lock_release_recursive
+                0x000023ce        0x2 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-lock.o)
+                0x000023ce                __retarget_lock_release_recursive
+ *(.init)
+ .init          0x000023d0        0x4 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v6-m/nofp/crti.o
+                0x000023d0                _init
+ .init          0x000023d4        0x8 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v6-m/nofp/crtn.o
+ *(.fini)
+ .fini          0x000023dc        0x4 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v6-m/nofp/crti.o
+                0x000023dc                _fini
+ .fini          0x000023e0        0x8 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v6-m/nofp/crtn.o
+                0x000023e8                        __CTOR_LIST__ = .
+ *crtbegin.o(.ctors)
+ *crtbegin?.o(.ctors)
+ *(EXCLUDE_FILE(*crtend.o *crtend?.o) .ctors)
+ *(SORT_BY_NAME(.ctors.*))
+ *(.ctors)
+                0x000023e8                        __CTOR_END__ = .
+                0x000023e8                        __DTOR_LIST__ = .
+ *crtbegin.o(.dtors)
+ *crtbegin?.o(.dtors)
+ *(EXCLUDE_FILE(*crtend.o *crtend?.o) .dtors)
+ *(SORT_BY_NAME(.dtors.*))
+ *(.dtors)
+                0x000023e8                        __DTOR_END__ = .
+                0x000023e8                        . = ALIGN (0x4)
+                0x000023e8                        PROVIDE (__preinit_array_start = .)
+ *(.preinit_array*)
+                0x000023e8                        PROVIDE (__preinit_array_end = .)
+                0x000023e8                        . = ALIGN (0x4)
+                0x000023e8                        PROVIDE (__init_array_start = .)
+ *(SORT_BY_NAME(.init_array.*))
+ *(.init_array*)
+ .init_array    0x000023e8        0x4 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v6-m/nofp/crtbegin.o
+ .init_array    0x000023ec        0x4 ./qf/qf_act.o
+ .init_array    0x000023f0        0x4 ./qf/qf_time.o
+ .init_array    0x000023f4        0x4 ./Startup_Code/console.o
+ .init_array    0x000023f8        0x4 ./Startup_Code/system.o
+ .init_array    0x000023fc        0x4 ./Sources/DustCollector.o
+                0x00002400                        PROVIDE (__init_array_end = .)
+                0x00002400                        . = ALIGN (0x4)
+                [!provide]                        PROVIDE (__fini_array_start = .)
+ *(SORT_BY_NAME(.fini_array.*))
+ *(.fini_array*)
+ .fini_array    0x00002400        0x4 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v6-m/nofp/crtbegin.o
+                [!provide]                        PROVIDE (__fini_array_end = .)
+ *(.jcr*)
+ *(.eh_frame*)
+ .eh_frame      0x00002404        0x0 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v6-m/nofp/crtbegin.o
+ .eh_frame      0x00002404        0x4 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v6-m/nofp/crtend.o
+
+.glue_7         0x00002408        0x0
+ .glue_7        0x00002408        0x0 linker stubs
+
+.glue_7t        0x00002408        0x0
+ .glue_7t       0x00002408        0x0 linker stubs
+
+.vfp11_veneer   0x00002408        0x0
+ .vfp11_veneer  0x00002408        0x0 linker stubs
+
+.v4_bx          0x00002408        0x0
+ .v4_bx         0x00002408        0x0 linker stubs
+
+.iplt           0x00002408        0x0
+ .iplt          0x00002408        0x0 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v6-m/nofp/crtbegin.o
+
+.rodata         0x00002408      0x142
+ *(.rodata)
+ *(.rodata*)
+ .rodata._ZN12_GLOBAL__N_1L14Q_this_module_E
+                0x00002408        0x3 ./qv/qv.o
+ *fill*         0x0000240b        0x1 
+ .rodata._ZN12_GLOBAL__N_1L14l_reservedEvt_E
+                0x0000240c       0x10 ./qf/qep_hsm.o
+ .rodata._ZN12_GLOBAL__N_1L14Q_this_module_E
+                0x0000241c        0x8 ./qf/qep_hsm.o
+ .rodata._ZN12_GLOBAL__N_1L14Q_this_module_E
+                0x00002424        0x8 ./qf/qf_actq.o
+ .rodata._ZN12_GLOBAL__N_1L14Q_this_module_E
+                0x0000242c        0x7 ./qf/qf_dyn.o
+ *fill*         0x00002433        0x1 
+ .rodata._ZN12_GLOBAL__N_1L14Q_this_module_E
+                0x00002434        0x7 ./qf/qf_mem.o
+ *fill*         0x0000243b        0x1 
+ .rodata._ZTVN2QP7QActiveE
+                0x0000243c       0x14 ./qf/qf_qact.o
+                0x0000243c                vtable for QP::QActive
+ .rodata._ZN12_GLOBAL__N_1L14Q_this_module_E
+                0x00002450        0x8 ./qf/qf_qact.o
+ .rodata._ZN12_GLOBAL__N_1L14Q_this_module_E
+                0x00002458        0x8 ./qf/qf_time.o
+ .rodata._ZTVN5USBDM12Uart_basic_TINS_9Uart0InfoEEE
+                0x00002460       0x2c ./Startup_Code/console.o
+                0x00002460                vtable for USBDM::Uart_basic_T<USBDM::Uart0Info>
+ .rodata._ZN25DustCollectorStateMachine7initialEPvPKN2QP4QEvtE.str1.4
+                0x0000248c       0x82 ./Sources/DustCollector.o
+                                  0x9 (size before relaxing)
+ .rodata._ZN25DustCollectorStateMachine5off_hEPKN2QP4QEvtE.str1.4
+                0x0000250e        0xe ./Sources/DustCollector.o
+ .rodata._ZN25DustCollectorStateMachine4on_hEPKN2QP4QEvtE.str1.4
+                0x0000250e        0xd ./Sources/DustCollector.o
+ .rodata._ZN25DustCollectorStateMachine6Hold_hEPKN2QP4QEvtE.str1.4
+                0x0000250e       0x12 ./Sources/DustCollector.o
+ .rodata._ZN25DustCollectorStateMachine7Delay_hEPKN2QP4QEvtE.str1.4
+                0x0000250e       0x13 ./Sources/DustCollector.o
+ *fill*         0x0000250e        0x2 
+ .rodata._ZTV25DustCollectorStateMachine
+                0x00002510       0x1c ./Sources/DustCollector.o
+                0x00002510                vtable for DustCollectorStateMachine
+ .rodata.AO_DustCollectorStateMachine
+                0x0000252c        0x4 ./Sources/DustCollector.o
+                0x0000252c                AO_DustCollectorStateMachine
+ .rodata._ZN5USBDM7PitInfo24DefaultChannelInitValuesE
+                0x00002530       0x18 ./Sources/Sampler.o
+                0x00002530                USBDM::PitInfo::DefaultChannelInitValues
+ .rodata._ZN5USBDM7PitInfo7irqNumsE
+                0x00002548        0x2 ./Sources/Sampler.o
+                0x00002548                USBDM::PitInfo::irqNums
+ .rodata._ZN5USBDM11FormattedIO5ultoaEPcmNS_5RadixENS_7PaddingEib.isra.0.str1.4
+                0x0000254a       0x11 ./Sources/bsp.o
+ .rodata.Q_onError.str1.4
+                0x0000254a       0x1a ./Sources/bsp.o
+
+.ARM.extab
+ *(.ARM.extab* .gnu.linkonce.armextab.*)
+                0x0000254a                        __exidx_start = .
+
+.ARM.exidx      0x0000254c        0x8
+ *(.ARM.exidx* .gnu.linkonce.armexidx.*)
+ .ARM.exidx     0x0000254c        0x8 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/crt0.o
+                                 0x10 (size before relaxing)
+                0x00002554                        __exidx_end = .
+
+.rel.dyn        0x00002554        0x0
+ .rel.iplt      0x00002554        0x0 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v6-m/nofp/crtbegin.o
+
+.flash          0x00002554        0x0
+                0x00002554                        . = ALIGN (0x4)
+ *(.flash)
+                0x00002554                        __etext = .
+                0x00002554                        __DATA_ROM = .
+
+.mtb            0x1fffff00        0x0
+                0x1fffff00                        . = ALIGN (0x8)
+                0x1fffff00                        _mtb_start = .
+ *(.mtb_buf)
+                0x1fffff00                        . = ALIGN (0x8)
+                0x1fffff00                        _mtb_end = .
+
+.interrupts_ram
+                0x1fffff00        0x0
+                0x1fffff00                        . = ALIGN (0x4)
+                0x1fffff00                        __VECTOR_RAM__ = .
+                0x1fffff00                        __interrupts_ram_start__ = .
+ *(.m_interrupts_ram)
+                0x1fffff00                        . = (. + M_VECTOR_RAM_SIZE)
+                0x1fffff00                        . = ALIGN (0x4)
+                0x1fffff00                        __interrupts_ram_end__ = .
+                0x00000000                        __VECTOR_RAM = DEFINED (__ram_vector_table__)?__VECTOR_RAM__:__VECTOR_TABLE
+                0x00000000                        __RAM_VECTOR_TABLE_SIZE_BYTES = (__interrupts_ram_end__ - __interrupts_ram_start__)
+
+.bdts
+ *(.bss*endPointBdts*)
+
+.data           0x1fffff00       0x6c load address 0x00002554
+                0x1fffff00                        __data_start__ = .
+                0x1fffff00                        __DATA_RAM = .
+ *(vtable)
+ *(.data*)
+ .data.__dso_handle
+                0x1fffff00        0x4 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v6-m/nofp/crtbegin.o
+                0x1fffff00                __dso_handle
+ .data._ZN5USBDM9PitBase_TINS_7PitInfoEE17allocatedChannelsE
+                0x1fffff04        0x4 ./Sources/Sampler.o
+                0x1fffff04                USBDM::PitBase_T<USBDM::PitInfo>::allocatedChannels
+ .data._ZZN7Sampler13timerCallbackEvE17zeroCrossingLevel
+                0x1fffff08        0x4 ./Sources/Sampler.o
+ .data.evLoadOff
+                0x1fffff0c        0x4 ./Sources/bsp.o
+                0x1fffff0c                evLoadOff
+ .data.evLoadOn
+                0x1fffff10        0x4 ./Sources/bsp.o
+                0x1fffff10                evLoadOn
+ .data._ZN5USBDM7PitInfo10sCallbacksE
+                0x1fffff14        0x8 ./Sources/hardware.o
+                0x1fffff14                USBDM::PitInfo::sCallbacks
+ .data._impure_ptr
+                0x1fffff1c        0x4 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-impure.o)
+                0x1fffff1c                _impure_ptr
+ .data._impure_data
+                0x1fffff20       0x4c /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-impure.o)
+                0x1fffff20                _impure_data
+                0x1fffff6c                        . = ALIGN (0x4)
+ *(.ram_functions)
+                0x1fffff6c                        . = ALIGN (0x4)
+                0x1fffff6c                        __data_end__ = .
+                0x000025c0                        __DATA_END = (__DATA_ROM + SIZEOF (.data))
+                0x00002554                        __data_image_start__ = LOADADDR (.data)
+
+.tm_clone_table
+                0x1fffff6c        0x0 load address 0x000025c0
+ .tm_clone_table
+                0x1fffff6c        0x0 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v6-m/nofp/crtbegin.o
+ .tm_clone_table
+                0x1fffff6c        0x0 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v6-m/nofp/crtend.o
+
+.igot.plt       0x1fffff6c        0x0 load address 0x000025c0
+ .igot.plt      0x1fffff6c        0x0 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v6-m/nofp/crtbegin.o
+
+.noinit         0x1fffff6c        0x0 load address 0x000025c0
+                0x1fffff6c                        . = ALIGN (0x4)
+ *(.noinit)
+
+.bss            0x20000000      0x2dc
+                0x20000000                        . = ALIGN (0x4)
+                0x20000000                        __START_BSS = .
+                0x20000000                        __bss_start__ = .
+ *(.bss)
+ *(.bss*)
+ .bss.completed.1
+                0x20000000        0x1 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v6-m/nofp/crtbegin.o
+ *fill*         0x20000001        0x3 
+ .bss.object.0  0x20000004       0x18 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v6-m/nofp/crtbegin.o
+ .bss._ZN2QP2QV5priv_E
+                0x2000001c        0x8 ./qv/qv.o
+                0x2000001c                QP::QV::priv_
+ .bss._ZN2QP2QF5priv_E
+                0x20000024       0x40 ./qf/qf_act.o
+                0x20000024                QP::QF::priv_
+ .bss._ZN2QP7QActive9registry_E
+                0x20000064       0x84 ./qf/qf_act.o
+                0x20000064                QP::QActive::registry_
+ .bss._ZN2QP8QTimeEvt12timeEvtHead_E
+                0x200000e8       0x14 ./qf/qf_time.o
+                0x200000e8                QP::QTimeEvt::timeEvtHead_
+ .bss._ZN5USBDM7consoleE
+                0x200000fc       0x18 ./Startup_Code/console.o
+                0x200000fc                USBDM::console
+ .bss._ZN5USBDM9PitBase_TINS_7PitInfoEE12clearOnEventE
+                0x20000114        0x1 ./Startup_Code/vectors.o
+                0x20000114                USBDM::PitBase_T<USBDM::PitInfo>::clearOnEvent
+ *fill*         0x20000115        0x3 
+ .bss._ZN25DustCollectorStateMachine8instanceE
+                0x20000118       0x38 ./Sources/DustCollector.o
+                0x20000118                DustCollectorStateMachine::instance
+ .bss._ZN7Sampler11accumulatorE
+                0x20000150        0x4 ./Sources/Sampler.o
+                0x20000150                Sampler::accumulator
+ .bss._ZN7Sampler8loadIsOnE
+                0x20000154        0x1 ./Sources/Sampler.o
+                0x20000154                Sampler::loadIsOn
+ *fill*         0x20000155        0x3 
+ .bss._ZN7Sampler11detectLevelE
+                0x20000158        0x4 ./Sources/Sampler.o
+                0x20000158                Sampler::detectLevel
+ .bss._ZN7Sampler17samplesThisPeriodE
+                0x2000015c        0x4 ./Sources/Sampler.o
+                0x2000015c                Sampler::samplesThisPeriod
+ .bss._ZZN7Sampler13timerCallbackEvE17threshAccumulator
+                0x20000160        0x4 ./Sources/Sampler.o
+ .bss._ZZN7Sampler13timerCallbackEvE11sampleCount
+                0x20000164        0x4 ./Sources/Sampler.o
+ .bss._ZZ15SysTick_HandlerE5wasOn
+                0x20000168        0x1 ./Sources/bsp.o
+ *fill*         0x20000169        0x3 
+ .bss._ZZ4mainE21dustCollectorQueueSto
+                0x2000016c       0x28 ./Sources/main.o
+ .bss._ZN5USBDM9errorCodeE
+                0x20000194        0x4 ./Sources/usbdmError.o
+                0x20000194                USBDM::errorCode
+ .bss.__malloc_free_list
+                0x20000198        0x4 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-mallocr.o)
+                0x20000198                __malloc_free_list
+ .bss.__sf      0x2000019c      0x138 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-findfp.o)
+                0x2000019c                __sf
+ .bss.__stdio_exit_handler
+                0x200002d4        0x4 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-findfp.o)
+                0x200002d4                __stdio_exit_handler
+ .bss.__lock___malloc_recursive_mutex
+                0x200002d8        0x1 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-lock.o)
+                0x200002d8                __lock___malloc_recursive_mutex
+ *(COMMON)
+                0x200002dc                        . = ALIGN (0x4)
+ *fill*         0x200002d9        0x3 
+                0x200002dc                        __bss_end__ = .
+                0x200002dc                        __END_BSS = .
+
+.heap           0x1fffff6c        0x0
+                0x1fffff6c                        . = ALIGN (0x4)
+                [!provide]                        PROVIDE (__end__ = .)
+                [!provide]                        PROVIDE (end = .)
+                [!provide]                        PROVIDE (_end = .)
+                0x1fffff6c                        __HeapBase = .
+                0x1fffff6c                        __heap_addr = .
+                0x1fffff6c                        . = (. + __heap_size__)
+                0x1fffff70                        __HeapLimit = MIN (ABSOLUTE (((ORIGIN (heap_ram) + LENGTH (heap_ram)) - 0x1)), __StackLimit)
+                [!provide]                        PROVIDE (__sram_u_size = 0x0)
+
+.stack          0x1fffff6c       0x94
+                0x1fffff6d                        . = MAX (., ABSOLUTE (((((ORIGIN (stack_ram) + LENGTH (stack_ram)) - __stack_size__) - __sram_u_size) - 0x3)))
+ *fill*         0x1fffff6c        0x1 
+                0x1fffff70                        . = ALIGN (0x4)
+ *fill*         0x1fffff6d        0x3 
+                0x1fffff70                        __StackLimit = .
+                0x20000000                        . = (. + __stack_size__)
+ *fill*         0x1fffff70       0x90 
+                0x20000000                        __StackTop = .
+                0x20000000                        PROVIDE (__stack = __StackTop)
+                [!provide]                        PROVIDE (__cs3_stack = __StackTop)
+                0x00000000                        PROVIDE (_write = _usbdm_write)
+                0x00000000                        PROVIDE (_read = _usbdm_read)
+OUTPUT(DustCollector_QM.elf elf32-littlearm)
+LOAD linker stubs
+
+.ARM.attributes
+                0x00000000       0x28
+ .ARM.attributes
+                0x00000000       0x1e /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v6-m/nofp/crti.o
+ .ARM.attributes
+                0x0000001e       0x2c /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v6-m/nofp/crtbegin.o
+ .ARM.attributes
+                0x0000004a       0x1b /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/crt0.o
+ .ARM.attributes
+                0x00000065       0x2c ./qv/qv.o
+ .ARM.attributes
+                0x00000091       0x2c ./qf/qep_hsm.o
+ .ARM.attributes
+                0x000000bd       0x2c ./qf/qf_act.o
+ .ARM.attributes
+                0x000000e9       0x2c ./qf/qf_actq.o
+ .ARM.attributes
+                0x00000115       0x2c ./qf/qf_dyn.o
+ .ARM.attributes
+                0x00000141       0x2c ./qf/qf_mem.o
+ .ARM.attributes
+                0x0000016d       0x2c ./qf/qf_qact.o
+ .ARM.attributes
+                0x00000199       0x2c ./qf/qf_qeq.o
+ .ARM.attributes
+                0x000001c5       0x2c ./qf/qf_time.o
+ .ARM.attributes
+                0x000001f1       0x2c ./gnu/qv_port.o
+ .ARM.attributes
+                0x0000021d       0x2c ./Startup_Code/console.o
+ .ARM.attributes
+                0x00000249       0x2c ./Startup_Code/ics.o
+ .ARM.attributes
+                0x00000275       0x2c ./Startup_Code/newlib_stubs.o
+ .ARM.attributes
+                0x000002a1       0x2c ./Startup_Code/security.o
+ .ARM.attributes
+                0x000002cd       0x1b ./Startup_Code/startup_ARMLtdGCC.o
+ .ARM.attributes
+                0x000002e8       0x2c ./Startup_Code/system.o
+ .ARM.attributes
+                0x00000314       0x2c ./Startup_Code/vectors.o
+ .ARM.attributes
+                0x00000340       0x2c ./Sources/DustCollector.o
+ .ARM.attributes
+                0x0000036c       0x2c ./Sources/Sampler.o
+ .ARM.attributes
+                0x00000398       0x2c ./Sources/bsp.o
+ .ARM.attributes
+                0x000003c4       0x2c ./Sources/hardware.o
+ .ARM.attributes
+                0x000003f0       0x2c ./Sources/main.o
+ .ARM.attributes
+                0x0000041c       0x2c ./Sources/usbdmError.o
+ .ARM.attributes
+                0x00000448       0x2c /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++_nano.a(atexit_arm.o)
+ .ARM.attributes
+                0x00000474       0x2c /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++_nano.a(del_ops.o)
+ .ARM.attributes
+                0x000004a0       0x2c /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++_nano.a(del_op.o)
+ .ARM.attributes
+                0x000004cc       0x1e /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v6-m/nofp/libgcc.a(_udivsi3.o)
+ .ARM.attributes
+                0x000004ea       0x1e /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v6-m/nofp/libgcc.a(_dvmd_tls.o)
+ .ARM.attributes
+                0x00000508       0x2c /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-exit.o)
+ .ARM.attributes
+                0x00000534       0x2c /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-init.o)
+ .ARM.attributes
+                0x00000560       0x2c /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-impure.o)
+ .ARM.attributes
+                0x0000058c       0x2c /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-malloc.o)
+ .ARM.attributes
+                0x000005b8       0x2c /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-mallocr.o)
+ .ARM.attributes
+                0x000005e4       0x2c /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-cxa_atexit.o)
+ .ARM.attributes
+                0x00000610       0x2c /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-findfp.o)
+ .ARM.attributes
+                0x0000063c       0x2c /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-mlock.o)
+ .ARM.attributes
+                0x00000668       0x2c /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-memset.o)
+ .ARM.attributes
+                0x00000694       0x2c /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-freer.o)
+ .ARM.attributes
+                0x000006c0       0x2c /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-lock.o)
+ .ARM.attributes
+                0x000006ec       0x2c /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v6-m/nofp/crtend.o
+ .ARM.attributes
+                0x00000718       0x1e /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v6-m/nofp/crtn.o
+
+.comment        0x00000000       0x44
+ .comment       0x00000000       0x44 ./qv/qv.o
+                                 0x45 (size before relaxing)
+ .comment       0x00000044       0x45 ./qf/qep_hsm.o
+ .comment       0x00000044       0x45 ./qf/qf_act.o
+ .comment       0x00000044       0x45 ./qf/qf_actq.o
+ .comment       0x00000044       0x45 ./qf/qf_dyn.o
+ .comment       0x00000044       0x45 ./qf/qf_mem.o
+ .comment       0x00000044       0x45 ./qf/qf_qact.o
+ .comment       0x00000044       0x45 ./qf/qf_qeq.o
+ .comment       0x00000044       0x45 ./qf/qf_time.o
+ .comment       0x00000044       0x45 ./gnu/qv_port.o
+ .comment       0x00000044       0x45 ./Startup_Code/console.o
+ .comment       0x00000044       0x45 ./Startup_Code/ics.o
+ .comment       0x00000044       0x45 ./Startup_Code/newlib_stubs.o
+ .comment       0x00000044       0x45 ./Startup_Code/security.o
+ .comment       0x00000044       0x45 ./Startup_Code/system.o
+ .comment       0x00000044       0x45 ./Startup_Code/vectors.o
+ .comment       0x00000044       0x45 ./Sources/DustCollector.o
+ .comment       0x00000044       0x45 ./Sources/Sampler.o
+ .comment       0x00000044       0x45 ./Sources/bsp.o
+ .comment       0x00000044       0x45 ./Sources/hardware.o
+ .comment       0x00000044       0x45 ./Sources/main.o
+ .comment       0x00000044       0x45 ./Sources/usbdmError.o
+
+.debug_line_str
+                0x00000000      0x18d
+ .debug_line_str
+                0x00000000      0x18d /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/crt0.o
+                                 0xcb (size before relaxing)
+ .debug_line_str
+                0x0000018d       0xc2 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v6-m/nofp/libgcc.a(_udivsi3.o)
+ .debug_line_str
+                0x0000018d       0xc2 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v6-m/nofp/libgcc.a(_dvmd_tls.o)
+
+.debug_frame    0x00000000      0x418
+ .debug_frame   0x00000000       0x28 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++_nano.a(atexit_arm.o)
+ .debug_frame   0x00000028       0x28 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++_nano.a(del_ops.o)
+ .debug_frame   0x00000050       0x28 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++_nano.a(del_op.o)
+ .debug_frame   0x00000078       0x20 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v6-m/nofp/libgcc.a(_udivsi3.o)
+ .debug_frame   0x00000098       0x28 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-exit.o)
+ .debug_frame   0x000000c0       0x2c /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-init.o)
+ .debug_frame   0x000000ec       0x40 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-malloc.o)
+ .debug_frame   0x0000012c       0x50 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-mallocr.o)
+ .debug_frame   0x0000017c       0x28 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-cxa_atexit.o)
+ .debug_frame   0x000001a4      0x138 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-findfp.o)
+ .debug_frame   0x000002dc       0x40 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-mlock.o)
+ .debug_frame   0x0000031c       0x20 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-memset.o)
+ .debug_frame   0x0000033c       0x2c /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-freer.o)
+ .debug_frame   0x00000368       0xb0 /opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-lock.o)

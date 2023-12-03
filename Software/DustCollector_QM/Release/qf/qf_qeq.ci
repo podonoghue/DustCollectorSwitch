@@ -1,0 +1,11 @@
+graph: { title: "/opt/qp/qpcpp/src/qf/qf_qeq.cpp"
+node: { title: "_ZN2QP7QEQueue4initEPPKNS_4QEvtEj" label: "void QP::QEQueue::init(const QP::QEvt**, uint_fast16_t)\n/opt/qp/qpcpp/src/qf/qf_qeq.cpp:72:6\n8 bytes (static)" }
+node: { title: "_ZN2QP7QEQueue4postEPKNS_4QEvtEjj" label: "bool QP::QEQueue::post(const QP::QEvt*, uint_fast16_t, uint_fast8_t)\n/opt/qp/qpcpp/src/qf/qf_qeq.cpp:88:6\n8 bytes (static)" }
+node: { title: "Q_onError" label: "void Q_onError(const char*, int_t)\n/opt/qp/qpcpp/include/qsafe.h:167:12" shape : ellipse }
+edge: { sourcename: "_ZN2QP7QEQueue4postEPKNS_4QEvtEjj" targetname: "Q_onError" label: "/opt/qp/qpcpp/src/qf/qf_qeq.cpp:101:5" }
+edge: { sourcename: "_ZN2QP7QEQueue4postEPKNS_4QEvtEjj" targetname: "Q_onError" label: "/opt/qp/qpcpp/src/qf/qf_qeq.cpp:147:9" }
+node: { title: "_ZN2QP7QEQueue8postLIFOEPKNS_4QEvtEj" label: "void QP::QEQueue::postLIFO(const QP::QEvt*, uint_fast8_t)\n/opt/qp/qpcpp/src/qf/qf_qeq.cpp:168:6\n8 bytes (static)" }
+edge: { sourcename: "_ZN2QP7QEQueue8postLIFOEPKNS_4QEvtEj" targetname: "Q_onError" label: "/opt/qp/qpcpp/src/qf/qf_qeq.cpp:182:5" }
+node: { title: "_ZN2QP7QEQueue3getEj" label: "const QP::QEvt* QP::QEQueue::get(uint_fast8_t)\n/opt/qp/qpcpp/src/qf/qf_qeq.cpp:219:14\n8 bytes (static)" }
+edge: { sourcename: "_ZN2QP7QEQueue3getEj" targetname: "Q_onError" label: "/opt/qp/qpcpp/src/qf/qf_qeq.cpp:254:13" }
+}

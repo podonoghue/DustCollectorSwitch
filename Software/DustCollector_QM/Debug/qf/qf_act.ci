@@ -1,0 +1,8 @@
+graph: { title: "/opt/qp/qpcpp/src/qf/qf_act.cpp"
+node: { title: "/opt/qp/qpcpp/src/qf/qf_act.cpp:_ZN2QP2QF4AttrC2Ev" label: "QP::QF::Attr::Attr()\n/opt/qp/qpcpp/include/qp_pkg.hpp:51:7\n0 bytes (static)" }
+node: { title: "/opt/qp/qpcpp/src/qf/qf_act.cpp:_Z41__static_initialization_and_destruction_0v" label: "void __static_initialization_and_destruction_0()\n/opt/qp/qpcpp/src/qf/qf_act.cpp:132:1\n8 bytes (static)" }
+edge: { sourcename: "/opt/qp/qpcpp/src/qf/qf_act.cpp:_Z41__static_initialization_and_destruction_0v" targetname: "/opt/qp/qpcpp/src/qf/qf_act.cpp:_ZN2QP2QF4AttrC1Ev" label: "/opt/qp/qpcpp/src/qf/qf_act.cpp:78:10" }
+node: { title: "_ZN2QP2QF6bzero_EPvj" label: "void QP::QF::bzero_(void*, uint_fast16_t)\n/opt/qp/qpcpp/src/qf/qf_act.cpp:81:6\n0 bytes (static)" }
+node: { title: "/opt/qp/qpcpp/src/qf/qf_act.cpp:_GLOBAL__sub_I__ZN2QP7QActive9registry_E" label: "cpp)\n/opt/qp/qpcpp/src/qf/qf_act.cpp:132:1\n8 bytes (static)" }
+edge: { sourcename: "/opt/qp/qpcpp/src/qf/qf_act.cpp:_GLOBAL__sub_I__ZN2QP7QActive9registry_E" targetname: "/opt/qp/qpcpp/src/qf/qf_act.cpp:_Z41__static_initialization_and_destruction_0v" label: "/opt/qp/qpcpp/src/qf/qf_act.cpp:132:1" }
+}

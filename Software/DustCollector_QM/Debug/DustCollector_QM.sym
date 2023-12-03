@@ -1,0 +1,213 @@
+00000000 A BOOT_LOADER_SIZE
+00000000 R __flash_start
+00000000 A FORCE_BOOT_LOADER
+00000000 A __heap_size
+00000000 A __heap_size__
+00000000 A M_VECTOR_RAM_SIZE
+00000000 A __RAM_VECTOR_TABLE_SIZE_BYTES
+00000000 A _read
+00000000 A __sram_u_size
+00000000 R __VECTOR_RAM
+00000000 R __vector_table
+00000000 R __VECTOR_TABLE
+00000000 A _write
+00000090 A __stack_size
+00000090 A __stack_size__
+000000b8 R __VECTOR_TABLE_END
+000003c0 R __bootloaderInformation
+00000400 R securityInfo
+00000410 W _stack_init
+0000041c T _mainCRTStartup
+0000041c T _start
+00000490 T Reset_Handler
+000004d4 T __aeabi_uidiv
+000004d4 T __udivsi3
+000005e0 T __aeabi_uidivmod
+000005e8 W __aeabi_idiv0
+000005e8 W __aeabi_ldiv0
+00000684 T QP::QF::init()
+000006c4 T QP::QF::run()
+00000740 T QP::QActive::start(unsigned short, QP::QEvt const**, unsigned int, void*, unsigned int, void const*)
+00000790 W QP::QAsm::init(unsigned int)
+0000079e W QP::QAsm::top(void*, QP::QEvt const*)
+000007a4 T QP::QHsm::init(void const*, unsigned int)
+0000085c T QP::QHsm::hsm_tran(unsigned int (* (&) [6])(void*, QP::QEvt const*), unsigned int)
+00000998 T QP::QHsm::dispatch(QP::QEvt const*, unsigned int)
+00000ac0 W QP::QF::Attr::Attr()
+00000ac0 W QP::QF::Attr::Attr()
+00000af0 T QP::QF::bzero_(void*, unsigned int)
+00000b08 T QP::QActive::post_(QP::QEvt const*, unsigned int, void const*)
+00000bc8 T QP::QActive::get_()
+00000c2c T QP::QF::gc(QP::QEvt const*)
+00000cb0 T QP::QMPool::put(void*, unsigned int)
+00000cf4 W QP::QActive::init(unsigned int)
+00000d04 T QP::QActive::QActive(unsigned int (*)(void*, QP::QEvt const*))
+00000d04 T QP::QActive::QActive(unsigned int (*)(void*, QP::QEvt const*))
+00000d3c T QP::QActive::register_()
+00000dd8 W QP::QActive::dispatch(QP::QEvt const*, unsigned int)
+00000de0 W QP::QActive::init(void const*, unsigned int)
+00000de8 T QP::QEQueue::init(QP::QEvt const**, unsigned int)
+00000e08 T QP::QTimeEvt::QTimeEvt(QP::QActive*, unsigned short, unsigned int)
+00000e08 T QP::QTimeEvt::QTimeEvt(QP::QActive*, unsigned short, unsigned int)
+00000e44 T QP::QTimeEvt::armX(unsigned long, unsigned long)
+00000eb4 T QP::QTimeEvt::disarm()
+00000ee4 T QP::QTimeEvt::tick(unsigned int, void const*)
+00000fa4 T QP::QTimeEvt::QTimeEvt()
+00000fa4 T QP::QTimeEvt::QTimeEvt()
+00000fe0 T QV_init
+00000fe4 T QF_qlog2
+0000101c T USBDM::Ics::startupConfigure()
+00001054 T clock_initialise
+00001070 W _exit
+00001074 W __cxa_pure_virtual
+0000107c W console_initialise
+0000107e W rtc_initialise
+00001080 W software_init_hook
+00001084 T SystemInitLowLevel
+000010bc T SystemInit
+000010e0 W ACMP0_IRQHandler
+000010e0 W ACMP1_IRQHandler
+000010e0 W ADC0_IRQHandler
+000010e0 T Default_Handler
+000010e0 W FTM0_IRQHandler
+000010e0 W FTM2_IRQHandler
+000010e0 W FTMRE_IRQHandler
+000010e0 W I2C0_IRQHandler
+000010e0 W ICS_IRQHandler
+000010e0 W IRQ_IRQHandler
+000010e0 W KBI0_IRQHandler
+000010e0 W KBI1_IRQHandler
+000010e0 W NMI_Handler
+000010e0 W PendSV_Handler
+000010e0 W PMC_IRQHandler
+000010e0 W PWT_IRQHandler
+000010e0 W RTC_Alarm_IRQHandler
+000010e0 W SPI0_IRQHandler
+000010e0 W SVC_Handler
+000010e0 W UART0_IRQHandler
+000010e0 W WDOG_IRQHandler
+000010f4 W HardFault_Handler
+000010f8 W void USBDM::PitBase_T<USBDM::PitInfo>::irqHandler<(USBDM::PitChannelNum)0>()
+00001134 W void USBDM::PitBase_T<USBDM::PitInfo>::irqHandler<(USBDM::PitChannelNum)1>()
+00001174 W DustCollectorStateMachine::~DustCollectorStateMachine()
+00001174 W DustCollectorStateMachine::~DustCollectorStateMachine()
+00001180 W DustCollectorStateMachine::~DustCollectorStateMachine()
+00001198 W DustCollectorStateMachine::DustCollectorStateMachine()
+00001198 W DustCollectorStateMachine::DustCollectorStateMachine()
+000011e4 T DustCollectorStateMachine::initial_h(QP::QEvt const*)
+000011f0 T DustCollectorStateMachine::initial(void*, QP::QEvt const*)
+000011f8 W USBDM::Gpio_T<(USBDM::PinIndex)13, (USBDM::Polarity)0>::setInactive()
+00001208 T DustCollectorStateMachine::Idle_h(QP::QEvt const*)
+00001234 T DustCollectorStateMachine::Idle(void*, QP::QEvt const*)
+0000123c W USBDM::Gpio_T<(USBDM::PinIndex)13, (USBDM::Polarity)0>::setActive()
+0000124c T DustCollectorStateMachine::Operating_h(QP::QEvt const*)
+00001278 T DustCollectorStateMachine::Operating(void*, QP::QEvt const*)
+00001280 W USBDM::Gpio_T<(USBDM::PinIndex)14, (USBDM::Polarity)4294967295>::setActive()
+00001290 W USBDM::Gpio_T<(USBDM::PinIndex)14, (USBDM::Polarity)4294967295>::setInactive()
+000012a0 T DustCollectorStateMachine::Hold_h(QP::QEvt const*)
+00001308 T DustCollectorStateMachine::Hold(void*, QP::QEvt const*)
+00001310 W USBDM::Gpio_T<(USBDM::PinIndex)15, (USBDM::Polarity)4294967295>::setActive()
+00001320 W USBDM::Gpio_T<(USBDM::PinIndex)15, (USBDM::Polarity)4294967295>::setInactive()
+00001330 T DustCollectorStateMachine::Delay_h(QP::QEvt const*)
+00001398 T DustCollectorStateMachine::Delay(void*, QP::QEvt const*)
+000013a8 W USBDM::PitBasicInfo::unhandledCallback()
+000013bc W USBDM::AdcBase_T<USBDM::Adc0Info>::Channel<7>::readAnalogue()
+000013e0 T Sampler::getDetectLevel()
+000013f4 W USBDM::GpioField_T<(USBDM::PinIndex)15, (USBDM::PinIndex)12, 12ul>::setOutput()
+00001418 W USBDM::AdcBase_T<USBDM::Adc0Info>::configure(USBDM::AdcBasicInfo::Init const&)
+00001448 W USBDM::Gpio_T<(USBDM::PinIndex)12, (USBDM::Polarity)0>::setOutput()
+00001464 W USBDM::AdcBase_T<USBDM::Adc0Info>::Channel<5>::readAnalogue()
+00001488 T Sampler::getDelayTime()
+000014a8 W USBDM::AdcBase_T<USBDM::Adc0Info>::Channel<6>::readAnalogue()
+000014cc T Sampler::getHoldTime()
+000014f0 W USBDM::Gpio_T<(USBDM::PinIndex)12, (USBDM::Polarity)0>::toggle()
+00001500 W USBDM::AdcBase_T<USBDM::Adc0Info>::Channel<4>::readAnalogue()
+00001524 W USBDM::AdcBase_T<USBDM::Adc0Info>::Channel<1>::readAnalogue()
+00001548 T Sampler::timerCallback()
+00001654 W USBDM::PitBase_T<USBDM::PitInfo>::setCallback(USBDM::PitChannelNum, void (*)())
+00001688 W USBDM::PitBase_T<USBDM::PitInfo>::enableNvicInterrupts(USBDM::PitChannelNum, USBDM::NvicPriority)
+000016ac W USBDM::PitBase_T<USBDM::PitInfo>::defaultConfigure()
+000016f4 W USBDM::PitBase_T<USBDM::PitInfo>::defaultConfigureIfNeeded()
+0000171c W USBDM::PitBase_T<USBDM::PitInfo>::configure(USBDM::PitChannelNum, USBDM::PitBasicInfo::ChannelInit const&)
+00001760 W USBDM::PitBase_T<USBDM::PitInfo>::configure(USBDM::PitBasicInfo::ChannelInit const&)
+0000176c T Sampler::init()
+000017c0 T BSP::init()
+000017c8 T QP::QF::onStartup()
+00001804 T QP::QV::onIdle()
+00001808 T SysTick_Handler
+0000185c T Q_onError
+00001868 T main
+00001928 T USBDM::checkError()
+00001940 T USBDM::enableNvicInterrupt(IRQn_Type, unsigned long)
+0000195a T __aeabi_atexit
+00001968 T operator delete(void*, unsigned int)
+00001970 T operator delete(void*)
+00001978 T exit
+000019a0 T __libc_init_array
+000019e8 T free
+000019fc T __cxa_atexit
+00001a18 T __malloc_lock
+00001a28 T __malloc_unlock
+00001a38 T memset
+00001a48 T _free_r
+00001adc T __retarget_lock_acquire_recursive
+00001ade T __retarget_lock_release_recursive
+00001ae0 T _init
+00001aec T _fini
+00001af8 T __CTOR_END__
+00001af8 T __CTOR_LIST__
+00001af8 T __DTOR_END__
+00001af8 T __DTOR_LIST__
+00001b18 V vtable for QP::QAsm
+00001b5c V vtable for QP::QActive
+00001b80 V vtable for DustCollectorStateMachine
+00001b9c R AO_DustCollectorStateMachine
+00001bb8 V USBDM::PitInfo::DefaultChannelInitValues
+00001bd0 V USBDM::PitInfo::irqNums
+00001bd2 R __exidx_start
+00001bdc A __data_image_start__
+00001bdc R __DATA_ROM
+00001bdc R __etext
+00001bdc R __exidx_end
+00001c48 A __DATA_END
+1fffff00 D __DATA_RAM
+1fffff00 D __data_start__
+1fffff00 D __dso_handle
+1fffff00 ? __interrupts_ram_end__
+1fffff00 ? __interrupts_ram_start__
+1fffff00 ? _mtb_end
+1fffff00 ? _mtb_start
+1fffff00 ? __VECTOR_RAM__
+1fffff04 V USBDM::PitBase_T<USBDM::PitInfo>::allocatedChannels
+1fffff0c D evLoadOff
+1fffff10 D evLoadOn
+1fffff14 D USBDM::PitInfo::sCallbacks
+1fffff1c D _impure_ptr
+1fffff20 D _impure_data
+1fffff6c D __data_end__
+1fffff6c ? __heap_addr
+1fffff6c ? __HeapBase
+1fffff6c D __TMC_END__
+1fffff70 A __HeapLimit
+1fffff70 B __StackLimit
+20000000 B __bss_start__
+20000000 B __stack
+20000000 B __StackTop
+20000000 B __START_BSS
+2000001c B QP::QV::priv_
+20000024 B QP::QF::priv_
+20000064 B QP::QActive::registry_
+200000e8 B QP::QTimeEvt::timeEvtHead_
+200000fc V USBDM::PitBase_T<USBDM::PitInfo>::clearOnEvent
+20000100 B DustCollectorStateMachine::instance
+20000138 B Sampler::accumulator
+2000013c B Sampler::loadIsOn
+20000140 B Sampler::detectLevel
+20000144 B Sampler::samplesThisPeriod
+2000017c B USBDM::errorCode
+20000180 B __malloc_free_list
+20000184 B __sf
+200002bc B __stdio_exit_handler
+200002c0 B __lock___malloc_recursive_mutex
+200002c4 B __bss_end__
+200002c4 B __END_BSS

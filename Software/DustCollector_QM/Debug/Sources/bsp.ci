@@ -1,0 +1,17 @@
+graph: { title: "../Sources/bsp.cpp"
+node: { title: "_ZN3BSP4initEv" label: "static void BSP::init()\n../Sources/bsp.cpp:60:6\n8 bytes (static)" }
+node: { title: "_ZN7Sampler4initEv" label: "static void Sampler::init()\n../Sources/Sampler.h:24:16" shape : ellipse }
+edge: { sourcename: "_ZN3BSP4initEv" targetname: "_ZN7Sampler4initEv" label: "../Sources/bsp.cpp:61:17" }
+node: { title: "_ZN2QP2QF9onStartupEv" label: "void QP::QF::onStartup()\n../Sources/bsp.cpp:67:6\n0 bytes (static)" }
+node: { title: "_ZN2QP2QF9onCleanupEv" label: "void QP::QF::onCleanup()\n../Sources/bsp.cpp:79:6\n0 bytes (static)" }
+node: { title: "_ZN2QP2QV6onIdleEv" label: "void QP::QV::onIdle()\n../Sources/bsp.cpp:82:6\n0 bytes (static)" }
+node: { title: "SysTick_Handler" label: "void SysTick_Handler()\n../Sources/bsp.cpp:87:6\n8 bytes (static)" }
+node: { title: "_ZN2QP8QTimeEvt4tickEjPKv" label: "static void QP::QTimeEvt::tick(uint_fast8_t, const void*)\n/opt/qp/qpcpp/include/qp.hpp:960:17" shape : ellipse }
+edge: { sourcename: "SysTick_Handler" targetname: "_ZN2QP8QTimeEvt4tickEjPKv" label: "../Sources/bsp.cpp:89:19" }
+node: { title: "_ZN2QP7QActive5post_EPKNS_4QEvtEjPKv" label: "bool QP::QActive::post_(const QP::QEvt*, uint_fast16_t, const void*)\n/opt/qp/qpcpp/include/qp.hpp:801:10" shape : ellipse }
+edge: { sourcename: "SysTick_Handler" targetname: "_ZN2QP7QActive5post_EPKNS_4QEvtEjPKv" label: "../Sources/bsp.cpp:95:46" }
+edge: { sourcename: "SysTick_Handler" targetname: "_ZN2QP7QActive5post_EPKNS_4QEvtEjPKv" label: "../Sources/bsp.cpp:98:46" }
+node: { title: "Q_onError" label: "void Q_onError(const char*, int)\n../Sources/bsp.cpp:104:6\n8 bytes (static)" }
+node: { title: "exit" label: "void exit(int)\n/opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/arm-none-eabi/include/stdlib.h:93:6" shape : ellipse }
+edge: { sourcename: "Q_onError" targetname: "exit" label: "../Sources/bsp.cpp:107:9" }
+}

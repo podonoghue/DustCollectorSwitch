@@ -1,0 +1,11 @@
+graph: { title: "../Sources/main.cpp"
+node: { title: "main" label: "int main()\n../Sources/main.cpp:39:5\n24 bytes (static)" }
+node: { title: "_ZN2QP2QF4initEv" label: "void QP::QF::init()\n/opt/qp/qpcpp/include/qp.hpp:1020:6" shape : ellipse }
+edge: { sourcename: "main" targetname: "_ZN2QP2QF4initEv" label: "../Sources/main.cpp:42:13" }
+node: { title: "_ZN3BSP4initEv" label: "static void BSP::init()\n../Sources/bsp.h:50:17" shape : ellipse }
+edge: { sourcename: "main" targetname: "_ZN3BSP4initEv" label: "../Sources/main.cpp:45:14" }
+node: { title: "_ZN2QP7QActive5startEtPPKNS_4QEvtEjPvjPKv" label: "void QP::QActive::start(QP::QPrioSpec, const QP::QEvt**, uint_fast16_t, void*, uint_fast16_t, const void*)\n/opt/qp/qpcpp/include/qp.hpp:779:10" shape : ellipse }
+edge: { sourcename: "main" targetname: "_ZN2QP7QActive5startEtPPKNS_4QEvtEjPvjPKv" label: "/opt/qp/qpcpp/include/qp.hpp:793:20" }
+node: { title: "_ZN2QP2QF3runEv" label: "int_t QP::QF::run()\n/opt/qp/qpcpp/include/qp.hpp:1026:7" shape : ellipse }
+edge: { sourcename: "main" targetname: "_ZN2QP2QF3runEv" label: "../Sources/main.cpp:58:19" }
+}

@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Configure.usbdmProject -->
+<!-- 
+   Settings
+-->
+
+<section name="USBDM">
+   <item key="$$DeviceInfo_Device_Variant"                 value="MKE04Z8VTG4" />
+   <item key="$$DeviceInfo_SubFamily"                      value="MKE04Z4" />
+   <item key="$$Hardware_Source_Filename"                  value="MKE04Z4.usbdmHardware" />
+   <item key="$peripheral$ADC0_codeIdentifier"             value="UserAdc" />
+   <item key="$peripheral$GPIOA_polarity"                  value="49156" />
+   <item key="$peripheral$PIT_codeIdentifier"              value="UserTimer" />
+   <item key="$pin$PTA0_pcrSetting_6"                      value="600" />
+   <item key="$pin$PTA1_pcrSetting_4"                      value="400" />
+   <item key="$pin$PTA2_pcrSetting_2"                      value="200" />
+   <item key="$pin$PTA3_pcrSetting_2"                      value="200" />
+   <item key="$pin$PTA4_pcrSetting_2"                      value="200" />
+   <item key="$pin$PTA5_pcrSetting_3"                      value="300" />
+   <item key="$pin$PTB0_pcrSetting_5"                      value="500" />
+   <item key="$pin$PTB1_pcrSetting_5"                      value="500" />
+   <item key="$pin$PTB2_pcrSetting_5"                      value="500" />
+   <item key="$pin$PTB3_pcrSetting_4"                      value="400" />
+   <item key="$pin$PTB4_pcrSetting_0"                      value="0" />
+   <item key="$pin$PTB5_pcrSetting_0"                      value="0" />
+   <item key="$pin$PTB6_pcrSetting_0"                      value="0" />
+   <item key="$pin$PTB7_pcrSetting_0"                      value="0" />
+   <item key="$signal$ADC0_SE10_codeIdentifier"            value="LevelControl" />
+   <item key="$signal$ADC0_SE11_codeIdentifier"            value="DelayControl" />
+   <item key="$signal$ADC0_SE1_codeIdentifier"             value="Reference" />
+   <item key="$signal$ADC0_SE1_descriptionSetting"         value="Reference level for ISample OPAMPs" />
+   <item key="$signal$ADC0_SE4_codeIdentifier"             value="I_Sample" />
+   <item key="$signal$ADC0_SE4_descriptionSetting"         value="Current Sample" />
+   <item key="$signal$ADC0_SE5_codeIdentifier"             value="DelayControl" />
+   <item key="$signal$ADC0_SE5_descriptionSetting"         value="Delay Control" />
+   <item key="$signal$ADC0_SE6_codeIdentifier"             value="HoldControl" />
+   <item key="$signal$ADC0_SE6_descriptionSetting"         value="Hold time control" />
+   <item key="$signal$ADC0_SE7_codeIdentifier"             value="LevelControl" />
+   <item key="$signal$ADC0_SE7_descriptionSetting"         value="Current threshold control" />
+   <item key="$signal$ADC0_SE9_codeIdentifier"             value="HoldControl" />
+   <item key="$signal$GPIOA_12_codeIdentifier"             value="Debug/Pins" />
+   <item key="$signal$GPIOA_12_descriptionSetting"         value="Debug output/Debug, DustCollector, HoldLed, DelayLed" />
+   <item key="$signal$GPIOA_13_codeIdentifier"             value="DustCollector/Pins" />
+   <item key="$signal$GPIOA_13_descriptionSetting"         value="Controls dust collector" />
+   <item key="$signal$GPIOA_14_codeIdentifier"             value="HoldLed/Pins" />
+   <item key="$signal$GPIOA_14_descriptionSetting"         value="LED indicating hold" />
+   <item key="$signal$GPIOA_15_codeIdentifier"             value="DelayLed/Pins" />
+   <item key="$signal$GPIOA_15_descriptionSetting"         value="LED indicating delay" />
+   <item key="$signal$GPIOA_2_codeIdentifier"              value="SWD_Rx" />
+   <item key="$signal$GPIOA_2_descriptionSetting"          value="LED indicating load detection/DetectionLed" />
+   <item key="$signal$GPIOA_3_codeIdentifier"              value="SWD_Tx" />
+   <item key="$signal$PIT_CH0_codeIdentifier"              value="PollingTimerChannel" />
+   <item key="$signal$RESET_b_codeIdentifier"              value="RESET_b" />
+   <item key="$signal$RESET_b_descriptionSetting"          value="RESET reserved" />
+   <item key="$signal$SWD_CLK_codeIdentifier"              value="SWDCLK" />
+   <item key="$signal$SWD_CLK_descriptionSetting"          value="SWD CLK" />
+   <item key="$signal$SWD_DIO_codeIdentifier"              value="SWDIO" />
+   <item key="$signal$SWD_DIO_descriptionSetting"          value="SWD DIO" />
+   <item key="$signal$UART0_RX_descriptionSetting"         value="Debug Rx" />
+   <item key="$signal$UART0_TX_descriptionSetting"         value="Debug Tx" />
+   <item key="/ACMP0/acmp_c1_dacval"                       value="0" />
+   <item key="/ACMP1/acmp_c1_dacval"                       value="0" />
+   <item key="/ADC0/adc_apctl1_adpc"                       value="242" />
+   <item key="/ADC0/adc_sc3_adiv"                          value="3" />
+   <item key="/ADC0/adc_sc3_adlsmp"                        value="true" />
+   <item key="/ADC0/adc_sc3_mode"                          value="2" />
+   <item key="/ADC0/enablePeripheralSupport"               value="true" />
+   <item key="/Console/consoleEnable"                      value="false" />
+   <item key="/Console/defaultBaudRate"                    value="9600" />
+   <item key="/FTM0/ftm_cnv[0]"                            value="30000" />
+   <item key="/FTM0/ftm_mod"                               value="59999" />
+   <item key="/FTM0/ftm_sc_ps"                             value="4" />
+   <item key="/FTM2/ftm_combine0"                          value="0" />
+   <item key="/FTM2/ftm_combine1"                          value="0" />
+   <item key="/FTM2/ftm_combine2"                          value="0" />
+   <item key="/FTM2/ftm_deadtime_dtval"                    value="0" />
+   <item key="/FTM2/ftm_pwmload_chsel"                     value="0" />
+   <item key="/GPIOA/enablePeripheralSupport"              value="true" />
+   <item key="/I2C0/i2c_a2_sad"                            value="0" />
+   <item key="/I2C0/i2c_rangeaddress"                      value="0" />
+   <item key="/I2C0/i2c_slaveaddress"                      value="0" />
+   <item key="/I2C0/i2c_slt_value"                         value="0" />
+   <item key="/I2C0/i2c_speed"                             value="0" />
+   <item key="/ICS/ClockConfig[0]"                         value="ClockConfig_FEI_48MHz" />
+   <item key="/ICS/ClockConfig[1]"                         value="ClockConfig_1" />
+   <item key="/ICS/ClockConfig[2]"                         value="ClockConfig_2" />
+   <item key="/ICS/ClockConfig[3]"                         value="ClockConfig_3" />
+   <item key="/ICS/assumeSlowIrcTrimmed"                   value="true" />
+   <item key="/LINKER/bss_ram"                             value="ram_high" />
+   <item key="/LINKER/heapSize"                            value="0" />
+   <item key="/LINKER/stackSize"                           value="144" />
+   <item key="/LINKER/stack_ram"                           value="ram_low" />
+   <item key="/OSC0/configurePeripheralInStartUp"          value="true" />
+   <item key="/PIT/enablePeripheralSupport"                value="true" />
+   <item key="/PIT/irqHandlingMethod"                      value="$ClassMethod" />
+   <item key="/PIT/pit_ldval_tsv[0]"                       value="479999" />
+   <item key="/PIT/pit_ldval_tsv[1]"                       value="0" />
+   <item key="/PIT/pit_tctrl_ten[0]"                       value="true" />
+   <item key="/PIT/pit_tctrl_ten[1]"                       value="true" />
+   <item key="/PIT/pit_tctrl_tie[0]"                       value="true" />
+   <item key="/PORT/configurePeripheralInStartUp"          value="true" />
+   <item key="/PORT/enablePeripheralSupport"               value="true" />
+   <item key="/PORT/port_hdrve_ptb5"                       value="true" />
+   <item key="/PORT/port_puel_ptape"                       value="0" />
+   <item key="/SIM/configurePeripheralInStartUp"           value="true" />
+   <item key="/SIM/enablePeripheralSupport"                value="true" />
+   <item key="/SIM/sim_pinsel_uart0ps"                     value="true" />
+   <item key="/SIM/sim_sopt_nmie"                          value="false" />
+   <item key="/SPI0/spi_m_bits"                            value="0" />
+   <item key="/SPI0/spi_speed"                             value="0" />
+   <item key="/WDOG/configurePeripheralInStartUp"          value="true" />
+   <item key="/WDOG/wdog_cs1_update"                       value="false" />
+</section>

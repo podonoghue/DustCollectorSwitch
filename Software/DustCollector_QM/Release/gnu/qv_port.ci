@@ -1,0 +1,4 @@
+graph: { title: "/opt/qp/qpcpp/ports/arm-cm/qv/gnu/qv_port.cpp"
+node: { title: "QV_init" label: "void QV_init()\n/opt/qp/qpcpp/ports/arm-cm/qv/gnu/qv_port.cpp:61:6\n0 bytes (static)" }
+node: { title: "QF_qlog2" label: "uint_fast8_t QF_qlog2(uint32_t)\n/opt/qp/qpcpp/ports/arm-cm/qv/gnu/qv_port.cpp:94:14\n0 bytes (static)" }
+}

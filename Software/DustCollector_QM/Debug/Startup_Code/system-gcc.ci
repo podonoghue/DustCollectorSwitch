@@ -1,0 +1,8 @@
+graph: { title: "../Startup_Code/system-gcc.cpp"
+node: { title: "_ZN9__gnu_cxx27__verbose_terminate_handlerEv" label: "void __gnu_cxx::__verbose_terminate_handler()\n../Startup_Code/system-gcc.cpp:13:10\n8 bytes (static)" }
+node: { title: "_ZN5USBDM10checkErrorEv" label: "USBDM::ErrorCode USBDM::checkError()\n../Project_Headers/error.h:83:18" shape : ellipse }
+edge: { sourcename: "_ZN9__gnu_cxx27__verbose_terminate_handlerEv" targetname: "_ZN5USBDM10checkErrorEv" label: "../Project_Headers/error.h:116:21" }
+node: { title: "../Startup_Code/system-gcc.cpp:__cxa_pure_virtual" label: "void __cxa_pure_virtual()\n../Startup_Code/system-gcc.cpp:18:43\n8 bytes (static)" }
+node: { title: "exit" label: "void exit(int)\n/opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/arm-none-eabi/include/stdlib.h:93:6" shape : ellipse }
+edge: { sourcename: "../Startup_Code/system-gcc.cpp:__cxa_pure_virtual" targetname: "exit" label: "../Startup_Code/system-gcc.cpp:19:9" }
+}

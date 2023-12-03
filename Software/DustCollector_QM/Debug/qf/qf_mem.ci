@@ -1,0 +1,14 @@
+graph: { title: "/opt/qp/qpcpp/src/qf/qf_mem.cpp"
+node: { title: "_ZN2QP6QMPool4initEPvjj" label: "void QP::QMPool::init(void*, uint_fast32_t, uint_fast16_t)\n/opt/qp/qpcpp/src/qf/qf_mem.cpp:72:6\n24 bytes (static)" }
+node: { title: "Q_onError" label: "void Q_onError(const char*, int_t)\n/opt/qp/qpcpp/include/qsafe.h:167:12" shape : ellipse }
+edge: { sourcename: "_ZN2QP6QMPool4initEPvjj" targetname: "Q_onError" label: "/opt/qp/qpcpp/src/qf/qf_mem.cpp:81:5" }
+edge: { sourcename: "_ZN2QP6QMPool4initEPvjj" targetname: "Q_onError" label: "/opt/qp/qpcpp/src/qf/qf_mem.cpp:97:5" }
+node: { title: "_ZN2QP6QMPool3getEjj" label: "void* QP::QMPool::get(uint_fast16_t, uint_fast8_t)\n/opt/qp/qpcpp/src/qf/qf_mem.cpp:132:8\n16 bytes (static)" }
+edge: { sourcename: "_ZN2QP6QMPool3getEjj" targetname: "Q_onError" label: "/opt/qp/qpcpp/src/qf/qf_mem.cpp:150:9" }
+edge: { sourcename: "_ZN2QP6QMPool3getEjj" targetname: "Q_onError" label: "/opt/qp/qpcpp/src/qf/qf_mem.cpp:155:9" }
+edge: { sourcename: "_ZN2QP6QMPool3getEjj" targetname: "Q_onError" label: "/opt/qp/qpcpp/src/qf/qf_mem.cpp:161:13" }
+edge: { sourcename: "_ZN2QP6QMPool3getEjj" targetname: "Q_onError" label: "/opt/qp/qpcpp/src/qf/qf_mem.cpp:173:13" }
+node: { title: "_ZN2QP6QMPool3putEPvj" label: "void QP::QMPool::put(void*, uint_fast8_t)\n/opt/qp/qpcpp/src/qf/qf_mem.cpp:209:6\n8 bytes (static)" }
+edge: { sourcename: "_ZN2QP6QMPool3putEPvj" targetname: "Q_onError" label: "/opt/qp/qpcpp/src/qf/qf_mem.cpp:223:5" }
+node: { title: "_ZNK2QP6QMPool12getBlockSizeEv" label: "QP::QMPoolSize QP::QMPool::getBlockSize() const\n/opt/qp/qpcpp/src/qf/qf_mem.cpp:248:12\n0 bytes (static)" }
+}

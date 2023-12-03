@@ -1,0 +1,31 @@
+graph: { title: "/opt/qp/qpcpp/src/qf/qf_dyn.cpp"
+node: { title: "_ZN2QP2QF8poolInitEPvjj" label: "void QP::QF::poolInit(void*, uint_fast32_t, uint_fast16_t)\n/opt/qp/qpcpp/src/qf/qf_dyn.cpp:73:6\n24 bytes (static)" }
+node: { title: "Q_onError" label: "void Q_onError(const char*, int_t)\n/opt/qp/qpcpp/include/qsafe.h:167:12" shape : ellipse }
+edge: { sourcename: "_ZN2QP2QF8poolInitEPvjj" targetname: "Q_onError" label: "/opt/qp/qpcpp/src/qf/qf_dyn.cpp:85:5" }
+node: { title: "_ZNK2QP6QMPool12getBlockSizeEv" label: "QP::QMPoolSize QP::QMPool::getBlockSize() const\n/opt/qp/qpcpp/include/qmpool.hpp:131:16" shape : ellipse }
+edge: { sourcename: "_ZN2QP2QF8poolInitEPvjj" targetname: "_ZNK2QP6QMPool12getBlockSizeEv" label: "/opt/qp/qpcpp/src/qf/qf_dyn.cpp:87:9" }
+edge: { sourcename: "_ZN2QP2QF8poolInitEPvjj" targetname: "Q_onError" label: "/opt/qp/qpcpp/src/qf/qf_dyn.cpp:87:9" }
+node: { title: "_ZN2QP6QMPool4initEPvjj" label: "void QP::QMPool::init(void*, uint_fast32_t, uint_fast16_t)\n/opt/qp/qpcpp/include/qmpool.hpp:121:10" shape : ellipse }
+edge: { sourcename: "_ZN2QP2QF8poolInitEPvjj" targetname: "_ZN2QP6QMPool4initEPvjj" label: "/opt/qp/qpcpp/src/qf/qf_dyn.cpp:96:5" }
+node: { title: "_ZN2QP2QF19poolGetMaxBlockSizeEv" label: "uint_fast16_t QP::QF::poolGetMaxBlockSize()\n/opt/qp/qpcpp/src/qf/qf_dyn.cpp:116:20\n8 bytes (static)" }
+edge: { sourcename: "_ZN2QP2QF19poolGetMaxBlockSizeEv" targetname: "_ZNK2QP6QMPool12getBlockSizeEv" label: "/opt/qp/qpcpp/src/qf/qf_dyn.cpp:117:12" }
+node: { title: "_ZN2QP2QF10getPoolMinEj" label: "uint_fast16_t QP::QF::getPoolMin(uint_fast8_t)\n/opt/qp/qpcpp/src/qf/qf_dyn.cpp:121:20\n8 bytes (static)" }
+edge: { sourcename: "_ZN2QP2QF10getPoolMinEj" targetname: "Q_onError" label: "/opt/qp/qpcpp/src/qf/qf_dyn.cpp:126:5" }
+node: { title: "_ZN2QP2QF5newX_Ejji" label: "QP::QEvt* QP::QF::newX_(uint_fast16_t, uint_fast16_t, enum_t)\n/opt/qp/qpcpp/src/qf/qf_dyn.cpp:139:8\n24 bytes (static)" }
+edge: { sourcename: "_ZN2QP2QF5newX_Ejji" targetname: "_ZNK2QP6QMPool12getBlockSizeEv" label: "/opt/qp/qpcpp/src/qf/qf_dyn.cpp:151:24" }
+edge: { sourcename: "_ZN2QP2QF5newX_Ejji" targetname: "Q_onError" label: "/opt/qp/qpcpp/src/qf/qf_dyn.cpp:158:5" }
+node: { title: "_ZN2QP6QMPool3getEjj" label: "void* QP::QMPool::get(uint_fast16_t, uint_fast8_t)\n/opt/qp/qpcpp/include/qmpool.hpp:125:12" shape : ellipse }
+edge: { sourcename: "_ZN2QP2QF5newX_Ejji" targetname: "_ZN2QP6QMPool3getEjj" label: "/opt/qp/qpcpp/src/qf/qf_dyn.cpp:172:5" }
+edge: { sourcename: "_ZN2QP2QF5newX_Ejji" targetname: "Q_onError" label: "/opt/qp/qpcpp/src/qf/qf_dyn.cpp:198:9" }
+node: { title: "_ZN2QP2QF2gcEPKNS_4QEvtE" label: "void QP::QF::gc(const QP::QEvt*)\n/opt/qp/qpcpp/src/qf/qf_dyn.cpp:218:6\n8 bytes (static)" }
+edge: { sourcename: "_ZN2QP2QF2gcEPKNS_4QEvtE" targetname: "Q_onError" label: "/opt/qp/qpcpp/src/qf/qf_dyn.cpp:221:5" }
+edge: { sourcename: "_ZN2QP2QF2gcEPKNS_4QEvtE" targetname: "Q_onError" label: "/opt/qp/qpcpp/src/qf/qf_dyn.cpp:252:13" }
+node: { title: "_ZN2QP6QMPool3putEPvj" label: "void QP::QMPool::put(void*, uint_fast8_t)\n/opt/qp/qpcpp/include/qmpool.hpp:128:10" shape : ellipse }
+edge: { sourcename: "_ZN2QP2QF2gcEPKNS_4QEvtE" targetname: "_ZN2QP6QMPool3putEPvj" label: "/opt/qp/qpcpp/src/qf/qf_dyn.cpp:263:13" }
+node: { title: "_ZN2QP2QF7newRef_EPKNS_4QEvtES3_" label: "const QP::QEvt* QP::QF::newRef_(const QP::QEvt*, const QP::QEvt*)\n/opt/qp/qpcpp/src/qf/qf_dyn.cpp:274:14\n16 bytes (static)" }
+edge: { sourcename: "_ZN2QP2QF7newRef_EPKNS_4QEvtES3_" targetname: "Q_onError" label: "/opt/qp/qpcpp/src/qf/qf_dyn.cpp:285:5" }
+edge: { sourcename: "_ZN2QP2QF7newRef_EPKNS_4QEvtES3_" targetname: "Q_onError" label: "/opt/qp/qpcpp/src/qf/qf_dyn.cpp:289:5" }
+node: { title: "_ZN2QP2QF10deleteRef_EPKNS_4QEvtE" label: "void QP::QF::deleteRef_(const QP::QEvt*)\n/opt/qp/qpcpp/src/qf/qf_dyn.cpp:309:6\n8 bytes (static)" }
+edge: { sourcename: "_ZN2QP2QF10deleteRef_EPKNS_4QEvtE" targetname: "_ZN2QP2QF2gcEPKNS_4QEvtE" label: "/opt/qp/qpcpp/src/qf/qf_dyn.cpp:332:7" }
+edge: { sourcename: "_ZN2QP2QF10deleteRef_EPKNS_4QEvtE" targetname: "Q_onError" label: "/opt/qp/qpcpp/src/qf/qf_dyn.cpp:314:5" }
+}

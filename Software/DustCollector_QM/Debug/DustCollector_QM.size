@@ -1,0 +1,29 @@
+DustCollector_QM.elf  :
+section             size        addr
+.interrupts         1040           0
+.text               5892        1040
+.rodata              190        6932
+.ARM.exidx             8        7124
+.flash                 0        7132
+.mtb                   0   536870656
+.interrupts_ram        0   536870656
+.data                108   536870656
+.noinit                0   536870764
+.bss                 708   536870912
+.heap                  0   536870764
+.stack               148   536870764
+.ARM.attributes       40           0
+.comment              68           0
+.debug_line_str      519           0
+.debug_info       216554           0
+.debug_abbrev      35317           0
+.debug_loclists    12153           0
+.debug_aranges      1840           0
+.debug_rnglists     1452           0
+.debug_macro       33586           0
+.debug_line        55623           0
+.debug_str        228613           0
+.debug_frame        4884           0
+Total             598743
+
+

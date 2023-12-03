@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model version="5.3.0" links="0">
+ <framework name="qpcpp"/>
+ <package name="AOs" stereotype="0x02">
+  <class name="DustCollectorStateMachine" superclass="qpcpp::QActive">
+   <attribute name="m_timeEvt" type="QP::QTimeEvt" visibility="0x02" properties="0x00">
+    <documentation>Timer to generate time related events</documentation>
+   </attribute>
+   <attribute name="instance" type="DustCollectorStateMachine" visibility="0x00" properties="0x01"/>
+   <operation name="DustCollectorStateMachine" type="" visibility="0x00" properties="0x02">
+    <documentation>DustCollector constructor</documentation>
+    <code>  : QActive(Q_STATE_CAST(&amp;DustCollectorStateMachine::initial)),
+    m_timeEvt(this, TIMEOUT_SIG, 0U)</code>
+   </operation>
+   <operation name="~DustCollectorStateMachine" type="" visibility="0x00" properties="0x06">
+    <specifiers>= default;</specifiers>
+    <documentation>DustCollector virtual destructor</documentation>
+   </operation>
+   <statechart properties="0x02">
+    <initial target="../1">
+     <action>(void)e; // unused parameter
+#if USE_CONSOLE
+console.writeln(&quot;Starting&quot;);
+#endif
+</action>
+     <initial_glyph conn="10,4,5,0,12,2">
+      <action box="0,-2,6,2"/>
+     </initial_glyph>
+    </initial>
+    <state name="Idle">
+     <entry brief="Collector off">console.WRITELN(&quot;collector off&quot;);
+DustCollector::off();</entry>
+     <tran trig="LOADON" target="../../4">
+      <tran_glyph conn="28,14,1,3,6">
+       <action box="-7,-1,8,2"/>
+      </tran_glyph>
+     </tran>
+     <state_glyph node="8,6,20,12">
+      <entry box="1,2,13,2"/>
+     </state_glyph>
+    </state>
+    <state name="Operating">
+     <entry brief="Collector on">console.WRITELN(&quot;collector on&quot;);
+DustCollector::on();</entry>
+     <tran trig="LOADOFF" target="../../3">
+      <tran_glyph conn="34,32,3,1,-6">
+       <action box="1,-1,10,2"/>
+      </tran_glyph>
+     </tran>
+     <state_glyph node="34,22,20,12">
+      <entry box="1,2,13,2"/>
+     </state_glyph>
+    </state>
+    <state name="Hold">
+     <entry brief="Start Timer">m_timeEvt.armX(BSP::getHoldTime(), 0);
+console.WRITELN(&quot;collector holding&quot;);
+HoldLed::on();</entry>
+     <exit brief="Stop Timer">m_timeEvt.disarm();
+HoldLed::off();</exit>
+     <tran trig="TIMEOUT" target="../../1">
+      <tran_glyph conn="8,32,3,3,-2,-18,2">
+       <action box="1,-1,9,2"/>
+      </tran_glyph>
+     </tran>
+     <tran trig="LOADON" target="../../2">
+      <tran_glyph conn="28,30,1,3,6">
+       <action box="-7,-1,10,2"/>
+      </tran_glyph>
+     </tran>
+     <state_glyph node="8,22,20,12">
+      <entry box="1,2,12,2"/>
+      <exit box="1,4,12,2"/>
+     </state_glyph>
+    </state>
+    <state name="Delay">
+     <entry brief="Start Timer">m_timeEvt.armX(BSP::getDelayTime(), 0);
+console.WRITELN(&quot;collector delaying&quot;);
+DelayLed::on();</entry>
+     <exit brief="Stop Timer">m_timeEvt.disarm();
+DelayLed::off();</exit>
+     <tran trig="TIMEOUT" target="../../2">
+      <tran_glyph conn="54,14,1,1,2,18,-2">
+       <action box="-8,-1,8,2"/>
+      </tran_glyph>
+     </tran>
+     <tran trig="LOADOFF" target="../../1">
+      <tran_glyph conn="34,16,3,1,-6">
+       <action box="1,-1,10,2"/>
+      </tran_glyph>
+     </tran>
+     <state_glyph node="34,6,20,12">
+      <entry box="1,2,12,2"/>
+      <exit box="1,4,12,2"/>
+     </state_glyph>
+    </state>
+    <state_diagram size="60,38"/>
+   </statechart>
+  </class>
+  <attribute name="AO_DustCollectorStateMachine" type="QP::QActive * const" visibility="0x00" properties="0x00">
+   <code>= &amp;DustCollectorStateMachine::instance;   </code>
+  </attribute>
+ </package>
+ <package name="Shared" stereotype="0x00">
+  <attribute name="evLoadOn" type="QP::QEvt" visibility="0x00" properties="0x01">
+   <code> = QEvt(LOADON_SIG);</code>
+  </attribute>
+  <attribute name="evLoadOff" type="QP::QEvt" visibility="0x00" properties="0x01">
+   <code> = QEvt(LOADOFF_SIG);</code>
+  </attribute>
+ </package>
+ <directory name="Sources">
+  <file name="bsp.h">
+   <text>#ifndef BSP_HPP
+#define BSP_HPP
+#include &quot;Sampler.h&quot;
+
+/**
+ * Simple Board Support Package (BSP)
+ */
+class BSP {
+public:
+    // Number of SM clock ticks in a second
+    static constexpr int SM_TICKS_PER_SEC = 100;
+
+    // Delay between load detection and collector on
+    static constexpr int ON_DELAY      = 5*SM_TICKS_PER_SEC;
+
+    // Delay between load off and collector off
+    static constexpr int OFF_DELAY     = 10*SM_TICKS_PER_SEC;
+
+    // Initialise BSP
+    static void init();
+
+   /**
+    * Get Delay time [.1s .. 4s]
+    *
+    * @return Delay time in SM ticks
+    */
+   static unsigned getDelayTime() {
+       return Sampler::getDelayTime() / (1000/SM_TICKS_PER_SEC);
+    }
+
+   /**
+    * Get Hold time [1s..10s]
+    *
+    * @return Hold time in SM ticks
+    */
+   static unsigned getHoldTime() {
+       return Sampler::getHoldTime() / (1000/SM_TICKS_PER_SEC);
+    }
+
+   /**
+    * Indicates is the load is operating
+    * 
+    * @return True if operating
+    */
+   static bool isLoadOn() {
+      return Sampler::isLoadOn();
+   }
+
+}; // BSP
+
+/**
+ * Events
+ */
+enum DustCollectorSignals {
+    RESERVED = QP::Q_USER_SIG,    // Reserve system signals
+
+    TIMEOUT_SIG,     // Timer elapsed signal
+    LOADON_SIG,      // Load detected
+    LOADOFF_SIG,     // Load stopped
+
+    MAX_SIG,         // Last signal used
+};
+
+// Active object(s) used in this application -------------------------------
+$declare${AOs::AO_DustCollectorStateMachine}
+
+#endif // BSP_HPP</text>
+  </file>
+  <file name="bsp.cpp">
+   <text>#include &lt;cstdlib&gt;    // For exit()
+#include &quot;qpcpp.hpp&quot;  // QP/C++ framework API
+#include &quot;bsp.h&quot;      // Board Support Package interface
+#include &quot;hardware.h&quot; // Generated USBDM hardware objects
+#include &quot;Sampler.h&quot;
+
+using namespace std;
+using namespace QP;
+using namespace USBDM;
+
+$define${Shared}
+
+// ADC Resolution - 10-bit unsigned (single-ended mode)
+
+// Initialise BSP
+void BSP::init() {
+   Sampler::init();
+}
+
+/**
+ * Callback functions needed by the framework
+ */
+void QF::onStartup() {
+
+    // Start SYSTICK Timer at given rate
+   SysTick_Config(SystemCoreClock / BSP::SM_TICKS_PER_SEC);
+
+   // Assign all priority bits for preemption-prio. and none to sub-prio.
+//   NVIC_SetPriorityGrouping(0U);
+
+   // Set priorities of ISRs used in the system, see NOTE1
+   NVIC_SetPriority(SysTick_IRQn, QF_AWARE_ISR_CMSIS_PRI + 1U);
+}
+
+void QP::QF::onCleanup() {
+}
+
+void QP::QV::onIdle() {
+   QF_INT_ENABLE();
+}
+
+extern &quot;C&quot;
+void SysTick_Handler() {
+
+    QP::QTimeEvt::TICK_X(0U, nullptr); // process time events at rate 0
+
+    static bool wasOn = false;
+    bool  isOn = Sampler::isLoadOn();
+    if (wasOn != isOn) {
+       if (isOn) {
+          AO_DustCollectorStateMachine-&gt;post_(&amp;evLoadOn,   0, nullptr);
+       }
+       else {
+          AO_DustCollectorStateMachine-&gt;post_(&amp;evLoadOff,   0, nullptr);
+       }
+       wasOn = isOn;
+    }
+}
+
+void Q_onAssert(char const * const module, int loc) {
+    (void)module; (void)loc; // In case console disabled
+    console.WRITELN(&quot;Assertion failed in &quot;, module, &quot;:&quot;, loc);
+    exit(-1);
+}
+</text>
+  </file>
+  <file name="DustCollector.cpp">
+   <text>#include &quot;qpcpp.hpp&quot;    // QP/C++ framework API
+#include &quot;bsp.h&quot;        // Board Support Package interface
+#include &quot;hardware.h&quot;   // Generated USBDM hardware objects
+#include &quot;Sampler.h&quot;
+
+using namespace QP;
+using namespace USBDM;
+
+// Declare the DustCollector class
+$declare${AOs::DustCollectorStateMachine}
+
+// Opaque pointer to the DustCollector active object
+$define${AOs::AO_DustCollectorStateMachine}
+
+// Define the DustCollector class (including the state machine)
+$define${AOs::DustCollectorStateMachine}</text>
+  </file>
+  <file name="main.cpp">
+   <text>#include &quot;qpcpp.hpp&quot;  // QP/C++ framework API
+#include &quot;bsp.h&quot;      // Board Support Package interface
+#include &quot;hardware.h&quot; // Generated USBDM hardware objects
+
+using namespace QP;
+using namespace USBDM;
+
+// Main Function
+int main() {
+
+    // Initialise the framework
+    QF::init();
+
+    // Initialise the BSP
+    BSP::init();
+
+    // Start the DustCollector active object
+
+    // Event queue buffer for the DustCollector
+    static QEvt const *dustCollectorQueueSto[10];
+
+    AO_DustCollectorStateMachine-&gt;start(
+        1U,                              // Priority of the active object
+        dustCollectorQueueSto,           // Event queue buffer
+        Q_DIM(dustCollectorQueueSto),    // Length of the buffer
+        (void *)0, 0U);                  // Private stack (not used on the desktop)
+
+    return QF::run(); // let the framework run the application
+}</text>
+  </file>
+ </directory>
+</model>

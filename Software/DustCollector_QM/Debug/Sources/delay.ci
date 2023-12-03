@@ -1,0 +1,37 @@
+graph: { title: "../Sources/delay.cpp"
+node: { title: "../Sources/delay.cpp:_ZN5USBDML9waitTicksEx" label: "void USBDM::waitTicks(int64_t)\n../Sources/delay.cpp:84:13\n20 bytes (static)" }
+node: { title: "../Sources/delay.cpp:_ZN5USBDML9waitTicksExPFbvE" label: "bool USBDM::waitTicks(int64_t, bool (*)())\n../Sources/delay.cpp:224:13\n32 bytes (static)" }
+node: { title: "__indirect_call" label: "Indirect Call Placeholder" shape : ellipse }
+edge: { sourcename: "../Sources/delay.cpp:_ZN5USBDML9waitTicksExPFbvE" targetname: "__indirect_call" label: "../Sources/delay.cpp:233:17" }
+node: { title: "_ZN5USBDM6waitUSEm" label: "void USBDM::waitUS(uint32_t)\n../Sources/delay.cpp:109:6\n8 bytes (static)" }
+node: { title: "__aeabi_lmul" label: "__aeabi_lmul\n<built-in>" shape : ellipse }
+edge: { sourcename: "_ZN5USBDM6waitUSEm" targetname: "__aeabi_lmul" }
+node: { title: "__aeabi_uldivmod" label: "__aeabi_uldivmod\n<built-in>" shape : ellipse }
+edge: { sourcename: "_ZN5USBDM6waitUSEm" targetname: "__aeabi_uldivmod" }
+edge: { sourcename: "_ZN5USBDM6waitUSEm" targetname: "../Sources/delay.cpp:_ZN5USBDML9waitTicksEx" label: "../Sources/delay.cpp:111:13" }
+node: { title: "_ZN5USBDM6waitMSEm" label: "void USBDM::waitMS(uint32_t)\n../Sources/delay.cpp:121:6\n8 bytes (static)" }
+edge: { sourcename: "_ZN5USBDM6waitMSEm" targetname: "__aeabi_lmul" }
+edge: { sourcename: "_ZN5USBDM6waitMSEm" targetname: "__aeabi_uldivmod" }
+edge: { sourcename: "_ZN5USBDM6waitMSEm" targetname: "../Sources/delay.cpp:_ZN5USBDML9waitTicksEx" label: "../Sources/delay.cpp:123:13" }
+node: { title: "_ZN5USBDM4waitEf" label: "void USBDM::wait(Seconds)\n../Sources/delay.cpp:135:6\n8 bytes (static)" }
+node: { title: "__aeabi_fmul" label: "__aeabi_fmul\n<built-in>" shape : ellipse }
+edge: { sourcename: "_ZN5USBDM4waitEf" targetname: "__aeabi_fmul" }
+node: { title: "roundf" label: "float __builtin_roundf(float)\n<built-in>" shape : ellipse }
+edge: { sourcename: "_ZN5USBDM4waitEf" targetname: "roundf" label: "/opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/arm-none-eabi/include/c++/13.2.1/cmath:2483:28" }
+node: { title: "__aeabi_f2iz" label: "__aeabi_f2iz\n<built-in>" shape : ellipse }
+edge: { sourcename: "_ZN5USBDM4waitEf" targetname: "__aeabi_f2iz" }
+edge: { sourcename: "_ZN5USBDM4waitEf" targetname: "../Sources/delay.cpp:_ZN5USBDML9waitTicksEx" label: "../Sources/delay.cpp:137:13" }
+node: { title: "_ZN5USBDM6waitUSEmPFbvE" label: "bool USBDM::waitUS(uint32_t, bool (*)())\n../Sources/delay.cpp:256:6\n8 bytes (static)" }
+edge: { sourcename: "_ZN5USBDM6waitUSEmPFbvE" targetname: "__aeabi_lmul" }
+edge: { sourcename: "_ZN5USBDM6waitUSEmPFbvE" targetname: "__aeabi_uldivmod" }
+edge: { sourcename: "_ZN5USBDM6waitUSEmPFbvE" targetname: "../Sources/delay.cpp:_ZN5USBDML9waitTicksExPFbvE" label: "../Sources/delay.cpp:258:20" }
+node: { title: "_ZN5USBDM6waitMSEmPFbvE" label: "bool USBDM::waitMS(uint32_t, bool (*)())\n../Sources/delay.cpp:271:6\n8 bytes (static)" }
+edge: { sourcename: "_ZN5USBDM6waitMSEmPFbvE" targetname: "__aeabi_lmul" }
+edge: { sourcename: "_ZN5USBDM6waitMSEmPFbvE" targetname: "__aeabi_uldivmod" }
+edge: { sourcename: "_ZN5USBDM6waitMSEmPFbvE" targetname: "../Sources/delay.cpp:_ZN5USBDML9waitTicksExPFbvE" label: "../Sources/delay.cpp:273:20" }
+node: { title: "_ZN5USBDM4waitEfPFbvE" label: "bool USBDM::wait(float, bool (*)())\n../Sources/delay.cpp:286:6\n8 bytes (static)" }
+edge: { sourcename: "_ZN5USBDM4waitEfPFbvE" targetname: "__aeabi_fmul" }
+edge: { sourcename: "_ZN5USBDM4waitEfPFbvE" targetname: "roundf" label: "/opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/arm-none-eabi/include/c++/13.2.1/cmath:2483:28" }
+edge: { sourcename: "_ZN5USBDM4waitEfPFbvE" targetname: "__aeabi_f2iz" }
+edge: { sourcename: "_ZN5USBDM4waitEfPFbvE" targetname: "../Sources/delay.cpp:_ZN5USBDML9waitTicksExPFbvE" label: "../Sources/delay.cpp:288:20" }
+}
