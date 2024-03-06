@@ -83,6 +83,9 @@ void QP::QV::onIdle() {
    QF_INT_ENABLE();
 }
 
+/**
+ * This function drives the state-machine by
+ */
 extern "C"
 void SysTick_Handler() {
 

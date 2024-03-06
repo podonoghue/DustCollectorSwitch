@@ -68,7 +68,7 @@ public:
     }
 
    /**
-    * Indicates is the load is operating
+    * Indicates if the load is operating
     *
     * @return True if operating
     */

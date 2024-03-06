@@ -150,7 +150,7 @@ public:
     }
 
    /**
-    * Indicates is the load is operating
+    * Indicates if the load is operating
     * 
     * @return True if operating
     */
@@ -220,11 +220,18 @@ void QP::QV::onIdle() {
    QF_INT_ENABLE();
 }
 
+/**
+ * This function drives the state-machine.
+ */
 extern &quot;C&quot;
 void SysTick_Handler() {
 
-    QP::QTimeEvt::TICK_X(0U, nullptr); // process time events at rate 0
+    // Process time events at rate 0
+    QP::QTimeEvt::TICK_X(0U, nullptr);
 
+    // Check for user events and forward to SM
+
+    // Only generate events when the situation changes!
     static bool wasOn = false;
     bool  isOn = Sampler::isLoadOn();
     if (wasOn != isOn) {
