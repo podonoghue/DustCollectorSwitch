@@ -1,0 +1,10 @@
+Board Information Report
+Filename     : D:\Altium\DustCollectorSwitch\PCB_V6_Powered\DustCollectorSwitch.PcbDoc
+Date         : 2/09/2024
+Time         : 3:30:52 PM
+Time Elapsed : 00:00:00
+
+General
+    Board Size, 53.34mmx82.682mm
+    Components on board, 59
+count : 2
