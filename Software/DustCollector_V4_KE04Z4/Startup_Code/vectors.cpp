@@ -129,11 +129,11 @@ void _HardFault_Handler(
       volatile ExceptionFrame *exceptionFrame __attribute__((__unused__)),
       uint32_t execReturn                     __attribute__((__unused__)) ) {
 
-#if USE_CONSOLE
+#if defined(DEBUG_BUILD) && USE_CONSOLE
    using namespace USBDM;
 
    console.setPadding(Padding_LeadingZeroes);
-   console.setWidth(8);
+   console.setWidth(Width_8);
    console.writeln("\n[Hardfault]\n - Stack frame:\n");
    console.writeln("R0  = 0x", exceptionFrame->r0,  Radix_16);
    console.writeln("R1  = 0x", exceptionFrame->r1,  Radix_16);
@@ -190,7 +190,7 @@ void ADC0_IRQHandler(void)                    WEAK_DEFAULT_HANDLER;
 void ACMP0_IRQHandler(void)                   WEAK_DEFAULT_HANDLER;
 void FTM0_IRQHandler(void)                    WEAK_DEFAULT_HANDLER;
 void FTM2_IRQHandler(void)                    WEAK_DEFAULT_HANDLER;
-void RTC_Alarm_IRQHandler(void)               WEAK_DEFAULT_HANDLER;
+void RTC_IRQHandler(void)                     WEAK_DEFAULT_HANDLER;
 void ACMP1_IRQHandler(void)                   WEAK_DEFAULT_HANDLER;
 void KBI0_IRQHandler(void)                    WEAK_DEFAULT_HANDLER;
 void KBI1_IRQHandler(void)                    WEAK_DEFAULT_HANDLER;
@@ -247,10 +247,10 @@ VectorTable const __vector_table = {
       FTM0_IRQHandler,                         /*   33,   17  FlexTimer Module                                                                 */
       Default_Handler,                         /*   34,   18                                                                                   */
       FTM2_IRQHandler,                         /*   35,   19  FlexTimer Module                                                                 */
-      RTC_Alarm_IRQHandler,                    /*   36,   20  Real Time Clock                                                                  */
+      RTC_IRQHandler,                          /*   36,   20  Real Time Clock                                                                  */
       ACMP1_IRQHandler,                        /*   37,   21  Analogue comparator                                                              */
-      Pit::irqHandler<PitChannelNum_0>,        /*   38,   22  Periodic Interrupt Timer                                                         */
-      Pit::irqHandler<PitChannelNum_1>,        /*   39,   23  Periodic Interrupt Timer                                                         */
+      Pit::irqHandler<Pit::IrqNum_Ch0>,        /*   38,   22  Periodic Interrupt Timer                                                         */
+      Pit::irqHandler<Pit::IrqNum_Ch1>,        /*   39,   23  Periodic Interrupt Timer                                                         */
       KBI0_IRQHandler,                         /*   40,   24  Keyboard Interrupt                                                               */
       KBI1_IRQHandler,                         /*   41,   25  Keyboard Interrupt                                                               */
       Default_Handler,                         /*   42,   26                                                                                   */

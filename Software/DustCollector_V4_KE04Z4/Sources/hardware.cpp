@@ -34,8 +34,13 @@ extern "C" void __attribute__((constructor)) cpp_initialise() {
    }
 }
 
-#ifdef PORT_PCR_MUX
+// Hardware definitions
 // /HARDWARE_CPP/Definitions not found
+
+// User definitions
+// None
+
+#ifdef PORT_PCR_MUX
 
 /**
  * Map all configured pins to peripheral signals.
@@ -50,15 +55,7 @@ void mapAllPins() {
 
 #endif
 
-
-#if defined(PCC_PCCn_CGC_MASK)
-   PCC->PCC_PORTA = PCC_PCCn_CGC_MASK;
-   PCC->PCC_PORTB = PCC_PCCn_CGC_MASK;
-   PCC->PCC_PORTC = PCC_PCCn_CGC_MASK;
-#else
    enablePortClocks(USBDM::PORTA_CLOCK_MASK|USBDM::PORTB_CLOCK_MASK|USBDM::PORTC_CLOCK_MASK);
-#endif
-
    PORTA->GPCLR = ForceLockedPins|0x0200UL|PORT_GPCLR_GPWE(0x001CUL);
    PORTA->GPCLR = ForceLockedPins|0x0300UL|PORT_GPCLR_GPWE(0x0020UL);
    PORTA->GPCLR = ForceLockedPins|0x0400UL|PORT_GPCLR_GPWE(0x0002UL);
@@ -85,15 +82,7 @@ void mapAllPins() {
 /*
  *  Static objects
  */
-   /**
-    * Callback table of programmatically set handlers for Pit
-    */
-   PitInfo::CallbackFunction PitInfo::sCallbacks[] = {
-      PitBasicInfo::unhandledCallback,
-      PitBasicInfo::unhandledCallback,
-   };
-
-
+// /HARDWARE/StaticObjects not found
 
 } // End namespace USBDM
 

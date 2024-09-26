@@ -3,9 +3,6 @@
  *
  * Main header file for USBDM library.
  * Generated code is included via this file.
- *
- * @version  V4.12.1.270
- * @date     1 December 2021
  */
 
 /*
@@ -30,7 +27,13 @@
 #include "adc.h"
 
 
+// User includes
+// None
+
 namespace USBDM {
+
+// User declarations
+// None
 
 /**
  * Map all configured pins to peripheral signals.
@@ -41,23 +44,25 @@ namespace USBDM {
  */
 extern void mapAllPins();
 
+// Hardware declarations
+
 /// ADC, Analogue Input
 typedef Adc0                                                 UserAdc;                                      
 
 /// Reference level for ISample OPAMPs
-typedef Adc0::Channel<AdcChannelNum_1>                       Reference;                                    // PTA1(15)
+typedef Adc0::Channel<AdcChannelNum_Se1>                     Reference;                                    // PTA1(15)
 
 /// Current Sample
-typedef Adc0::Channel<AdcChannelNum_4>                       I_Sample;                                     // PTB0(12)
+typedef Adc0::Channel<AdcChannelNum_Se4>                     I_Sample;                                     // PTB0(12)
 
 /// Delay Control
-typedef Adc0::Channel<AdcChannelNum_5>                       DelayControl;                                 // PTB1(11)
+typedef Adc0::Channel<AdcChannelNum_Se5>                     DelayControl;                                 // PTB1(11)
 
 /// Hold time control
-typedef Adc0::Channel<AdcChannelNum_6>                       HoldControl;                                  // PTB2(10)
+typedef Adc0::Channel<AdcChannelNum_Se6>                     HoldControl;                                  // PTB2(10)
 
 /// Current threshold control
-typedef Adc0::Channel<AdcChannelNum_7>                       LevelControl;                                 // PTB3(9)
+typedef Adc0::Channel<AdcChannelNum_Se7>                     LevelControl;                                 // PTB3(9)
 
 /// Debug output
 typedef USBDM::GpioB<4,ActiveHigh>                           Debug;                                        // PTB4(8)
@@ -74,10 +79,12 @@ typedef USBDM::GpioB<7,ActiveLow>                            DelayLed;          
 /// LED indicating hold
 typedef USBDM::GpioB<6,ActiveLow>                            HoldLed;                                      // PTB6(6)
 
+typedef USBDM::GpioB<7,ActiveLow>                            Switch;                                       // PTB7(5)
+
 /// PIT, Programmable Interrupt Timer
 typedef Pit                                                  UserTimer;                                    
 
-typedef Pit::Channel<0>                                      PollingTimerChannel;                          // PIT_CH0(Internal)
+typedef Pit::Channel<0>                                      PollingTimerChannel;                          // PIT_CH0
 
 } // End namespace USBDM
 

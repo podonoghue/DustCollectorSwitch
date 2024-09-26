@@ -1,6 +1,3 @@
 graph: { title: "../Sources/hardware.cpp"
-node: { title: "../Sources/hardware.cpp:_ZN5USBDM12PitBasicInfo17unhandledCallbackEv" label: "static void USBDM::PitBasicInfo::unhandledCallback()\n../Project_Headers/pin_mapping.h:5048:16\n8 bytes (static)" }
-node: { title: "_ZN5USBDM10checkErrorEv" label: "USBDM::ErrorCode USBDM::checkError()\n../Project_Headers/error.h:83:18" shape : ellipse }
-edge: { sourcename: "../Sources/hardware.cpp:_ZN5USBDM12PitBasicInfo17unhandledCallbackEv" targetname: "_ZN5USBDM10checkErrorEv" label: "../Project_Headers/error.h:116:21" }
 node: { title: "cpp_initialise" label: "void USBDM::cpp_initialise()\n../Sources/hardware.cpp:31:46\n0 bytes (static)" }
 }

@@ -1,0 +1,21 @@
+----------------------------------------------------------------------------------------------------------------------------------
+NCDrill File Report For: DustCollectorSwitch.PcbDoc   11-Sep-24  6:18:11 PM
+----------------------------------------------------------------------------------------------------------------------------------
+
+Layer Pair : Top Layer to Bottom Layer
+ASCII RoundHoles File : DustCollectorSwitch.TXT
+
+Tool       Hole Size               Hole Tolerance               Hole Type       Hole Count   Plated         Tool Travel
+----------------------------------------------------------------------------------------------------------------------------------
+T1      12mil (0.3mm)                                             Round             62        PTH        12.52inch (317.90mm)
+T2      26mil (0.65mm)                                            Round             2         PTH        0.26inch (6.56mm)
+T3      27mil (0.69mm)                                            Round             2         PTH        0.30inch (7.62mm)
+T4      32mil (0.8mm)                                             Round             13        PTH        6.23inch (158.20mm)
+T5      35mil (0.9mm)                                             Round             11        PTH        4.28inch (108.60mm)
+T6      51mil (1.3mm)                                             Round             5         PTH        1.45inch (36.85mm)
+T7      59mil (1.5mm)                                             Round             4         PTH        0.60inch (15.24mm)
+T8      138mil (3.5mm)                                            Round             6         PTH        9.54inch (242.20mm)
+----------------------------------------------------------------------------------------------------------------------------------
+Totals                                                                              105
+
+Total Processing Time (hh:mm:ss) : 00:00:00

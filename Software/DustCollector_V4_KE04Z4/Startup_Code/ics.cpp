@@ -36,6 +36,29 @@ ClockChangeCallback *Ics::clockChangeCallbackQueue = nullptr;
  */
 const ClockInfo Ics::clockInfo[] = {
    // /ICS/IcsClockInfoEntries
+   {  // Reset_Configuration (IcsClockMode_FEI)
+   
+      /// SIM CLKDIV1 System Clock Divider Register 1 
+      SimTimerClkDivider_Direct | // (sim_clkdiv_outdiv3[0])    Timer Clock Divider value - ICSOUTCLK/1
+      SimBusClkDivider_Direct | // (sim_clkdiv_outdiv2[0])    Bus/Flash Clock Divider value - Core clock/1
+      SimCoreClkDivider_Direct,  // (sim_clkdiv_outdiv1[0])    Core/System Clock Divider value - ICSOUTCLK/1
+
+      /// Clock Mode 
+      IcsClockMode_FEI,  // (icsClockMode[0])          ICS Clock Mode - FLL Engaged Internal (FEI)
+
+      /// Control Register 1 - Excluding CLKS, IREFS 
+      IcsFllPrescale_Disabled | // (ics_c1_rdiv[0])           FLL External Reference Divider - Disabled
+      IcsIrClkEn_Enabled | // (ics_c1_irclken[0])        Internal Reference Clock [ICSIRCLK] enable - Enabled
+      IcsIrefs_DisabledInStop,  // (ics_c1_irefsten[0])       Internal Reference [ICSIRCLK] Stop Enable - IR disabled in STOP
+
+      /// Control Register 2 - Excluding LP, FCTRIM 
+      IcsBusDivider_DivideBy1,  // (ics_c2_bdiv[0])           Output divider for ICS - Divide by 1
+
+      /// Control Register 4 - Excluding FCTRIM, SCFTRIM 
+      IcsClockMonitor_Disabled | // (ics_c4_cme[0])            Clock Monitor Enable - Clock monitor disabled
+      IcsLossOfLockInterrupt_Disabled,  // (ics_c4_lolie0[0])         Loss of Lock Interrupt Enable - Interrupt disabled
+
+   },
 
 };
 
@@ -43,7 +66,7 @@ const ClockInfo Ics::clockInfo[] = {
 IcsClockMode Ics::currentClockMode = IcsClockMode_FEI;
 
 // /ICS/staticDefinitions
- 
+// No static declarations found 
 #if false // /ICS/enablePeripheralSupport
 
 constexpr IcsClockMode clockTransitionTable[][8] = {
@@ -295,17 +318,23 @@ void Ics::startupConfigure() {
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Warray-bounds"
 
+#if 0
 #define SCFTRIM (*(uint8_t *)0x03FE)
 #define SCTRIM  (*(uint8_t *)0x03FF)
 
-if (SCTRIM != 0xFF) {
-   // Trim clock
-   ics->C3 = SCTRIM;
-   ics->C4 = (ics->C4&~ICS_C4_SCFTRIM_MASK)|SCFTRIM;
+   if (SCTRIM != 0xFF) {
+      // Trim clock
+      ics->C3 = SCTRIM;
+      ics->C4 = (ics->C4&~ICS_C4_SCFTRIM_MASK)|SCFTRIM;
+   }
+#else
+   // Manual Trim clock
+   // Measured as 56.1
+   ics->C3 = 0x56;
+   ics->C4 = (ics->C4&~ICS_C4_SCFTRIM_MASK)|0;
+#endif
 
 #pragma GCC diagnostic pop
-   
-}
 
 #if false // /ICS/enablePeripheralSupport
 

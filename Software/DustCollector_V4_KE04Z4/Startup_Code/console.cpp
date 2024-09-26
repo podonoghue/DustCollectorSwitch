@@ -61,7 +61,7 @@ Console console;
  */
 extern "C"
 void console_setBaudRate(int baudRate = defaultBaudRate) {
-   console.setBaudRate(baudRate);
+   console.setBaudRate(UartBaudRate(baudRate));
 }
 
 /*

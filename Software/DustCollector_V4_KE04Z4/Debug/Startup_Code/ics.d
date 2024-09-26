@@ -5,9 +5,8 @@ Startup_Code/ics.o Startup_Code/ics.o: ../Startup_Code/ics.cpp \
  ../Project_Headers/system.h ../Project_Headers/system.h \
  ../Project_Headers/pin_mapping.h ../Project_Headers/derivative.h \
  ../Project_Headers/pcr.h ../Project_Headers/error.h \
- ../Project_Headers/gpio.h ../Project_Headers/bme.h \
- ../Project_Headers/port.h ../Project_Headers/pin_mapping.h \
- ../Project_Headers/osc.h ../Project_Headers/ics.h
+ ../Project_Headers/osc.h ../Project_Headers/pin_mapping.h \
+ ../Project_Headers/ics.h
 ../Project_Headers/derivative.h:
 ../Project_Headers/MKE04Z4.h:
 ../Project_Headers/core_cm0plus.h:
@@ -20,9 +19,6 @@ Startup_Code/ics.o Startup_Code/ics.o: ../Startup_Code/ics.cpp \
 ../Project_Headers/derivative.h:
 ../Project_Headers/pcr.h:
 ../Project_Headers/error.h:
-../Project_Headers/gpio.h:
-../Project_Headers/bme.h:
-../Project_Headers/port.h:
-../Project_Headers/pin_mapping.h:
 ../Project_Headers/osc.h:
+../Project_Headers/pin_mapping.h:
 ../Project_Headers/ics.h:

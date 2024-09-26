@@ -5,7 +5,7 @@
  *           Equivalent: 
  *
  * @version  V1.6
- * @date     2023/11
+ * @date     2024/09
  *
  */
 
@@ -32,9 +32,9 @@ extern "C" {
 typedef enum {
 /* ------------------------  Processor Exceptions Numbers  ------------------------- */
   Reset_IRQn                    = -15,   /**<   1 Reset Vector, invoked on Power up and warm reset                                 */
-  NonMaskableInt_IRQn           = -14,   /**<   2 Non maskable Interrupt, cannot be stopped or preempted                           */
+  NMI_IRQn                      = -14,   /**<   2 Non maskable Interrupt, cannot be stopped or preempted                           */
   HardFault_IRQn                = -13,   /**<   3 Hard Fault, all classes of Fault                                                 */
-  SVCall_IRQn                   =  -5,   /**<  11 System Service Call via SVC instruction                                          */
+  SVC_IRQn                      =  -5,   /**<  11 System Service Call via SVC instruction                                          */
   PendSV_IRQn                   =  -2,   /**<  14 Pendable request for system service                                              */
   SysTick_IRQn                  =  -1,   /**<  15 System Tick Timer                                                                */
 /* ----------------------   MKE04Z4 VectorTable                      ---------------------- */
@@ -48,10 +48,10 @@ typedef enum {
   ACMP0_IRQn                    =  16,   /**<  32 Analogue comparator                                                              */
   FTM0_IRQn                     =  17,   /**<  33 FlexTimer Module                                                                 */
   FTM2_IRQn                     =  19,   /**<  35 FlexTimer Module                                                                 */
-  RTC_Alarm_IRQn                =  20,   /**<  36 Real Time Clock                                                                  */
+  RTC_IRQn                      =  20,   /**<  36 Real Time Clock                                                                  */
   ACMP1_IRQn                    =  21,   /**<  37 Analogue comparator                                                              */
-  PIT0_IRQn                     =  22,   /**<  38 Periodic Interrupt Timer                                                         */
-  PIT1_IRQn                     =  23,   /**<  39 Periodic Interrupt Timer                                                         */
+  PIT_Ch0_IRQn                  =  22,   /**<  38 Periodic Interrupt Timer                                                         */
+  PIT_Ch1_IRQn                  =  23,   /**<  39 Periodic Interrupt Timer                                                         */
   KBI0_IRQn                     =  24,   /**<  40 Keyboard Interrupt                                                               */
   KBI1_IRQn                     =  25,   /**<  41 Keyboard Interrupt                                                               */
   ICS_IRQn                      =  27,   /**<  43 Clock Management                                                                 */
@@ -77,10 +77,8 @@ extern void ADC0_IRQHandler(void);                   /**< Analogue to Digital Co
 extern void ACMP0_IRQHandler(void);                  /**< Analogue comparator                                                              */
 extern void FTM0_IRQHandler(void);                   /**< FlexTimer Module                                                                 */
 extern void FTM2_IRQHandler(void);                   /**< FlexTimer Module                                                                 */
-extern void RTC_Alarm_IRQHandler(void);              /**< Real Time Clock                                                                  */
+extern void RTC_IRQHandler(void);                    /**< Real Time Clock                                                                  */
 extern void ACMP1_IRQHandler(void);                  /**< Analogue comparator                                                              */
-extern void PIT0_IRQHandler(void);                   /**< Periodic Interrupt Timer                                                         */
-extern void PIT1_IRQHandler(void);                   /**< Periodic Interrupt Timer                                                         */
 extern void KBI0_IRQHandler(void);                   /**< Keyboard Interrupt                                                               */
 extern void KBI1_IRQHandler(void);                   /**< Keyboard Interrupt                                                               */
 extern void ICS_IRQHandler(void);                    /**< Clock Management                                                                 */
@@ -974,6 +972,9 @@ typedef struct FTM_Type {
 /** @} */
 
 /** @name STATUS - Capture and Compare Status */ /** @{ */
+#define FTM_STATUS_STATUS_MASK                   (0xFFU)                                             /**< FTM2_STATUS.STATUS Mask                 */
+#define FTM_STATUS_STATUS_SHIFT                  (0U)                                                /**< FTM2_STATUS.STATUS Position             */
+#define FTM_STATUS_STATUS(x)                     (((uint32_t)(((uint32_t)(x))<<FTM_STATUS_STATUS_SHIFT))&FTM_STATUS_STATUS_MASK) /**< FTM2_STATUS.STATUS Field                */
 #define FTM_STATUS_CH0F_MASK                     (0x1U)                                              /**< FTM2_STATUS.CH0F Mask                   */
 #define FTM_STATUS_CH0F_SHIFT                    (0U)                                                /**< FTM2_STATUS.CH0F Position               */
 #define FTM_STATUS_CH0F(x)                       (((uint32_t)(((uint32_t)(x))<<FTM_STATUS_CH0F_SHIFT))&FTM_STATUS_CH0F_MASK) /**< FTM2_STATUS.CH0F Field                  */
@@ -1031,6 +1032,9 @@ typedef struct FTM_Type {
 #define FTM_SYNC_SYNCHOM_MASK                    (0x8U)                                              /**< FTM2_SYNC.SYNCHOM Mask                  */
 #define FTM_SYNC_SYNCHOM_SHIFT                   (3U)                                                /**< FTM2_SYNC.SYNCHOM Position              */
 #define FTM_SYNC_SYNCHOM(x)                      (((uint32_t)(((uint32_t)(x))<<FTM_SYNC_SYNCHOM_SHIFT))&FTM_SYNC_SYNCHOM_MASK) /**< FTM2_SYNC.SYNCHOM Field                 */
+#define FTM_SYNC_TRIG_MASK                       (0x70U)                                             /**< FTM2_SYNC.TRIG Mask                     */
+#define FTM_SYNC_TRIG_SHIFT                      (4U)                                                /**< FTM2_SYNC.TRIG Position                 */
+#define FTM_SYNC_TRIG(x)                         (((uint32_t)(((uint32_t)(x))<<FTM_SYNC_TRIG_SHIFT))&FTM_SYNC_TRIG_MASK) /**< FTM2_SYNC.TRIG Field                    */
 #define FTM_SYNC_TRIG0_MASK                      (0x10U)                                             /**< FTM2_SYNC.TRIG0 Mask                    */
 #define FTM_SYNC_TRIG0_SHIFT                     (4U)                                                /**< FTM2_SYNC.TRIG0 Position                */
 #define FTM_SYNC_TRIG0(x)                        (((uint32_t)(((uint32_t)(x))<<FTM_SYNC_TRIG0_SHIFT))&FTM_SYNC_TRIG0_MASK) /**< FTM2_SYNC.TRIG0 Field                   */
@@ -1094,9 +1098,9 @@ typedef struct FTM_Type {
 /** @} */
 
 /** @name COMBINE - Function for Linked Channels */ /** @{ */
-#define FTM_COMBINE_COMB0_MASK                   (0x7FU)                                             /**< FTM2_COMBINE.COMB0 Mask                 */
-#define FTM_COMBINE_COMB0_SHIFT                  (0U)                                                /**< FTM2_COMBINE.COMB0 Position             */
-#define FTM_COMBINE_COMB0(x)                     (((uint32_t)(((uint32_t)(x))<<FTM_COMBINE_COMB0_SHIFT))&FTM_COMBINE_COMB0_MASK) /**< FTM2_COMBINE.COMB0 Field                */
+#define FTM_COMBINE_COMBINE_MASK                 (0x7FU)                                             /**< FTM2_COMBINE.COMBINE Mask               */
+#define FTM_COMBINE_COMBINE_SHIFT                (0U)                                                /**< FTM2_COMBINE.COMBINE Position           */
+#define FTM_COMBINE_COMBINE(x)                   (((uint32_t)(((uint32_t)(x))<<FTM_COMBINE_COMBINE_SHIFT))&FTM_COMBINE_COMBINE_MASK) /**< FTM2_COMBINE.COMBINE Field              */
 #define FTM_COMBINE_COMBINE0_MASK                (0x1U)                                              /**< FTM2_COMBINE.COMBINE0 Mask              */
 #define FTM_COMBINE_COMBINE0_SHIFT               (0U)                                                /**< FTM2_COMBINE.COMBINE0 Position          */
 #define FTM_COMBINE_COMBINE0(x)                  (((uint32_t)(((uint32_t)(x))<<FTM_COMBINE_COMBINE0_SHIFT))&FTM_COMBINE_COMBINE0_MASK) /**< FTM2_COMBINE.COMBINE0 Field             */
@@ -1118,9 +1122,6 @@ typedef struct FTM_Type {
 #define FTM_COMBINE_FAULTEN0_MASK                (0x40U)                                             /**< FTM2_COMBINE.FAULTEN0 Mask              */
 #define FTM_COMBINE_FAULTEN0_SHIFT               (6U)                                                /**< FTM2_COMBINE.FAULTEN0 Position          */
 #define FTM_COMBINE_FAULTEN0(x)                  (((uint32_t)(((uint32_t)(x))<<FTM_COMBINE_FAULTEN0_SHIFT))&FTM_COMBINE_FAULTEN0_MASK) /**< FTM2_COMBINE.FAULTEN0 Field             */
-#define FTM_COMBINE_COMB1_MASK                   (0x7F00U)                                           /**< FTM2_COMBINE.COMB1 Mask                 */
-#define FTM_COMBINE_COMB1_SHIFT                  (8U)                                                /**< FTM2_COMBINE.COMB1 Position             */
-#define FTM_COMBINE_COMB1(x)                     (((uint32_t)(((uint32_t)(x))<<FTM_COMBINE_COMB1_SHIFT))&FTM_COMBINE_COMB1_MASK) /**< FTM2_COMBINE.COMB1 Field                */
 #define FTM_COMBINE_COMBINE1_MASK                (0x100U)                                            /**< FTM2_COMBINE.COMBINE1 Mask              */
 #define FTM_COMBINE_COMBINE1_SHIFT               (8U)                                                /**< FTM2_COMBINE.COMBINE1 Position          */
 #define FTM_COMBINE_COMBINE1(x)                  (((uint32_t)(((uint32_t)(x))<<FTM_COMBINE_COMBINE1_SHIFT))&FTM_COMBINE_COMBINE1_MASK) /**< FTM2_COMBINE.COMBINE1 Field             */
@@ -1142,9 +1143,6 @@ typedef struct FTM_Type {
 #define FTM_COMBINE_FAULTEN1_MASK                (0x4000U)                                           /**< FTM2_COMBINE.FAULTEN1 Mask              */
 #define FTM_COMBINE_FAULTEN1_SHIFT               (14U)                                               /**< FTM2_COMBINE.FAULTEN1 Position          */
 #define FTM_COMBINE_FAULTEN1(x)                  (((uint32_t)(((uint32_t)(x))<<FTM_COMBINE_FAULTEN1_SHIFT))&FTM_COMBINE_FAULTEN1_MASK) /**< FTM2_COMBINE.FAULTEN1 Field             */
-#define FTM_COMBINE_COMB2_MASK                   (0x7F0000U)                                         /**< FTM2_COMBINE.COMB2 Mask                 */
-#define FTM_COMBINE_COMB2_SHIFT                  (16U)                                               /**< FTM2_COMBINE.COMB2 Position             */
-#define FTM_COMBINE_COMB2(x)                     (((uint32_t)(((uint32_t)(x))<<FTM_COMBINE_COMB2_SHIFT))&FTM_COMBINE_COMB2_MASK) /**< FTM2_COMBINE.COMB2 Field                */
 #define FTM_COMBINE_COMBINE2_MASK                (0x10000U)                                          /**< FTM2_COMBINE.COMBINE2 Mask              */
 #define FTM_COMBINE_COMBINE2_SHIFT               (16U)                                               /**< FTM2_COMBINE.COMBINE2 Position          */
 #define FTM_COMBINE_COMBINE2(x)                  (((uint32_t)(((uint32_t)(x))<<FTM_COMBINE_COMBINE2_SHIFT))&FTM_COMBINE_COMBINE2_MASK) /**< FTM2_COMBINE.COMBINE2 Field             */
@@ -1271,6 +1269,9 @@ typedef struct FTM_Type {
 /** @} */
 
 /** @name FLTCTRL - Fault Control */ /** @{ */
+#define FTM_FLTCTRL_FAULTEN_MASK                 (0xFU)                                              /**< FTM2_FLTCTRL.FAULTEN Mask               */
+#define FTM_FLTCTRL_FAULTEN_SHIFT                (0U)                                                /**< FTM2_FLTCTRL.FAULTEN Position           */
+#define FTM_FLTCTRL_FAULTEN(x)                   (((uint32_t)(((uint32_t)(x))<<FTM_FLTCTRL_FAULTEN_SHIFT))&FTM_FLTCTRL_FAULTEN_MASK) /**< FTM2_FLTCTRL.FAULTEN Field              */
 #define FTM_FLTCTRL_FAULT0EN_MASK                (0x1U)                                              /**< FTM2_FLTCTRL.FAULT0EN Mask              */
 #define FTM_FLTCTRL_FAULT0EN_SHIFT               (0U)                                                /**< FTM2_FLTCTRL.FAULT0EN Position          */
 #define FTM_FLTCTRL_FAULT0EN(x)                  (((uint32_t)(((uint32_t)(x))<<FTM_FLTCTRL_FAULT0EN_SHIFT))&FTM_FLTCTRL_FAULT0EN_MASK) /**< FTM2_FLTCTRL.FAULT0EN Field             */
@@ -1283,6 +1284,9 @@ typedef struct FTM_Type {
 #define FTM_FLTCTRL_FAULT3EN_MASK                (0x8U)                                              /**< FTM2_FLTCTRL.FAULT3EN Mask              */
 #define FTM_FLTCTRL_FAULT3EN_SHIFT               (3U)                                                /**< FTM2_FLTCTRL.FAULT3EN Position          */
 #define FTM_FLTCTRL_FAULT3EN(x)                  (((uint32_t)(((uint32_t)(x))<<FTM_FLTCTRL_FAULT3EN_SHIFT))&FTM_FLTCTRL_FAULT3EN_MASK) /**< FTM2_FLTCTRL.FAULT3EN Field             */
+#define FTM_FLTCTRL_FFLTREN_MASK                 (0xF0U)                                             /**< FTM2_FLTCTRL.FFLTREN Mask               */
+#define FTM_FLTCTRL_FFLTREN_SHIFT                (4U)                                                /**< FTM2_FLTCTRL.FFLTREN Position           */
+#define FTM_FLTCTRL_FFLTREN(x)                   (((uint32_t)(((uint32_t)(x))<<FTM_FLTCTRL_FFLTREN_SHIFT))&FTM_FLTCTRL_FFLTREN_MASK) /**< FTM2_FLTCTRL.FFLTREN Field              */
 #define FTM_FLTCTRL_FFLTR0EN_MASK                (0x10U)                                             /**< FTM2_FLTCTRL.FFLTR0EN Mask              */
 #define FTM_FLTCTRL_FFLTR0EN_SHIFT               (4U)                                                /**< FTM2_FLTCTRL.FFLTR0EN Position          */
 #define FTM_FLTCTRL_FFLTR0EN(x)                  (((uint32_t)(((uint32_t)(x))<<FTM_FLTCTRL_FFLTR0EN_SHIFT))&FTM_FLTCTRL_FFLTR0EN_MASK) /**< FTM2_FLTCTRL.FFLTR0EN Field             */
@@ -1316,6 +1320,9 @@ typedef struct FTM_Type {
 /** @} */
 
 /** @name FLTPOL - FTM Fault Input Polarity */ /** @{ */
+#define FTM_FLTPOL_FLTPOL_MASK                   (0xFU)                                              /**< FTM2_FLTPOL.FLTPOL Mask                 */
+#define FTM_FLTPOL_FLTPOL_SHIFT                  (0U)                                                /**< FTM2_FLTPOL.FLTPOL Position             */
+#define FTM_FLTPOL_FLTPOL(x)                     (((uint32_t)(((uint32_t)(x))<<FTM_FLTPOL_FLTPOL_SHIFT))&FTM_FLTPOL_FLTPOL_MASK) /**< FTM2_FLTPOL.FLTPOL Field                */
 #define FTM_FLTPOL_FLT0POL_MASK                  (0x1U)                                              /**< FTM2_FLTPOL.FLT0POL Mask                */
 #define FTM_FLTPOL_FLT0POL_SHIFT                 (0U)                                                /**< FTM2_FLTPOL.FLT0POL Position            */
 #define FTM_FLTPOL_FLT0POL(x)                    (((uint32_t)(((uint32_t)(x))<<FTM_FLTPOL_FLT0POL_SHIFT))&FTM_FLTPOL_FLT0POL_MASK) /**< FTM2_FLTPOL.FLT0POL Field               */
@@ -1379,6 +1386,9 @@ typedef struct FTM_Type {
 /** @} */
 
 /** @name INVCTRL - FTM Inverting Control */ /** @{ */
+#define FTM_INVCTRL_INVEN_MASK                   (0xFU)                                              /**< FTM2_INVCTRL.INVEN Mask                 */
+#define FTM_INVCTRL_INVEN_SHIFT                  (0U)                                                /**< FTM2_INVCTRL.INVEN Position             */
+#define FTM_INVCTRL_INVEN(x)                     (((uint32_t)(((uint32_t)(x))<<FTM_INVCTRL_INVEN_SHIFT))&FTM_INVCTRL_INVEN_MASK) /**< FTM2_INVCTRL.INVEN Field                */
 #define FTM_INVCTRL_INV0EN_MASK                  (0x1U)                                              /**< FTM2_INVCTRL.INV0EN Mask                */
 #define FTM_INVCTRL_INV0EN_SHIFT                 (0U)                                                /**< FTM2_INVCTRL.INV0EN Position            */
 #define FTM_INVCTRL_INV0EN(x)                    (((uint32_t)(((uint32_t)(x))<<FTM_INVCTRL_INV0EN_SHIFT))&FTM_INVCTRL_INV0EN_MASK) /**< FTM2_INVCTRL.INV0EN Field               */
@@ -2415,7 +2425,7 @@ typedef struct PIT_Type {
 #define PIT_BasePtr                    0x40037000UL //!< Peripheral base address
 #define PIT                            ((PIT_Type *) PIT_BasePtr) //!< Freescale base pointer
 #define PIT_BASE_PTR                   (PIT) //!< Freescale style base pointer
-#define PIT_IRQS { PIT0_IRQn, PIT1_IRQn,  }
+#define PIT_IRQS { PIT_Ch0_IRQn, PIT_Ch1_IRQn,  }
 
 
 /** @} */ /* End group PIT_Peripheral_access_layer_GROUP */
@@ -2852,7 +2862,7 @@ typedef struct RTC_Type {
 #define RTC_BasePtr                    0x4003D000UL //!< Peripheral base address
 #define RTC                            ((RTC_Type *) RTC_BasePtr) //!< Freescale base pointer
 #define RTC_BASE_PTR                   (RTC) //!< Freescale style base pointer
-#define RTC_IRQS { RTC_Alarm_IRQn,  }
+#define RTC_IRQS { RTC_IRQn,  }
 
 
 /** @} */ /* End group RTC_Peripheral_access_layer_GROUP */

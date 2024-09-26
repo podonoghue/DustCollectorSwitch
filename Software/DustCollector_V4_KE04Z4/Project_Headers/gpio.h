@@ -22,20 +22,13 @@
 #include "bme.h"
 #include "port.h"
 
-/*
- * Default port information
- */
-#ifndef FIXED_PORT_CLOCK_REG
-#define FIXED_PORT_CLOCK_REG SCGC5
-#endif
-
 namespace USBDM {
 
 #pragma GCC push_options
 #pragma GCC optimize ("Os")
 
 // For experimentation only
-#if 1
+#if 0
 #define BITSET(dest,mask)    bmeOr((dest),   (mask));
 #define BITCLEAR(dest,mask)  bmeAnd((dest), ~(mask));
 #define BITTOGGLE(dest,mask) bmeXor((dest),  (mask));
@@ -441,8 +434,8 @@ private:
    Gpio_T(const Gpio_T&) = delete;
    Gpio_T(Gpio_T&&) = delete;
 
-protected:
-//   constexpr Gpio_T() : Gpio(gpioAddress, PinNum, polarity) {};
+public:
+   constexpr Gpio_T() : Gpio(gpioAddress, BITNUM, polarity) {}
 
 public:
 
@@ -488,6 +481,8 @@ public:
    static constexpr uint32_t gpioPDDR = gpioAddress+offsetof(GPIO_Type, PDDR);
    /// Address of PDIR register in GPIO
    static constexpr uint32_t gpioPDIR = gpioAddress+offsetof(GPIO_Type, PDIR);
+   /// Address of PIDR register in GPIO
+   static constexpr uint32_t gpioPIDR = gpioAddress+offsetof(GPIO_Type, PIDR);
 
    /** Polarity of pin */
    static constexpr Polarity POLARITY = polarity;
@@ -992,9 +987,6 @@ private:
    GpioField_T(const GpioField_T&) = delete;
    GpioField_T(GpioField_T&&) = delete;
 
-   void enablePortClocks() {
-   }
-
 public:
    /**
     * Get GPIO base register address from bit index
@@ -1038,6 +1030,8 @@ public:
    static constexpr uint32_t gpioPDDR = gpioAddress+offsetof(GPIO_Type, PDDR);
    /// Address of PDIR register in GPIO
    static constexpr uint32_t gpioPDIR = gpioAddress+offsetof(GPIO_Type, PDIR);
+   /// Address of PIDR register in GPIO
+   static constexpr uint32_t gpioPIDR = gpioAddress+offsetof(GPIO_Type, PIDR);
 
 public:
    /** Bit number of left bit within underlying port hardware */
@@ -1071,15 +1065,8 @@ public:
 
    /**
     *  Disable Pins
-    *  This sets the pins to MUX(0) which is specified for minimum leakage in low-power modes.
-    *
-    *  @note The clock is left enabled as shared with other pins.
-    *  @note Mux(0) is also the Analogue MUX setting
     */
    static void disablePins() {
-      // Enable clock to port
-      enablePortClocks(); 
-
       // Disable pin input function
       BITSET(gpio->PIDR, BITMASK);
 
@@ -1095,9 +1082,6 @@ public:
     * @note Resets the pin output value to the inactive state
     */
    static void setInOut() {
-      // Enable clock to port
-      enablePortClocks();
-
       // Default to input
 
       // Enable pin input function

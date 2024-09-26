@@ -9,7 +9,7 @@
    <i> In CMSIS this will determine the ISR stack size
    <0x0-0x300:4>  <constant>
 */
-__stack_size = 0x154;
+__stack_size = 0x130;
 
 /* <o> Minimum Heap Size 
    <i> This is the minimum allocated.  

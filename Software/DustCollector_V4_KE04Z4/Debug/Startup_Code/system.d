@@ -5,8 +5,8 @@ Startup_Code/system.o Startup_Code/system.o: ../Startup_Code/system.cpp \
  ../Project_Headers/system.h ../Project_Headers/pmc.h \
  ../Project_Headers/pin_mapping.h ../Project_Headers/derivative.h \
  ../Project_Headers/pcr.h ../Project_Headers/error.h \
- ../Project_Headers/gpio.h ../Project_Headers/bme.h \
- ../Project_Headers/port.h ../Project_Headers/port.h \
+ ../Project_Headers/port.h ../Project_Headers/uart.h \
+ ../Project_Headers/formatted_io.h ../Project_Headers/uart_queue.h \
  ../Project_Headers/wdog.h
 ../Project_Headers/derivative.h:
 ../Project_Headers/MKE04Z4.h:
@@ -20,8 +20,8 @@ Startup_Code/system.o Startup_Code/system.o: ../Startup_Code/system.cpp \
 ../Project_Headers/derivative.h:
 ../Project_Headers/pcr.h:
 ../Project_Headers/error.h:
-../Project_Headers/gpio.h:
-../Project_Headers/bme.h:
 ../Project_Headers/port.h:
-../Project_Headers/port.h:
+../Project_Headers/uart.h:
+../Project_Headers/formatted_io.h:
+../Project_Headers/uart_queue.h:
 ../Project_Headers/wdog.h:

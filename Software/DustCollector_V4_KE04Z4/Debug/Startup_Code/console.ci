@@ -1,67 +1,59 @@
 graph: { title: "../Startup_Code/console.cpp"
-node: { title: "../Startup_Code/console.cpp:_ZN5USBDM11FormattedIOD2Ev" label: "USBDM::FormattedIO::~FormattedIO()\n../Project_Headers/formatted_io.h:226:12\n0 bytes (static)" }
-node: { title: "../Startup_Code/console.cpp:_ZN5USBDM11FormattedIO16_isCharAvailableEv" label: "virtual bool USBDM::FormattedIO::_isCharAvailable()\n../Project_Headers/formatted_io.h:286:17\n0 bytes (static)" }
-node: { title: "../Startup_Code/console.cpp:_ZN5USBDM11FormattedIO9_readCharEv" label: "virtual int USBDM::FormattedIO::_readChar()\n../Project_Headers/formatted_io.h:295:16\n0 bytes (static)" }
-node: { title: "../Startup_Code/console.cpp:_ZN5USBDM11FormattedIO10_writeCharEc" label: "virtual void USBDM::FormattedIO::_writeChar(char)\n../Project_Headers/formatted_io.h:304:17\n0 bytes (static)" }
-node: { title: "../Startup_Code/console.cpp:_ZN5USBDM11FormattedIO11flushOutputEv" label: "virtual USBDM::FormattedIO& USBDM::FormattedIO::flushOutput()\n../Project_Headers/formatted_io.h:346:25\n0 bytes (static)" }
-node: { title: "../Startup_Code/console.cpp:_ZN5USBDM11FormattedIO10flushInputEv" label: "virtual USBDM::FormattedIO& USBDM::FormattedIO::flushInput()\n../Project_Headers/formatted_io.h:353:25\n0 bytes (static)" }
-node: { title: "../Startup_Code/console.cpp:_ZN5USBDM4Uart16_isCharAvailableEv" label: "virtual bool USBDM::Uart::_isCharAvailable()\n../Project_Headers/uart.h:95:17\n0 bytes (static)" }
-node: { title: "../Startup_Code/console.cpp:_ZN5USBDM4Uart9_readCharEv" label: "virtual int USBDM::Uart::_readChar()\n../Project_Headers/uart.h:104:16\n16 bytes (static)" }
+node: { title: "../Startup_Code/console.cpp:_ZN5USBDM11FormattedIOD2Ev" label: "USBDM::FormattedIO::~FormattedIO()\n../Project_Headers/formatted_io.h:380:12\n0 bytes (static)" }
+node: { title: "../Startup_Code/console.cpp:_ZN5USBDM11FormattedIO16_isCharAvailableEv" label: "virtual bool USBDM::FormattedIO::_isCharAvailable()\n../Project_Headers/formatted_io.h:455:17\n0 bytes (static)" }
+node: { title: "../Startup_Code/console.cpp:_ZN5USBDM11FormattedIO9_readCharEv" label: "virtual int USBDM::FormattedIO::_readChar()\n../Project_Headers/formatted_io.h:464:16\n0 bytes (static)" }
+node: { title: "../Startup_Code/console.cpp:_ZN5USBDM11FormattedIO10_writeCharEc" label: "virtual void USBDM::FormattedIO::_writeChar(char)\n../Project_Headers/formatted_io.h:473:17\n0 bytes (static)" }
+node: { title: "../Startup_Code/console.cpp:_ZN5USBDM11FormattedIO11flushOutputEv" label: "virtual USBDM::FormattedIO& USBDM::FormattedIO::flushOutput()\n../Project_Headers/formatted_io.h:549:25\n0 bytes (static)" }
+node: { title: "../Startup_Code/console.cpp:_ZN5USBDM11FormattedIO10flushInputEv" label: "virtual USBDM::FormattedIO& USBDM::FormattedIO::flushInput()\n../Project_Headers/formatted_io.h:556:25\n0 bytes (static)" }
+node: { title: "../Startup_Code/console.cpp:_ZN5USBDM13UartBasicInfo11flushOutputEv" label: "virtual USBDM::FormattedIO& USBDM::UartBasicInfo::flushOutput()\n../Project_Headers/uart.h:652:32\n0 bytes (static)" }
+node: { title: "../Startup_Code/console.cpp:_ZN5USBDM13UartBasicInfo16_isCharAvailableEv" label: "virtual bool USBDM::UartBasicInfo::_isCharAvailable()\n../Project_Headers/uart.h:668:17\n0 bytes (static)" }
+node: { title: "../Startup_Code/console.cpp:_ZN5USBDM13UartBasicInfo9_readCharEv" label: "virtual int USBDM::UartBasicInfo::_readChar()\n../Project_Headers/uart.h:677:16\n8 bytes (static)" }
+node: { title: "../Startup_Code/console.cpp:_ZN5USBDM13UartBasicInfo10_writeCharEc" label: "virtual void USBDM::UartBasicInfo::_writeChar(char)\n../Project_Headers/uart.h:699:17\n8 bytes (static)" }
 node: { title: "__indirect_call" label: "Indirect Call Placeholder" shape : ellipse }
-edge: { sourcename: "../Startup_Code/console.cpp:_ZN5USBDM4Uart9_readCharEv" targetname: "__indirect_call" label: "../Project_Headers/uart.h:113:23" }
-node: { title: "../Startup_Code/console.cpp:_ZN5USBDM4Uart10_writeCharEc" label: "virtual void USBDM::Uart::_writeChar(char)\n../Project_Headers/uart.h:125:17\n8 bytes (static)" }
-edge: { sourcename: "../Startup_Code/console.cpp:_ZN5USBDM4Uart10_writeCharEc" targetname: "__indirect_call" label: "../Project_Headers/uart.h:132:20" }
-node: { title: "../Startup_Code/console.cpp:_ZN5USBDM4Uart11flushOutputEv" label: "virtual USBDM::Uart& USBDM::Uart::flushOutput()\n../Project_Headers/uart.h:290:18\n0 bytes (static)" }
-node: { title: "../Startup_Code/console.cpp:_ZN5USBDM4Uart10flushInputEv" label: "virtual USBDM::Uart& USBDM::Uart::flushInput()\n../Project_Headers/uart.h:300:18\n0 bytes (static)" }
-node: { title: "../Startup_Code/console.cpp:_ZN5USBDM12Uart_basic_TINS_9Uart0InfoEED2Ev" label: "USBDM::Uart_basic_T<Info>::~Uart_basic_T() [with Info = USBDM::Uart0Info]\n../Project_Headers/uart.h:697:12\n0 bytes (static)" }
-node: { title: "../Startup_Code/console.cpp:_ZN5USBDM6Uart_TINS_9Uart0InfoEE10clearErrorEv" label: "void USBDM::Uart_T<Info>::clearError() [with Info = USBDM::Uart0Info]\n../Project_Headers/uart.h:431:17\n0 bytes (static)" }
-node: { title: "../Startup_Code/console.cpp:_ZN5USBDM11FormattedIOD0Ev" label: "virtual USBDM::FormattedIO::~FormattedIO()\n../Project_Headers/formatted_io.h:226:12\n8 bytes (static)" }
+edge: { sourcename: "../Startup_Code/console.cpp:_ZN5USBDM13UartBasicInfo10_writeCharEc" targetname: "__indirect_call" label: "../Project_Headers/uart.h:706:20" }
+node: { title: "../Startup_Code/console.cpp:_ZNK5USBDM9Uart0Info22getInputClockFrequencyEv" label: "virtual uint32_t USBDM::Uart0Info::getInputClockFrequency() const\n../Project_Headers/uart.h:1636:21\n0 bytes (static)" }
+node: { title: "../Startup_Code/console.cpp:_ZN5USBDM9Uart0InfoD2Ev" label: "USBDM::Uart0Info::~Uart0Info()\n../Project_Headers/uart.h:1549:7\n0 bytes (static)" }
+node: { title: "../Startup_Code/console.cpp:_ZN5USBDM11FormattedIOD0Ev" label: "virtual USBDM::FormattedIO::~FormattedIO()\n../Project_Headers/formatted_io.h:380:12\n8 bytes (static)" }
 node: { title: "_ZdlPvj" label: "void operator delete(void*, std::size_t)\n/opt/eclipse-usbdm/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/arm-none-eabi/include/c++/13.2.1/new:135:6" shape : ellipse }
-edge: { sourcename: "../Startup_Code/console.cpp:_ZN5USBDM11FormattedIOD0Ev" targetname: "_ZdlPvj" label: "../Project_Headers/formatted_io.h:232:4" }
-node: { title: "../Startup_Code/console.cpp:_ZN5USBDM12Uart_basic_TINS_9Uart0InfoEED0Ev" label: "USBDM::Uart_basic_T<Info>::~Uart_basic_T() [with Info = USBDM::Uart0Info]\n../Project_Headers/uart.h:697:12\n8 bytes (static)" }
-edge: { sourcename: "../Startup_Code/console.cpp:_ZN5USBDM12Uart_basic_TINS_9Uart0InfoEED0Ev" targetname: "_ZdlPvj" label: "../Project_Headers/uart.h:698:4" }
-node: { title: "../Startup_Code/console.cpp:_ZN5USBDM11FormattedIO4peekEv" label: "int USBDM::FormattedIO::peek()\n../Project_Headers/formatted_io.h:391:34\n8 bytes (static)" }
-edge: { sourcename: "../Startup_Code/console.cpp:_ZN5USBDM11FormattedIO4peekEv" targetname: "__indirect_call" label: "../Project_Headers/formatted_io.h:395:28" }
-edge: { sourcename: "../Startup_Code/console.cpp:_ZN5USBDM11FormattedIO4peekEv" targetname: "__indirect_call" label: "../Project_Headers/formatted_io.h:398:28" }
-edge: { sourcename: "../Startup_Code/console.cpp:_ZN5USBDM11FormattedIO4peekEv" targetname: "__indirect_call" label: "../Project_Headers/formatted_io.h:403:20" }
-node: { title: "../Startup_Code/console.cpp:_ZN5USBDM11FormattedIO9writeCharEc" label: "void USBDM::FormattedIO::writeChar(char)\n../Project_Headers/formatted_io.h:422:24\n8 bytes (static)" }
-edge: { sourcename: "../Startup_Code/console.cpp:_ZN5USBDM11FormattedIO9writeCharEc" targetname: "__indirect_call" label: "../Project_Headers/formatted_io.h:423:17" }
-node: { title: "../Startup_Code/console.cpp:_ZN5USBDM11FormattedIO8readCharEv" label: "int USBDM::FormattedIO::readChar()\n../Project_Headers/formatted_io.h:432:23\n8 bytes (static)" }
-edge: { sourcename: "../Startup_Code/console.cpp:_ZN5USBDM11FormattedIO8readCharEv" targetname: "../Startup_Code/console.cpp:_ZN5USBDM11FormattedIO4peekEv" label: "../Project_Headers/formatted_io.h:435:19" }
-node: { title: "../Startup_Code/console.cpp:_ZN5USBDM11FormattedIO13private_writeEc" label: "USBDM::FormattedIO& USBDM::FormattedIO::private_write(char)\n../Project_Headers/formatted_io.h:731:32\n8 bytes (static)" }
-edge: { sourcename: "../Startup_Code/console.cpp:_ZN5USBDM11FormattedIO13private_writeEc" targetname: "../Startup_Code/console.cpp:_ZN5USBDM11FormattedIO9writeCharEc" label: "../Project_Headers/formatted_io.h:732:16" }
-node: { title: "../Startup_Code/console.cpp:_ZN5USBDM11FormattedIO15private_writelnEv" label: "USBDM::FormattedIO& USBDM::FormattedIO::private_writeln()\n../Project_Headers/formatted_io.h:741:32\n8 bytes (static)" }
-edge: { sourcename: "../Startup_Code/console.cpp:_ZN5USBDM11FormattedIO15private_writelnEv" targetname: "../Startup_Code/console.cpp:_ZN5USBDM11FormattedIO13private_writeEc" label: "../Project_Headers/formatted_io.h:742:27" }
-node: { title: "../Startup_Code/console.cpp:_ZN5USBDM11FormattedIO13private_writeEPKc" label: "USBDM::FormattedIO& USBDM::FormattedIO::private_write(const char*)\n../Project_Headers/formatted_io.h:795:43\n16 bytes (static)" }
-edge: { sourcename: "../Startup_Code/console.cpp:_ZN5USBDM11FormattedIO13private_writeEPKc" targetname: "../Startup_Code/console.cpp:_ZN5USBDM11FormattedIO13private_writeEc" label: "../Project_Headers/formatted_io.h:797:23" }
-node: { title: "../Startup_Code/console.cpp:_ZN5USBDM11FormattedIO7setEchoENS_8EchoModeE" label: "USBDM::FormattedIO& USBDM::FormattedIO::setEcho(USBDM::EchoMode)\n../Project_Headers/formatted_io.h:1619:32\n0 bytes (static)" }
-node: { title: "../Startup_Code/console.cpp:_ZN5USBDM4Uart17setBaudRate_basicEmmm" label: "void USBDM::Uart::setBaudRate_basic(uint32_t, uint32_t, uint32_t)\n../Project_Headers/uart.h:214:35\n16 bytes (static)" }
+edge: { sourcename: "../Startup_Code/console.cpp:_ZN5USBDM11FormattedIOD0Ev" targetname: "_ZdlPvj" label: "../Project_Headers/formatted_io.h:386:4" }
+node: { title: "../Startup_Code/console.cpp:_ZN5USBDM9Uart0InfoD0Ev" label: "virtual USBDM::Uart0Info::~Uart0Info()\n../Project_Headers/uart.h:1549:7\n8 bytes (static)" }
+edge: { sourcename: "../Startup_Code/console.cpp:_ZN5USBDM9Uart0InfoD0Ev" targetname: "_ZdlPvj" label: "../Project_Headers/uart.h:1549:7" }
+node: { title: "../Startup_Code/console.cpp:_ZN5USBDM11FormattedIO4peekEv" label: "int USBDM::FormattedIO::peek()\n../Project_Headers/formatted_io.h:594:34\n8 bytes (static)" }
+edge: { sourcename: "../Startup_Code/console.cpp:_ZN5USBDM11FormattedIO4peekEv" targetname: "__indirect_call" label: "../Project_Headers/formatted_io.h:598:28" }
+edge: { sourcename: "../Startup_Code/console.cpp:_ZN5USBDM11FormattedIO4peekEv" targetname: "__indirect_call" label: "../Project_Headers/formatted_io.h:601:28" }
+edge: { sourcename: "../Startup_Code/console.cpp:_ZN5USBDM11FormattedIO4peekEv" targetname: "__indirect_call" label: "../Project_Headers/formatted_io.h:606:20" }
+node: { title: "../Startup_Code/console.cpp:_ZN5USBDM11FormattedIO8readCharEv" label: "int USBDM::FormattedIO::readChar()\n../Project_Headers/formatted_io.h:636:8\n8 bytes (static)" }
+edge: { sourcename: "../Startup_Code/console.cpp:_ZN5USBDM11FormattedIO8readCharEv" targetname: "../Startup_Code/console.cpp:_ZN5USBDM11FormattedIO4peekEv" label: "../Project_Headers/formatted_io.h:639:19" }
+node: { title: "../Startup_Code/console.cpp:_ZN5USBDM11FormattedIO13private_writeEPKc" label: "USBDM::FormattedIO& USBDM::FormattedIO::private_write(const char*)\n../Project_Headers/formatted_io.h:972:43\n16 bytes (static)" }
+edge: { sourcename: "../Startup_Code/console.cpp:_ZN5USBDM11FormattedIO13private_writeEPKc" targetname: "__indirect_call" label: "../Project_Headers/formatted_io.h:626:17" }
+node: { title: "../Startup_Code/console.cpp:_ZN5USBDM13UartBasicInfo11setBaudRateEPV9UART_TypemNS_12UartBaudRateE" label: "static void USBDM::UartBasicInfo::setBaudRate(volatile UART_Type*, uint32_t, USBDM::UartBaudRate)\n../Project_Headers/uart.h:773:16\n16 bytes (static)" }
 node: { title: "__aeabi_uidiv" label: "__aeabi_uidiv\n<built-in>" shape : ellipse }
-edge: { sourcename: "../Startup_Code/console.cpp:_ZN5USBDM4Uart17setBaudRate_basicEmmm" targetname: "__aeabi_uidiv" }
-node: { title: "../Startup_Code/console.cpp:_ZN5USBDM12Uart_basic_TINS_9Uart0InfoEE11setBaudRateEj" label: "void USBDM::Uart_basic_T<Info>::setBaudRate(unsigned int) [with Info = USBDM::Uart0Info]\n../Project_Headers/uart.h:706:17\n8 bytes (static)" }
-edge: { sourcename: "../Startup_Code/console.cpp:_ZN5USBDM12Uart_basic_TINS_9Uart0InfoEE11setBaudRateEj" targetname: "../Startup_Code/console.cpp:_ZN5USBDM4Uart17setBaudRate_basicEmmm" label: "../Project_Headers/uart.h:710:30" }
-node: { title: "console_initialise" label: "void USBDM::console_initialise()\n../Startup_Code/console.cpp:49:9\n8 bytes (static)" }
-edge: { sourcename: "console_initialise" targetname: "../Startup_Code/console.cpp:_ZN5USBDM4Uart17setBaudRate_basicEmmm" label: "../Project_Headers/uart.h:710:30" }
-edge: { sourcename: "console_initialise" targetname: "../Startup_Code/console.cpp:_ZN5USBDM11FormattedIO7setEchoENS_8EchoModeE" label: "../Startup_Code/console.cpp:52:22" }
-node: { title: "console_setBaudRate" label: "void USBDM::console_setBaudRate(int)\n../Startup_Code/console.cpp:63:6\n8 bytes (static)" }
-edge: { sourcename: "console_setBaudRate" targetname: "../Startup_Code/console.cpp:_ZN5USBDM4Uart17setBaudRate_basicEmmm" label: "../Project_Headers/uart.h:710:30" }
-node: { title: "console_txChar" label: "void USBDM::console_txChar(int)\n../Startup_Code/console.cpp:73:6\n8 bytes (static)" }
-edge: { sourcename: "console_txChar" targetname: "../Startup_Code/console.cpp:_ZN5USBDM11FormattedIO13private_writeEc" label: "../Project_Headers/formatted_io.h:2331:20" }
-node: { title: "console_rxChar" label: "int USBDM::console_rxChar()\n../Startup_Code/console.cpp:83:5\n8 bytes (static)" }
-edge: { sourcename: "console_rxChar" targetname: "../Startup_Code/console.cpp:_ZN5USBDM11FormattedIO8readCharEv" label: "../Startup_Code/console.cpp:84:27" }
-node: { title: "../Startup_Code/console.cpp:_ZN5USBDM11FormattedIO7writelnIPKcJEEERS0_T_DpT0_" label: ") [with T = const char*; Args = {}]\n../Project_Headers/formatted_io.h:2294:17\n8 bytes (static)" }
-edge: { sourcename: "../Startup_Code/console.cpp:_ZN5USBDM11FormattedIO7writelnIPKcJEEERS0_T_DpT0_" targetname: "../Startup_Code/console.cpp:_ZN5USBDM11FormattedIO13private_writeEPKc" label: "../Project_Headers/formatted_io.h:2295:20" }
-edge: { sourcename: "../Startup_Code/console.cpp:_ZN5USBDM11FormattedIO7writelnIPKcJEEERS0_T_DpT0_" targetname: "../Startup_Code/console.cpp:_ZN5USBDM11FormattedIO15private_writelnEv" label: "../Project_Headers/formatted_io.h:2263:29" }
-node: { title: "_ZN5USBDM9log_errorEPKc" label: "void USBDM::log_error(const char*)\n../Startup_Code/console.cpp:31:6\n8 bytes (static)" }
-edge: { sourcename: "_ZN5USBDM9log_errorEPKc" targetname: "../Startup_Code/console.cpp:_ZN5USBDM11FormattedIO7writelnIPKcJEEERS0_T_DpT0_" label: "../Startup_Code/console.cpp:33:12" }
-node: { title: "../Startup_Code/console.cpp:_ZN5USBDM6Uart_TINS_9Uart0InfoEEC2Ev" label: "USBDM::Uart_T<Info>::Uart_T() [with Info = USBDM::Uart0Info]\n../Project_Headers/uart.h:404:4\n0 bytes (static)" }
-node: { title: "../Startup_Code/console.cpp:_ZN5USBDM12Uart_basic_TINS_9Uart0InfoEEC2Ej" label: "USBDM::Uart_basic_T<Info>::Uart_basic_T(unsigned int) [with Info = USBDM::Uart0Info]\n../Project_Headers/uart.h:691:4\n16 bytes (static)" }
-edge: { sourcename: "../Startup_Code/console.cpp:_ZN5USBDM12Uart_basic_TINS_9Uart0InfoEEC2Ej" targetname: "../Startup_Code/console.cpp:_ZN5USBDM6Uart_TINS_9Uart0InfoEEC2Ev" label: "../Project_Headers/uart.h:691:73" }
-edge: { sourcename: "../Startup_Code/console.cpp:_ZN5USBDM12Uart_basic_TINS_9Uart0InfoEEC2Ej" targetname: "../Startup_Code/console.cpp:_ZN5USBDM4Uart17setBaudRate_basicEmmm" label: "../Project_Headers/uart.h:710:30" }
+edge: { sourcename: "../Startup_Code/console.cpp:_ZN5USBDM13UartBasicInfo11setBaudRateEPV9UART_TypemNS_12UartBaudRateE" targetname: "__aeabi_uidiv" }
+node: { title: "../Startup_Code/console.cpp:_ZN5USBDM13UartBasicInfo9configureEPV9UART_TypemRKNS0_4InitE" label: "static void USBDM::UartBasicInfo::configure(volatile UART_Type*, uint32_t, const Init&)\n../Project_Headers/uart.h:1480:16\n16 bytes (static)" }
+edge: { sourcename: "../Startup_Code/console.cpp:_ZN5USBDM13UartBasicInfo9configureEPV9UART_TypemRKNS0_4InitE" targetname: "../Startup_Code/console.cpp:_ZN5USBDM13UartBasicInfo11setBaudRateEPV9UART_TypemNS_12UartBaudRateE" label: "../Project_Headers/uart.h:1496:18" }
+node: { title: "../Startup_Code/console.cpp:_ZN5USBDM9Uart0Info11setBaudRateENS_12UartBaudRateE" label: "void USBDM::Uart0Info::setBaudRate(USBDM::UartBaudRate)\n../Project_Headers/uart.h:1660:9\n8 bytes (static)" }
+edge: { sourcename: "../Startup_Code/console.cpp:_ZN5USBDM9Uart0Info11setBaudRateENS_12UartBaudRateE" targetname: "__indirect_call" label: "../Project_Headers/uart.h:1662:33" }
+edge: { sourcename: "../Startup_Code/console.cpp:_ZN5USBDM9Uart0Info11setBaudRateENS_12UartBaudRateE" targetname: "../Startup_Code/console.cpp:_ZN5USBDM13UartBasicInfo11setBaudRateEPV9UART_TypemNS_12UartBaudRateE" label: "../Project_Headers/uart.h:1662:33" }
+node: { title: "../Startup_Code/console.cpp:_ZN5USBDM9Uart0Info9configureERKNS_13UartBasicInfo4InitE" label: "static void USBDM::Uart0Info::configure(const USBDM::UartBasicInfo::Init&)\n../Project_Headers/uart.h:1688:16\n8 bytes (static)" }
+edge: { sourcename: "../Startup_Code/console.cpp:_ZN5USBDM9Uart0Info9configureERKNS_13UartBasicInfo4InitE" targetname: "../Startup_Code/console.cpp:_ZN5USBDM13UartBasicInfo9configureEPV9UART_TypemRKNS0_4InitE" label: "../Project_Headers/uart.h:1693:31" }
+node: { title: "../Startup_Code/console.cpp:_ZN5USBDM9Uart0InfoC2Ev" label: "USBDM::Uart0Info::Uart0Info()\n../Project_Headers/uart.h:1643:4\n8 bytes (static)" }
+edge: { sourcename: "../Startup_Code/console.cpp:_ZN5USBDM9Uart0InfoC2Ev" targetname: "../Startup_Code/console.cpp:_ZN5USBDM9Uart0Info9configureERKNS_13UartBasicInfo4InitE" label: "../Project_Headers/uart.h:1680:16" }
 node: { title: "../Startup_Code/console.cpp:_Z41__static_initialization_and_destruction_0v" label: "void __static_initialization_and_destruction_0()\n../Startup_Code/console.cpp:96:1\n8 bytes (static)" }
-edge: { sourcename: "../Startup_Code/console.cpp:_Z41__static_initialization_and_destruction_0v" targetname: "../Startup_Code/console.cpp:_ZN5USBDM12Uart_basic_TINS_9Uart0InfoEEC1Ej" label: "../Startup_Code/console.cpp:43:9" }
+edge: { sourcename: "../Startup_Code/console.cpp:_Z41__static_initialization_and_destruction_0v" targetname: "../Startup_Code/console.cpp:_ZN5USBDM9Uart0InfoC1Ev" label: "../Startup_Code/console.cpp:43:9" }
 node: { title: "__aeabi_atexit" label: "int __aeabiv1::__aeabi_atexit(void*, void (*)(void*), void*)\n<built-in>" shape : ellipse }
 edge: { sourcename: "../Startup_Code/console.cpp:_Z41__static_initialization_and_destruction_0v" targetname: "__aeabi_atexit" label: "../Startup_Code/console.cpp:43:9" }
+node: { title: "_ZN5USBDM9log_errorEPKc" label: "void USBDM::log_error(const char*)\n../Startup_Code/console.cpp:31:6\n8 bytes (static)" }
+edge: { sourcename: "_ZN5USBDM9log_errorEPKc" targetname: "../Startup_Code/console.cpp:_ZN5USBDM11FormattedIO13private_writeEPKc" label: "../Project_Headers/formatted_io.h:2464:20" }
+edge: { sourcename: "_ZN5USBDM9log_errorEPKc" targetname: "__indirect_call" label: "../Project_Headers/formatted_io.h:626:17" }
+node: { title: "console_initialise" label: "void USBDM::console_initialise()\n../Startup_Code/console.cpp:49:9\n8 bytes (static)" }
+edge: { sourcename: "console_initialise" targetname: "../Startup_Code/console.cpp:_ZN5USBDM9Uart0Info9configureERKNS_13UartBasicInfo4InitE" label: "../Project_Headers/uart.h:1680:16" }
+edge: { sourcename: "console_initialise" targetname: "../Startup_Code/console.cpp:_ZN5USBDM9Uart0Info11setBaudRateENS_12UartBaudRateE" label: "../Startup_Code/console.cpp:51:26" }
+node: { title: "console_setBaudRate" label: "void USBDM::console_setBaudRate(int)\n../Startup_Code/console.cpp:63:6\n8 bytes (static)" }
+edge: { sourcename: "console_setBaudRate" targetname: "../Startup_Code/console.cpp:_ZN5USBDM9Uart0Info11setBaudRateENS_12UartBaudRateE" label: "../Startup_Code/console.cpp:64:23" }
+node: { title: "console_txChar" label: "void USBDM::console_txChar(int)\n../Startup_Code/console.cpp:73:6\n8 bytes (static)" }
+edge: { sourcename: "console_txChar" targetname: "__indirect_call" label: "../Project_Headers/formatted_io.h:626:17" }
+node: { title: "console_rxChar" label: "int USBDM::console_rxChar()\n../Startup_Code/console.cpp:83:5\n8 bytes (static)" }
+edge: { sourcename: "console_rxChar" targetname: "../Startup_Code/console.cpp:_ZN5USBDM11FormattedIO8readCharEv" label: "../Startup_Code/console.cpp:84:27" }
 node: { title: "../Startup_Code/console.cpp:_GLOBAL__sub_I__ZN5USBDM9log_errorEPKc" label: "cpp)\n../Startup_Code/console.cpp:96:1\n8 bytes (static)" }
 edge: { sourcename: "../Startup_Code/console.cpp:_GLOBAL__sub_I__ZN5USBDM9log_errorEPKc" targetname: "../Startup_Code/console.cpp:_Z41__static_initialization_and_destruction_0v" label: "../Startup_Code/console.cpp:96:1" }
 }

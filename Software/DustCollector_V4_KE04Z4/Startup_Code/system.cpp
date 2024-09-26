@@ -10,6 +10,7 @@
 #include "derivative.h"
 #include "pmc.h"
 #include "port.h"
+#include "uart.h"
 #include "wdog.h"
 
 
@@ -35,11 +36,6 @@ void clock_initialise() {
 /* This definition is overridden if UART initialisation is provided */
 __attribute__((__weak__))
 void console_initialise() {
-}
-
-/* This definition is overridden if RTC initialisation is provided */
-__attribute__((__weak__))
-void rtc_initialise() {
 }
 
 // Dummy hook routine for when CMSIS is not used.
@@ -88,7 +84,7 @@ void SystemInitLowLevel(void) {
    RCM->MR = RCM_MR_BOOTROM(3);
 #endif
    /*
-    * Initialise watchdog
+    * Disable watchdog
     */
    USBDM::Wdog::disableWdog();
    
@@ -109,7 +105,7 @@ void SystemInitLowLevel(void) {
 __attribute__ ((constructor))
 void SystemInit(void) {
    /*
-    * This is generic initialization code
+    * This is generic initialisation code
     * It may not be correct for a specific target
     */
 
@@ -124,9 +120,6 @@ void SystemInit(void) {
 
    /* Use UART initialisation - if present */
    console_initialise();
-
-   /* Use RTC initialisation - if present */
-   rtc_initialise();
 
 #if defined(__VFP_FP__) && !defined(__SOFTFP__)
 //#warning "Using FP hardware"
@@ -145,6 +138,8 @@ void SystemInit(void) {
 #endif
 /* System startup code for peripherals */
    /* Configure Ports (Filters, PUPs and HDRIVE) */
-   USBDM::Port::defaultConfigure();
+   USBDM::Port::defaultConfigure();   /*  Initialise Uart0 */
+   USBDM::Uart0::defaultConfigure();
+
 
 }

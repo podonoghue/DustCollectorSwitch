@@ -17,6 +17,7 @@ EXE_SRCS :=
 OBJ_SRCS := 
 OUT_SRCS := 
 O_SRCS := 
+SX_SRCS := 
 S_UPPER_SRCS := 
 ARCHIVES := 
 C++M_DEPS := 

@@ -1,5 +1,5 @@
 /*
- * @file spi.cpp  (180.ARM_Peripherals/Sources/spi-MKE.cpp)
+ * @file spi.cpp  (180.ARM_Peripherals/Sources/spi-MKL.cpp)
  *
  *  Created on: 07/08/2012
  *      Author: podonoghue
@@ -17,7 +17,7 @@
  * Any manual changes will be lost.
  */
 
-#if false // /SPI/enablePeripheralSupport
+#if false // /SPI/_BasicInfoGuard
 
 namespace USBDM {
 

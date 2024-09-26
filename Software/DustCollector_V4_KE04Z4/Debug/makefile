@@ -85,7 +85,7 @@ DustCollector_V4_KE04Z4.map: DustCollector_V4_KE04Z4.elf $(OBJS) $(USER_OBJS)
 
 libUSER_OBJS.a: $(OBJS) $(USER_OBJS) makefile $(OPTIONAL_TOOL_DEPS)
 	@echo 'Invoking: ARM Archiver'
-	arm-none-eabi-ar -r   "libUSER_OBJS.a" $(OBJS) $(USER_OBJS) $(LIBS)
+	arm-none-eabi-ar -r -P   "libUSER_OBJS.a" $(OBJS) $(USER_OBJS) $(LIBS)
 	@echo 'Finished building: $@'
 	@echo ' '
 
